@@ -43,8 +43,8 @@
     };
     userEmail = "thierry@delafontaine.xyz";
     userName = "Thierry Delafontaine";
-    #git-cliff = {
-    #  enable = true;
-    #};
+  };
+  programs.git-cliff = {
+    enable = true;
   };
 }
