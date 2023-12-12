@@ -1,5 +1,6 @@
 { pkgs ? import <nixpkgs> { } }: {
   home.packages = with pkgs; [ 
+    clang-tools
     gcc
     gdb
     doxygen

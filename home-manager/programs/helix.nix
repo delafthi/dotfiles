@@ -3,7 +3,7 @@
     enable = true;
     defaultEditor = true;
     extraPackages = with pkgs; [
-      clang
+      clang-tools
       cmake-language-server
       dockerfile-language-server-nodejs
       lua-language-server
@@ -13,6 +13,7 @@
       svls
       texlab
       vhdl-ls
+      vscode-extensions.llvm-org.lldb-vscode
       yaml-language-server
     ];
     settings = {
