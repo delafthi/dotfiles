@@ -22,7 +22,7 @@
     ./programs/git.nix
     ./programs/gpg.nix
     (import ./programs/gtkwave.nix { inherit pkgs; })
-    ./programs/helix.nix
+    (import ./programs/helix.nix { inherit pkgs; })
     (import ./programs/python.nix { inherit pkgs; })
     ./programs/starship.nix
     ./programs/tmux.nix

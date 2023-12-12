@@ -1,21 +1,20 @@
-{
-  home.sessionVariables.EDITOR = "hx";
+{ pkgs ? import <nixpkgs> { } }: {
   programs.helix = {
     enable = true;
-    # defaultEditor = true;
-    # extraPackages = with pkgs; [
-      # clang
-      # cmake-language-server
-      # docker-langserver
-      # lua-language-server
-      # marksman
-      # nil
-      # python-lsp-server
-      # svlangserver
-      # texlab
-      # vhdl-ls
-      # yaml-language-server
-    # ];
+    defaultEditor = true;
+    extraPackages = with pkgs; [
+      clang
+      cmake-language-server
+      dockerfile-language-server-nodejs
+      lua-language-server
+      marksman
+      nil
+      python311Packages.python-lsp-server
+      svls
+      texlab
+      vhdl-ls
+      yaml-language-server
+    ];
     settings = {
       theme = "onedark";
       editor = {
