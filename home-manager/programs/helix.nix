@@ -3,6 +3,7 @@
     enable = true;
     defaultEditor = true;
     extraPackages = with pkgs; [
+      buf-language-server
       clang-tools
       cmake-language-server
       dockerfile-language-server-nodejs
