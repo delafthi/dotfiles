@@ -1,6 +1,7 @@
 {
   programs.fzf = {
     enable = true;
+    changeDirWidgetCommand = "fd --type d";
     colors = {
       fg = "#abb2bf";
       "fg+" = "#c8cdd5";
@@ -16,5 +17,11 @@
       prompt = "#c678dd";
       spinner = "#c678dd";
     };
+    defaultCommand = "fd --type f";
+    fileWidgetCommand = "fd --type f";
+    tmux = {
+      enableShellIntegration = true;
+    };
   };
+  
 }
