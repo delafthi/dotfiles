@@ -10,13 +10,31 @@
       lua-language-server
       marksman
       nil
-      python311Packages.python-lsp-server
+      (python3.withPackages (ps: with ps; [
+        black
+        python-lsp-server
+        python-lsp-ruff
+        python-lsp-black
+      ]))
+      ruff
       svls
       texlab
       vhdl-ls
       vscode-extensions.llvm-org.lldb-vscode
       yaml-language-server
     ];
+    languages = {
+      language-server.pylsp = {
+        config = {
+          pylsp = {
+            plugins = {
+              black.enabled = true;
+              ruff.enabled = true;
+            };
+          };
+        };
+      };
+    };
     settings = {
       theme = "onedark";
       editor = {
