@@ -28,6 +28,7 @@
     ./programs/starship.nix
     ./programs/tmux.nix
     ./programs/zathura.nix
+    ./programs/zoxide.nix
     ./services.nix
     (import ./xdg.nix { inherit config; })
   ];
