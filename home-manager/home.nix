@@ -48,10 +48,14 @@
     username = "delafthi";
     homeDirectory = "/home/delafthi";
     packages = with pkgs; [
+      du-dust
       fd
       gnutar
       htop
       ripgrep
+      procs
+      tealdeer
+      tokei
       wally-cli
       zip
       zotero
