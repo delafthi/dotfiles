@@ -51,7 +51,7 @@
         scrolloff = 8;
         soft-wrap.enable = true;
         statusline = {
-          left = [ "mode" "spacer" "version-control" "workspace-diagnostics"];
+          left = [ "mode" "spacer" "version-control" ];
           center = [ "file-name" ];
           right = [ "diagnostics" "file-modification-indicator" "read-only-indicator" "file-type" "separator" "position" "total-line-numbers" ];
           mode = {
