@@ -24,6 +24,7 @@
     ./programs/gpg.nix
     (import ./programs/gtkwave.nix { inherit pkgs; })
     (import ./programs/helix.nix { inherit pkgs; })
+    ./programs/lazygit.nix
     (import ./programs/python.nix { inherit pkgs; })
     ./programs/starship.nix
     ./programs/tmux.nix
