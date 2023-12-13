@@ -14,8 +14,9 @@
       unstage = "reset HEAD --";
       undo = "reset HEAD~1 --mixed";
     };
-    diff-so-fancy = {
+    difftastic = {
       enable = true;
+      display = "inline";
     };
     extraConfig = {
       init.defaultBranch = "main";
