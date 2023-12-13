@@ -39,6 +39,7 @@
       theme = "onedark";
       editor = {
         bufferline = "multiple";
+        color-modes = true;
         cursorline = true;
         cursor-shape = {
           insert = "bar";
@@ -50,9 +51,9 @@
         scrolloff = 8;
         soft-wrap.enable = true;
         statusline = {
-          left = [ "mode" "version-control" "diagnostics" ];
-          center = [ ];
-          right = [ "file-modification-indicator" "file-base-name" "file-type" "position" "total-line-numbers" ];
+          left = [ "mode" "spacer" "version-control" "workspace-diagnostics"];
+          center = [ "file-name" ];
+          right = [ "diagnostics" "file-modification-indicator" "read-only-indicator" "file-type" "separator" "position" "total-line-numbers" ];
           mode = {
             normal = "NORMAL";
             insert = "INSERT";
