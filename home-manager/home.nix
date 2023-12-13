@@ -17,6 +17,7 @@
     ./programs/dircolors.nix
     ./programs/direnv.nix
     ./programs/emacs.nix
+    ./programs/eza.nix
     ./programs/firefox.nix
     ./programs/fzf.nix
     ./programs/git.nix
