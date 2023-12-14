@@ -7,5 +7,4 @@
     ];
 
   home.file.".clang-format".source = ./.clang-format;
-  home.file.".gdbinit".source = ./.gdbinit;
 }
