@@ -1,9 +1,10 @@
 { pkgs ? import <nixpkgs> { } }: {
   home.packages = with pkgs; [ 
     clang-tools
+    doxygen
     gcc
     gdb
-    doxygen
+    lldb
     ];
 
   home.file.".clang-format".source = ./.clang-format;
