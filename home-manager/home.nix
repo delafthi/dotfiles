@@ -20,11 +20,10 @@
     ./programs/eza.nix
     ./programs/firefox.nix
     ./programs/fzf.nix
-    ./programs/git.nix
+    (import ./programs/git.nix { inherit pkgs; })
     ./programs/gpg.nix
     (import ./programs/gtkwave.nix { inherit pkgs; })
     (import ./programs/helix.nix { inherit pkgs; })
-    ./programs/lazygit.nix
     (import ./programs/python.nix { inherit pkgs; })
     ./programs/starship.nix
     ./programs/tmux.nix
