@@ -46,6 +46,7 @@
           normal = "block";
           select = "underline";
         };
+        file-picker.hidden = false;
         indent-guides.render = true;
         line-number = "relative";
         scrolloff = 8;
