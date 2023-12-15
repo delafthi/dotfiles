@@ -25,7 +25,7 @@
       git_status = {
         format = "([\\[ $all_status$ahead_behind\\]]($style) )";
         style = "bold red";
-        conflicted = "[  ](bold red)";
+        conflicted = "[ ](bold red)";
         ahead = "[\${count} ](bold purple)";
         behind = "[\${count} ](bold purple)";
         diverged = "[\${ahead_count}\${behind_count} ](bold purple)";
