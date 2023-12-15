@@ -26,7 +26,7 @@
     (import ./programs/helix.nix { inherit pkgs; })
     (import ./programs/python.nix { inherit pkgs; })
     ./programs/starship.nix
-    ./programs/tmux.nix
+    (import ./programs/tmux.nix { inherit pkgs; })
     ./programs/zathura.nix
     ./programs/zoxide.nix
     ./services.nix
