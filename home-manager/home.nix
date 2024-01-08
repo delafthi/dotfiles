@@ -56,6 +56,7 @@
       ripgrep
       procs
       tealdeer
+      texlive.combined.scheme-full
       tokei
       wally-cli
       zip
