@@ -106,12 +106,12 @@
       hints = {
         alphabet = "hutenodisagpmkc.wj";
       };
-      mouse_bindings = [
+      mouse.bindings = [
         { mouse = "Right"; action = "ExpandSelection"; }
         { mouse = "Right"; mods = "Control"; action = "ExpandSelection"; }
         { mouse = "Middle"; mode = "~Vi"; action = "PasteSelection"; }
       ];
-      key_bindings = [
+      keyboard.bindings = [
         { key= "Paste"; action = "Paste"; }
         { key = "Copy"; action = "Copy";  }
         { key = "L"; mods = "Control"; action = "ClearLogNotice"; }
