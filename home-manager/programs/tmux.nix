@@ -38,7 +38,7 @@
     keyMode = "vi";
     mouse = true;
     secureSocket = true;
-    terminal = "screen-256color";
+    terminal = "tmux-256color";
   };
   xdg.configFile."tmux/ansi2tmux.pl" = {
     text = ''
