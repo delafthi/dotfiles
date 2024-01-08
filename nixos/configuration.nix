@@ -34,13 +34,13 @@
       })
       config.nix.registry;
     gnome.excludePackages = (with pkgs; [
+      gedit
       gnome-text-editor
       gnome-tour
     ]) ++ (with pkgs.gnome; [
       cheese
       epiphany
       evince
-      gedit
       geary
       gnome-music
       gnome-weather
