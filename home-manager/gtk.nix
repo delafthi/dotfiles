@@ -7,8 +7,8 @@
       size = 24;
     };
     font = {
-      package = (pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; });
-      name = "FiraCode Nerd Font";
+      package = (pkgs.nerdfonts.override { fonts = [ "IosevkaTermSlab" ]; });
+      name = "IosevkaTermSlab Nerd Font";
       size = 12;
     };
     gtk3 = {
