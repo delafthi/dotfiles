@@ -52,6 +52,7 @@
       fd
       gnutar
       htop
+      pandoc
       ripgrep
       procs
       tealdeer
