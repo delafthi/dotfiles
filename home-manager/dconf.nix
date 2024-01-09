@@ -8,7 +8,7 @@ with lib.hm.gvariant;
         terminal = "alacritty";
       };
       "org/gnome/desktop/input-sources" = {
-        sources = [ (mkTuple [ "xkb" "us+mac" ]) ];
+        sources = [ (mkTuple [ "xkb" "us+mac" ]) (mkTuple [ "xkb" "us+dvorak-mac"]) ];
         xkb-options = [ ];
       };
       "org/gnome/desktop/peripherals/mouse" = {
