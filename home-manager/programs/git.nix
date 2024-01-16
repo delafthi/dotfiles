@@ -33,7 +33,6 @@
       ignores = [
         ".cache"
         ".direnv/"
-        ".envrc"
         ".gdb_history"
         ".lnvim.lua"
         ".null-ls*"
