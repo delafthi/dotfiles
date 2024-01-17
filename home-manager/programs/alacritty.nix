@@ -1,4 +1,6 @@
-{
+{ pkgs ? import <nixpkgs> { } }: {
+  home.packages = [ (pkgs.nerdfonts.override { fonts = [ "IosevkaTermSlab" ]; }) ];
+
   programs.alacritty = {
     enable = true;
     settings = {

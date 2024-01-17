@@ -10,7 +10,7 @@
     ./editorconfig.nix
     ./fonts.nix
     (import ./gtk.nix { inherit pkgs; })
-    ./programs/alacritty.nix
+    (import ./programs/alacritty.nix { inherit pkgs; })
     ./programs/bash.nix
     ./programs/bat.nix
     (import ./programs/clang.nix { inherit pkgs; })
@@ -52,6 +52,8 @@
       fd
       gnutar
       htop
+      noto-fonts
+      noto-fonts-emoji
       pandoc
       ripgrep
       procs

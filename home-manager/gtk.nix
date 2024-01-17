@@ -7,8 +7,8 @@
       size = 24;
     };
     font = {
-      package = (pkgs.nerdfonts.override { fonts = [ "IosevkaTermSlab" ]; });
-      name = "IosevkaTermSlab Nerd Font";
+      package = pkgs.noto-fonts;
+      name = "IosevkaEtoile";
       size = 12;
     };
     gtk3 = {
