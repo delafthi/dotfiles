@@ -56,10 +56,12 @@
       noto-fonts-emoji
       pandoc
       ripgrep
+      pandoc
       procs
       tealdeer
       texlive.combined.scheme-full
       tokei
+      unzip
       wally-cli
       zip
       zotero
