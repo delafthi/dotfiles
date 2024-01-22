@@ -55,9 +55,8 @@
       noto-fonts
       noto-fonts-emoji
       pandoc
-      ripgrep
-      pandoc
       procs
+      ripgrep
       tealdeer
       texlive.combined.scheme-full
       tokei
