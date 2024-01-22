@@ -54,6 +54,7 @@
       htop
       noto-fonts
       noto-fonts-emoji
+      onlyoffice-bin
       pandoc
       procs
       ripgrep
