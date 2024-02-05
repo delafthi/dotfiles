@@ -101,7 +101,7 @@
       description = "Thierry Delafontaine";
       initialPassword = "defaultPW";
       isNormalUser = true;
-      extraGroups = ["wheel" "networkmanager" "audio" "docker"];
+      extraGroups = [ "wheel" "audio" "docker" "libvirtd" "networkmanager" ];
     };
   };
 
@@ -157,8 +157,11 @@
     };
   };
 
-  # Enable docker
-  virtualisation.docker.enable =true;
+  # Enable virtualisation services
+  virtualisation = {
+    docker.enable = true;
+    libvirtd.enable = true;
+  };
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05";
