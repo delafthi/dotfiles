@@ -151,8 +151,10 @@
         enable = true;
         extraGSettingsOverridePackages = [ pkgs.nautilus-open-any-terminal ];
       };
-      layout = "us";
-      xkbOptions = "mac";
+      xkb = {
+        layout = "us";
+        options = "mac";
+      };
       libinput.enable = true;
     };
   };
