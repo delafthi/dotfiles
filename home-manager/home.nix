@@ -1,9 +1,7 @@
-{
-  inputs,
-  lib,
-  config,
-  pkgs,
-  ...
+{ lib
+, config
+, pkgs
+, ...
 }: {
   imports = [
     (import ./dconf.nix { inherit lib; })
@@ -36,7 +34,7 @@
   nixpkgs = {
     overlays = [
     ];
-   config = {
+    config = {
       allowUnfree = true;
       allowUnfreePredicate = _: true;
     };
@@ -79,7 +77,7 @@
       rm = "rm -i";
       sudo = "sudo -E";
     };
-  # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
+    # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
     stateVersion = "23.05";
   };
 

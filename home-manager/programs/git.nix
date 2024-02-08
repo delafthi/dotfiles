@@ -48,7 +48,7 @@
       };
       signing = {
         key = "F28424F9874E6696";
-        signByDefault= true;
+        signByDefault = true;
       };
       userEmail = "thierry@delafontaine.xyz";
       userName = "Thierry Delafontaine";

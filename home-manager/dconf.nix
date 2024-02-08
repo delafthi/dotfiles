@@ -8,7 +8,7 @@ with lib.hm.gvariant;
         terminal = "alacritty";
       };
       "org/gnome/desktop/input-sources" = {
-        sources = [ (mkTuple [ "xkb" "us+mac" ]) (mkTuple [ "xkb" "us+dvorak-mac"]) ];
+        sources = [ (mkTuple [ "xkb" "us+mac" ]) (mkTuple [ "xkb" "us+dvorak-mac" ]) ];
         xkb-options = [ ];
       };
       "org/gnome/desktop/peripherals/mouse" = {
@@ -22,7 +22,7 @@ with lib.hm.gvariant;
         cycle-group = [ ];
         cycle-group-backward = [ ];
         cycle-panels = [ ];
-        cycle-panels-backward= [ ];
+        cycle-panels-backward = [ ];
         cycle-windows = [ ];
         cycle-windows-backward = [ ];
         maximize = [ "<Super>Up" ];
@@ -30,7 +30,7 @@ with lib.hm.gvariant;
         move-to-monitor-down = [ ];
         move-to-monitor-left = [ "<Shift><Super>p" ];
         move-to-monitor-right = [ "<Shift><Super>n" ];
-        move-to-monitor-up= [ ];
+        move-to-monitor-up = [ ];
         move-to-workspace-1 = [ "<Shift><Super>1" ];
         move-to-workspace-2 = [ "<Shift><Super>2" ];
         move-to-workspace-3 = [ "<Shift><Super>3" ];
@@ -69,9 +69,9 @@ with lib.hm.gvariant;
         switch-monitor = [ "<Shift><Super>d" "XF86Display" ];
       };
       "org/gnome/settings-daemon-plugins/media-keys" = {
-        custom-keybindings = [ 
-          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" 
-          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" 
+        custom-keybindings = [
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
         ];
         help = [ ];
         home = [ "<Super>e" ];

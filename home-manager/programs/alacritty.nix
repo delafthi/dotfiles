@@ -114,23 +114,23 @@
         { mouse = "Middle"; mode = "~Vi"; action = "PasteSelection"; }
       ];
       keyboard.bindings = [
-        { key= "Paste"; action = "Paste"; }
-        { key = "Copy"; action = "Copy";  }
+        { key = "Paste"; action = "Paste"; }
+        { key = "Copy"; action = "Copy"; }
         { key = "L"; mods = "Control"; action = "ClearLogNotice"; }
         { key = "L"; mods = "Control"; mode = "~Vi|~Search"; chars = "\x0c"; }
         { key = "PageUp"; mods = "Shift"; mode = "~Alt"; action = "ScrollPageUp"; }
         { key = "PageDown"; mods = "Shift"; mode = "~Alt"; action = "ScrollPageDown"; }
         { key = "Home"; mods = "Shift"; mode = "~Alt"; action = "ScrollToTop"; }
         { key = "End"; mods = "Shift"; mode = "~Alt"; action = "ScrollToBottom"; }
-        { key = "Space";  mods = "Shift|Control"; mode = "~Search";    action = "ToggleViMode"; }
-        { key = "Space";  mods = "Shift|Control"; mode = "Vi|~Search"; action = "ScrollToBottom"; }
+        { key = "Space"; mods = "Shift|Control"; mode = "~Search"; action = "ToggleViMode"; }
+        { key = "Space"; mods = "Shift|Control"; mode = "Vi|~Search"; action = "ScrollToBottom"; }
         { key = "Escape"; mode = "Vi|~Search"; action = "ClearSelection"; }
         { key = "I"; mode = "Vi|~Search"; action = "ToggleViMode"; }
         { key = "I"; mode = "Vi|~Search"; action = "ScrollToBottom"; }
         { key = "C"; mods = "Control"; mode = "Vi|~Search"; action = "ToggleViMode"; }
         { key = "Y"; mods = "Control"; mode = "Vi|~Search"; action = "ScrollLineUp"; }
         { key = "E"; mods = "Control"; mode = "Vi|~Search"; action = "ScrollLineDown"; }
-        { key = "G"; mode = "Vi|~Search"; action = "ScrollToTop" ; }
+        { key = "G"; mode = "Vi|~Search"; action = "ScrollToTop"; }
         { key = "G"; mods = "Shift"; mode = "Vi|~Search"; action = "ScrollToBottom"; }
         { key = "B"; mods = "Control"; mode = "Vi|~Search"; action = "ScrollPageUp"; }
         { key = "F"; mods = "Control"; mode = "Vi|~Search"; action = "ScrollPageDown"; }

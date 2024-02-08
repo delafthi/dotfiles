@@ -23,5 +23,5 @@
       enableShellIntegration = true;
     };
   };
-  
+
 }
