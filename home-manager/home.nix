@@ -27,6 +27,7 @@
     (import ./programs/tmux.nix { inherit pkgs; })
     ./programs/zathura.nix
     ./programs/zoxide.nix
+    ./programs/zsh.nix
     ./services.nix
     (import ./xdg.nix { inherit config; })
   ];

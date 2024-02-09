@@ -48,6 +48,7 @@
       totem
       yelp
     ]);
+    pathsToLink = [ "/share/zsh" ];
     systemPackages = with pkgs; [
       git
       gnome.nautilus-python
@@ -101,7 +102,11 @@
       initialPassword = "defaultPW";
       isNormalUser = true;
       extraGroups = [ "wheel" "audio" "docker" "libvirtd" "networkmanager" ];
+      shell = pkgs.zsh;
     };
+  };
+  programs = {
+    zsh.enable = true;
   };
 
   services = {
