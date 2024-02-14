@@ -7,7 +7,7 @@
     (import ./dconf.nix { inherit lib; })
     ./editorconfig.nix
     ./fonts.nix
-    (import ./gtk.nix { inherit pkgs; })
+    (import ./gtk.nix { inherit config pkgs; })
     (import ./programs/alacritty.nix { inherit pkgs; })
     ./programs/bash.nix
     ./programs/bat.nix
