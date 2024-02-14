@@ -11,6 +11,9 @@ with lib.hm.gvariant;
         sources = [ (mkTuple [ "xkb" "us+mac" ]) (mkTuple [ "xkb" "us+dvorak-mac" ]) ];
         xkb-options = [ ];
       };
+      "org/gnome/desktop/interface" = {
+        color-scheme = "prefer-dark";
+      };
       "org/gnome/desktop/peripherals/mouse" = {
         natural-scroll = true;
       };
