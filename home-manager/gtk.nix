@@ -10,11 +10,11 @@
     };
     gtk3 = {
       bookmarks = [
-        "file://${config.home.homeDirectory}/0%20Inbox"
-        "file://${config.home.homeDirectory}/1%20Projects"
-        "file://${config.home.homeDirectory}/2%20Areas"
-        "file://${config.home.homeDirectory}/3%20Resources"
-        "file://${config.home.homeDirectory}/4%20Archives"
+        "file://${config.home.homeDirectory}/0-inbox"
+        "file://${config.home.homeDirectory}/1-projects"
+        "file://${config.home.homeDirectory}/2-areas"
+        "file://${config.home.homeDirectory}/3-resources"
+        "file://${config.home.homeDirectory}/4-archives"
         "file://${config.home.homeDirectory}/repos"
       ];
     };
