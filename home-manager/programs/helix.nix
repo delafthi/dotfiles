@@ -17,6 +17,8 @@
         python-lsp-black
       ]))
       ruff
+      rust-analyzer
+      clippy
       svls
       texlab
       vhdl-ls
@@ -24,13 +26,20 @@
       yaml-language-server
     ];
     languages = {
-      language-server.pylsp = {
-        config = {
-          pylsp = {
-            plugins = {
-              black.enabled = true;
-              ruff.enabled = true;
+      language-server = {
+        pylsp = {
+          config = {
+            pylsp = {
+              plugins = {
+                black.enabled = true;
+                ruff.enabled = true;
+              };
             };
+          };
+        };
+        rust-analyzer = {
+          config = {
+            check.command = "clippy";
           };
         };
       };
