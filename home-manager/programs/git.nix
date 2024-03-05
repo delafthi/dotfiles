@@ -11,12 +11,14 @@
         br = "branch";
         co = "checkout";
         c = "commit";
-        can = "commit --amend --no-edit";
         ca = "commit --amend";
-        hist = "log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short";
+        cane = "commit --amend --no-edit";
+        cf = "commit --fixup";
+        g = "!git log --oneline --all --graph || true";
         last = "log -1 HEAD";
+        pf = "push --force-with-lease";
         save = "!git add -A && git commit -m 'chore: WIP'";
-        st = "status -s -unormal -b --show-stash";
+        st = "status --short --branch --show-stash -unormal";
         unstage = "reset HEAD --";
         undo = "reset HEAD~1 --mixed";
       };
@@ -25,10 +27,16 @@
         display = "inline";
       };
       extraConfig = {
+        fetch.prune = true;
         init.defaultBranch = "main";
         merge.autoStash = true;
         pull.rebase = true;
-        rebase.autoStash = true;
+        push.autoSetupRemote = true;
+        rebase = {
+          autoSquash = true;
+          autoStash = true;
+        };
+        submodule.recurse = true;
       };
       ignores = [
         ".cache"
