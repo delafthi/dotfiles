@@ -17,6 +17,9 @@ with lib.hm.gvariant;
       "org/gnome/desktop/peripherals/mouse" = {
         natural-scroll = true;
       };
+      "org/gnome/desktop/sound" = {
+        event-sounds = false;
+      };
       "org/gnome/desktop/wm/keybindings" = {
         activate-window-menu = [ ];
         begin-move = [ ];
