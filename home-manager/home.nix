@@ -51,6 +51,7 @@
       fd
       gnutar
       htop
+      just
       noto-fonts
       noto-fonts-emoji
       onlyoffice-bin
