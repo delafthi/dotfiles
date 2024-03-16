@@ -9,5 +9,9 @@
       maxCacheTtlSsh = 86400;
       pinentryFlavor = "gnome3";
     };
+    unclutter = {
+      enable = true;
+      timeout = 10;
+    };
   };
 }
