@@ -63,6 +63,7 @@
       tokei
       unzip
       wally-cli
+      yazi
       zip
       zotero
     ];
