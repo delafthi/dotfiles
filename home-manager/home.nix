@@ -16,7 +16,6 @@
     ./programs/direnv.nix
     ./programs/emacs.nix
     ./programs/eza.nix
-    ./programs/firefox.nix
     ./programs/fzf.nix
     (import ./programs/git.nix { inherit pkgs; })
     ./programs/gpg.nix
@@ -47,6 +46,7 @@
     username = "delafthi";
     homeDirectory = "/home/delafthi";
     packages = with pkgs; [
+      brave
       du-dust
       fd
       gnutar
