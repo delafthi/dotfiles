@@ -27,7 +27,7 @@
     ./programs/zellij.nix
     ./programs/zoxide.nix
     ./programs/zsh.nix
-    ./services.nix
+    (import ./services.nix { inherit pkgs; })
     (import ./xdg.nix { inherit config; })
   ];
 

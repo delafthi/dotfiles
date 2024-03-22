@@ -1,4 +1,4 @@
-{
+{ pkgs ? import <nixpkgs> { }}: {
   services = {
     gpg-agent = {
       enable = true;
@@ -7,7 +7,7 @@
       defaultCacheTtlSsh = 86400;
       maxCacheTtl = 86400;
       maxCacheTtlSsh = 86400;
-      pinentryFlavor = "gnome3";
+      pinentryPackage = pkgs.pinentry-gnome3;
     };
     unclutter = {
       enable = true;

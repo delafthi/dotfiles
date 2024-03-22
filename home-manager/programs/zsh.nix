@@ -1,9 +1,11 @@
 {
   programs.zsh = {
     enable = true;
-    enableAutosuggestions = true;
     enableVteIntegration = true;
     autocd = true;
+    autosuggestion = {
+      enable = true;
+    };
     defaultKeymap = "viins";
     history = {
       expireDuplicatesFirst = true;
