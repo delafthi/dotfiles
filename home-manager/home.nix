@@ -62,7 +62,6 @@
       texlive.combined.scheme-full
       tokei
       unzip
-      wally-cli
       yazi
       zip
       zotero
