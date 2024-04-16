@@ -14,7 +14,7 @@
         black
         python-lsp-server
         python-lsp-ruff
-        python-lsp-black
+        # python-lsp-black
       ]))
       ruff
       rust-analyzer
