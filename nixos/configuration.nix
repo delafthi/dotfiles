@@ -59,30 +59,25 @@
       xclip
     ];
   };
-
   nix.settings = {
     # Enable flakes and new 'nix' command
     experimental-features = [ "nix-command" "flakes" ];
     # Deduplicate and optimize nix store
     auto-optimise-store = true;
   };
-
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
     efi.canTouchEfiVariables = true;
     systemd-boot.enable = true;
   };
-
   # Configure networking
   networking = {
     hostName = "thinkpad";
     networkmanager.enable = true;
     proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   };
-
   # Set your time zone.
   time.timeZone = "Europe/Zurich";
-
   # Select internationalisation properties.
   i18n = {
     defaultLocale = "de_CH.UTF-8";
@@ -94,7 +89,6 @@
     font = "Lat2-Terminus16";
     useXkbConfig = true; # use xkbOptions in tty.
   };
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
     delafthi = {
@@ -109,7 +103,6 @@
     nix-ld.enable = true;
     zsh.enable = true;
   };
-
   services = {
     # Enable snapshots of home (Btrfs)
     btrbk = {
@@ -139,15 +132,12 @@
       interval = "monthly";
       fileSystems = [ "/" ];
     };
-
     gnome.core-utilities.enable = true;
-
+    libinput.enable = true;
     # Enable CUPS to print documents.
     printing.enable = true;
-
     # Add udev rules to flash ergodox keyboard
     udev.packages = [ pkgs.zsa-udev-rules ];
-
     # Enable the X11 windowing system.
     xserver = {
       enable = true;
@@ -160,16 +150,13 @@
         layout = "us";
         options = "mac";
       };
-      libinput.enable = true;
     };
   };
-
   # Enable virtualisation services
   virtualisation = {
     docker.enable = true;
     libvirtd.enable = true;
   };
-
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
   system.stateVersion = "23.05";
 }
