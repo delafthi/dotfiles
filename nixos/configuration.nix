@@ -33,25 +33,25 @@
         })
         config.nix.registry;
     gnome.excludePackages = (with pkgs; [
-      gedit
-      gnome-text-editor
-      gnome-tour
-    ]) ++ (with pkgs.gnome; [
       cheese
       epiphany
       evince
       geary
-      gnome-music
-      gnome-weather
+      gedit
+      gnome-text-editor
+      gnome-tour
       seahorse
       simple-scan
       totem
       yelp
+    ]) ++ (with pkgs.gnome; [
+      gnome-music
+      gnome-weather
     ]);
     pathsToLink = [ "/share/zsh" ];
     systemPackages = with pkgs; [
       git
-      gnome.nautilus-python
+      nautilus-python
       inputs.home-manager.packages.${pkgs.system}.default
       nautilus-open-any-terminal
       vim

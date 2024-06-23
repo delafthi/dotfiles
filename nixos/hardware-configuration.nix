@@ -56,7 +56,6 @@
   swapDevices = [{ device = "/swap/swapfile"; }];
 
   # Enable sound.
-  sound.enable = true;
   hardware.pulseaudio.enable = true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
