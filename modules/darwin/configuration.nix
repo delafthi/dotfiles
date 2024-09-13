@@ -76,7 +76,7 @@
           "/Applications/Proton Pass.app"
           "/Applications/Things3.app"
           "/Applications/Bear.app"
-          "${pkgs.alacritty}/Applications/Alacritty.app"
+          "/Applications/Alacritty.app"
         ];
         show-recents = false;
         showhidden = true;

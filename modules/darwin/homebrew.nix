@@ -3,7 +3,9 @@
     enable = true;
     caskArgs.no_quarantine = true;
     casks = [
+      "alacritty"
       "alfred"
+      "gtkwave"
       "iina"
       "jordanbaird-ice"
       "onlyoffice"
