@@ -3,7 +3,6 @@
     clang-tools
     doxygen
     gcc
-    gdb
     lldb
   ];
 

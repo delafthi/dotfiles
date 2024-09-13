@@ -5,6 +5,12 @@
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    # nix-darwin
+    darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Home manager
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -15,32 +21,35 @@
   outputs =
     inputs@{ self
     , nixpkgs
+    , darwin
     , home-manager
     , ...
     }:
     let
       inherit (self) outputs;
+      system = "aarch64-darwin";
     in
     {
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixpkgs-fmt;
-      # NixOS configuration entrypoint
-      # Available through 'nixos-rebuild --flake .#your-hostname'
-      nixosConfigurations = {
-        thinkpad = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
-          # > Our main nixos configuration file <
-          modules = [ ./nixos/configuration.nix ];
-        };
-      };
-
-      # Standalone home-manager configuration entrypoint
-      # Available through 'home-manager --flake .#your-username@your-hostname'
-      homeConfigurations = {
-        "delafthi@thinkpad" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs outputs; };
-          # > Our main home-manager configuration file <
-          modules = [ ./home-manager/home.nix ];
+      formatter.${system} = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
+      darwinConfigurations =  {
+        "Thierrys-MacBook-Air" = darwin.lib.darwinSystem {
+          inherit system;
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
+          specialArgs = { inherit inputs; };
+          modules = [
+           ./modules/darwin/configuration.nix
+           home-manager.darwinModules.home-manager {
+             home-manager = {
+                useGlobalPkgs= true;
+                useUserPackages = true;
+                users.delafthi = import ./modules/home-manager/home.nix;
+             };
+             users.users.delafthi.home = "/Users/delafthi";
+            }
+          ];
         };
       };
     };

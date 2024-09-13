@@ -9,7 +9,7 @@
           x = 8;
           y = 8;
         };
-        decorations = "none";
+        decorations = "full";
         startup_mode = "Windowed";
         title = "Alacritty";
         dynamic_title = true;
@@ -100,7 +100,10 @@
           shape = "Beam";
           blinking = "Off";
         };
-        vi_mode_style = "Block";
+        vi_mode_style = {
+          shape = "Block";
+          blinking = "Off";
+        };
         unfocused_hollow = true;
         thickness = 0.15;
       };
