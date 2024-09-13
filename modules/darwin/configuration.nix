@@ -74,9 +74,11 @@
           "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
           "/Applications/WhatsApp.app"
           "/Applications/Proton Pass.app"
+          "/System/Applications/Music.app"
           "/Applications/Things3.app"
           "/Applications/Bear.app"
           "/Applications/Alacritty.app"
+          "/Applications/Zed.app"
         ];
         show-recents = false;
         showhidden = true;
