@@ -62,7 +62,6 @@
       NSGlobalDomain = {
         AppleInterfaceStyle = "Dark";
         AppleKeyboardUIMode = 3;
-        AppleShowAllExtensions = true;
         AppleShowAllFiles = true;
       };
       dock = {
@@ -84,7 +83,6 @@
         showhidden = true;
       };
       finder = {
-        AppleShowAllExtensions = false;
         AppleShowAllFiles = true;
         FXDefaultSearchScope = "SCcf";
         FXEnableExtensionChangeWarning = true;
