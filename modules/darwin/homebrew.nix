@@ -23,6 +23,7 @@
       Hush = 1544743900;
       Notability = 360593530;
       Omnivore = 1564031042;
+      PDFgear = 6469021132;
       Photomator = 1444636541;
       "ProtonPass for Safari" = 6502835663;
       Shazam = 897118787;
