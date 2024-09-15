@@ -16,6 +16,7 @@
       "zotero"
     ];
     masApps = {
+      "AdGuard for Safari" = 1440147259;
       "Apple Delevoper" = 640199958;
       Testflight = 899247664;
       XCode = 497799835;
