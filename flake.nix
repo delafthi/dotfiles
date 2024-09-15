@@ -31,7 +31,7 @@
     in
     {
       formatter.${system} = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
-      darwinConfigurations =  {
+      darwinConfigurations = {
         "Thierrys-MacBook-Air" = darwin.lib.darwinSystem {
           inherit system;
           pkgs = import nixpkgs {
@@ -40,14 +40,15 @@
           };
           specialArgs = { inherit inputs; };
           modules = [
-           ./modules/darwin/configuration.nix
-           home-manager.darwinModules.home-manager {
-             home-manager = {
-                useGlobalPkgs= true;
+            ./modules/darwin/configuration.nix
+            home-manager.darwinModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
                 useUserPackages = true;
                 users.delafthi = import ./modules/home-manager/home.nix;
-             };
-             users.users.delafthi.home = "/Users/delafthi";
+              };
+              users.users.delafthi.home = "/Users/delafthi";
             }
           ];
         };
