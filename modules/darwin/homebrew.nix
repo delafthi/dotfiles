@@ -22,7 +22,6 @@
       XCode = 497799835;
       Bear = 1091189122;
       Hush = 1544743900;
-      Notability = 360593530;
       Omnivore = 1564031042;
       PDFgear = 6469021132;
       Photomator = 1444636541;
