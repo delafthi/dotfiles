@@ -9,6 +9,7 @@
       "iina"
       "jordanbaird-ice"
       "onlyoffice"
+      "pika"
       "proton-drive"
       "proton-mail"
       "proton-pass"
