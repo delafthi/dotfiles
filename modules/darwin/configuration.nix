@@ -72,6 +72,7 @@
         persistent-apps = [
           "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
           "/Applications/WhatsApp.app"
+          "/Applications/Proton Mail.app"
           "/Applications/Proton Pass.app"
           "/System/Applications/Music.app"
           "/Applications/Things3.app"
