@@ -101,6 +101,9 @@
         askForPassword = true;
         askForPasswordDelay = 0;
       };
+      trackpad = {
+        TrackpadThreeFingerDrag = true;
+      };
     };
     keyboard = {
       enableKeyMapping = true;
