@@ -44,6 +44,8 @@
       tokei
       unzip
       yazi
+      yubikey-manager
+      yubikey-personalization
       zip
     ];
     shellAliases = {
