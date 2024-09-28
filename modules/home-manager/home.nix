@@ -15,7 +15,7 @@
     ./programs/eza.nix
     ./programs/fzf.nix
     (import ./programs/git.nix { inherit pkgs; })
-    ./programs/gpg.nix
+    (import ./programs/gpg.nix { inherit pkgs; })
     (import ./programs/gtkwave.nix { inherit pkgs; })
     (import ./programs/helix.nix { inherit pkgs; })
     (import ./programs/python.nix { inherit pkgs; })
