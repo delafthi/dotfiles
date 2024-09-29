@@ -22,7 +22,7 @@
     ./programs/starship.nix
     (import ./programs/tmux.nix { inherit pkgs; })
     ./programs/zoxide.nix
-    ./programs/zsh.nix
+    (import ./programs/zsh.nix { inherit pkgs; })
   ];
 
   programs.home-manager.enable = true;
