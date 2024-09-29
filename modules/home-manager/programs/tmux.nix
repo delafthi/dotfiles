@@ -28,7 +28,7 @@
       set -g status-style bg=default,fg=white
       set -g set-titles on
       set -g set-titles-string "#T"
-      set -g terminal-overrides ",alacritty:RGB"
+      set -g terminal-overrides ",xterm-kitty:RGB"
       set -g window-status-current-format "#[fg=brightblack,nobold,bg=default][#[fg=brightblack,nobold,bg=default]#I #[fg=magenta,nobold,bg=default]#F #[fg=blue,blue,bold,bg=default]#W#[fg=brightblack,nobold,bg=default]]"
       set -g window-status-format "#[fg=brightblack,nobold,bg=default][#[fg=brightblack,bg=default]#I #F #[fg=white,bg=default]#W#[fg=brightblack,nobold,bg=default]]"
 

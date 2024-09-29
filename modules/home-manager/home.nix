@@ -6,7 +6,6 @@
   imports = [
     ./editorconfig.nix
     ./fonts.nix
-    (import ./programs/alacritty.nix { inherit pkgs; })
     ./programs/bash.nix
     ./programs/bat.nix
     (import ./programs/clang.nix { inherit pkgs; })
@@ -18,6 +17,7 @@
     (import ./programs/gpg.nix { inherit pkgs; })
     (import ./programs/gtkwave.nix { inherit pkgs; })
     (import ./programs/helix.nix { inherit pkgs; })
+    (import ./programs/kitty.nix { inherit pkgs; })
     (import ./programs/python.nix { inherit pkgs; })
     ./programs/starship.nix
     (import ./programs/tmux.nix { inherit pkgs; })

@@ -80,7 +80,7 @@
           "/System/Applications/Music.app"
           "/Applications/Things3.app"
           "/Applications/Bear.app"
-          "/Applications/Alacritty.app"
+          "/Applications/kitty.app"
           "/Applications/Zed.app"
         ];
         show-recents = false;
