@@ -4,6 +4,7 @@
     caskArgs.no_quarantine = true;
     casks = [
       "alfred"
+      "chatgpt"
       "gtkwave"
       "iina"
       "jordanbaird-ice"
