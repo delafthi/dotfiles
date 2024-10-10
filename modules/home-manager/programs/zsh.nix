@@ -11,7 +11,14 @@
       expireDuplicatesFirst = true;
       ignoreAllDups = true;
     };
-    initExtra = "zstyle ':completion:*' menu yes select";
+    initExtra = ''
+      zstyle ':completion:*' menu yes select
+
+      # fix issue where ctrl-r is overwritten with the default history search
+      function zvm_after_init() {
+        zvm_bindkey viins "^R" fzf-history-widget
+      }
+    '';
     plugins = [
       {
         name = "vi-mode";
