@@ -22,7 +22,7 @@
   programs = {
     bash = {
       enable = true;
-      enableCompletion = true;
+      completion.enable = true;
     };
     gnupg.agent = {
       enable = true;
