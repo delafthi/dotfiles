@@ -81,7 +81,6 @@
           "/Applications/Things3.app"
           "/Applications/Bear.app"
           "/Applications/kitty.app"
-          "/Applications/Zed.app"
         ];
         show-recents = false;
         showhidden = true;

@@ -16,7 +16,6 @@
       "proton-pass"
       "protonvpn"
       "yubico-yubikey-manager"
-      "zed"
       "zotero"
     ];
     masApps = {
