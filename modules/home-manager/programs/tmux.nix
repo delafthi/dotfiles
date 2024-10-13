@@ -38,6 +38,7 @@
     keyMode = "vi";
     mouse = true;
     secureSocket = true;
+    shell = "\${pkgs.zsh}/bin/zsh";
     terminal = "tmux-256color";
   };
   xdg.configFile."tmux/ansi2tmux.pl" = {
