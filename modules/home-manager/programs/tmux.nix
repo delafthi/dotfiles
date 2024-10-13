@@ -21,7 +21,6 @@
       set -g renumber-windows on
       set -g set-clipboard on
       set -g status-interval 5
-      set -g status-keys emacs
       set -g status-left "#[fg=blue,bold]#S #[fg=default,nobold]#(starship module git_branch | $HOME/.config/tmux/ansi2tmux.pl)#[fg=default,nobold]#(starship module git_status | $HOME/.config/tmux/ansi2tmux.pl) "
       set -g status-left-length 70
       set -g status-position "top"
