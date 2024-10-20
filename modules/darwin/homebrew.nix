@@ -6,6 +6,7 @@
       "alfred"
       "blender"
       "chatgpt"
+      "godot"
       "gtkwave"
       "iina"
       "jordanbaird-ice"
