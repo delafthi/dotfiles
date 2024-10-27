@@ -42,6 +42,7 @@
       tealdeer
       texlive.combined.scheme-full
       tokei
+      unrar
       unzip
       yazi
       yubikey-manager
