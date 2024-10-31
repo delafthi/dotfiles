@@ -11,7 +11,6 @@
       "iina"
       "jordanbaird-ice"
       "kitty"
-      "onlyoffice"
       "pika"
       "proton-drive"
       "proton-mail"
@@ -27,7 +26,10 @@
       XCode = 497799835;
       Bear = 1091189122;
       Hush = 1544743900;
+      Keynote = 409203825;
+      Numbers = 409203825;
       Omnivore = 1564031042;
+      Pages = 409201541;
       PDFgear = 6469021132;
       Photomator = 1444636541;
       "ProtonPass for Safari" = 6502835663;
