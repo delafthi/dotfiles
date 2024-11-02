@@ -3,8 +3,10 @@
     enable = true;
     settings = {
       add_newline = true;
+      aws.symbol = "  ";
       buf.symbol = " ";
       c.symbol = " ";
+      conda.symbol = " ";
       character = {
         success_symbol = "[>](bold green)";
         error_symbol = "[>](bold red)";
@@ -13,6 +15,8 @@
         vimcmd_replace_symbol = "[<](bold purple)";
         vimcmd_visual_symbol = "[<](bold blue)";
       };
+      crystal.symbol = " ";
+      dart.symbol = " ";
       directory = {
         truncation_length = 1;
         truncate_to_repo = false;
@@ -21,7 +25,12 @@
         fish_style_pwd_dir_length = 3;
       };
       docker_context.symbol = " ";
+      elixir.symbol = " ";
+      elm.symbol = " ";
+      fennel.symbol = " ";
+      fossil_branch.symbol = " ";
       git_branch.symbol = " ";
+      git_commit.tag_symbol = "  ";
       git_status = {
         format = "([\\[ $all_status$ahead_behind\\]]($style) )";
         style = "bold red";
@@ -37,20 +46,34 @@
         deleted = "[ \${count} ](bold red)";
       };
       golang.symbol = " ";
+      guix_shell.symbol = " ";
       haskell.symbol = " ";
+      haxe.symbol = " ";
+      hg_branch.symbol = " ";
       hostname.ssh_symbol = " ";
       java.symbol = " ";
       julia.symbol = " ";
+      kotlin.symbol = " ";
       lua.symbol = " ";
       memory_usage.symbol = "󰍛 ";
+      meson.symbol = "󰔷 ";
+      nim.symbol = "󰆥 ";
       nix_shell.symbol = " ";
       nodejs.symbol = " ";
+      ocaml.symbol = " ";
       package.symbol = "󰏗 ";
+      perl.symbol = " ";
+      php.symbol = " ";
+      pijul_channel.symbol = " ";
       python.symbol = " ";
       right_format = "$cmd_duration";
       rlang.symbol = "󰟔 ";
+      ruby.symbol = " ";
       rust.symbol = " ";
       scala.symbol = " ";
+      swift.symbol = " ";
+      zig.symbol = " ";
+      gradle.symbol = " ";
     };
   };
 }
