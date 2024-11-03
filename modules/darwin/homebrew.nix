@@ -27,7 +27,6 @@
       Hush = 1544743900;
       Keynote = 409203825;
       Numbers = 409203825;
-      Omnivore = 1564031042;
       Pages = 409201541;
       PDFgear = 6469021132;
       Photomator = 1444636541;
