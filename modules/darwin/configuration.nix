@@ -9,7 +9,7 @@
   ];
   environment = {
     darwinConfig = "$HOME/.nix-config/modules/darwin/configuration.nix";
-    loginShell = pkgs.zsh;
+    shells = with pkgs; [ bashInteractive fish ];
     systemPackages = [ pkgs.coreutils ];
   };
   nix = {
@@ -24,13 +24,15 @@
       enable = true;
       completion.enable = true;
     };
+    fish = {
+      enable = true;
+      useBabelfish = true;
+    };
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
     };
-    zsh = {
-      enable = true;
-    };
+    zsh.enable = true;
   };
   security.pam.enableSudoTouchIdAuth = true;
   services.nix-daemon.enable = true;
@@ -114,6 +116,7 @@
     delafthi = {
       description = "Thierry Delafontaine";
       home = "/Users/delafthi";
+      shell = pkgs.fish;
     };
   };
 }

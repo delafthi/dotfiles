@@ -74,8 +74,8 @@
       shell = {
         disabled = false;
         bash_indicator = "\\[bsh\\]";
-        fish_indicator = "\\[fsh\\]";
-        zsh_indicator = "";
+        fish_indicator = "";
+        zsh_indicator = "\\[zsh\\]";
         ion_indicator = "\\[ion\\]";
         elvish_indicator = "\\[esh\\]";
         tcsh_indicator = "\\[tsh\\]";

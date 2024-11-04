@@ -6,6 +6,7 @@
   imports = [
     ./editorconfig.nix
     ./fonts.nix
+    (import ./programs/fish.nix { inherit pkgs; })
     ./programs/bash.nix
     ./programs/bat.nix
     (import ./programs/clang.nix { inherit pkgs; })
@@ -22,7 +23,6 @@
     ./programs/starship.nix
     (import ./programs/tmux.nix { inherit pkgs; })
     ./programs/zoxide.nix
-    (import ./programs/zsh.nix { inherit pkgs; })
   ];
 
   programs.home-manager.enable = true;
