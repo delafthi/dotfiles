@@ -45,7 +45,7 @@
       };
     };
     settings = {
-      theme = "onedark";
+      theme = "tokyonight";
       editor = {
         bufferline = "multiple";
         color-modes = true;

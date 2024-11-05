@@ -13,6 +13,6 @@
       update_check_interval = 0;
       window_padding_width = 8;
     };
-    themeFile = "OneDark";
+    themeFile = "tokyo_night_night";
   };
 }
