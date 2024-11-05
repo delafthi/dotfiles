@@ -14,6 +14,7 @@
   };
   nix = {
     gc.automatic = true;
+    linux-builder.enable = true;
     optimise.automatic = true;
     settings = {
       experimental-features = [ "nix-command" "flakes" ];
