@@ -37,16 +37,16 @@
   security.pam.enableSudoTouchIdAuth = true;
   services.nix-daemon.enable = true;
   system = {
-    activationScripts.extraActivation.text = ''
-      softwareupdate --install-rosetta --agree-to-license
-    '';
+    activationScripts = {
+      extraActivation.text = ''
+        softwareupdate --install-rosetta --agree-to-license
+      '';
+      postUserActivation.text = ''
+        /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+      '';
+    };
     defaults = {
-      CustomSystemPreferences = {
-        "com.apple.AdLib" = {
-          allowApplePersonalizedAdvertising = false;
-          allowIdentifierForAdvertising = false;
-          forceLimitAdTracking = true;
-        };
+      CustomUserPreferences = {
         "com.apple.desktopservices" = {
           DSDontWriteUSBStores = true;
           DSDontWriteNetworkStores = true;
@@ -58,16 +58,35 @@
           ShowExternalHardDrivesOnDesktop = false;
           ShowMountedServersOnDesktop = false;
         };
+        "com.apple.ImageCapture" = {
+          disableHotPlug = true;
+        };
+        "com.apple.mail" = {
+          DisableInlineAttachmentViewing = true;
+        };
+        "com.apple.print.PrintingPrefs" = {
+          "Quit When Finished" = true;
+        };
         "com.apple.Safari" = {
+          AlwaysRestoreSessionAtLaunch = true;
           AutoOpenSafeDownloads = false;
+          ExcludePrivateWindowWhenRestoringSessionAtLaunch = true;
+          IncludeInternalDebugMenu = true;
+          IncludeDevelopMenu = true;
           SendDoNotTrackHTTPHeader = true;
+          WebKitDeveloperExtrasEnabledPreferenceKey = true;
           "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" = true;
         };
       };
-      NSGlobalDomain = {
-        AppleInterfaceStyle = "Dark";
-        AppleKeyboardUIMode = 3;
-        AppleShowAllFiles = true;
+      CustomSystemPreferences = {
+        "com.apple.AdLib" = {
+          allowApplePersonalizedAdvertising = false;
+          allowIdentifierForAdvertising = false;
+          forceLimitAdTracking = true;
+        };
+        "com.apple.commerce" = {
+          AutoUpdate = true;
+        };
       };
       dock = {
         autohide = true;
@@ -86,13 +105,27 @@
         ];
         show-recents = false;
         showhidden = true;
+        tilesize = 60;
       };
       finder = {
         AppleShowAllFiles = true;
         FXDefaultSearchScope = "SCcf";
-        FXEnableExtensionChangeWarning = true;
+        FXEnableExtensionChangeWarning = false;
         FXPreferredViewStyle = "Nlsv";
         ShowPathbar = true;
+      };
+      LaunchServices = {
+        LSQuarantine = true;
+      };
+      NSGlobalDomain = {
+        AppleInterfaceStyle = "Dark";
+        AppleKeyboardUIMode = 3;
+        AppleShowAllFiles = true;
+        NSNavPanelExpandedStateForSaveMode = true;
+        NSNavPanelExpandedStateForSaveMode2 = true;
+      };
+      SoftwareUpdate = {
+        AutomaticallyInstallMacOSUpdates = true;
       };
       screencapture = {
         location = "$HOME/Library/Mobile Documents/com~apple~CloudDocs/0-inbox/screenshots";
