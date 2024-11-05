@@ -8,7 +8,7 @@
     ./homebrew.nix
   ];
   environment = {
-    darwinConfig = "$HOME/.nix-config/modules/darwin/configuration.nix";
+    darwinConfig = "$HOME/repos/nix-config/modules/darwin/configuration.nix";
     shells = with pkgs; [ bashInteractive fish ];
     systemPackages = [ pkgs.coreutils ];
   };
