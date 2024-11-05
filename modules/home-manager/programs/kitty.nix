@@ -42,6 +42,7 @@
       update_check_interval = 0;
       window_padding_width = 8;
     };
+    shellIntegration.mode = "no-rc no-sudo";
     themeFile = "tokyo_night_night";
   };
 }
