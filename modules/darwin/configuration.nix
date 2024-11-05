@@ -9,6 +9,9 @@
   ];
   environment = {
     darwinConfig = "$HOME/repos/nix-config/modules/darwin/configuration.nix";
+    shellAliases = {
+      bash = "${pkgs.bashInteractive}/bin/bash";
+    };
     shells = with pkgs; [ bashInteractive fish ];
     systemPackages = [ pkgs.coreutils ];
   };
