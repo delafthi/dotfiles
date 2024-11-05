@@ -1,6 +1,6 @@
 { pkgs ? import <nixpkgs> { } }: {
   home.shellAliases = {
-    zj = "zellij";
+    zel = "zellij";
   };
   programs.zellij = {
     enable = true;
