@@ -21,7 +21,7 @@
     (import ./programs/kitty.nix { inherit pkgs; })
     (import ./programs/python.nix { inherit pkgs; })
     ./programs/starship.nix
-    (import ./programs/tmux.nix { inherit pkgs; })
+    (import ./programs/zellij.nix { inherit pkgs; })
     ./programs/zoxide.nix
   ];
 

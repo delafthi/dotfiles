@@ -16,6 +16,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    zjstatus.url = "github:dj95/zjstatus";
   };
 
   outputs =
@@ -23,6 +24,7 @@
     , nixpkgs
     , darwin
     , home-manager
+    , zjstatus
     , ...
     }:
     let
@@ -37,6 +39,11 @@
           pkgs = import nixpkgs {
             inherit system;
             config.allowUnfree = true;
+            overlays = [
+              (final: prev: {
+                zjstatus = zjstatus.packages.${prev.system}.default;
+              })
+            ];
           };
           specialArgs = { inherit inputs; };
           modules = [
