@@ -77,6 +77,10 @@
         };
         "com.apple.Safari" = {
           AlwaysRestoreSessionAtLaunch = true;
+          AutoFillCreditCardData = false;
+          AutoFillFromAddressBook = false;
+          AutoFillMiscellaneousForms = false;
+          AutoFillPasswords = false;
           AutoOpenSafeDownloads = false;
           ExcludePrivateWindowWhenRestoringSessionAtLaunch = true;
           IncludeInternalDebugMenu = true;
