@@ -14,7 +14,6 @@
       "pika"
       "proton-drive"
       "proton-mail"
-      "proton-pass"
       "protonvpn"
       "zotero"
     ];
@@ -30,7 +29,7 @@
       Pages = 409201541;
       PDFgear = 6469021132;
       Photomator = 1444636541;
-      "ProtonPass for Safari" = 6502835663;
+      "Proton Pass" = 6443490629;
       Shazam = 897118787;
       Things = 904280696;
       "Toggl Track" = 1291898086;
