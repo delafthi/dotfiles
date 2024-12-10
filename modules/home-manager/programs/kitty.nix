@@ -3,7 +3,7 @@
   programs.kitty = {
     enable = true;
     font = {
-      package = (pkgs.nerdfonts.override { fonts = [ "IosevkaTermSlab" ]; });
+      package = pkgs.nerd-fonts.iosevka-term-slab;
       name = "IosevkaTermSlab Nerd Font Mono";
       size = 14;
     };
