@@ -14,6 +14,7 @@
       "proton-drive"
       "proton-mail"
       "protonvpn"
+      "rectangle"
       "zotero"
     ];
     masApps = {

@@ -43,7 +43,9 @@
     zsh.enable = true;
   };
   security.pam.enableSudoTouchIdAuth = true;
-  services.nix-daemon.enable = true;
+  services = {
+    nix-daemon.enable = true;
+  };
   system = {
     activationScripts = {
       extraActivation.text = ''
@@ -136,6 +138,7 @@
         NSAutomaticSpellingCorrectionEnabled = false;
         NSNavPanelExpandedStateForSaveMode = true;
         NSNavPanelExpandedStateForSaveMode2 = true;
+        NSWindowShouldDragOnGesture = true;
       };
       SoftwareUpdate = {
         AutomaticallyInstallMacOSUpdates = true;
