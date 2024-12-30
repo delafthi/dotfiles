@@ -23,6 +23,7 @@
       Testflight = 899247664;
       XCode = 497799835;
       Bear = 1091189122;
+      Habits = 1514915737;
       Hush = 1544743900;
       Keynote = 409203825;
       Numbers = 409203825;
