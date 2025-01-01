@@ -111,7 +111,7 @@
           "/System/Applications/Music.app"
           "/Applications/Things3.app"
           "/Applications/Bear.app"
-          "/Applications/kitty.app"
+          "/Applications/ghostty.app"
         ];
         show-recents = false;
         showhidden = true;

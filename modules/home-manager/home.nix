@@ -14,11 +14,11 @@
     ./programs/direnv.nix
     ./programs/eza.nix
     ./programs/fzf.nix
+    (import ./programs/ghostty.nix { inherit pkgs; })
     (import ./programs/git.nix { inherit pkgs; })
     (import ./programs/gpg.nix { inherit pkgs; })
     (import ./programs/gtkwave.nix { inherit pkgs; })
     (import ./programs/helix.nix { inherit pkgs; })
-    (import ./programs/kitty.nix { inherit pkgs; })
     (import ./programs/python.nix { inherit pkgs; })
     ./programs/starship.nix
     (import ./programs/zellij.nix { inherit pkgs; })
