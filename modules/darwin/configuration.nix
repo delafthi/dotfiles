@@ -8,7 +8,7 @@
     ./homebrew.nix
   ];
   environment = {
-    darwinConfig = "$HOME/repos/nix-config/modules/darwin/configuration.nix";
+    darwinConfig = "$HOME/Developer/repos/nix-config/modules/darwin/configuration.nix";
     shellAliases = {
       bash = "${pkgs.bashInteractive}/bin/bash";
     };
