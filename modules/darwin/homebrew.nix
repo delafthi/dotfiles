@@ -1,6 +1,7 @@
 {
   homebrew = {
     enable = true;
+    brews = [ "lgogdownloader" ];
     caskArgs.no_quarantine = true;
     casks = [
       "alfred"
