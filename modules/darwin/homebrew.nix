@@ -22,6 +22,7 @@
     ];
     masApps = {
       "AdGuard for Safari" = 1440147259;
+      AnyConnect = 1135064690;
       "Apple Delevoper" = 640199958;
       Bear = 1091189122;
       Delta = 1048524688;
