@@ -34,7 +34,9 @@
       PDFgear = 6469021132;
       Photomator = 1444636541;
       "Proton Pass" = 6443490629;
+      "SAC-CAS" = 1592646841;
       Shazam = 897118787;
+      Swisstopo = 1505986543;
       Testflight = 899247664;
       Things = 904280696;
       "Toggl Track" = 1291898086;
