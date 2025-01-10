@@ -24,6 +24,7 @@
       "AdGuard for Safari" = 1440147259;
       "Apple Delevoper" = 640199958;
       Bear = 1091189122;
+      Delta = 1048524688;
       Habits = 1514915737;
       Hush = 1544743900;
       Keynote = 409203825;
