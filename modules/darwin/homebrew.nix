@@ -28,6 +28,7 @@
       Habits = 1514915737;
       Hush = 1544743900;
       Keynote = 409203825;
+      MeteoSwiss = 589772015;
       Numbers = 409203825;
       Pages = 409201541;
       PDFgear = 6469021132;
