@@ -13,7 +13,7 @@
     layout {
       default_tab_template {
         pane size=1 borderless=true {
-          plugin location="file://${pkgs.zjstatus}/bin/zjstatus.wasm" {
+          plugin location="file:${pkgs.zjstatus}/bin/zjstatus.wasm" {
             format_left   "{mode} {command_git_branch}"
             format_center "{tabs}"
             format_right  "{datetime}"
