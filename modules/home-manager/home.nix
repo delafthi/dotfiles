@@ -65,7 +65,6 @@
       free = "free -m";
       htop = "htop -t";
       mv = "mv -i";
-      open = "xdg-open";
       rm = "rm -i";
       sudo = "sudo -E";
     };
