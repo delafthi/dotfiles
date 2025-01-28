@@ -36,15 +36,6 @@
       darwinConfigurations = {
         "Thierrys-MacBook-Air" = darwin.lib.darwinSystem {
           inherit system;
-          pkgs = import nixpkgs {
-            inherit system;
-            config.allowUnfree = true;
-            overlays = [
-              (final: prev: {
-                zjstatus = zjstatus.packages.${prev.system}.default;
-              })
-            ];
-          };
           specialArgs = { inherit inputs; };
           modules = [
             ./modules/darwin/configuration.nix
