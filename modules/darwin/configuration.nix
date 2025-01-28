@@ -48,111 +48,25 @@
   };
   system = {
     activationScripts = {
-      extraActivation.text = ''
+      installRosetta.text = ''
         softwareupdate --install-rosetta --agree-to-license
-      '';
-      postUserActivation.text = ''
-        /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
       '';
     };
     defaults = {
-      CustomUserPreferences = {
-        "com.apple.desktopservices" = {
-          DSDontWriteUSBStores = true;
-          DSDontWriteNetworkStores = true;
-        };
-        "com.apple.finder" = {
-          _FXSortFoldersFirst = true;
-          ShowHardDrivesOnDesktop = false;
-          ShowRemovableMediaOnDesktop = false;
-          ShowExternalHardDrivesOnDesktop = false;
-          ShowMountedServersOnDesktop = false;
-        };
-        "com.apple.ImageCapture" = {
-          disableHotPlug = true;
-        };
-        "com.apple.mail" = {
-          DisableInlineAttachmentViewing = true;
-        };
-        "com.apple.print.PrintingPrefs" = {
-          "Quit When Finished" = true;
-        };
-        "com.apple.Safari" = {
-          AlwaysRestoreSessionAtLaunch = true;
-          AutoOpenSafeDownloads = false;
-          ExcludePrivateWindowWhenRestoringSessionAtLaunch = true;
-          IncludeInternalDebugMenu = true;
-          IncludeDevelopMenu = true;
-          SendDoNotTrackHTTPHeader = true;
-          WebKitDeveloperExtrasEnabledPreferenceKey = true;
-          "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" = true;
-        };
-      };
       CustomSystemPreferences = {
-        "com.apple.AdLib" = {
-          allowApplePersonalizedAdvertising = false;
-          allowIdentifierForAdvertising = false;
-          forceLimitAdTracking = true;
+        "com.apple.Safari" = {
+          AutoOpenSafeDownloads = false;
         };
-        "com.apple.commerce" = {
-          AutoUpdate = true;
-        };
-      };
-      dock = {
-        autohide = true;
-        mineffect = "scale";
-        minimize-to-application = true;
-        orientation = "bottom";
-        persistent-apps = [
-          "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
-          "/Applications/WhatsApp.app"
-          "/Applications/Proton Mail.app"
-          "/Applications/Proton Pass.app"
-          "/System/Applications/Music.app"
-          "/Applications/Things3.app"
-          "/Applications/Bear.app"
-          "/Applications/ghostty.app"
-        ];
-        show-recents = false;
-        showhidden = true;
-        tilesize = 60;
-      };
-      finder = {
-        AppleShowAllFiles = true;
-        FXDefaultSearchScope = "SCcf";
-        FXEnableExtensionChangeWarning = false;
-        FXPreferredViewStyle = "Nlsv";
-        ShowPathbar = true;
       };
       LaunchServices = {
         LSQuarantine = true;
       };
-      NSGlobalDomain = {
-        AppleInterfaceStyle = "Dark";
-        AppleKeyboardUIMode = 3;
-        AppleShowAllFiles = true;
-        NSAutomaticCapitalizationEnabled = false;
-        NSAutomaticDashSubstitutionEnabled = false;
-        NSAutomaticPeriodSubstitutionEnabled = false;
-        NSAutomaticQuoteSubstitutionEnabled = false;
-        NSAutomaticSpellingCorrectionEnabled = false;
-        NSNavPanelExpandedStateForSaveMode = true;
-        NSNavPanelExpandedStateForSaveMode2 = true;
-        NSWindowShouldDragOnGesture = true;
-      };
       SoftwareUpdate = {
         AutomaticallyInstallMacOSUpdates = true;
-      };
-      screencapture = {
-        location = "$HOME/Library/Mobile Documents/com~apple~CloudDocs/0-inbox/screenshots";
-        type = "png";
       };
       screensaver = {
         askForPassword = true;
         askForPasswordDelay = 0;
-      };
-      trackpad = {
-        TrackpadThreeFingerDrag = true;
       };
     };
     keyboard = {

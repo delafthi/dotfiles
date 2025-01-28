@@ -16,7 +16,6 @@
     ./programs/fzf.nix
     (import ./programs/ghostty.nix { inherit pkgs; })
     (import ./programs/git.nix { inherit pkgs; })
-    (import ./programs/gpg.nix { inherit pkgs; })
     (import ./programs/gtkwave.nix { inherit pkgs; })
     (import ./programs/helix.nix { inherit pkgs; })
     (import ./programs/python.nix { inherit pkgs; })

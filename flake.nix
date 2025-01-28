@@ -28,28 +28,53 @@
     , ...
     }:
     let
-      inherit (self) outputs;
-      system = "aarch64-darwin";
+      darwinSystems = [ "aarch64-darwin" "x86_64-darwin" ];
+      linuxSystems = [ "aarch64-linux" "x86_64-linux" ];
+      forAllSystems = nixpkgs.lib.genAttrs (darwinSystems ++ linuxSystems);
+      forDarwinSystems = nixpkgs.lib.genAttrs darwinSystems;
+      forLinuxSystems = nixpkgs.lib.genAttrs linuxSystems;
+      user = "delafthi";
     in
     {
-      formatter.${system} = nixpkgs.legacyPackages.${system}.nixpkgs-fmt;
-      darwinConfigurations = {
-        "Thierrys-MacBook-Air" = darwin.lib.darwinSystem {
-          inherit system;
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./modules/darwin/configuration.nix
-            home-manager.darwinModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users.delafthi = import ./modules/home-manager/home.nix;
-              };
-              users.users.delafthi.home = "/Users/delafthi";
-            }
-          ];
-        };
-      };
+      formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
+      packages = forDarwinSystems (system:
+        {
+          darwinConfigurations = {
+            "Thierrys-MacBook-Air" = darwin.lib.darwinSystem {
+              inherit system;
+              specialArgs = { inherit inputs; };
+              modules = [
+                ./modules/darwin/configuration.nix
+                home-manager.darwinModules.home-manager
+                {
+                  home-manager = {
+                    extraSpecialArgs = { inherit zjstatus; };
+                    useUserPackages = true;
+                    users.${user} = import ./modules/home-manager/darwin/home.nix;
+                  };
+                  users.users.${user}.home = "/Users/${user}";
+                }
+              ];
+            };
+          };
+      nixosConfigurations = forLinuxSystems (system:
+        {
+          "thierrys-workstation" = nixpkgs.lib.nixosSystem {
+            inherit system;
+            specialArgs = { inherit inputs; };
+            modules = [
+              ./modules/nixos/configuration.nix
+              home-manager.nixosModules.home-manager
+              {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  users.${user} = import ./modules/home-manager/linux/home.nix;
+                };
+                users.users.${user}.home = "/home/${user}";
+              }
+            ];
+          };
+        });
     };
 }
