@@ -2,6 +2,7 @@
   home = {
     shellAliases = {
       lg = "lazygit";
+      cdr = "cd $(git rev-parse --show-toplevel)";
     };
   };
   programs = {
