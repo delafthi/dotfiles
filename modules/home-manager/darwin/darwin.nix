@@ -55,7 +55,7 @@
             "/Applications/Things3.app"
             "/Applications/Bear.app"
             "/Applications/ghostty.app"
-          ]); 
+          ]);
         show-recents = false;
         showhidden = true;
         tilesize = 60;

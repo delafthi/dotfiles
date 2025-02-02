@@ -9,6 +9,7 @@
     (import ./programs/fish.nix { inherit pkgs; })
     ./programs/bash.nix
     ./programs/bat.nix
+    ./programs/bins/default.nix
     (import ./programs/clang.nix { inherit pkgs; })
     ./programs/dircolors.nix
     ./programs/direnv.nix
@@ -20,7 +21,7 @@
     (import ./programs/helix.nix { inherit pkgs; })
     (import ./programs/python.nix { inherit pkgs; })
     ./programs/starship.nix
-    (import ./programs/zellij.nix { inherit pkgs; })
+    (import ./programs/tmux/default.nix { inherit pkgs; })
     ./programs/zoxide.nix
   ];
 
