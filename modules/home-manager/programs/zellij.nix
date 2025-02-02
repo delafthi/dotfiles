@@ -5,6 +5,7 @@
   programs.zellij = {
     enable = true;
     settings = {
+      copy-on-select = false;
       pane_frames = false;
       theme = "tokyo-night";
     };
