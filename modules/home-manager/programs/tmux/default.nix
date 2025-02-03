@@ -21,6 +21,7 @@
         tmux source-file ~/.config/tmux/tmux.conf > /dev/null; \
         tmux display-message 'Sourced ~/.config/tmux/tmux.conf'"
       bind -N "Open lazygit" g popup -h 90% -w 90% -E "lazygit"
+      bind -N "Open scratch terminal" t popup -h 90% -w 90% ""
 
       # statusbar
       set -g status-interval 5
