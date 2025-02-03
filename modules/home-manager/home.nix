@@ -36,7 +36,6 @@
 
   home = {
     username = "delafthi";
-    homeDirectory = "/Users/delafthi";
     packages = with pkgs; [
       du-dust
       fd

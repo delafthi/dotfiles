@@ -13,6 +13,7 @@
 
   home = {
     file.Downloads.source = "${config.home.homeDirectory}/Documents/0-inbox/downloads";
+    homeDirectory = "/home/delafthi";
     packages = with pkgs; [
       brave
       noto-fonts

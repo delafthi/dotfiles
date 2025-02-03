@@ -27,6 +27,7 @@
       Downloads.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Library/Mobile Documents/com~apple~CloudDocs/0-inbox/downloads";
       iCloud.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Library/Mobile Documents/com~apple~CloudDocs";
     };
+    homeDirectory = "/Users/delafthi";
     sessionVariables = {
       # define xdg userdirs here because the userdirs module is only available on linux
       XDG_DEVELOPER_DIR = "$HOME/Developer";
