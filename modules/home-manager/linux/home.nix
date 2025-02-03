@@ -12,7 +12,7 @@
   ];
 
   home = {
-    file.Downloads.source = "${config.home.homeDirectory}/Documents/0-inbox/downloads";
+    file.Downloads.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/0-inbox/downloads";
     homeDirectory = "/home/delafthi";
     packages = with pkgs; [
       brave
