@@ -35,6 +35,11 @@
   programs.home-manager.enable = true;
 
   home = {
+    activation = {
+      createDeveloperDirectory = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+        run mkdir -p $VERBOSE_ARG ${config.home.homeDirectory}/Developer
+      '';
+    };
     username = "delafthi";
     packages = with pkgs; [
       du-dust
