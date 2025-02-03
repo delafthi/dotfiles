@@ -17,6 +17,9 @@
       header = "#9ece6a";
     };
     defaultCommand = "fd --type f";
+    defaultOptions = [
+      "--reverse"
+    ];
     fileWidgetCommand = "fd --type f";
   };
 
