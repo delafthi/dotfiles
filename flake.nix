@@ -16,7 +16,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zjstatus.url = "github:dj95/zjstatus";
   };
 
   outputs =
@@ -24,7 +23,6 @@
     , nixpkgs
     , darwin
     , home-manager
-    , zjstatus
     , ...
     }:
     let
@@ -49,7 +47,6 @@
                   home-manager.darwinModules.home-manager
                   {
                     home-manager = {
-                      extraSpecialArgs = { inherit zjstatus; };
                       useUserPackages = true;
                       users.${user} = import ./modules/home-manager/darwin/home.nix;
                     };
