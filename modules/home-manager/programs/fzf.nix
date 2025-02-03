@@ -18,7 +18,6 @@
     };
     defaultCommand = "fd --type f";
     fileWidgetCommand = "fd --type f";
-    tmux.enableShellIntegration = true;
   };
 
 }
