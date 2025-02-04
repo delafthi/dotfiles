@@ -20,7 +20,7 @@
       bind -N "Source the tmux config file" R run-shell "\
         tmux source-file ~/.config/tmux/tmux.conf > /dev/null; \
         tmux display-message 'Sourced ~/.config/tmux/tmux.conf'"
-      bind -N "Open lazygit" g popup -h 90% -w 90% -E "lazygit"
+      bind -N "Open lazygit" g popup -h 90% -w 90% -E "${pkgs.lazygit}/bin/lazygit"
       bind -N "Open scratch terminal" t popup -h 90% -w 90% ""
       bind -N "Open tmux-sessioinizer" f popup -h 60% -w 60% -E "~/.local/bin/tmux-sessionizer"
 
