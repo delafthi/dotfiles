@@ -1,19 +1,12 @@
 { lib
 , config
 , pkgs
-, zjstatus
 , ...
 }: {
   imports = [
     (import ../home.nix { inherit lib config pkgs; })
     ./darwin.nix
     (import ./programs/gpg.nix { inherit pkgs; })
-  ];
-
-  nixpkgs.overlays = [
-    (final: prev: {
-      zjstatus = zjstatus.packages.${prev.system}.default;
-    })
   ];
 
   home = {
