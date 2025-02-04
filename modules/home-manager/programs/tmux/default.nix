@@ -25,7 +25,6 @@
       bind -N "Open tmux-sessionizer" p popup -h 60% -w 60% -E "~/.local/bin/tmux-sessionizer"
       bind -N "Open scratch terminal" t popup -h 90% -w 90% ""
 
-
       # statusbar
       set -g status-interval 5
       set -g status-left "#[fg=blue,bold]#S #[fg=default,nobold]#(starship module git_branch | $HOME/.config/tmux/ansi2tmux.pl)#[fg=default,nobold]#(starship module git_status | $HOME/.config/tmux/ansi2tmux.pl) "
