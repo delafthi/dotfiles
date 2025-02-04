@@ -11,7 +11,8 @@
 
       gitignore = "curl -sL https://www.gitignore.io/api/$argv";
     };
-    interactiveShellInit = ''
+    interactiveShellInit = (builtins.readFile "${tokyonight}/extras/fish/tokyonight_night.fish") + ''
+      # Settings
       set fish_greeting
       set -g fish_key_bindings fish_vi_key_bindings
       set fish_cursor_default block
@@ -22,16 +23,14 @@
       set fish_cursor_visual block
       set fish_vi_force_cursor 1
 
-      # keybindings
+      # Keybindings
       bind -M insert \ck up-or-search
       bind -M insert \cj down-or-search
       bind -M insert \cl accept-autosuggestion
       bind -M insert \cp up-or-search
       bind -M insert \cn complete
       bind -M insert \cs pager-toggle-search
-
-      # theme
-    '' + (builtins.readFile "${tokyonight}/extras/fish/tokyonight_night.fish");
+    '';
     plugins = [
       {
         name = "autopair";
