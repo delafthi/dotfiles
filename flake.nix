@@ -53,7 +53,7 @@
                 home-manager.darwinModules.home-manager
                 {
                   home-manager = {
-                    extraSpecialArgs =  { inherit tokyonight; };
+                    extraSpecialArgs = { inherit tokyonight; };
                     useUserPackages = true;
                     users.${user} = import ./modules/home-manager/darwin/home.nix;
                   };
@@ -73,7 +73,7 @@
                 home-manager.nixosModules.home-manager
                 {
                   home-manager = {
-                    extraSpecialArgs =  { inherit tokyonight; };
+                    extraSpecialArgs = { inherit tokyonight; };
                     useUserPackages = true;
                     users.${user} = import ./modules/home-manager/linux/home.nix;
                   };
