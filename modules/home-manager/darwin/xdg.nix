@@ -21,4 +21,5 @@
       XDG_VIDEOS_DIR = "$HOME/Movies";
     };
   };
+  xdg.enable = true;
 }
