@@ -22,7 +22,7 @@
     (import ./programs/helix.nix { inherit pkgs; })
     (import ./programs/python.nix { inherit pkgs; })
     ./programs/starship.nix
-    (import ./programs/tmux/default.nix { inherit pkgs; })
+    (import ./programs/tmux/default.nix { inherit pkgs tokyonight; })
     (import ./programs/yazi.nix { inherit lib tokyonight; })
     ./programs/zoxide.nix
   ];

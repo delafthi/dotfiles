@@ -1,10 +1,13 @@
-{ pkgs }: {
+{ pkgs
+, tokyonight
+}: {
   programs.tmux = {
     enable = true;
     baseIndex = 1;
     clock24 = true;
     customPaneNavigationAndResize = true;
-    extraConfig = ''
+    extraConfig = (builtins.readFile "${tokyonight}/extras/tmux/tokyonight_night.tmux") + ''
+      # Settings
       set -g default-terminal "tmux-256color"
       set -g display-time 4000
       set -s escape-time 0
@@ -14,7 +17,7 @@
       set -g set-titles-string "#T"
       set -g status-keys "emacs"
 
-      # keybindings
+      # Keybindings
       bind -N "Change to the next window" C-n next-window
       bind -N "Change to the previous window" C-p previous-window
       bind -N "Source the tmux config file" R run-shell "\
@@ -25,7 +28,7 @@
       bind -N "Open tmux-sessionizer" p popup -h 60% -w 60% -E "~/.local/bin/tmux-sessionizer"
       bind -N "Open scratch terminal" t popup -h 90% -w 90% ""
 
-      # statusbar
+      # Statusbar
       set -g status-interval 5
       set -g status-left "#[fg=blue,bold]#S #[fg=default,nobold]#(starship module git_branch | $HOME/.config/tmux/ansi2tmux.pl)#[fg=default,nobold]#(starship module git_status | $HOME/.config/tmux/ansi2tmux.pl) "
       set -g status-left-length 70
@@ -34,17 +37,6 @@
       set -g status-style bg=default,fg=white
       set -g window-status-current-format "#[fg=brightblack,nobold,bg=default][#[fg=brightblack,nobold,bg=default]#I #[fg=magenta,nobold,bg=default]#F #[fg=blue,blue,bold,bg=default]#W#[fg=brightblack,nobold,bg=default]]"
       set -g window-status-format "#[fg=brightblack,nobold,bg=default][#[fg=brightblack,bg=default]#I #F #[fg=white,bg=default]#W#[fg=brightblack,nobold,bg=default]]"
-
-      # theme
-      set -g copy-mode-current-match-style bg=brightblack,fg=white
-      set -g copy-mode-current-match-style bg=blue,fg=white
-      set -g copy-mode-mark-style bg=brightblack
-      set -g display-panes-colour black
-      set -g display-panes-active-colour blue
-      set -g message-style bg=magenta,fg=black
-      set -g message-command-style bg=black,fg=white
-      set -g pane-border-style bg=default,fg=brightblack
-      set -g pane-active-border-style bg=default,fg=blue
     '';
     focusEvents = true;
     historyLimit = 10000;
