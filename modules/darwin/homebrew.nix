@@ -10,7 +10,6 @@
       "chatgpt"
       "ghostty"
       "godot"
-      "gtkwave"
       "iina"
       "jordanbaird-ice"
       "pika"
