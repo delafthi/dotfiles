@@ -3,7 +3,10 @@
   homebrew = {
     enable = true;
     brews = [ "lgogdownloader" ];
-    caskArgs.no_quarantine = true;
+    caskArgs = {
+      no_quarantine = true;
+      require_sha = true;
+    };
     casks = [
       "blender"
       "chatgpt"
