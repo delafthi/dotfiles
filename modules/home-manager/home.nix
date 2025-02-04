@@ -18,8 +18,10 @@
     (import ./programs/fzf.nix { inherit pkgs; })
     (import ./programs/ghostty.nix { inherit pkgs; })
     (import ./programs/git.nix { inherit pkgs; })
+    ./programs/git-cliff.nix
     (import ./programs/gtkwave/default.nix { inherit pkgs; })
     (import ./programs/helix.nix { inherit pkgs; })
+    ./programs/lazygit.nix
     (import ./programs/python.nix { inherit pkgs; })
     ./programs/starship.nix
     (import ./programs/tmux/default.nix { inherit pkgs tokyonight; })
