@@ -6,7 +6,7 @@
   imports = [
     ./editorconfig.nix
     ./fonts.nix
-    (import ./programs/fish.nix { inherit pkgs; })
+    (import ./programs/fish.nix { inherit pkgs tokyonight; })
     ./programs/bash.nix
     (import ./programs/bat.nix { inherit tokyonight; })
     ./programs/bins/default.nix

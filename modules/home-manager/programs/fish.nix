@@ -1,4 +1,6 @@
-{ pkgs }: {
+{ pkgs
+, tokyonight
+}: {
   programs.fish = {
     enable = true;
     functions = {
@@ -27,7 +29,9 @@
       bind -M insert \cp up-or-search
       bind -M insert \cn complete
       bind -M insert \cs pager-toggle-search
-    '';
+
+      # theme
+    '' + (builtins.readFile "${tokyonight}/extras/fish/tokyonight_night.fish");
     plugins = [
       {
         name = "autopair";
