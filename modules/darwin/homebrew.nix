@@ -5,7 +5,6 @@
     brews = [ "lgogdownloader" ];
     caskArgs.no_quarantine = true;
     casks = [
-      "alfred"
       "blender"
       "chatgpt"
       "ghostty"
@@ -16,7 +15,7 @@
       "proton-drive"
       "proton-mail"
       "protonvpn"
-      "rectangle"
+      "raycast"
       "zotero"
     ];
     masApps = {
