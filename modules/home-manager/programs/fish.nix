@@ -19,6 +19,8 @@
       set fish_cursor_external line
       set fish_cursor_visual block
       set fish_vi_force_cursor 1
+
+      # keybindings
       bind -M insert \ck up-or-search
       bind -M insert \cj down-or-search
       bind -M insert \cl accept-autosuggestion
