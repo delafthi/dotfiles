@@ -36,26 +36,25 @@
     {
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
       packages = forDarwinSystems
-        (system:
-          {
-            darwinConfigurations = {
-              "Thierrys-MacBook-Air" = darwin.lib.darwinSystem {
-                inherit system;
-                specialArgs = { inherit inputs; };
-                modules = [
-                  ./modules/darwin/configuration.nix
-                  home-manager.darwinModules.home-manager
-                  {
-                    home-manager = {
-                      useUserPackages = true;
-                      users.${user} = import ./modules/home-manager/darwin/home.nix;
-                    };
-                    users.users.${user}.home = "/Users/${user}";
-                  }
-                ];
-              };
+        (system: {
+          darwinConfigurations = {
+            "Thierrys-MacBook-Air" = darwin.lib.darwinSystem {
+              inherit system;
+              specialArgs = { inherit inputs; };
+              modules = [
+                ./modules/darwin/configuration.nix
+                home-manager.darwinModules.home-manager
+                {
+                  home-manager = {
+                    useUserPackages = true;
+                    users.${user} = import ./modules/home-manager/darwin/home.nix;
+                  };
+                  users.users.${user}.home = "/Users/${user}";
+                }
+              ];
             };
-          }) // forLinuxSystems (system:
+          };
+        }) // forLinuxSystems (system:
         {
           nixosConfigurations = {
             "thierrys-workstation" = nixpkgs.lib.nixosSystem {
