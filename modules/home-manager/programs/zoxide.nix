@@ -1,6 +1,6 @@
 {
   home.shellAliases = {
-    cd = "zoxide";
+    cd = "z";
   };
   programs.zoxide = {
     enable = true;
