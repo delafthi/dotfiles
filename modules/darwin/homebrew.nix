@@ -20,7 +20,6 @@
       "godot"
       "iina"
       "jordanbaird-ice"
-      "pika"
       "proton-drive"
       "proton-mail"
       "protonvpn"
