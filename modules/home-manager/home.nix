@@ -14,7 +14,7 @@
     ./programs/dircolors.nix
     ./programs/direnv.nix
     ./programs/eza.nix
-    ./programs/fzf.nix
+    (import ./programs/fzf.nix { inherit pkgs; })
     (import ./programs/ghostty.nix { inherit pkgs; })
     (import ./programs/git.nix { inherit pkgs; })
     (import ./programs/gtkwave/default.nix { inherit pkgs; })
