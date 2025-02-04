@@ -5,6 +5,7 @@
     changeDirWidgetOptions = [
       "--preview= '${pkgs.eza}/bin/eza --tree --color=always {} | head -200'"
     ];
+    # TODO: Load the colors from folke/tokyonight.nvim
     colors = {
       "bg+" = "#283457";
       bg = "#16161e";
