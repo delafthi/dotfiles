@@ -22,7 +22,7 @@
         tmux display-message 'Sourced ~/.config/tmux/tmux.conf'"
       bind -N "Open file browser" f popup -h 90% -w 90% "${pkgs.yazi}/bin/yazi"
       bind -N "Open lazygit" g popup -h 90% -w 90% -E "${pkgs.lazygit}/bin/lazygit"
-      bind -N "Open tmux-sessioinizer" s popup -h 60% -w 60% -E "~/.local/bin/tmux-sessionizer"
+      bind -N "Open tmux-sessionizer" p popup -h 60% -w 60% -E "~/.local/bin/tmux-sessionizer"
       bind -N "Open scratch terminal" t popup -h 90% -w 90% ""
 
 
