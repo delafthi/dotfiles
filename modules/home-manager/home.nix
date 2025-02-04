@@ -17,11 +17,12 @@
     ./programs/fzf.nix
     (import ./programs/ghostty.nix { inherit pkgs; })
     (import ./programs/git.nix { inherit pkgs; })
-    (import ./programs/gtkwave.nix { inherit pkgs; })
+    (import ./programs/gtkwave/default.nix { inherit pkgs; })
     (import ./programs/helix.nix { inherit pkgs; })
     (import ./programs/python.nix { inherit pkgs; })
     ./programs/starship.nix
     (import ./programs/tmux/default.nix { inherit pkgs; })
+    ./programs/yazi.nix
     ./programs/zoxide.nix
   ];
 
@@ -55,7 +56,6 @@
       tokei
       unrar
       unzip
-      yazi
       yubikey-manager
       yubikey-personalization
       zip
