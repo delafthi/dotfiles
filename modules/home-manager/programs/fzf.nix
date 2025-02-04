@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> { } }: {
+{ pkgs }: {
   programs.fzf = {
     enable = true;
     changeDirWidgetCommand = "fd --type d --hidden --strip-cwd-prefix --exclude .git";

@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> { } }: {
+{ pkgs }: {
   programs.gpg = {
     enable = true;
   };

@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> { } }: {
+{ pkgs }: {
   programs.helix = {
     enable = true;
     defaultEditor = true;

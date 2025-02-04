@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> { } }: {
+{ pkgs }: {
 
 
   home.packages = [ pkgs.nerd-fonts.iosevka-term-slab ];

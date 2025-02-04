@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> { } }: {
+{ pkgs }: {
   home = {
     shellAliases = {
       lg = "lazygit";

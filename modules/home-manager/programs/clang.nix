@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> { } }: {
+{ pkgs }: {
   home.packages = with pkgs; [
     clang-tools
     doxygen
