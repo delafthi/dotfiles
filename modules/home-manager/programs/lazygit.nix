@@ -1,7 +1,7 @@
 {
   home = {
     shellAliases = {
-      lg = "lazygit";
+      g = "lazygit";
     };
   };
   programs.lazygit = {
