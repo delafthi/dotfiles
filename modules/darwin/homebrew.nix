@@ -9,8 +9,14 @@
     };
     casks = [
       "blender"
-      "chatgpt"
-      "ghostty"
+      {
+        name = "chatgpt";
+        greedy = true;
+      }
+      {
+        name = "ghostty";
+        greedy = true;
+      }
       "godot"
       "iina"
       "jordanbaird-ice"
