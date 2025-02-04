@@ -1,6 +1,7 @@
 { lib
 , config
 , pkgs
+, tokyonight
 , ...
 }: {
   imports = [
@@ -22,7 +23,7 @@
     (import ./programs/python.nix { inherit pkgs; })
     ./programs/starship.nix
     (import ./programs/tmux/default.nix { inherit pkgs; })
-    ./programs/yazi.nix
+    (import ./programs/yazi.nix { inherit lib tokyonight; })
     ./programs/zoxide.nix
   ];
 
