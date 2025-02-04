@@ -60,7 +60,24 @@
       "inputs": {
         "darwin": "darwin",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "tokyonight": "tokyonight"
+      }
+    },
+    "tokyonight": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1738174805,
+        "narHash": "sha256-WLu2OzNtLInbPGHKmZVlqx5Xu2kh+R5DL4yVUrA8+lA=",
+        "owner": "folke",
+        "repo": "tokyonight.nvim",
+        "rev": "dca4adba7dc5f09302a00b0e76078d54d82d2658",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "tokyonight.nvim",
+        "type": "github"
       }
     }
   },

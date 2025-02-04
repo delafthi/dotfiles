@@ -16,6 +16,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    # tokyonight ressources
+    tokyonight = {
+      url = "github:folke/tokyonight.nvim";
+      flake = false;
+    };
   };
 
   outputs =
@@ -23,6 +29,7 @@
     , nixpkgs
     , darwin
     , home-manager
+    , tokyonight
     , ...
     }:
     let
@@ -46,6 +53,7 @@
                 home-manager.darwinModules.home-manager
                 {
                   home-manager = {
+                    extraSpecialArgs =  { inherit tokyonight; };
                     useUserPackages = true;
                     users.${user} = import ./modules/home-manager/darwin/home.nix;
                   };
@@ -65,6 +73,7 @@
                 home-manager.nixosModules.home-manager
                 {
                   home-manager = {
+                    extraSpecialArgs =  { inherit tokyonight; };
                     useUserPackages = true;
                     users.${user} = import ./modules/home-manager/linux/home.nix;
                   };

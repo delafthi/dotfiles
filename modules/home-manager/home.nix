@@ -8,7 +8,7 @@
     ./fonts.nix
     (import ./programs/fish.nix { inherit pkgs; })
     ./programs/bash.nix
-    (import ./programs/bat.nix { inherit pkgs; })
+    (import ./programs/bat.nix { inherit tokyonight; })
     ./programs/bins/default.nix
     (import ./programs/clang.nix { inherit pkgs; })
     ./programs/dircolors.nix
