@@ -31,6 +31,7 @@
       bind -N "Select a new session for the attached client interactively" S choose-session -Z
       bind -N "Open scratch terminal" t popup -h 90% -w 90% ""
       bind -N "Open file browser" y popup -h 90% -w 90% -E "${pkgs.yazi}/bin/yazi"
+      bind -N "Enter copy-mode to copy text or view the history" V copy-mode
       bind -N "Select text in copy mode" -T copy-mode-vi v send -X begin-selection
       bind -N "Select text in copy mode" -T copy-mode-vi y send -X copy-selection
 
