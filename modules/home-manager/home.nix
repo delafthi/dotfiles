@@ -63,6 +63,7 @@
       yubikey-personalization
       zip
     ];
+    preferXdgDirectories = true;
     shellAliases = {
       ".." = "cd ..";
       "..." = "cd ../..";
