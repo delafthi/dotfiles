@@ -29,6 +29,8 @@
         tmux display-message 'Sourced ~/.config/tmux/tmux.conf'"
       bind -N "Open scratch terminal" t popup -h 90% -w 90% ""
       bind -N "Open file browser" y popup -h 90% -w 90% -E "${pkgs.yazi}/bin/yazi"
+      bind -N "Select text in copy mode" -T copy-mode-vi v send -X begin-selection
+      bind -N "Select text in copy mode" -T copy-mode-vi y send -X copy-selection
 
       # Statusbar
       set -g status-interval 5
