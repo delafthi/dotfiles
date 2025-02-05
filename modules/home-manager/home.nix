@@ -14,8 +14,8 @@
     (import ./programs/clang.nix { inherit pkgs; })
     ./programs/dircolors.nix
     ./programs/direnv.nix
-    ./programs/eza.nix
     (import ./programs/fzf.nix { inherit pkgs; })
+    (import ./programs/eza.nix { inherit config tokyonight; })
     (import ./programs/ghostty.nix { inherit pkgs; })
     (import ./programs/git.nix { inherit pkgs; })
     ./programs/git-cliff.nix
