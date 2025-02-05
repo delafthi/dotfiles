@@ -1,6 +1,7 @@
-{
+{ tokyonight }: {
   home = {
     shellAliases = {
+      lazygit = "lazygit --use-config-file=$XDG_CONFIG_HOME/lazygit/config.yml,$XDG_CONFIG_HOME/lazygit/theme.yml";
       g = "lazygit";
     };
   };
@@ -12,5 +13,8 @@
       };
       gui.nerdFontsVersion = "3";
     };
+  };
+  xdg = {
+    configFile."lazygit/theme.yml".source = "${tokyonight}/extras/lazygit/tokyonight_night.yml";
   };
 }
