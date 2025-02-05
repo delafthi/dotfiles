@@ -50,16 +50,6 @@
     keyMode = "vi";
     mouse = true;
     newSession = true;
-    plugins = with pkgs; [
-      tmuxPlugins.resurrect
-      {
-        plugin = tmuxPlugins.continuum;
-        extraConfig = ''
-          set -g @continuum-restore 'on'
-          set -g @continuum-save-interval '60' # minutes
-        '';
-      }
-    ];
     reverseSplit = true;
     secureSocket = true;
     shortcut = "a";
