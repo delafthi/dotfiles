@@ -15,7 +15,7 @@
       set -g set-clipboard on
       set -g set-titles on
       set -g set-titles-string "#T"
-      set -g status-keys "emacs"
+      set -g status-keys emacs # because here emacs keys are still better
 
       # Keybindings
       bind -N "Change to the next window" C-n next-window
