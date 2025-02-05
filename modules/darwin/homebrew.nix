@@ -20,6 +20,7 @@
       "godot"
       "iina"
       "jordanbaird-ice"
+      "podman-desktop"
       "proton-drive"
       "proton-mail"
       "protonvpn"
