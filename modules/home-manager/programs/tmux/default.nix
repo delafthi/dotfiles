@@ -27,6 +27,7 @@
       bind -N "Source the tmux config file" r run-shell "\
         tmux source-file ~/.config/tmux/tmux.conf > /dev/null; \
         tmux display-message 'Sourced ~/.config/tmux/tmux.conf'"
+      bind -N "Select a new session for the attached client interactively" S choose-session -Z
       bind -N "Open scratch terminal" t popup -h 90% -w 90% ""
       bind -N "Open file browser" y popup -h 90% -w 90% -E "${pkgs.yazi}/bin/yazi"
       bind -N "Select text in copy mode" -T copy-mode-vi v send -X begin-selection
