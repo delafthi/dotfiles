@@ -18,6 +18,7 @@
       set -g status-keys emacs # because here emacs keys are still better
 
       # Keybindings
+      unbind -T copy-mode-vi MouseDragEnd1Pane # Disable auto copy when selecting with the mouse
       bind -N "Change to the next window" C-n next-window
       bind -N "Change to the previous window" C-p previous-window
       bind -N "Toggle maximize window" f resize-pane -Z
