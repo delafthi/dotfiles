@@ -58,6 +58,7 @@
         file-picker.hidden = false;
         indent-guides.render = true;
         line-number = "relative";
+        lsp.display-inlay-hints = true;
         scrolloff = 8;
         soft-wrap.enable = true;
         statusline = {
