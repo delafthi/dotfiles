@@ -8,6 +8,7 @@
     customPaneNavigationAndResize = true;
     extraConfig = (builtins.readFile "${tokyonight}/extras/tmux/tokyonight_night.tmux") + ''
       # Settings
+      set -g allow-passthrough on
       set -g default-terminal "tmux-256color"
       set -g display-time 4000
       set -s escape-time 0
@@ -16,6 +17,8 @@
       set -g set-titles on
       set -g set-titles-string "#T"
       set -g status-keys emacs # because here emacs keys are still better
+      set -ga update-environment TERM
+      set -ga update-environment TERM_PROGRAM
 
       # Keybindings
       unbind -T copy-mode-vi MouseDragEnd1Pane # Disable auto copy when selecting with the mouse
