@@ -52,6 +52,7 @@
       hexyl
       htop
       just
+      p7zip
       pandoc
       procs
       ripgrep
