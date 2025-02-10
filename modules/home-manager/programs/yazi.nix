@@ -1,6 +1,18 @@
 { lib
+, pkgs
 , tokyonight
 }: {
+  home.packages = with pkgs; [
+    fd
+    ffmpeg
+    fzf
+    imagemagick
+    jq
+    p7zip
+    poppler
+    ripgrep
+    zoxide
+  ];
   programs.yazi = {
     enable = true;
     settings = {
