@@ -9,6 +9,10 @@
         sort_dir_fist = true;
         showhidden = true;
       };
+      preview = {
+        max_width = 1000;
+        max_height = 1000;
+      };
     };
     shellWrapperName = "y";
     theme = lib.importTOML "${tokyonight}/extras/yazi/tokyonight_night.toml";
