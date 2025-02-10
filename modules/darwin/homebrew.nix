@@ -13,6 +13,7 @@
         name = "chatgpt";
         greedy = true;
       }
+      "font-symbols-only-nerd-font"
       {
         name = "ghostty";
         greedy = true;
