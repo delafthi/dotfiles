@@ -49,6 +49,7 @@
       du-dust
       fd
       gnutar
+      hexyl
       htop
       just
       pandoc
