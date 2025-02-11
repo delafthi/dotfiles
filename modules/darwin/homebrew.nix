@@ -21,6 +21,7 @@
       "godot"
       "iina"
       "jordanbaird-ice"
+      "keepingyouawake"
       "podman-desktop"
       "proton-drive"
       "proton-mail"
