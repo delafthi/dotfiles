@@ -43,9 +43,6 @@
     zsh.enable = true;
   };
   security.pam.enableSudoTouchIdAuth = true;
-  services = {
-    nix-daemon.enable = true;
-  };
   system = {
     activationScripts = {
       installRosetta.text = ''
