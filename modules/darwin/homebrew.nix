@@ -24,6 +24,7 @@
       "jordanbaird-ice"
       "keepingyouawake"
       "podman-desktop"
+      "popclip"
       "proton-drive"
       "proton-mail"
       "protonvpn"
