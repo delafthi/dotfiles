@@ -8,6 +8,7 @@
       require_sha = true;
     };
     casks = [
+      "alcove"
       "blender"
       {
         name = "chatgpt";
