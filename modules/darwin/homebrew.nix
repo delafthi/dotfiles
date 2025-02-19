@@ -39,6 +39,7 @@
       Bear = 1091189122;
       Delta = 1048524688;
       Habits = 1514915737;
+      "Hand Mirror" = 1502839586;
       Hush = 1544743900;
       Keynote = 409203825;
       MeteoSwiss = 589772015;
