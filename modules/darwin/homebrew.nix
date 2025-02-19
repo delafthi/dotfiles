@@ -23,6 +23,7 @@
       "iina"
       "jordanbaird-ice"
       "keepingyouawake"
+      "meetingbar"
       "podman-desktop"
       "popclip"
       "proton-drive"
