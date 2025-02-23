@@ -8,7 +8,10 @@
       require_sha = true;
     };
     casks = [
-      "alcove"
+      {
+        name = "alcove";
+        greedy = true;
+      }
       "blender"
       {
         name = "chatgpt";
