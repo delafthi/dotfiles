@@ -7,21 +7,12 @@
       no_quarantine = true;
       require_sha = true;
     };
-    casks = [
-      {
-        name = "alcove";
-        greedy = true;
-      }
+    casks = (builtins.map (cask: {name = cask; greedy = true;}) [
+      "alcove"
       "blender"
-      {
-        name = "chatgpt";
-        greedy = true;
-      }
+      "chatgpt"
       "font-symbols-only-nerd-font"
-      {
-        name = "ghostty";
-        greedy = true;
-      }
+      "ghostty"
       "godot"
       "iina"
       "jordanbaird-ice"
@@ -34,7 +25,7 @@
       "protonvpn"
       "raycast"
       "zotero"
-    ];
+    ]);
     masApps = {
       "AdGuard for Safari" = 1440147259;
       AnyConnect = 1135064690;
