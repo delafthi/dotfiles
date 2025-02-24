@@ -18,7 +18,6 @@
       "jordanbaird-ice"
       "keepingyouawake"
       "meetingbar"
-      "podman-desktop"
       "popclip"
       "proton-drive"
       "proton-mail"
