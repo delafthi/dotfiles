@@ -42,7 +42,11 @@
     };
     zsh.enable = true;
   };
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local = {
+    enable = true;
+    reattach = true;
+    touchIdAuth = true;
+  };
   system = {
     activationScripts = {
       installRosetta.text = ''
