@@ -26,16 +26,47 @@
       display = "inline";
     };
     extraConfig = {
-      fetch.prune = true;
+      branch.sort = "committerdate";
+      column.ui = "auto";
+      commit.verbose = "true";
+      core = {
+        fsmonitor = true;
+        untrackedCache = true;
+      };
+      diff = {
+        algorithm = "histogram";
+        colorMoved = "plain";
+        mnemonicPrefix = true;
+        renames = true;
+      };
+      feature.experimental = true;
+      fetch = {
+        all = true;
+        prune = true;
+        pruneTags = true;
+      };
+      help.autocorrect = "prompt";
       init.defaultBranch = "main";
-      merge.autoStash = true;
+      merge = {
+        autoStash = true;
+        conflictstyle = "zdiff3";
+      };
       pull.rebase = true;
-      push.autoSetupRemote = true;
+      push = {
+        autoSetupRemote = true;
+        followTags = true;
+      };
       rebase = {
         autoSquash = true;
         autoStash = true;
+        updateRefs = true;
       };
-      submodule.recurse = true;
+      rerere = {
+        enabled = true;
+        autoupdate = true;
+      };
+      submodole.recurse = true;
+      tag.sort = "version:refname";
     };
     ignores = [
       ".cache"
