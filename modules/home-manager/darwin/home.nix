@@ -1,14 +1,15 @@
-{ lib
-, config
-, pkgs
-, tokyonight
-, ...
+{
+  lib,
+  config,
+  pkgs,
+  tokyonight,
+  ...
 }: {
   imports = [
-    (import ../home.nix { inherit lib config pkgs tokyonight; })
+    (import ../home.nix {inherit lib config pkgs tokyonight;})
     ./darwin.nix
-    (import ./programs/gpg.nix { inherit pkgs; })
-    (import ./xdg.nix { inherit lib config; })
+    (import ./programs/gpg.nix {inherit pkgs;})
+    (import ./xdg.nix {inherit lib config;})
   ];
 
   home = {

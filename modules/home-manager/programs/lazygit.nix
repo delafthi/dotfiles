@@ -1,4 +1,4 @@
-{ tokyonight }: {
+{tokyonight}: {
   home = {
     shellAliases = {
       lazygit = "lazygit --use-config-file=$XDG_CONFIG_HOME/lazygit/config.yml,$XDG_CONFIG_HOME/lazygit/theme.yml";

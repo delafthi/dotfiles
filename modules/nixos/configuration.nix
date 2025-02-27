@@ -1,8 +1,9 @@
-{ inputs
-, lib
-, config
-, pkgs
-, ...
+{
+  inputs,
+  lib,
+  config,
+  pkgs,
+  ...
 }: {
   imports = [
     # Import your generated (nixos-generate-config) hardware configuration
@@ -19,36 +20,38 @@
 
   # This will add each flake input as a registry
   # To make nix3 commands consistent with your flake
-  nix.registry = (lib.mapAttrs (_: flake: { inherit flake; })) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
+  nix.registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
 
   # This will additionally add your inputs to the system's legacy channels
   # Making legacy nix commands consistent as well, awesome!
-  nix.nixPath = [ "/etc/nix/path" ];
+  nix.nixPath = ["/etc/nix/path"];
   environment = {
     etc =
       lib.mapAttrs'
-        (name: value: {
-          name = "nix/path/${name}";
-          value.source = value.flake;
-        })
-        config.nix.registry;
-    gnome.excludePackages = (with pkgs; [
-      gedit
-      gnome-text-editor
-      gnome-tour
-    ]) ++ (with pkgs.gnome; [
-      cheese
-      epiphany
-      evince
-      geary
-      gnome-music
-      gnome-weather
-      seahorse
-      simple-scan
-      totem
-      yelp
-    ]);
-    pathsToLink = [ "/share/zsh" ];
+      (name: value: {
+        name = "nix/path/${name}";
+        value.source = value.flake;
+      })
+      config.nix.registry;
+    gnome.excludePackages =
+      (with pkgs; [
+        gedit
+        gnome-text-editor
+        gnome-tour
+      ])
+      ++ (with pkgs.gnome; [
+        cheese
+        epiphany
+        evince
+        geary
+        gnome-music
+        gnome-weather
+        seahorse
+        simple-scan
+        totem
+        yelp
+      ]);
+    pathsToLink = ["/share/zsh"];
     systemPackages = with pkgs; [
       git
       gnome.nautilus-python
@@ -62,7 +65,7 @@
 
   nix.settings = {
     # Enable flakes and new 'nix' command
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = ["nix-command" "flakes"];
     # Deduplicate and optimize nix store
     auto-optimise-store = true;
   };
@@ -77,14 +80,18 @@
   networking = {
     hostName = "thierrys-workstation";
     interfaces = {
-      enp5s0.ipv4.addresses = [{
-        address = "192.168.1.1";
-        prefixLength = 24;
-      }];
-      enp6s0.ipv4.addresses = [{
-        address = "192.168.1.100";
-        prefixLength = 24;
-      }];
+      enp5s0.ipv4.addresses = [
+        {
+          address = "192.168.1.1";
+          prefixLength = 24;
+        }
+      ];
+      enp6s0.ipv4.addresses = [
+        {
+          address = "192.168.1.100";
+          prefixLength = 24;
+        }
+      ];
     };
     extraHosts = ''
       192.168.1.1 local
@@ -114,7 +121,7 @@
       description = "Thierry Delafontaine";
       initialPassword = "defaultPW";
       isNormalUser = true;
-      extraGroups = [ "wheel" "audio" "docker" "libvirtd" "networkmanager" ];
+      extraGroups = ["wheel" "audio" "docker" "libvirtd" "networkmanager"];
       shell = pkgs.zsh;
     };
   };
@@ -151,7 +158,7 @@
     btrfs.autoScrub = {
       enable = true;
       interval = "monthly";
-      fileSystems = [ "/" "/var" "/data" ];
+      fileSystems = ["/" "/var" "/data"];
     };
 
     gnome.core-utilities.enable = true;
@@ -160,16 +167,16 @@
     printing.enable = true;
 
     # Add udev rules to flash ergodox keyboard
-    udev.packages = [ pkgs.zsa-udev-rules ];
+    udev.packages = [pkgs.zsa-udev-rules];
 
     # Enable the X11 windowing system.
     xserver = {
       enable = true;
-      videoDrivers = [ "nvidia" ];
+      videoDrivers = ["nvidia"];
       displayManager.gdm.enable = true;
       desktopManager.gnome = {
         enable = true;
-        extraGSettingsOverridePackages = [ pkgs.nautilus-open-any-terminal ];
+        extraGSettingsOverridePackages = [pkgs.nautilus-open-any-terminal];
       };
       xkb = {
         layout = "us";

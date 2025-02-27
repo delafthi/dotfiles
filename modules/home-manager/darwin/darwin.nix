@@ -9,7 +9,7 @@
       NSGlobalDomain = {
         AppleInterfaceStyle = "Dark";
         AppleKeyboardUIMode = 3;
-        AppleLanguages = [ "en-US" "de-CH" ];
+        AppleLanguages = ["en-US" "de-CH"];
         AppleLocale = "en_US@rg=chzzzz";
         AppleMeasurementUnits = "Centimeters";
         AppleMetricUnits = true;
@@ -45,7 +45,15 @@
         mineffect = "scale";
         minimize-to-application = true;
         orientation = "bottom";
-        persistent-apps = (map (app: { tile-data = { file-data = { _CFURLString = app; _CFURLStringType = 0; }; }; })
+        persistent-apps =
+          map (app: {
+            tile-data = {
+              file-data = {
+                _CFURLString = app;
+                _CFURLStringType = 0;
+              };
+            };
+          })
           [
             "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
             "/Applications/WhatsApp.app"
@@ -55,7 +63,7 @@
             "/Applications/Things3.app"
             "/Applications/Bear.app"
             "/Applications/ghostty.app"
-          ]);
+          ];
         show-recents = false;
         showhidden = true;
         tilesize = 60;

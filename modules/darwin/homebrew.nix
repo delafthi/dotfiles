@@ -1,30 +1,34 @@
 {
-  environment.systemPath = [ "/opt/homebrew/bin" ];
+  environment.systemPath = ["/opt/homebrew/bin"];
   homebrew = {
     enable = true;
-    brews = [ "lgogdownloader" ];
+    brews = ["lgogdownloader"];
     caskArgs = {
       no_quarantine = true;
       require_sha = true;
     };
-    casks = (builtins.map (cask: {name = cask; greedy = true;}) [
-      "alcove"
-      "blender"
-      "chatgpt"
-      "font-symbols-only-nerd-font"
-      "ghostty"
-      "godot"
-      "iina"
-      "jordanbaird-ice"
-      "keepingyouawake"
-      "meetingbar"
-      "popclip"
-      "proton-drive"
-      "proton-mail"
-      "protonvpn"
-      "raycast"
-      "zotero"
-    ]);
+    casks =
+      builtins.map (cask: {
+        name = cask;
+        greedy = true;
+      }) [
+        "alcove"
+        "blender"
+        "chatgpt"
+        "font-symbols-only-nerd-font"
+        "ghostty"
+        "godot"
+        "iina"
+        "jordanbaird-ice"
+        "keepingyouawake"
+        "meetingbar"
+        "popclip"
+        "proton-drive"
+        "proton-mail"
+        "protonvpn"
+        "raycast"
+        "zotero"
+      ];
     masApps = {
       "AdGuard for Safari" = 1440147259;
       AnyConnect = 1135064690;

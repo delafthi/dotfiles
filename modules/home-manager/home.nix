@@ -1,31 +1,32 @@
-{ lib
-, config
-, pkgs
-, tokyonight
-, ...
+{
+  lib,
+  config,
+  pkgs,
+  tokyonight,
+  ...
 }: {
   imports = [
     ./editorconfig.nix
     ./fonts.nix
-    (import ./programs/fish.nix { inherit pkgs tokyonight; })
+    (import ./programs/fish.nix {inherit pkgs tokyonight;})
     ./programs/bash.nix
-    (import ./programs/bat.nix { inherit tokyonight; })
+    (import ./programs/bat.nix {inherit tokyonight;})
     ./programs/bins/default.nix
-    (import ./programs/clang.nix { inherit pkgs; })
+    (import ./programs/clang.nix {inherit pkgs;})
     ./programs/dircolors.nix
     ./programs/direnv.nix
-    (import ./programs/eza.nix { inherit config tokyonight; })
-    (import ./programs/fzf.nix { inherit lib pkgs tokyonight; })
-    (import ./programs/ghostty.nix { inherit pkgs; })
-    (import ./programs/git.nix { inherit pkgs; })
+    (import ./programs/eza.nix {inherit config tokyonight;})
+    (import ./programs/fzf.nix {inherit lib pkgs tokyonight;})
+    (import ./programs/ghostty.nix {inherit pkgs;})
+    (import ./programs/git.nix {inherit pkgs;})
     ./programs/git-cliff.nix
-    (import ./programs/gtkwave/default.nix { inherit pkgs; })
-    (import ./programs/helix.nix { inherit pkgs; })
-    (import ./programs/lazygit.nix { inherit tokyonight; })
-    (import ./programs/python.nix { inherit pkgs; })
+    (import ./programs/gtkwave/default.nix {inherit pkgs;})
+    (import ./programs/helix.nix {inherit pkgs;})
+    (import ./programs/lazygit.nix {inherit tokyonight;})
+    (import ./programs/python.nix {inherit pkgs;})
     ./programs/starship.nix
-    (import ./programs/tmux/default.nix { inherit pkgs tokyonight; })
-    (import ./programs/yazi.nix { inherit lib pkgs tokyonight; })
+    (import ./programs/tmux/default.nix {inherit pkgs tokyonight;})
+    (import ./programs/yazi.nix {inherit lib pkgs tokyonight;})
     ./programs/zoxide.nix
   ];
 
@@ -40,7 +41,7 @@
 
   home = {
     activation = {
-      createDeveloperDirectory = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      createDeveloperDirectory = lib.hm.dag.entryAfter ["writeBoundary"] ''
         run mkdir -p $VERBOSE_ARG ${config.home.homeDirectory}/Developer
       '';
     };

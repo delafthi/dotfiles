@@ -1,8 +1,9 @@
-{ inputs
-, lib
-, config
-, pkgs
-, ...
+{
+  inputs,
+  lib,
+  config,
+  pkgs,
+  ...
 }: {
   imports = [
     ./homebrew.nix
@@ -12,8 +13,8 @@
     shellAliases = {
       bash = "${pkgs.bashInteractive}/bin/bash";
     };
-    shells = with pkgs; [ bashInteractive fish ];
-    systemPackages = [ pkgs.coreutils ];
+    shells = with pkgs; [bashInteractive fish];
+    systemPackages = [pkgs.coreutils];
   };
   nix = {
     extraOptions = ''
@@ -23,8 +24,8 @@
     linux-builder.enable = true;
     optimise.automatic = true;
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
-      trusted-users = [ "@admin" ];
+      experimental-features = ["nix-command" "flakes"];
+      trusted-users = ["@admin"];
     };
   };
   programs = {

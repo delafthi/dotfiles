@@ -1,8 +1,8 @@
 {
   programs.bash = {
     enable = true;
-    historyControl = [ "ignoredups" "ignorespace" ];
-    historyIgnore = [ "ls" "exit" ];
+    historyControl = ["ignoredups" "ignorespace"];
+    historyIgnore = ["ls" "exit"];
     shellOptions = [
       "autocd"
       "cdspell"

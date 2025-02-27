@@ -1,4 +1,4 @@
-{ pkgs }: {
+{pkgs}: {
   programs.helix = {
     enable = true;
     defaultEditor = true;
@@ -10,12 +10,13 @@
       lua-language-server
       marksman
       nil
-      (python3.withPackages (ps: with ps; [
-        black
-        python-lsp-server
-        python-lsp-ruff
-        python-lsp-black
-      ]))
+      (python3.withPackages (ps:
+        with ps; [
+          black
+          python-lsp-server
+          python-lsp-ruff
+          python-lsp-black
+        ]))
       ruff
       rust-analyzer
       clippy
@@ -62,9 +63,9 @@
         scrolloff = 8;
         soft-wrap.enable = true;
         statusline = {
-          left = [ "mode" "spacer" "version-control" ];
-          center = [ "file-name" ];
-          right = [ "diagnostics" "file-modification-indicator" "read-only-indicator" "file-type" "separator" "position" "total-line-numbers" ];
+          left = ["mode" "spacer" "version-control"];
+          center = ["file-name"];
+          right = ["diagnostics" "file-modification-indicator" "read-only-indicator" "file-type" "separator" "position" "total-line-numbers"];
           mode = {
             normal = "NORMAL";
             insert = "INSERT";

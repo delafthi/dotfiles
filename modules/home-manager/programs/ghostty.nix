@@ -1,7 +1,5 @@
-{ pkgs }: {
-
-
-  home.packages = [ pkgs.nerd-fonts.iosevka-term-slab ];
+{pkgs}: {
+  home.packages = [pkgs.nerd-fonts.iosevka-term-slab];
   programs.ghostty = {
     enable = true;
     package = null;

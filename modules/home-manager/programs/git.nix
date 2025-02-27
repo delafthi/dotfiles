@@ -1,4 +1,4 @@
-{ pkgs }: {
+{pkgs}: {
   home = {
     shellAliases = {
       cdr = "cd $(git rev-parse --show-toplevel)";

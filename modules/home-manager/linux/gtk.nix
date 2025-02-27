@@ -1,5 +1,6 @@
-{ config
-, pkgs ? import <nixpkgs> { }
+{
+  config,
+  pkgs ? import <nixpkgs> {},
 }: {
   gtk = {
     enable = true;
