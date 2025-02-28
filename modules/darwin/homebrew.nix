@@ -15,6 +15,7 @@
         "alcove"
         "blender"
         "chatgpt"
+        "cleanshot"
         "font-symbols-only-nerd-font"
         "ghostty"
         "godot"
