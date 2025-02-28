@@ -18,6 +18,7 @@
         ]))
       ruff
       nixd
+      prettierd
       rust-analyzer
       clippy
       svls
@@ -44,6 +45,15 @@
           };
         };
       };
+      language = [
+        {
+          name = "markdown";
+          formatter = {
+            command = "prettierd";
+            args = ["--parser" "markdown"];
+          };
+        }
+      ];
     };
     settings = {
       theme = "tokyonight";
