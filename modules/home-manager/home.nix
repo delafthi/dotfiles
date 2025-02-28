@@ -60,8 +60,10 @@
       tealdeer
       texlive.combined.scheme-full
       tokei
+      tree
       unrar
       unzip
+      watch
       yubikey-manager
       yubikey-personalization
       zip
