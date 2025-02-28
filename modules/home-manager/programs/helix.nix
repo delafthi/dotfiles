@@ -3,6 +3,7 @@
     enable = true;
     defaultEditor = true;
     extraPackages = with pkgs; [
+      bash-language-server
       buf
       clang-tools
       cmake-language-server
