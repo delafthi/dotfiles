@@ -3,6 +3,8 @@
     enable = true;
     defaultEditor = true;
     extraPackages = with pkgs; [
+      basedpyright
+      ruff
       bash-language-server
       buf
       clang-tools
@@ -11,14 +13,6 @@
       gopls
       lua-language-server
       marksman
-      (python3.withPackages (ps:
-        with ps; [
-          black
-          python-lsp-server
-          python-lsp-ruff
-          python-lsp-black
-        ]))
-      ruff
       nixd
       prettierd
       rust-analyzer
@@ -31,15 +25,9 @@
     ];
     languages = {
       language-server = {
-        pylsp = {
-          config = {
-            pylsp = {
-              plugins = {
-                black.enabled = true;
-                ruff.enabled = true;
-              };
-            };
-          };
+        pyright = {
+          command = "basedpyright-langserver";
+          args = ["--stdio"];
         };
         rust-analyzer = {
           config = {
@@ -54,6 +42,10 @@
             command = "prettierd";
             args = ["--parser" "markdown"];
           };
+        }
+        {
+          name = "python";
+          language-servers = ["ruff" "pyright"];
         }
       ];
     };
