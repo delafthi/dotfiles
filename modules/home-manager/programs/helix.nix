@@ -1,4 +1,5 @@
 {pkgs}: {
+  home.packages = with pkgs; [prettierd];
   programs.helix = {
     enable = true;
     defaultEditor = true;
@@ -14,7 +15,6 @@
       lua-language-server
       marksman
       nixd
-      prettierd
       rust-analyzer
       clippy
       svls
