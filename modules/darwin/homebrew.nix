@@ -23,6 +23,7 @@
         "jordanbaird-ice"
         "keepingyouawake"
         "meetingbar"
+        "monodraw"
         "popclip"
         "proton-drive"
         "proton-mail"
