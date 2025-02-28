@@ -9,7 +9,6 @@
       dockerfile-language-server-nodejs
       lua-language-server
       marksman
-      nil
       (python3.withPackages (ps:
         with ps; [
           black
@@ -18,6 +17,7 @@
           python-lsp-black
         ]))
       ruff
+      nixd
       rust-analyzer
       clippy
       svls
