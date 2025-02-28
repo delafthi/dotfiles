@@ -8,6 +8,7 @@
       clang-tools
       cmake-language-server
       dockerfile-language-server-nodejs
+      gopls
       lua-language-server
       marksman
       (python3.withPackages (ps:
