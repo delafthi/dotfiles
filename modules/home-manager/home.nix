@@ -47,6 +47,7 @@
     };
     username = "delafthi";
     packages = with pkgs; [
+      asciinema
       du-dust
       fd
       gnutar
