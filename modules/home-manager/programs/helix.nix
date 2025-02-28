@@ -56,10 +56,13 @@
           normal = "block";
           select = "underline";
         };
+        end-of-line-diagnostics = "hint";
         file-picker.hidden = false;
         indent-guides.render = true;
+        inline-diagnostics = {
+          cursor-line = "warning";
+        };
         line-number = "relative";
-        lsp.display-inlay-hints = true;
         scrolloff = 8;
         soft-wrap.enable = true;
         statusline = {
