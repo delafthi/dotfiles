@@ -17,9 +17,13 @@
     file.Downloads.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/0-inbox/downloads";
     homeDirectory = "/home/delafthi";
     packages = with pkgs; [
+      blender
       brave
-      noto-fonts
-      noto-fonts-emoji
+      godot_4
+      mpv
+      proton-pass
+      protonmail-desktop
+      protonvpn-gui
     ];
     shellAliases = {
       open = "xdg-open";
