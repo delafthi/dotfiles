@@ -30,6 +30,7 @@
         "protonvpn"
         "raycast"
         "zotero"
+        "rocket"
       ];
     masApps = {
       "AdGuard for Safari" = 1440147259;
