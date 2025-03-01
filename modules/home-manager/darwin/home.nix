@@ -19,5 +19,9 @@
       iCloud.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Library/Mobile Documents/com~apple~CloudDocs";
     };
     homeDirectory = "/Users/delafthi";
+    packages = with pkgs; [
+      iina
+      ice-bar
+    ];
   };
 }

@@ -14,13 +14,9 @@
       }) [
         "alcove"
         "blender"
-        "chatgpt"
         "cleanshot"
-        "font-symbols-only-nerd-font"
         "ghostty"
         "godot"
-        "iina"
-        "jordanbaird-ice"
         "keepingyouawake"
         "meetingbar"
         "monodraw"
@@ -29,7 +25,6 @@
         "proton-mail"
         "protonvpn"
         "raycast"
-        "zotero"
         "rocket"
       ];
     masApps = {

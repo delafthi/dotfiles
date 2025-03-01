@@ -48,12 +48,16 @@
     username = "delafthi";
     packages = with pkgs; [
       asciinema
+      chatgpt
+      chatgpt-cli
       du-dust
       fd
       gnutar
       hexyl
       htop
+      hyperfine
       just
+      nerd-fonts.symbols-only
       p7zip
       pandoc
       procs
@@ -67,6 +71,7 @@
       watch
       yubikey-manager
       yubikey-personalization
+      zotero
       zip
     ];
     preferXdgDirectories = true;
