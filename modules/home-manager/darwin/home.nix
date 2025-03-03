@@ -23,6 +23,7 @@
     packages = with pkgs; [
       iina
       ice-bar
+      podman
     ];
   };
 }

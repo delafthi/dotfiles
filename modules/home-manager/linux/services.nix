@@ -9,6 +9,7 @@
       maxCacheTtlSsh = 86400;
       pinentryPackage = pkgs.pinentry-gnome3;
     };
+    podman.enable = true;
     unclutter = {
       enable = true;
       timeout = 10;
