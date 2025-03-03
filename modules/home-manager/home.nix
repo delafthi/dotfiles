@@ -22,6 +22,7 @@
     ./programs/git-cliff.nix
     (import ./programs/gtkwave/default.nix {inherit pkgs;})
     (import ./programs/helix.nix {inherit pkgs;})
+    (import ./programs/jujutsu.nix {inherit pkgs;})
     (import ./programs/lazygit.nix {inherit tokyonight;})
     (import ./programs/python.nix {inherit pkgs;})
     ./programs/starship.nix
