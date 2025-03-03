@@ -6,79 +6,51 @@
   ...
 }: {
   imports = [
-    # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];
-
-  nixpkgs = {
-    overlays = [
-    ];
-    config = {
-      allowUnfree = true;
-    };
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    systemd-boot.enable = true;
   };
-
-  # This will add each flake input as a registry
-  # To make nix3 commands consistent with your flake
-  nix.registry = (lib.mapAttrs (_: flake: {inherit flake;})) ((lib.filterAttrs (_: lib.isType "flake")) inputs);
-
-  # This will additionally add your inputs to the system's legacy channels
-  # Making legacy nix commands consistent as well, awesome!
-  nix.nixPath = ["/etc/nix/path"];
+  console = {
+    font = "Lat2-Terminus16";
+    useXkbConfig = true; # use xkbOptions in tty.
+  };
   environment = {
-    etc =
-      lib.mapAttrs'
-      (name: value: {
-        name = "nix/path/${name}";
-        value.source = value.flake;
-      })
-      config.nix.registry;
-    gnome.excludePackages =
-      (with pkgs; [
-        gedit
-        gnome-text-editor
-        gnome-tour
-      ])
-      ++ (with pkgs.gnome; [
-        cheese
-        epiphany
-        evince
-        geary
-        gnome-music
-        gnome-weather
-        seahorse
-        simple-scan
-        totem
-        yelp
-      ]);
-    pathsToLink = ["/share/zsh"];
+    gnome.excludePackages = with pkgs; [
+      cheese
+      epiphany
+      evince
+      geary
+      gedit
+      gnome-music
+      gnome-text-editor
+      gnome-tour
+      gnome-weather
+      seahorse
+      simple-scan
+      totem
+      yelp
+    ];
+    shells = with pkgs; [ bashInteractive fish ];
     systemPackages = with pkgs; [
+      coreutils
       git
-      gnome.nautilus-python
-      inputs.home-manager.packages.${pkgs.system}.default
+      nautilus-python
       nautilus-open-any-terminal
       vim
       wget
       xclip
     ];
   };
-
-  nix.settings = {
-    # Enable flakes and new 'nix' command
-    experimental-features = ["nix-command" "flakes"];
-    # Deduplicate and optimize nix store
-    auto-optimise-store = true;
+  i18n = {
+    defaultLocale = "de_CH.UTF-8";
+    extraLocaleSettings = {
+      LC_MESSAGES = "en_US.UTF-8";
+    };
   };
-
-  # Use the systemd-boot EFI boot loader.
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    systemd-boot.enable = true;
-  };
-
-  # Configure networking
   networking = {
-    hostName = "thierrys-workstation";
+    hostName = "Thierrys-Workstation";
     interfaces = {
       enp5s0.ipv4.addresses = [
         {
@@ -99,39 +71,27 @@
     networkmanager.enable = true;
     proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   };
-
-  # Set your time zone.
-  time.timeZone = "Europe/Zurich";
-
-  # Select internationalisation properties.
-  i18n = {
-    defaultLocale = "de_CH.UTF-8";
-    extraLocaleSettings = {
-      LC_MESSAGES = "en_US.UTF-8";
+  nix = {
+    gc.automatic = true;
+    optimise.automatic = true;
+    settings = {
+      auto-optimise-store = true;
+      experimental-features = ["nix-command" "flakes"];
+      trusted-users = ["@wheel"];
     };
   };
-  console = {
-    font = "Lat2-Terminus16";
-    useXkbConfig = true; # use xkbOptions in tty.
-  };
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users = {
-    delafthi = {
-      description = "Thierry Delafontaine";
-      initialPassword = "defaultPW";
-      isNormalUser = true;
-      extraGroups = ["wheel" "audio" "docker" "libvirtd" "networkmanager"];
-      shell = pkgs.zsh;
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
     };
   };
   programs = {
+    fish.enable = true;
     nix-ld.enable = true;
     zsh.enable = true;
   };
-
+  time.timeZone = "Europe/Zurich";
   services = {
-    # Enable snapshots of home (Btrfs)
     btrbk = {
       instances = {
         local = {
@@ -154,22 +114,15 @@
         };
       };
     };
-    # Enable scrubbing (Btrfs)
     btrfs.autoScrub = {
       enable = true;
       interval = "monthly";
       fileSystems = ["/" "/var" "/data"];
     };
-
     gnome.core-utilities.enable = true;
-
-    # Enable CUPS to print documents.
+    libinput.enable = true;
     printing.enable = true;
-
-    # Add udev rules to flash ergodox keyboard
-    udev.packages = [pkgs.zsa-udev-rules];
-
-    # Enable the X11 windowing system.
+    udev.packages = with pkgs; [zsa-udev-rules logitech-udev-rules];
     xserver = {
       enable = true;
       videoDrivers = ["nvidia"];
@@ -182,11 +135,17 @@
         layout = "us";
         options = "mac";
       };
-      libinput.enable = true;
     };
   };
-
-  # Enable virtualisation services
+  users.users = {
+    delafthi = {
+      description = "Thierry Delafontaine";
+      initialPassword = "defaultPW";
+      isNormalUser = true;
+      extraGroups = ["wheel" "audio" "docker" "libvirtd" "networkmanager"];
+      shell = pkgs.fish;
+    };
+  };
   virtualisation = {
     docker.enable = true;
     libvirtd.enable = true;

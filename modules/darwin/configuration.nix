@@ -14,7 +14,12 @@
       bash = "${pkgs.bashInteractive}/bin/bash";
     };
     shells = with pkgs; [bashInteractive fish];
-    systemPackages = [pkgs.coreutils];
+    systemPackages = with pkgs; [
+      coreutils
+      git
+      vim
+      wget
+    ];
   };
   nix = {
     extraOptions = ''

@@ -1,18 +1,18 @@
 {
   config,
-  pkgs ? import <nixpkgs> {},
+  pkgs,
 }: {
   gtk = {
     enable = true;
     font = {
       package = pkgs.noto-fonts;
-      name = "IosevkaEtoile";
+      name = "Noto Sans";
       size = 12;
     };
     gtk3 = {
       bookmarks = [
         "file://${config.xdg.userDirs.extraConfig.XDG_DEVELOPER_DIR}"
-        "file://${config.xdg.userDirs.downloads}"
+        "file://${config.xdg.userDirs.download}"
         "file://${config.home.homeDirectory}"
         "file://${config.xdg.userDirs.documents}/0-inbox"
         "file://${config.xdg.userDirs.documents}/1-projects"

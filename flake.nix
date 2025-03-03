@@ -71,7 +71,7 @@
       })
       // forLinuxSystems (system: {
         nixosConfigurations = {
-          "thierrys-workstation" = nixpkgs.lib.nixosSystem {
+          "Thierrys-Workstation" = nixpkgs.lib.nixosSystem {
             inherit system;
             specialArgs = {inherit inputs;};
             modules = [
