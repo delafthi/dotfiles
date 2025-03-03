@@ -1,7 +1,13 @@
 {pkgs}: {
-  home.packages = with pkgs; [
-    difftastic
-  ];
+  home = {
+    packages = with pkgs; [
+      difftastic
+      lazyjj
+    ];
+    shellAliases = {
+      j = "lazyjj";
+    };
+  };
   programs.jujutsu = {
     enable = true;
     settings = {
