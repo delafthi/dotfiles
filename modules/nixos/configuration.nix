@@ -147,7 +147,10 @@
     };
   };
   virtualisation = {
-    docker.enable = true;
+    docker = {
+      enable = true;
+      autoPrune.enable = true;
+    };
     libvirtd.enable = true;
   };
 
