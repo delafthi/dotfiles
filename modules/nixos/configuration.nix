@@ -32,7 +32,7 @@
       totem
       yelp
     ];
-    shells = with pkgs; [ bashInteractive fish ];
+    shells = with pkgs; [bashInteractive fish];
     systemPackages = with pkgs; [
       coreutils
       git
@@ -119,7 +119,10 @@
       interval = "monthly";
       fileSystems = ["/" "/var" "/data"];
     };
-    gnome.core-utilities.enable = true;
+    gnome = {
+      core-utilities.enable = true;
+      gnome-keyring.enable = lib.mkForce false;
+    };
     libinput.enable = true;
     printing.enable = true;
     udev.packages = with pkgs; [zsa-udev-rules logitech-udev-rules];
