@@ -9,7 +9,9 @@
     (import ../home.nix {inherit lib config pkgs tokyonight;})
     (import ./dconf.nix {inherit lib;})
     (import ./gtk.nix {inherit config pkgs;})
-    (import ./services.nix {inherit pkgs;})
+    (import ./services/gpg-agent.nix {inherit pkgs;})
+    ./services/podman.nix
+    ./services/unclutter.nix
     ./xdg.nix
   ];
   home = {
