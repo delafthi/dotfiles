@@ -9,7 +9,7 @@
     (import ../home.nix {inherit lib config pkgs tokyonight;})
     ./darwin.nix
     ./programs/ghostty.nix
-    (import ./programs/gpg.nix {inherit pkgs;})
+    (import ./programs/gpg-agent.nix {inherit pkgs;})
     (import ./xdg.nix {inherit lib config;})
   ];
 

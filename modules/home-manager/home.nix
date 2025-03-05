@@ -20,6 +20,7 @@
     (import ./programs/ghostty.nix {inherit pkgs;})
     (import ./programs/git.nix {inherit pkgs;})
     ./programs/git-cliff.nix
+    ./programs/gpg.nix
     (import ./programs/gtkwave/default.nix {inherit pkgs;})
     (import ./programs/helix.nix {inherit pkgs;})
     (import ./programs/jujutsu.nix {inherit pkgs;})
