@@ -39,7 +39,9 @@
         bind -N "Open file browser" e popup -h 90% -w 90% -E "${pkgs.yazi}/bin/yazi"
         bind -N "Enter copy-mode to copy text or view the history" V copy-mode
         bind -N "Select text in copy mode" -T copy-mode-vi v send -X begin-selection
-        bind -N "Select text in copy mode" -T copy-mode-vi y send -X copy-selection
+        bind -N "Copy text in copy mode" -T copy-mode-vi y send -X copy-selection
+        bind -N "Copy text in copy mode" -T copy-mode-vi M-c send -X copy-selection
+        bind -N "Copy text in copy mode" -T copy-mode-vi C-S-c send -X copy-selection
 
         # Statusbar
         set -g status-interval 5
