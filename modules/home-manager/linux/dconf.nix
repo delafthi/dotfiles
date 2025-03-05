@@ -19,39 +19,25 @@ with lib.hm.gvariant; {
         event-sounds = false;
       };
       "org/gnome/desktop/wm/keybindings" = {
-        activate-window-menu = [];
-        begin-move = [];
-        begin-resize = [];
         close = ["<Super>q"];
-        cycle-group = [];
-        cycle-group-backward = [];
-        cycle-panels = [];
-        cycle-panels-backward = [];
-        cycle-windows = [];
-        cycle-windows-backward = [];
-        maximize = [];
+        maximize = ["<Shift><Control><Super>F"];
         minimize = ["<Super>m"];
-        move-to-monitor-down = [];
         move-to-monitor-left = ["<Control><Super>p"];
-        move-to-monitor-right = ["><Control><Supern"];
-        move-to-monitor-up = [];
+        move-to-monitor-right = ["<Control><Supern"];
         move-to-workspace-1 = ["<Control><Super>1"];
         move-to-workspace-2 = ["<Control><Super>2"];
         move-to-workspace-3 = ["<Control><Super>3"];
         move-to-workspace-4 = ["<Control><Super>4"];
         move-to-workspace-5 = ["<Control><Super>5"];
-        move-to-workspace-last = [];
         move-to-workspace-left = ["<Control><Super>Left"];
         move-to-workspace-right = ["<Control><Super>Right"];
-        panel-run-dialog = [];
+        show-desktop = ["<Shift><Control><Super>h"];
         switch-applications = ["<Super>Tab"];
-        switch-applications-backward = ["<Super><Shift>Tab"];
-        switch-group = [];
-        switch-group-backward = [];
+        switch-applications-backward = ["<Shift><Super>Tab"];
+        switch-group = ["<Super>grave"];
+        switch-group-backward = ["<Shift><Super>grave"];
         switch-input-source = ["<Control><Alt>Space"];
         switch-input-source-backward = ["<Control>Space"];
-        switch-panels = [];
-        switch-panels-backward = [];
         switch-to-workspace-1 = ["<Control>1"];
         switch-to-workspace-2 = ["<Control>2"];
         switch-to-workspace-3 = ["<Control>3"];
@@ -60,8 +46,6 @@ with lib.hm.gvariant; {
         switch-to-workspace-last = [];
         switch-to-workspace-left = ["<Control>Left"];
         switch-to-workspace-right = ["<Control>Right"];
-        switch-windows = ["<Control><Super>j"];
-        switch-windows-backward = ["<Control><Superk"];
         toggle-fullscreen = ["<Control><Super>f"];
       };
       "org/gnome/mutter" = {
@@ -69,17 +53,15 @@ with lib.hm.gvariant; {
         edge-tiling = true;
         workspaces-only-on-primary = true;
       };
+      "org/gnome/mutter/keybindings" = {
+        toggle-tiled-left = ["<Control><Super>h"];
+        toggle-tiled-right = ["<Control><Super>l"];
+      };
       "org/gnome/settings-daemon-plugins/media-keys" = {
         custom-keybindings = [
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
         ];
-        help = [];
-        home = ["<Super>e"];
         logout = ["<Shift><Super>q"];
-        magnifier = [];
-        magnifier-zoom-in = [];
-        magnifier-zoom-out = [];
-        screenreader = [];
         screensaver = ["<Control><Super>Escape"];
       };
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
@@ -91,19 +73,23 @@ with lib.hm.gvariant; {
         current-workspace-only = true;
       };
       "org/gnome/shell/keybindings" = {
-        focus-active-notification = [];
-        open-application-menu = [];
+        open-application-menu = ["<Shift><Control><Super>a"];
         screenshot = ["<Shift><Super>3"];
         screenshot-window = ["<Shift><Super>4"];
-        show-screen-recording-ui = [];
+        show-screen-recording-ui = ["<Shift><Super>5"];
         show-screenshot-ui = ["<Control><Shift><Super>3"];
-        switch-to-application-1 = [];
-        switch-to-application-2 = [];
-        switch-to-application-3 = [];
-        switch-to-application-4 = [];
         toggle-application-view = ["<Control>Down"];
-        toggle-message-tray = [];
+        toggle-message-tray = ["<Control><Shift><Super>n"];
         toggle-overview = ["<Control>Up"];
+      };
+      "org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings" = {
+        copy = ["<Super>c" "<Control>c"];
+        paste = ["<Super>v" "<Control>v"];
+        new-tab = ["<Super>t" "<Control>t"];
+        new-window = ["<Super>n"];
+        close-tab = ["<Super>w"];
+        close-window = ["<Super>q"];
+        find = ["<Super>f" "<Control>f"];
       };
     };
   };
