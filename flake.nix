@@ -63,7 +63,6 @@
                   useUserPackages = true;
                   users.${user} = import ./modules/home-manager/darwin/home.nix;
                 };
-                users.users.${user}.home = "/Users/${user}";
               }
             ];
           };
@@ -83,7 +82,6 @@
                   useUserPackages = true;
                   users.${user} = import ./modules/home-manager/linux/home.nix;
                 };
-                users.users.${user}.home = "/home/${user}";
               }
             ];
           };

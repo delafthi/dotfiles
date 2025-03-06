@@ -143,6 +143,7 @@
   users.users = {
     delafthi = {
       description = "Thierry Delafontaine";
+      home = "/home/delafthi";
       initialPassword = "defaultPW";
       isNormalUser = true;
       extraGroups = ["wheel" "audio" "docker" "libvirtd" "networkmanager"];
