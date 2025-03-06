@@ -25,7 +25,7 @@
       };
       ui = {
         default-command = "log";
-        tool = ["difft" "--color=always" "$left" "$right"];
+        diff.tool = ["difft" "--color=always" "$left" "$right"];
       };
       user = {
         name = "Thierry Delafontaine";
