@@ -22,8 +22,8 @@
     homeDirectory = "/Users/delafthi";
     packages = with pkgs; [
       chatgpt
-      iina
       ice-bar
+      iina
       podman
     ];
   };

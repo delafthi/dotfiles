@@ -34,6 +34,6 @@
       open = "xdg-open";
     };
   };
-  xsession.enable = true;
   systemd.user.startServices = "sd-switch";
+  xsession.enable = true;
 }
