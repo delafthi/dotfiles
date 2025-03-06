@@ -26,7 +26,7 @@
         "protonvpn"
         "raycast"
         "rocket"
-        "vmware-fusion"
+        "utm"
       ];
     masApps = {
       "AdGuard for Safari" = 1440147259;
