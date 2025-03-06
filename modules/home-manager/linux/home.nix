@@ -15,6 +15,7 @@
     ./services/unclutter.nix
     ./xdg.nix
   ];
+
   home = {
     file.Downloads.source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/Documents/0-inbox/downloads";
     homeDirectory = "/home/delafthi";

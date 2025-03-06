@@ -70,7 +70,7 @@
       })
       // forLinuxSystems (system: {
         nixosConfigurations = {
-          "Thierrys-Workstation" = nixpkgs.lib.nixosSystem {
+          "Thierrys-MacBook-Air" = nixpkgs.lib.nixosSystem {
             inherit system;
             specialArgs = {inherit inputs;};
             modules = [
