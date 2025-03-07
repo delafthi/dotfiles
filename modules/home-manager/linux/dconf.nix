@@ -72,6 +72,9 @@ with lib.hm.gvariant; {
       "org/gnome/shell/app-switcher" = {
         current-workspace-only = true;
       };
+      "org/gnome/shell/extensions/dash-to-dock" = {
+        show-mounts = false;
+      };
       "org/gnome/shell/keybindings" = {
         open-application-menu = ["<Shift><Control><Super>a"];
         screenshot = ["<Shift><Super>3"];
