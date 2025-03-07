@@ -82,6 +82,15 @@
       gnome-keyring.enable = lib.mkForce false;
     };
     libinput.enable = true;
+    openssh = {
+      enable = true;
+      settings = {
+        KbdInteractiveAuthentication = false;
+        PasswordAuthentication = false;
+        PermitRootLogin = "no";
+        X11Forwarding = true;
+      };
+    };
     printing.enable = true;
     qemuGuest.enable = true;
     spice-vdagentd.enable = true;
@@ -107,6 +116,9 @@
       isNormalUser = true;
       extraGroups = ["wheel" "audio" "docker" "libvirtd" "networkmanager"];
       shell = pkgs.fish;
+      openssh.authorizedKeys.keys = [
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIED0iUQ9rApXnM61UGv7Jm4bZx0xCaV+wEPlIShkoy8P openpgp:0x71B978AF"
+      ];
     };
   };
   virtualisation = {
