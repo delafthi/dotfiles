@@ -6,7 +6,7 @@ with lib.hm.gvariant; {
         terminal = "ghostty";
       };
       "org/gnome/desktop/input-sources" = {
-        sources = [(mkTuple ["xkb" "ch+mac"])];
+        sources = [(mkTuple ["xkb" "us+mac"])];
         xkb-options = [];
       };
       "org/gnome/desktop/interface" = {
