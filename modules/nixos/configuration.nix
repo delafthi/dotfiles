@@ -20,13 +20,8 @@
     gnome.excludePackages = with pkgs; [
       cheese
       epiphany
-      evince
       geary
-      gedit
-      gnome-music
-      gnome-text-editor
       gnome-tour
-      gnome-weather
       seahorse
       simple-scan
       totem
