@@ -79,7 +79,6 @@
       fileSystems = ["/" "/var" "/data"];
     };
     gnome = {
-      core-utilities.enable = true;
       gnome-keyring.enable = lib.mkForce false;
     };
     libinput.enable = true;
