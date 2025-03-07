@@ -26,7 +26,6 @@
     packages = with pkgs; [
       ascii-draw
       blender
-      brave
       godot_4
       mpv
       proton-pass

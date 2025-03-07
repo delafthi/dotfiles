@@ -50,6 +50,7 @@
     username = "delafthi";
     packages = with pkgs; [
       asciinema
+      brave
       chatgpt-cli
       du-dust
       fd
