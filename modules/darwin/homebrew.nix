@@ -24,6 +24,7 @@
         "proton-drive"
         "proton-mail"
         "protonvpn"
+        "raindropio"
         "raycast"
         "rocket"
         "utm"
