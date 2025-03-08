@@ -30,7 +30,6 @@
         "utm"
       ];
     masApps = {
-      "AdGuard for Safari" = 1440147259;
       AnyConnect = 1135064690;
       "Apple Delevoper" = 640199958;
       Bear = 1091189122;
@@ -38,7 +37,6 @@
       Delta = 1048524688;
       Habits = 1514915737;
       "Hand Mirror" = 1502839586;
-      Hush = 1544743900;
       Keynote = 409203825;
       MeteoSwiss = 589772015;
       Numbers = 409203825;

@@ -1,4 +1,4 @@
-{
+{pkgs}: {
   targets.darwin = {
     currentHostDefaults = {
       "com.apple.controlcenter" = {
@@ -55,7 +55,7 @@
             };
           })
           [
-            "/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app"
+            "${pkgs.brave}/Applications/Brave Browser.app"
             "/Applications/WhatsApp.app"
             "/Applications/Proton Mail.app"
             "/Applications/Proton Pass.app"
