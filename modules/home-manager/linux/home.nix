@@ -26,7 +26,6 @@
     packages = with pkgs; [
       ascii-draw
       blender
-      godot_4
       mpv
       proton-pass
       protonmail-desktop

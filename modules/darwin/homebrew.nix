@@ -16,7 +16,6 @@
         "blender"
         "cleanshot"
         "ghostty"
-        "godot"
         "keepingyouawake"
         "meetingbar"
         "monodraw"
