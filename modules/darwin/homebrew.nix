@@ -39,6 +39,7 @@
       Keynote = 409203825;
       MeteoSwiss = 589772015;
       Numbers = 409203825;
+      "Organic Maps" = 1567437057;
       Pages = 409201541;
       PDFgear = 6469021132;
       Photomator = 1444636541;
