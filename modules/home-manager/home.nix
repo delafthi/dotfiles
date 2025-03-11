@@ -25,6 +25,7 @@
     (import ./programs/helix.nix {inherit pkgs;})
     (import ./programs/jujutsu.nix {inherit pkgs;})
     (import ./programs/lazygit.nix {inherit tokyonight;})
+    ./programs/password-store.nix
     (import ./programs/python.nix {inherit pkgs;})
     ./programs/starship.nix
     (import ./programs/tmux/default.nix {inherit pkgs tokyonight;})
