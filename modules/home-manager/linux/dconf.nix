@@ -94,6 +94,10 @@ with lib.hm.gvariant; {
         close-window = ["<Super>q"];
         find = ["<Super>f" "<Control>f"];
       };
+      "org/virt-manager/virt-manager/connections" = {
+        autoconnect = ["qemu:///system"];
+        uris = ["qemu:///system"];
+      };
     };
   };
 }
