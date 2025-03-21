@@ -3,17 +3,22 @@
   pkgs,
   tokyonight,
 }: {
-  home.packages = with pkgs; [
-    fd
-    ffmpeg
-    fzf
-    imagemagick
-    jq
-    p7zip
-    poppler
-    ripgrep
-    zoxide
-  ];
+  home = {
+    packages = with pkgs; [
+      fd
+      ffmpeg
+      fzf
+      imagemagick
+      jq
+      p7zip
+      poppler
+      ripgrep
+      zoxide
+    ];
+    shellAliases = {
+      y = "yazi";
+    };
+  };
   programs.yazi = {
     enable = true;
     settings = {
@@ -27,7 +32,7 @@
         max_height = 1000;
       };
     };
-    shellWrapperName = "y";
+    shellWrapperName = "yd";
     theme = lib.importTOML "${tokyonight}/extras/yazi/tokyonight_night.toml";
   };
 }
