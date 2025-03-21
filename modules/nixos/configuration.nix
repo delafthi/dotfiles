@@ -114,7 +114,14 @@
       home = "/home/delafthi";
       initialPassword = "defaultPW";
       isNormalUser = true;
-      extraGroups = ["wheel" "audio" "docker" "libvirtd" "networkmanager"];
+      extraGroups = [
+        "wheel"
+        "audio"
+        "dialout"
+        "docker"
+        "libvirtd"
+        "networkmanager"
+      ];
       shell = pkgs.fish;
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIED0iUQ9rApXnM61UGv7Jm4bZx0xCaV+wEPlIShkoy8P openpgp:0x71B978AF"
