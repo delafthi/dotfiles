@@ -17,12 +17,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # alejandra formatter
-    alejandra = {
-      url = "github:kamadorueda/alejandra/3.1.0";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # tokyonight ressources
     tokyonight = {
       url = "github:folke/tokyonight.nvim";
@@ -34,7 +28,6 @@
     nixpkgs,
     darwin,
     home-manager,
-    alejandra,
     tokyonight,
     ...
   }: let
@@ -43,9 +36,10 @@
     forAllSystems = nixpkgs.lib.genAttrs (darwinSystems ++ linuxSystems);
     forDarwinSystems = nixpkgs.lib.genAttrs darwinSystems;
     forLinuxSystems = nixpkgs.lib.genAttrs linuxSystems;
+    pkgs = forAllSystems (system: nixpkgs.legacyPackages.${system});
     user = "delafthi";
   in {
-    formatter = forAllSystems (system: alejandra.defaultPackage.${system});
+    formatter = forAllSystems (system: pkgs.${system}.alejandra);
     packages =
       forDarwinSystems
       (system: {
