@@ -5,7 +5,7 @@
       lazyjj
     ];
     shellAliases = {
-      j = "lazyjj";
+      g = "lazyjj";
     };
   };
   programs.jujutsu = {

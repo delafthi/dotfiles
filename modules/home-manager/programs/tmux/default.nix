@@ -29,7 +29,7 @@
         bind -N "Change to the next window" C-n next-window
         bind -N "Change to the previous window" C-p previous-window
         bind -N "Toggle maximize window" f resize-pane -Z
-        bind -N "Open lazygit" g popup -h 90% -w 90% -E "${pkgs.lazygit}/bin/lazygit  --use-config-file=$XDG_CONFIG_HOME/lazygit/config.yml,$XDG_CONFIG_HOME/lazygit/theme.yml"
+        bind -N "Open lazyjj" g popup -h 90% -w 90% -E "${pkgs.lazyjj}/bin/lazyjj"
         bind -N "Leave the copy-mode" -T copy-mode-vi i send -X cancel
         bind -N "Open tmux-sessionizer" p popup -h 60% -w 60% -E "~/.local/bin/tmux-sessionizer"
         bind -N "Source the tmux config file" r run-shell "\

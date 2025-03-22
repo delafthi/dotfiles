@@ -15,7 +15,6 @@
     ./gpg.nix
     ./helix.nix
     ./jujutsu.nix
-    ./lazygit.nix
     ./password-store.nix
     ./python.nix
     ./starship.nix
