@@ -16,9 +16,9 @@
         n = "new";
       };
       signing = {
+        behavior = "own";
         backend = "gpg";
         key = "F28424F9874E6696";
-        sign-all = true;
       };
       template-aliases = {
         "format_timestamp(timestamp)" = "timestamp.ago()";
