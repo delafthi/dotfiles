@@ -2,6 +2,7 @@
   lib,
   pkgs,
   tokyonight,
+  ...
 }: {
   home = {
     packages = with pkgs; [

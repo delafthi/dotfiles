@@ -1,6 +1,7 @@
 {
   config,
   tokyonight,
+  ...
 }: {
   home = {
     sessionVariables = {

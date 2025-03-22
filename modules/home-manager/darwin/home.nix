@@ -1,16 +1,13 @@
 {
-  lib,
   config,
   pkgs,
-  tokyonight,
   ...
 }: {
   imports = [
-    (import ../home.nix {inherit lib config pkgs tokyonight;})
-    (import ./darwin.nix {inherit pkgs;})
-    ./programs/ghostty.nix
-    (import ./programs/gpg-agent.nix {inherit pkgs;})
-    (import ./xdg.nix {inherit lib config;})
+    ../home.nix
+    ./darwin.nix
+    ./xdg.nix
+    ./programs
   ];
 
   home = {

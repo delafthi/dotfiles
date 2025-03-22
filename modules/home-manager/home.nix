@@ -1,36 +1,13 @@
 {
-  lib,
   config,
+  lib,
   pkgs,
-  tokyonight,
   ...
 }: {
   imports = [
     ./editorconfig.nix
     ./fonts.nix
-    (import ./programs/fish.nix {inherit pkgs tokyonight;})
-    ./programs/bash.nix
-    (import ./programs/bat.nix {inherit tokyonight;})
-    ./programs/bins/default.nix
-    (import ./programs/clang.nix {inherit pkgs;})
-    ./programs/dircolors.nix
-    ./programs/direnv.nix
-    (import ./programs/eza.nix {inherit config tokyonight;})
-    (import ./programs/fzf.nix {inherit lib pkgs tokyonight;})
-    (import ./programs/ghostty.nix {inherit pkgs;})
-    (import ./programs/git.nix {inherit pkgs;})
-    ./programs/git-cliff.nix
-    ./programs/gpg.nix
-    (import ./programs/gtkwave/default.nix {inherit pkgs;})
-    (import ./programs/helix.nix {inherit pkgs;})
-    (import ./programs/jujutsu.nix {inherit pkgs;})
-    (import ./programs/lazygit.nix {inherit tokyonight;})
-    ./programs/password-store.nix
-    (import ./programs/python.nix {inherit pkgs;})
-    ./programs/starship.nix
-    (import ./programs/tmux/default.nix {inherit pkgs tokyonight;})
-    (import ./programs/yazi.nix {inherit lib pkgs tokyonight;})
-    ./programs/zoxide.nix
+    ./programs
   ];
 
   nixpkgs = {

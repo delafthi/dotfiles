@@ -1,6 +1,7 @@
 {
   pkgs,
   tokyonight,
+  ...
 }: {
   programs.tmux = {
     enable = true;

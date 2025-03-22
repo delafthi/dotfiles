@@ -1,4 +1,4 @@
-{pkgs}: {
+{pkgs, ...}: {
   targets.darwin = {
     currentHostDefaults = {
       "com.apple.controlcenter" = {

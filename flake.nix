@@ -24,7 +24,7 @@
     };
   };
 
-  outputs = inputs @ {
+  outputs = {
     nixpkgs,
     darwin,
     home-manager,
@@ -46,7 +46,6 @@
         darwinConfigurations = {
           "Thierrys-MacBook-Air" = darwin.lib.darwinSystem {
             inherit system;
-            specialArgs = {inherit inputs;};
             modules = [
               ./modules/darwin/configuration.nix
               home-manager.darwinModules.home-manager
@@ -65,7 +64,6 @@
         nixosConfigurations = {
           "Thierrys-MacBook-Air" = nixpkgs.lib.nixosSystem {
             inherit system;
-            specialArgs = {inherit inputs;};
             modules = [
               ./modules/nixos/configuration.nix
               home-manager.nixosModules.home-manager

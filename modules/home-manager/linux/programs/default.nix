@@ -1,0 +1,5 @@
+{
+  imports = [
+    ./gnome-shell.nix
+  ];
+}

@@ -2,6 +2,7 @@
   lib,
   pkgs,
   tokyonight,
+  ...
 }: {
   programs.fzf = {
     enable = true;
