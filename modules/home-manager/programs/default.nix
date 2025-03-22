@@ -10,6 +10,7 @@
     ./eza.nix
     ./fzf.nix
     ./ghostty.nix
+    ./gh-dash.nix
     ./git.nix
     ./git-cliff.nix
     ./gpg.nix
