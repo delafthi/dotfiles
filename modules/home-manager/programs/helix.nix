@@ -4,7 +4,9 @@
     defaultEditor = true;
     extraPackages = with pkgs; [
       basedpyright
-      ruff
+      bibtex-tidy
+      clippy
+      delve
       bash-language-server
       buf
       clang-tools
@@ -15,16 +17,23 @@
       marksman
       nixd
       nodePackages.prettier
+      ruff
       rust-analyzer
-      clippy
-      svls
+      swift-format
       texlab
+      tinymist
       vhdl-ls
       vscode-extensions.llvm-org.lldb-vscode
+      vscode-langservers-extracted
       yaml-language-server
+      zig
+      zls
     ];
     languages = {
       language-server = {
+        nixd = {
+          command = "nixd";
+        };
         pyright = {
           command = "basedpyright-langserver";
           args = ["--stdio"];
@@ -44,8 +53,19 @@
           };
         }
         {
+          name = "nix";
+          language-servers = ["nixd"];
+        }
+        {
           name = "python";
           language-servers = ["ruff" "pyright"];
+        }
+        {
+          name = "yaml";
+          formatter = {
+            command = "prettier";
+            args = ["--parser" "yaml"];
+          };
         }
       ];
     };
