@@ -12,7 +12,7 @@
     enable = true;
     settings = {
       aliases = {
-        b = ["branch"];
+        b = ["bookmark"];
         n = ["new"];
       };
       signing = {
