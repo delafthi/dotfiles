@@ -17,6 +17,7 @@
         "cleanshot"
         "ghostty"
         "keepingyouawake"
+        "lunar"
         "meetingbar"
         "monodraw"
         "popclip"
