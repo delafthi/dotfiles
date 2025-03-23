@@ -27,16 +27,23 @@
         # Keybindings
         unbind -T copy-mode-vi MouseDragEnd1Pane # Disable auto copy when selecting with the mouse
         bind -N "Change to the next window" C-n next-window
+        bind -N "Change to the next window" n next-window
         bind -N "Change to the previous window" C-p previous-window
+        bind -N "Change to the previous window" p previous-window
         bind -N "Toggle maximize window" f resize-pane -Z
         bind -N "Open lazyjj" g popup -h 90% -w 90% -E "${pkgs.lazyjj}/bin/lazyjj"
         bind -N "Leave the copy-mode" -T copy-mode-vi i send -X cancel
-        bind -N "Open tmux-sessionizer" p popup -h 60% -w 60% -E "~/.local/bin/tmux-sessionizer"
-        bind -N "Source the tmux config file" r run-shell "\
+        bind -N "Open projects" k popup -E "~/.local/bin/tmux-sessionizer"
+        bind -N "Select a new session for the attached client interactively" S choose-session -Z
+        bind -N "Source the tmux config file" r run-shell " \
           tmux source-file ~/.config/tmux/tmux.conf > /dev/null; \
           tmux display-message 'Sourced ~/.config/tmux/tmux.conf'"
-        bind -N "Select a new session for the attached client interactively" S choose-session -Z
-        bind -N "Open scratch terminal" t popup -h 90% -w 90% ""
+        bind -N "Open scratch terminal" t run-shell " \
+          if [ \"$(tmux display-message -p -F '#{session_name}')\" = 'scratch' ]; then \
+            tmux detach-client; \
+          else \
+            tmux popup -d '#{pane_current_path}' -h 90% -w 90% -E 'tmux attach-session -t scratch || tmux new-session -s scratch'; \
+          fi"
         bind -N "Open file browser" e popup -h 90% -w 90% -E "${pkgs.yazi}/bin/yazi"
         bind -N "Enter copy-mode to copy text or view the history" V copy-mode
         bind -N "Select text in copy mode" -T copy-mode-vi v send -X begin-selection
