@@ -12,8 +12,8 @@
     enable = true;
     settings = {
       aliases = {
-        b = "branch";
-        n = "new";
+        b = ["branch"];
+        n = ["new"];
       };
       signing = {
         behavior = "own";
