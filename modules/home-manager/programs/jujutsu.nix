@@ -12,8 +12,16 @@
     enable = true;
     settings = {
       aliases = {
+        a = ["abandon"];
         b = ["bookmark"];
+        c = ["commit"];
+        d = ["decribe"];
+        e = ["edit"];
+        f = ["git" "fetch"];
+        F = ["git" "fetch" "--all-remotes"];
         n = ["new"];
+        p = ["git" "push"];
+        P = ["git" "push" "--all"];
       };
       signing = {
         behavior = "own";
