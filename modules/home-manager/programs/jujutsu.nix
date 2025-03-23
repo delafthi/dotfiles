@@ -5,14 +5,14 @@
       lazyjj
     ];
     shellAliases = {
-      g = "lazyjj";
+      j = "lazyjj";
     };
   };
   programs.jujutsu = {
     enable = true;
     settings = {
       aliases = {
-        br = "branch";
+        b = "branch";
         n = "new";
       };
       signing = {
