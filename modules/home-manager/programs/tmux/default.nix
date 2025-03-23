@@ -31,7 +31,7 @@
         bind -N "Change to the previous window" C-p previous-window
         bind -N "Change to the previous window" p previous-window
         bind -N "Toggle maximize window" f resize-pane -Z
-        bind -N "Open lazyjj" j popup -h 90% -w 90% -E "${pkgs.lazyjj}/bin/lazyjj"
+        bind -N "Open lazyjj" j popup -h 90% -w 90% -B -E "${pkgs.lazyjj}/bin/lazyjj"
         bind -N "Leave the copy-mode" -T copy-mode-vi i send -X cancel
         bind -N "Open projects" k popup -E "~/.local/bin/tmux-sessionizer"
         bind -N "Select a new session for the attached client interactively" S choose-session -Z
