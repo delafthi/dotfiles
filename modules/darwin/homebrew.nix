@@ -51,7 +51,6 @@
       Swisstopo = 1505986543;
       Testflight = 899247664;
       Things = 904280696;
-      "Toggl Track" = 1291898086;
       WhatsApp = 310633997;
       XCode = 497799835;
     };
