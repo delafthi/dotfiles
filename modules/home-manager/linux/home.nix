@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  zen-browser,
   ...
 }: {
   imports = [
@@ -28,6 +29,7 @@
       protonvpn-gui
       ulauncher
       virt-manager
+      zen-browser.default
     ];
     shellAliases = {
       open = "xdg-open";

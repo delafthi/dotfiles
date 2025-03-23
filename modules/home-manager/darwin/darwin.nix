@@ -55,7 +55,7 @@
             };
           })
           [
-            "${pkgs.brave}/Applications/Brave Browser.app"
+            "/Applications/Zen.app"
             "/Applications/WhatsApp.app"
             "/Applications/Proton Mail.app"
             "/Applications/Proton Pass.app"

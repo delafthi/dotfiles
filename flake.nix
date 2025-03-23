@@ -22,6 +22,9 @@
       url = "github:folke/tokyonight.nvim";
       flake = false;
     };
+
+    # zen-browser
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
   outputs = {
@@ -29,6 +32,7 @@
     darwin,
     home-manager,
     tokyonight,
+    zen-browser,
     ...
   }: let
     darwinSystems = ["aarch64-darwin" "x86_64-darwin"];
@@ -69,7 +73,10 @@
               home-manager.nixosModules.home-manager
               {
                 home-manager = {
-                  extraSpecialArgs = {inherit tokyonight;};
+                  extraSpecialArgs = {
+                    inherit tokyonight;
+                    zen-browser = zen-browser.packages.${system};
+                  };
                   useUserPackages = true;
                   users.${user} = import ./modules/home-manager/linux/home.nix;
                 };

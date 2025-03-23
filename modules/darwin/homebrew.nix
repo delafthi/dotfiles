@@ -27,6 +27,7 @@
         "raycast"
         "rocket"
         "utm"
+        "zen-browser"
       ];
     masApps = {
       AnyConnect = 1135064690;
