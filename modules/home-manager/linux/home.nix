@@ -27,7 +27,6 @@
       proton-pass
       protonmail-desktop
       protonvpn-gui
-      ulauncher
       virt-manager
       zen-browser.default
     ];

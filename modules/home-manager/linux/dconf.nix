@@ -20,35 +20,23 @@ with lib.hm.gvariant; {
       };
       "org/gnome/desktop/wm/keybindings" = {
         close = ["<Super>q"];
-        maximize = ["<Shift><Control><Super>F"];
+        maximize = ["<Control><Super>f"];
         minimize = ["<Super>m"];
-        move-to-monitor-left = ["<Control><Super>p"];
-        move-to-monitor-right = ["<Control><Supern"];
-        move-to-workspace-1 = ["<Control><Super>1"];
-        move-to-workspace-2 = ["<Control><Super>2"];
-        move-to-workspace-3 = ["<Control><Super>3"];
-        move-to-workspace-4 = ["<Control><Super>4"];
-        move-to-workspace-5 = ["<Control><Super>5"];
-        move-to-workspace-left = ["<Control><Super>Left"];
-        move-to-workspace-right = ["<Control><Super>Right"];
-        show-desktop = ["<Shift><Control><Super>h"];
+        show-desktop = ["<Control><Super>d"];
         switch-applications = ["<Super>Tab"];
         switch-applications-backward = ["<Shift><Super>Tab"];
         switch-group = ["<Super>grave"];
         switch-group-backward = ["<Shift><Super>grave"];
         switch-input-source = ["<Control><Alt>Space"];
         switch-input-source-backward = ["<Control>Space"];
-        switch-to-workspace-1 = ["<Control>1"];
-        switch-to-workspace-2 = ["<Control>2"];
-        switch-to-workspace-3 = ["<Control>3"];
-        switch-to-workspace-4 = ["<Control>4"];
-        switch-to-workspace-5 = ["<Control>5"];
-        switch-to-workspace-last = [];
         switch-to-workspace-left = ["<Control>Left"];
         switch-to-workspace-right = ["<Control>Right"];
-        toggle-fullscreen = ["<Control><Super>f"];
+      };
+      "org/gnome/desktop/wm/preferences" = {
+        button-layout = "close,minimize,maximize:appmenu";
       };
       "org/gnome/mutter" = {
+        center-new-windows = true;
         dynamic-workspaces = true;
         edge-tiling = true;
         workspaces-only-on-primary = true;
@@ -60,23 +48,58 @@ with lib.hm.gvariant; {
       "org/gnome/settings-daemon-plugins/media-keys" = {
         custom-keybindings = [
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+          "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
         ];
         logout = ["<Shift><Super>q"];
-        screensaver = ["<Control><Super>Escape"];
+        screensaver = ["<Control><Super>q"];
       };
-      "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+      "org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
         binding = "<Control><Super>Return";
         command = "ghostty";
         name = "Ghostty";
+      };
+      "org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+        binding = "<Control><Super>b";
+        command = "zen";
+        name = "Zen";
+      };
+      "org/gnome/shell" = {
+        favorite-apps = [
+          "org.gnome.Nautilus.desktop"
+          "zen.desktop"
+          "proton-mail.desktop"
+          "proton-pass.desktop"
+          "com.mitchellh.ghostty.desktop"
+        ];
       };
       "org/gnome/shell/app-switcher" = {
         current-workspace-only = true;
       };
       "org/gnome/shell/extensions/dash-to-dock" = {
+        apply-custom-theme = true;
+        autohide = true;
+        autohide-in-fullscreen = true;
+        custom-background-color = true;
+        background-color = "#292b35";
+        custom-theme-shrink = true;
+        dash-max-icon-size = 60;
+        hot-keys = false;
+        icon-size-fixed = true;
+        minimize-shift = false;
+        position = "BOTTOM";
         show-mounts = false;
       };
+      "org/gnome/shell/extensions/keep-me-awake" = {
+        use-bold-icons = true;
+      };
+      "org/gnome/shell/extensions/search-light" = {
+        background-color = (mkTuple [0.11765 0.12941 0.1451 1.0]);
+        border-color = (mkTuple [0.4 0.40784 0.41569 1.0]);
+        border-radius = 1.1;
+        border-thickness = 1;
+        shortcut-search = ["<Super>Space"];
+      };
       "org/gnome/shell/keybindings" = {
-        open-application-menu = ["<Shift><Control><Super>a"];
         screenshot = ["<Shift><Super>3"];
         screenshot-window = ["<Shift><Super>4"];
         show-screen-recording-ui = ["<Shift><Super>5"];
