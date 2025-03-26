@@ -70,14 +70,11 @@
       tag.sort = "version:refname";
     };
     ignores = [
-      ".cache"
+      ".cache/"
       ".direnv/"
+      ".DS_Store"
       ".gdb_history"
-      ".lnvim.lua"
-      ".null-ls*"
-      ".mypy_cache/"
       ".python-version"
-      ".ropeproject/"
       "~*"
       "compile_commands.json"
       "mnt/"
