@@ -108,15 +108,6 @@ with lib.hm.gvariant; {
         toggle-message-tray = ["<Control><Shift><Super>n"];
         toggle-overview = ["<Control>Up"];
       };
-      "org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings" = {
-        copy = ["<Super>c" "<Control>c"];
-        paste = ["<Super>v" "<Control>v"];
-        new-tab = ["<Super>t" "<Control>t"];
-        new-window = ["<Super>n"];
-        close-tab = ["<Super>w"];
-        close-window = ["<Super>q"];
-        find = ["<Super>f" "<Control>f"];
-      };
       "org/virt-manager/virt-manager/connections" = {
         autoconnect = ["qemu:///system"];
         uris = ["qemu:///system"];
