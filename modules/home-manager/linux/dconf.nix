@@ -93,8 +93,8 @@ with lib.hm.gvariant; {
         use-bold-icons = true;
       };
       "org/gnome/shell/extensions/search-light" = {
-        background-color = (mkTuple [0.11765 0.12941 0.1451 1.0]);
-        border-color = (mkTuple [0.4 0.40784 0.41569 1.0]);
+        background-color = mkTuple [0.11765 0.12941 0.1451 1.0];
+        border-color = mkTuple [0.4 0.40784 0.41569 1.0];
         border-radius = 1.1;
         border-thickness = 1;
         shortcut-search = ["<Super>Space"];
