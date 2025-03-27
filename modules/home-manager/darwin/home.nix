@@ -22,6 +22,8 @@
       ice-bar
       iina
       podman
+      raycast
+      utm
     ];
   };
 }

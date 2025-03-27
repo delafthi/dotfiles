@@ -24,9 +24,7 @@
         "proton-drive"
         "proton-mail"
         "protonvpn"
-        "raycast"
         "rocket"
-        "utm"
         "zen-browser"
       ];
     masApps = {
