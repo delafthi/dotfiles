@@ -6,7 +6,7 @@
       aws.symbol = "  ";
       buf.symbol = " ";
       c.symbol = " ";
-      conda.symbol = " ";
+      cmake.symbol = " ";
       character = {
         success_symbol = "[>](bold green)";
         error_symbol = "[>](bold red)";
@@ -15,6 +15,7 @@
         vimcmd_replace_symbol = "[<](bold purple)";
         vimcmd_visual_symbol = "[<](bold blue)";
       };
+      conda.symbol = " ";
       crystal.symbol = " ";
       dart.symbol = " ";
       directory = {
