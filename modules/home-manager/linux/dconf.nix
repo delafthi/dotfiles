@@ -45,7 +45,7 @@ with lib.hm.gvariant; {
         toggle-tiled-left = ["<Control><Super>h"];
         toggle-tiled-right = ["<Control><Super>l"];
       };
-      "org/gnome/settings-daemon-plugins/media-keys" = {
+      "org/gnome/settings-daemon/plugins/media-keys" = {
         custom-keybindings = [
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
