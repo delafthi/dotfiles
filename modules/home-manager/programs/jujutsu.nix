@@ -15,7 +15,7 @@
         a = ["abandon"];
         b = ["bookmark"];
         c = ["commit"];
-        d = ["decribe"];
+        d = ["describe"];
         e = ["edit"];
         f = ["git" "fetch"];
         F = ["git" "fetch" "--all-remotes"];
