@@ -37,7 +37,7 @@
           '';
           description = "The current jj status";
           detect_folders = [".jj"];
-          format = "([\\[ $output\\]]($style) )";
+          format = "([\\[ $output \\]]($style) )";
           ignore_timeout = true;
           style = "bold red";
         };
