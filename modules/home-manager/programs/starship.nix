@@ -17,6 +17,31 @@
       };
       conda.symbol = " ";
       crystal.symbol = " ";
+      custom = {
+        jj_change = {
+          command = ''
+            jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 \
+              --template 'separate(" ", change_id.shortest(4), bookmarks)'
+          '';
+          description = "The current jj change";
+          detect_folders = [".jj"];
+          format = "[$symbol]($style)$output ";
+          ignore_timeout = true;
+          style = "bold purple";
+          symbol = " ";
+        };
+        jj_status = {
+          command = ''
+            jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 \
+              --template 'concat( if(conflict, " "), if(divergent, " "), if(hidden, " "), if(immutable, " "))'
+          '';
+          description = "The current jj status";
+          detect_folders = [".jj"];
+          format = "([\\[ $output\\]]($style) )";
+          ignore_timeout = true;
+          style = "bold red";
+        };
+      };
       dart.symbol = " ";
       directory = {
         truncation_length = 1;
