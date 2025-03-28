@@ -1,8 +1,4 @@
-{
-  pkgs,
-  tokyonight,
-  ...
-}: {
+{tokyonight, ...}: {
   programs.tmux = {
     enable = true;
     baseIndex = 1;
@@ -30,6 +26,7 @@
         bind -N "Change to the next window" n next-window
         bind -N "Change to the previous window" C-p previous-window
         bind -N "Change to the previous window" p previous-window
+        bind -N "Open file browser" e popup -h 90% -w 90% -E "yazi"
         bind -N "Toggle maximize window" f resize-pane -Z
         bind -N "Leave the copy-mode" -T copy-mode-vi i send -X cancel
         bind -N "Open projects" k popup -E "~/.local/bin/tmux-sessionizer"
@@ -43,7 +40,6 @@
           else \
             tmux popup -d '#{pane_current_path}' -h 90% -w 90% -E 'tmux attach-session -t scratch || tmux new-session -s scratch'; \
           fi"
-        bind -N "Open file browser" e popup -h 90% -w 90% -E "${pkgs.yazi}/bin/yazi"
         bind -N "Enter copy-mode to copy text or view the history" V copy-mode
         bind -N "Select text in copy mode" -T copy-mode-vi v send -X begin-selection
         bind -N "Copy text in copy mode" -T copy-mode-vi y send -X copy-selection
