@@ -29,6 +29,7 @@
     packages = with pkgs; [
       asciinema
       chatgpt-cli
+      discord
       du-dust
       fd
       gnutar
