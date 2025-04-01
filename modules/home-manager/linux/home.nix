@@ -23,6 +23,7 @@
     packages = with pkgs; [
       ascii-draw
       blender
+      element-desktop
       mpv
       proton-pass
       protonmail-desktop

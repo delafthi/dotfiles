@@ -15,6 +15,7 @@
         "alcove"
         "blender"
         "cleanshot"
+        "element"
         "ghostty"
         "keepingyouawake"
         "lunar"
