@@ -30,7 +30,7 @@
       ];
     masApps = {
       AnyConnect = 1135064690;
-      "Apple Delevoper" = 640199958;
+      Developer = 640199958;
       Bear = 1091189122;
       Deepstash = 1445023295;
       Delta = 1048524688;
