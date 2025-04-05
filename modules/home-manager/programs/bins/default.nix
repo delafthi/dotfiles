@@ -1,7 +1,7 @@
 {
   home = {
     file.".local/bin/tmux-sessionizer" = {
-      source = ./tmux-sessionizer;
+      source = ./tmux-sessionizer.sh;
       executable = true;
     };
     sessionPath = ["$HOME/.local/bin"];

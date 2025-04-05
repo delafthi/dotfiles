@@ -2,28 +2,20 @@
   description = "Your new nix config";
 
   inputs = {
-    # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    # nix-darwin
     darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Home manager
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # tokyonight ressources
     tokyonight = {
       url = "github:folke/tokyonight.nvim";
       flake = false;
     };
-
-    # zen-browser
+    treefmt-nix.url = "github:numtide/treefmt-nix";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
@@ -32,6 +24,7 @@
     darwin,
     home-manager,
     tokyonight,
+    treefmt-nix,
     zen-browser,
     ...
   }: let
@@ -41,9 +34,10 @@
     forDarwinSystems = nixpkgs.lib.genAttrs darwinSystems;
     forLinuxSystems = nixpkgs.lib.genAttrs linuxSystems;
     pkgs = forAllSystems (system: nixpkgs.legacyPackages.${system});
+    treefmt = forAllSystems (system: treefmt-nix.lib.evalModule pkgs.${system} ./treefmt.nix);
     user = "delafthi";
   in {
-    formatter = forAllSystems (system: pkgs.${system}.alejandra);
+    formatter = forAllSystems (system: treefmt.${system}.config.build.wrapper);
     packages =
       forDarwinSystems
       (system: {
