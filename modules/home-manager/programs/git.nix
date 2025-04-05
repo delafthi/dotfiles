@@ -75,9 +75,7 @@
       ".DS_Store"
       ".gdb_history"
       ".python-version"
-      "~*"
       "compile_commands.json"
-      "mnt/"
     ];
     lfs = {
       enable = true;
