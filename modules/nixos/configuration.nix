@@ -116,7 +116,6 @@
         "wheel"
         "audio"
         "dialout"
-        "docker"
         "libvirtd"
         "networkmanager"
       ];
@@ -127,10 +126,6 @@
     };
   };
   virtualisation = {
-    docker = {
-      enable = true;
-      autoPrune.enable = true;
-    };
     libvirtd.enable = true;
     lxd.enable = true;
     spiceUSBRedirection.enable = true;
