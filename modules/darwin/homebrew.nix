@@ -16,7 +16,6 @@
         "blender"
         "element"
         "ghostty"
-        "keepingyouawake"
         "lunar"
         "meetingbar"
         "monodraw"
@@ -30,6 +29,7 @@
         "zen-browser"
       ];
     # masApps = {
+    #   Amphetamine = 937984704;
     #   AnyConnect = 1135064690;
     #   Developer = 640199958;
     #   Bear = 1091189122;
