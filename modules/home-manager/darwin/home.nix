@@ -7,7 +7,6 @@
     ../home.nix
     ./darwin.nix
     ./xdg.nix
-    ./programs
   ];
 
   home = {

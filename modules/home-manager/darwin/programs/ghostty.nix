@@ -1,3 +1,0 @@
-{
-  programs.ghostty.package = null;
-}
