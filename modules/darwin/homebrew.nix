@@ -14,7 +14,6 @@
       }) [
         "alcove"
         "blender"
-        "cleanshot"
         "element"
         "ghostty"
         "keepingyouawake"
@@ -26,6 +25,7 @@
         "proton-mail"
         "protonvpn"
         "rocket"
+        "shottr"
         "zen-browser"
       ];
     # masApps = {
