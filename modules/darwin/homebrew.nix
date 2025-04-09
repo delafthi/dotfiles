@@ -26,6 +26,7 @@
         "protonvpn"
         "rocket"
         "shottr"
+        "wacom-tablet"
         "zen-browser"
       ];
     # masApps = {
