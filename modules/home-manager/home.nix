@@ -8,6 +8,7 @@
     ./editorconfig.nix
     ./fonts.nix
     ./programs
+    ./services
   ];
 
   nixpkgs = {
