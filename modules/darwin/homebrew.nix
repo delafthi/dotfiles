@@ -16,6 +16,7 @@
         "blender"
         "element"
         "ghostty"
+        "krita"
         "lunar"
         "meetingbar"
         "monodraw"

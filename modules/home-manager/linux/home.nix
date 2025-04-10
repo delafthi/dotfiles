@@ -24,6 +24,7 @@
       ascii-draw
       blender
       element-desktop
+      krita
       mpv
       proton-pass
       protonmail-desktop
