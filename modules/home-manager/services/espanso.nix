@@ -91,12 +91,12 @@
                   pkgs = (import nixpkgs) {
                     inherit system;
                   };
-                  treefmt = treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
+                  treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
                 in {
                   checks = {
-                    formatting = treefmt.config.build.check self;
+                    formatting = treefmtEval.config.build.check self;
                   };
-                  formatter = treefmt.config.build.wrapper;
+                  formatter = treefmtEval.config.build.wrapper;
                   packages = {
                     default = pkgs.callPackage ./nix/package.nix;
                   };

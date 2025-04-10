@@ -33,10 +33,10 @@
     flake-utils.lib.eachDefaultSystem (system: let
       pkgs = (import nixpkgs) {inherit system;};
       inherit (pkgs.lib) optionalAttrs;
-      treefmt = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
+      treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
       user = "delafthi";
     in {
-      formatter = treefmt.config.build.wrapper;
+      formatter = treefmtEval.config.build.wrapper;
       packages = {
         darwinConfigurations = optionalAttrs pkgs.hostPlatform.isDarwin {
           "Thierrys-MacBook-Air" = darwin.lib.darwinSystem {
