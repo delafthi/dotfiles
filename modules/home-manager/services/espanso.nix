@@ -98,7 +98,7 @@
                   };
                   formatter = treefmtEval.config.build.wrapper;
                   packages = {
-                    default = pkgs.callPackage ./nix/package.nix;
+                    default = pkgs.callPackage ./nix/{{prompt.name}}.nix;
                   };
                   devShells = {
                     default = pkgs.mkShell {
