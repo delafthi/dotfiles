@@ -7,6 +7,7 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,26 +23,22 @@
   outputs = {
     nixpkgs,
     darwin,
+    flake-utils,
     home-manager,
     tokyonight,
     treefmt-nix,
     zen-browser,
     ...
-  }: let
-    darwinSystems = ["aarch64-darwin" "x86_64-darwin"];
-    linuxSystems = ["aarch64-linux" "x86_64-linux"];
-    forAllSystems = nixpkgs.lib.genAttrs (darwinSystems ++ linuxSystems);
-    forDarwinSystems = nixpkgs.lib.genAttrs darwinSystems;
-    forLinuxSystems = nixpkgs.lib.genAttrs linuxSystems;
-    pkgs = forAllSystems (system: nixpkgs.legacyPackages.${system});
-    treefmt = forAllSystems (system: treefmt-nix.lib.evalModule pkgs.${system} ./treefmt.nix);
-    user = "delafthi";
-  in {
-    formatter = forAllSystems (system: treefmt.${system}.config.build.wrapper);
-    packages =
-      forDarwinSystems
-      (system: {
-        darwinConfigurations = {
+  }:
+    flake-utils.lib.eachDefaultSystem (system: let
+      pkgs = (import nixpkgs) {inherit system;};
+      inherit (pkgs.lib) optionalAttrs;
+      treefmt = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
+      user = "delafthi";
+    in {
+      formatter = treefmt.config.build.wrapper;
+      packages = {
+        darwinConfigurations = optionalAttrs pkgs.hostPlatform.isDarwin {
           "Thierrys-MacBook-Air" = darwin.lib.darwinSystem {
             inherit system;
             modules = [
@@ -57,9 +54,7 @@
             ];
           };
         };
-      })
-      // forLinuxSystems (system: {
-        nixosConfigurations = {
+        nixosConfigurations = optionalAttrs pkgs.hostPlatform.isLinux {
           "Thierrys-MacBook-Air" = nixpkgs.lib.nixosSystem {
             inherit system;
             modules = [
@@ -78,6 +73,6 @@
             ];
           };
         };
-      });
-  };
+      };
+    });
 }
