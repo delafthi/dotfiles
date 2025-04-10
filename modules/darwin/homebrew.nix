@@ -23,7 +23,6 @@
         "proton-drive"
         "proton-mail"
         "protonvpn"
-        "rocket"
         "shottr"
         "wacom-tablet"
         "zen-browser"
