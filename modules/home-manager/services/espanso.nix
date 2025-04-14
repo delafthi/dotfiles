@@ -12,6 +12,10 @@
         global_vars = [
         ];
       };
+      # Disables automatic generation of base.yaml
+      base = { 
+        matches = [];
+      };
       direnv = {
         matches = [
           {
