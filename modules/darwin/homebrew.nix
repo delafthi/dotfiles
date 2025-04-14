@@ -25,6 +25,7 @@
         "proton-mail"
         "protonvpn"
         "shottr"
+        "subler"
         "wacom-tablet"
         "zen-browser"
       ];
