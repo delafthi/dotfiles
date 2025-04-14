@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{config, pkgs, ...}: {
   programs.helix = {
     enable = true;
     defaultEditor = true;
@@ -108,4 +108,6 @@
       };
     };
   };
+  # duplicate gits global ignore file to `helix/ignore` until https://github.com/helix-editor/helix/pull/12484 is merged
+  xdg.configFile."helix/ignore".text = pkgs.lib.strings.concatLines config.programs.git.ignores;
 }

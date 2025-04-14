@@ -182,6 +182,7 @@
       ".direnv"
       ".env"
       ".git"
+      ".helix"
       ".jj"
       "compile_commands.json"
     ];
