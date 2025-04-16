@@ -1,15 +1,15 @@
 {pkgs, ...}: {
   programs.tmux = {
     enable = true;
+    aggressiveResize = true;
     baseIndex = 1;
     clock24 = true;
     customPaneNavigationAndResize = true;
     extraConfig = ''
       # Settings
       set -g allow-passthrough on
-      set -g default-terminal "tmux-256color"
       set -g display-time 4000
-      set -s escape-time 0
+      set -g escape-time 0
       set -g renumber-windows on
       set -g set-clipboard on
       set -g set-titles on
@@ -74,6 +74,7 @@
     reverseSplit = true;
     secureSocket = true;
     shortcut = "a";
+    terminal = "tmux-256color";
   };
   xdg.configFile."tmux/ansi2tmux.pl" = {
     source = ./ansi2tmux.pl;
