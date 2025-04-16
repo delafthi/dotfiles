@@ -6,9 +6,22 @@
   imports = [
     ./hardware-configuration.nix
   ];
-  boot.loader = {
-    efi.canTouchEfiVariables = true;
-    systemd-boot.enable = true;
+  boot = {
+    consoleLogLevel = 3;
+    initrd.verbose = false;
+    kernelParams = [
+      "boot.shell_on_fail"
+      "quiet"
+      "rd.systemd.show_status=auto"
+      "splash"
+      "udev.log_priority=3"
+    ];
+    loader = {
+      efi.canTouchEfiVariables = true;
+      systemd-boot.enable = true;
+      timeout = 0;
+    };
+    plymouth.enable = true;
   };
   catppuccin = {
     enable = true;
