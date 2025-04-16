@@ -7,6 +7,7 @@
   imports = [
     ./editorconfig.nix
     ./fonts.nix
+    ./theme.nix
     ./programs
     ./services
   ];

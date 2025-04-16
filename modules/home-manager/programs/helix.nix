@@ -1,4 +1,8 @@
-{config, pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   programs.helix = {
     enable = true;
     defaultEditor = true;
@@ -70,7 +74,6 @@
       ];
     };
     settings = {
-      theme = "tokyonight";
       editor = {
         bufferline = "multiple";
         color-modes = true;

@@ -12,10 +12,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    tokyonight = {
-      url = "github:folke/tokyonight.nvim";
-      flake = false;
-    };
+    catppuccin.url = "github:catppuccin/nix";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
@@ -25,7 +22,7 @@
     darwin,
     flake-utils,
     home-manager,
-    tokyonight,
+    catppuccin,
     treefmt-nix,
     zen-browser,
     ...
@@ -46,9 +43,13 @@
               home-manager.darwinModules.home-manager
               {
                 home-manager = {
-                  extraSpecialArgs = {inherit tokyonight;};
                   useUserPackages = true;
-                  users.${user} = import ./modules/home-manager/darwin/home.nix;
+                  users.${user} = {
+                    imports = [
+                      ./modules/home-manager/darwin/home.nix
+                      catppuccin.homeModules.catppuccin
+                    ];
+                  };
                 };
               }
             ];
@@ -59,15 +60,20 @@
             inherit system;
             modules = [
               ./modules/nixos/configuration.nix
+              catppuccin.nixosModules.catppuccin
               home-manager.nixosModules.home-manager
               {
                 home-manager = {
                   extraSpecialArgs = {
-                    inherit tokyonight;
                     zen-browser = zen-browser.packages.${system};
                   };
                   useUserPackages = true;
-                  users.${user} = import ./modules/home-manager/linux/home.nix;
+                  users.${user} = {
+                    imports = [
+                      ./modules/home-manager/linux/home.nix
+                      catppuccin.homeManagerModules.catppuccin
+                    ];
+                  };
                 };
               }
             ];

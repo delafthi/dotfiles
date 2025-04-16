@@ -13,7 +13,7 @@
         ];
       };
       # Disables automatic generation of base.yaml
-      base = { 
+      base = {
         matches = [];
       };
       direnv = {

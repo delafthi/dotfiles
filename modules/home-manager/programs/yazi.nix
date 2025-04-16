@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  tokyonight,
   ...
 }: {
   home = {
@@ -34,6 +33,5 @@
       };
     };
     shellWrapperName = "yd";
-    theme = lib.importTOML "${tokyonight}/extras/yazi/tokyonight_night.toml";
   };
 }
