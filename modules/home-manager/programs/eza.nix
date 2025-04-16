@@ -1,7 +1,8 @@
 {
-config,
-pkgs,
- ...}: {
+  config,
+  pkgs,
+  ...
+}: {
   home = {
     sessionVariables = {
       # Required on macOS

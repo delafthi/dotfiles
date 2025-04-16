@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   programs.tmux = {
     enable = true;
     baseIndex = 1;
@@ -59,6 +59,18 @@
     keyMode = "vi";
     mouse = true;
     newSession = true;
+    plugins = with pkgs.tmuxPlugins; [
+      {
+        plugin = continuum;
+        extraConfig = ''
+          set -g @continuum-restore "on"
+        '';
+      }
+      {plugin = open;}
+      {plugin = resurrect;}
+      {plugin = tmux-thumbs;}
+      {plugin = yank;}
+    ];
     reverseSplit = true;
     secureSocket = true;
     shortcut = "a";
