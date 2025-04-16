@@ -20,10 +20,10 @@
     ./password-store.nix
     ./python.nix
     ./starship.nix
+    ./tmux.nix
     ./yazi.nix
     ./zoxide.nix
     ./bins
     ./gtkwave
-    ./tmux
   ];
 }

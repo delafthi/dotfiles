@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   programs.tmux = {
     enable = true;
     aggressiveResize = true;
@@ -46,13 +50,10 @@
 
       # Statusbar
       set -g status-interval 5
-      set -g status-left "#[fg=blue,bold]#S #[fg=default,nobold]#(starship module git_branch | $HOME/.config/tmux/ansi2tmux.pl)#[fg=default,nobold]#(starship module git_status | $HOME/.config/tmux/ansi2tmux.pl) "
-      set -g status-left-length 70
-      set -g status-right "%a %b %e %H:%M"
+      set -g status-left-length 60
       set -g status-position "top"
-      set -g status-style bg=default,fg=white
-      set -g window-status-current-format "#[fg=brightblack,nobold,bg=default][#[fg=brightblack,nobold,bg=default]#I #[fg=magenta,nobold,bg=default]#F #[fg=blue,blue,bold,bg=default]#W#[fg=brightblack,nobold,bg=default]]"
-      set -g window-status-format "#[fg=brightblack,nobold,bg=default][#[fg=brightblack,bg=default]#I #F #[fg=white,bg=default]#W#[fg=brightblack,nobold,bg=default]]"
+      set -g status-right "%a %b %e %H:%M"
+      set -g status-right-length 60
     '';
     focusEvents = true;
     historyLimit = 10000;
@@ -60,6 +61,19 @@
     mouse = true;
     newSession = true;
     plugins = with pkgs.tmuxPlugins; [
+      {
+        plugin = catppuccin;
+        extraConfig = ''
+          set -g status-left "#{E:@catppuccin_status_session} "
+          set -g @catppuccin_flavor "${config.catppuccin.flavor}"
+          set -g @catppuccin_status_background "none"
+          set -g @catppuccin_status_connect_separator "no"
+          set -g @catppuccin_status_left_separator "█"
+          set -g @catppuccin_status_right_separator "█"
+          set -g @catppuccin_window_default_text " #W"
+          set -g @catppuccin_window_current_text " #W#{?window_zoomed_flag,[],}"
+        '';
+      }
       {
         plugin = continuum;
         extraConfig = ''
@@ -75,9 +89,5 @@
     secureSocket = true;
     shortcut = "a";
     terminal = "tmux-256color";
-  };
-  xdg.configFile."tmux/ansi2tmux.pl" = {
-    source = ./ansi2tmux.pl;
-    executable = true;
   };
 }
