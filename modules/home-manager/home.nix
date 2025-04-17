@@ -45,7 +45,6 @@
       procs
       ripgrep
       tealdeer
-      texlive.combined.scheme-full
       tokei
       tree
       unrar
