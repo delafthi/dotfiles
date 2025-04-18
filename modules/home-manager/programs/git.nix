@@ -185,6 +185,7 @@
       ".helix"
       ".jj"
       "compile_commands.json"
+      "result"
     ];
     lfs = {
       enable = true;
