@@ -93,6 +93,10 @@
       interval = "monthly";
       fileSystems = ["/" "/var" "/data"];
     };
+    displayManager = {
+      enable = true;
+      defaultSession = "gnome-xorg";
+    };
     gnome = {
       gnome-keyring.enable = lib.mkForce false;
     };
