@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   programs.helix = {
     enable = true;
     defaultEditor = true;
@@ -40,7 +41,7 @@
         };
         pyright = {
           command = "basedpyright-langserver";
-          args = ["--stdio"];
+          args = [ "--stdio" ];
         };
         rust-analyzer = {
           config = {
@@ -53,22 +54,31 @@
           name = "markdown";
           formatter = {
             command = "prettier";
-            args = ["--parser" "markdown"];
+            args = [
+              "--parser"
+              "markdown"
+            ];
           };
         }
         {
           name = "nix";
-          language-servers = ["nixd"];
+          language-servers = [ "nixd" ];
         }
         {
           name = "python";
-          language-servers = ["ruff" "pyright"];
+          language-servers = [
+            "ruff"
+            "pyright"
+          ];
         }
         {
           name = "yaml";
           formatter = {
             command = "prettier";
-            args = ["--parser" "yaml"];
+            args = [
+              "--parser"
+              "yaml"
+            ];
           };
         }
       ];
@@ -93,9 +103,21 @@
         scrolloff = 8;
         soft-wrap.enable = true;
         statusline = {
-          left = ["mode" "spacer" "version-control"];
-          center = ["file-name"];
-          right = ["diagnostics" "file-modification-indicator" "read-only-indicator" "file-type" "separator" "position" "total-line-numbers"];
+          left = [
+            "mode"
+            "spacer"
+            "version-control"
+          ];
+          center = [ "file-name" ];
+          right = [
+            "diagnostics"
+            "file-modification-indicator"
+            "read-only-indicator"
+            "file-type"
+            "separator"
+            "position"
+            "total-line-numbers"
+          ];
           mode = {
             normal = "NORMAL";
             insert = "INSERT";

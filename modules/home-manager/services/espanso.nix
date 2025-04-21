@@ -14,7 +14,7 @@
       };
       # Disables automatic generation of base.yaml
       base = {
-        matches = [];
+        matches = [ ];
       };
       direnv = {
         matches = [
@@ -187,7 +187,7 @@
               {
                 projectRootFile = "flake.nix";
                 programs = {
-                  alejandra.enable = true;
+                  nixfmt.enable = true;
                 };
                 settings.global.excludes = [
                   ".cache/**"

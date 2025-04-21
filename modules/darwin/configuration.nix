@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./homebrew.nix
   ];
@@ -7,7 +8,10 @@
     shellAliases = {
       bash = "${pkgs.bashInteractive}/bin/bash";
     };
-    shells = with pkgs; [bashInteractive fish];
+    shells = with pkgs; [
+      bashInteractive
+      fish
+    ];
     systemPackages = with pkgs; [
       coreutils
       git
@@ -23,9 +27,12 @@
     linux-builder.enable = true;
     optimise.automatic = true;
     settings = {
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       sandbox = true;
-      trusted-users = ["@admin"];
+      trusted-users = [ "@admin" ];
     };
   };
   programs = {

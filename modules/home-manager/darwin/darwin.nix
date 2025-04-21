@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   targets.darwin = {
     currentHostDefaults = {
       "com.apple.controlcenter" = {
@@ -9,7 +10,10 @@
       NSGlobalDomain = {
         AppleInterfaceStyle = "Dark";
         AppleKeyboardUIMode = 3;
-        AppleLanguages = ["en-US" "de-CH"];
+        AppleLanguages = [
+          "en-US"
+          "de-CH"
+        ];
         AppleLocale = "en_US@rg=chzzzz";
         AppleMeasurementUnits = "Centimeters";
         AppleMetricUnits = true;
@@ -46,24 +50,25 @@
         minimize-to-application = true;
         orientation = "bottom";
         persistent-apps =
-          map (app: {
-            tile-data = {
-              file-data = {
-                _CFURLString = app;
-                _CFURLStringType = 0;
+          map
+            (app: {
+              tile-data = {
+                file-data = {
+                  _CFURLString = app;
+                  _CFURLStringType = 0;
+                };
               };
-            };
-          })
-          [
-            "/Applications/Zen.app"
-            "/Applications/WhatsApp.app"
-            "/Applications/Proton Mail.app"
-            "/Applications/Proton Pass.app"
-            "/System/Applications/Music.app"
-            "/Applications/Things3.app"
-            "/Applications/Bear.app"
-            "/Applications/ghostty.app"
-          ];
+            })
+            [
+              "/Applications/Zen.app"
+              "/Applications/WhatsApp.app"
+              "/Applications/Proton Mail.app"
+              "/Applications/Proton Pass.app"
+              "/System/Applications/Music.app"
+              "/Applications/Things3.app"
+              "/Applications/Bear.app"
+              "/Applications/ghostty.app"
+            ];
         show-recents = false;
         showhidden = true;
         tilesize = 60;

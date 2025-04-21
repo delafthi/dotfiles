@@ -3,7 +3,8 @@
   pkgs,
   zen-browser,
   ...
-}: {
+}:
+{
   imports = [
     ../home.nix
     ./dconf.nix

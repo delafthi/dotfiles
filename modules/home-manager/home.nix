@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./editorconfig.nix
     ./fonts.nix
@@ -23,7 +24,7 @@
 
   home = {
     activation = {
-      createDeveloperDirectory = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      createDeveloperDirectory = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         run mkdir -p $VERBOSE_ARG ${config.home.homeDirectory}/Developer
       '';
     };

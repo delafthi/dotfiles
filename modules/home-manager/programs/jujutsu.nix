@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home = {
     packages = with pkgs; [
       difftastic
@@ -8,16 +9,30 @@
     enable = true;
     settings = {
       aliases = {
-        a = ["abandon"];
-        b = ["bookmark"];
-        c = ["commit"];
-        d = ["describe"];
-        e = ["edit"];
-        f = ["git" "fetch"];
-        F = ["git" "fetch" "--all-remotes"];
-        n = ["new"];
-        p = ["git" "push"];
-        P = ["git" "push" "--all"];
+        a = [ "abandon" ];
+        b = [ "bookmark" ];
+        c = [ "commit" ];
+        d = [ "describe" ];
+        e = [ "edit" ];
+        f = [
+          "git"
+          "fetch"
+        ];
+        F = [
+          "git"
+          "fetch"
+          "--all-remotes"
+        ];
+        n = [ "new" ];
+        p = [
+          "git"
+          "push"
+        ];
+        P = [
+          "git"
+          "push"
+          "--all"
+        ];
       };
       signing = {
         behavior = "own";
@@ -29,7 +44,12 @@
       };
       ui = {
         default-command = "log";
-        diff.tool = ["difft" "--color=always" "$left" "$right"];
+        diff.tool = [
+          "difft"
+          "--color=always"
+          "$left"
+          "$right"
+        ];
       };
       user = {
         name = "Thierry Delafontaine";

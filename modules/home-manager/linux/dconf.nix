@@ -1,13 +1,19 @@
-{lib, ...}:
-with lib.hm.gvariant; {
+{ lib, ... }:
+with lib.hm.gvariant;
+{
   dconf = {
     settings = {
       "com/github/stunkymonkey/nautilus-open-any-terminal" = {
         terminal = "ghostty";
       };
       "org/gnome/desktop/input-sources" = {
-        sources = [(mkTuple ["xkb" "us+mac"])];
-        xkb-options = [];
+        sources = [
+          (mkTuple [
+            "xkb"
+            "us+mac"
+          ])
+        ];
+        xkb-options = [ ];
       };
       "org/gnome/desktop/interface" = {
         color-scheme = "prefer-dark";
@@ -19,18 +25,18 @@ with lib.hm.gvariant; {
         event-sounds = false;
       };
       "org/gnome/desktop/wm/keybindings" = {
-        close = ["<Super>q"];
-        maximize = ["<Control><Super>f"];
-        minimize = ["<Super>m"];
-        show-desktop = ["<Control><Super>d"];
-        switch-applications = ["<Super>Tab"];
-        switch-applications-backward = ["<Shift><Super>Tab"];
-        switch-group = ["<Super>grave"];
-        switch-group-backward = ["<Shift><Super>grave"];
-        switch-input-source = ["<Control><Alt>Space"];
-        switch-input-source-backward = ["<Control>Space"];
-        switch-to-workspace-left = ["<Control>Left"];
-        switch-to-workspace-right = ["<Control>Right"];
+        close = [ "<Super>q" ];
+        maximize = [ "<Control><Super>f" ];
+        minimize = [ "<Super>m" ];
+        show-desktop = [ "<Control><Super>d" ];
+        switch-applications = [ "<Super>Tab" ];
+        switch-applications-backward = [ "<Shift><Super>Tab" ];
+        switch-group = [ "<Super>grave" ];
+        switch-group-backward = [ "<Shift><Super>grave" ];
+        switch-input-source = [ "<Control><Alt>Space" ];
+        switch-input-source-backward = [ "<Control>Space" ];
+        switch-to-workspace-left = [ "<Control>Left" ];
+        switch-to-workspace-right = [ "<Control>Right" ];
       };
       "org/gnome/desktop/wm/preferences" = {
         button-layout = "close,minimize,maximize:appmenu";
@@ -42,16 +48,16 @@ with lib.hm.gvariant; {
         workspaces-only-on-primary = true;
       };
       "org/gnome/mutter/keybindings" = {
-        toggle-tiled-left = ["<Control><Super>h"];
-        toggle-tiled-right = ["<Control><Super>l"];
+        toggle-tiled-left = [ "<Control><Super>h" ];
+        toggle-tiled-right = [ "<Control><Super>l" ];
       };
       "org/gnome/settings-daemon/plugins/media-keys" = {
         custom-keybindings = [
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
           "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
         ];
-        logout = ["<Shift><Super>q"];
-        screensaver = ["<Control><Super>q"];
+        logout = [ "<Shift><Super>q" ];
+        screensaver = [ "<Control><Super>q" ];
       };
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
         binding = "<Control><Super>Return";
@@ -93,24 +99,34 @@ with lib.hm.gvariant; {
         use-bold-icons = true;
       };
       "org/gnome/shell/extensions/search-light" = {
-        background-color = mkTuple [0.11765 0.12941 0.1451 1.0];
-        border-color = mkTuple [0.4 0.40784 0.41569 1.0];
+        background-color = mkTuple [
+          0.11765
+          0.12941
+          0.1451
+          1.0
+        ];
+        border-color = mkTuple [
+          0.4
+          0.40784
+          0.41569
+          1.0
+        ];
         border-radius = 1.1;
         border-thickness = 1;
-        shortcut-search = ["<Super>Space"];
+        shortcut-search = [ "<Super>Space" ];
       };
       "org/gnome/shell/keybindings" = {
-        screenshot = ["<Shift><Super>3"];
-        screenshot-window = ["<Shift><Super>4"];
-        show-screen-recording-ui = ["<Shift><Super>5"];
-        show-screenshot-ui = ["<Control><Shift><Super>3"];
-        toggle-application-view = ["<Control>Down"];
-        toggle-message-tray = ["<Control><Shift><Super>n"];
-        toggle-overview = ["<Control>Up"];
+        screenshot = [ "<Shift><Super>3" ];
+        screenshot-window = [ "<Shift><Super>4" ];
+        show-screen-recording-ui = [ "<Shift><Super>5" ];
+        show-screenshot-ui = [ "<Control><Shift><Super>3" ];
+        toggle-application-view = [ "<Control>Down" ];
+        toggle-message-tray = [ "<Control><Shift><Super>n" ];
+        toggle-overview = [ "<Control>Up" ];
       };
       "org/virt-manager/virt-manager/connections" = {
-        autoconnect = ["qemu:///system"];
-        uris = ["qemu:///system"];
+        autoconnect = [ "qemu:///system" ];
+        uris = [ "qemu:///system" ];
       };
     };
   };

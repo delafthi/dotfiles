@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   programs.tmux = {
     enable = true;
     aggressiveResize = true;
@@ -80,10 +81,10 @@
           set -g @continuum-restore "on"
         '';
       }
-      {plugin = open;}
-      {plugin = resurrect;}
-      {plugin = tmux-thumbs;}
-      {plugin = yank;}
+      { plugin = open; }
+      { plugin = resurrect; }
+      { plugin = tmux-thumbs; }
+      { plugin = yank; }
     ];
     reverseSplit = true;
     secureSocket = true;

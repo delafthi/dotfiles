@@ -2,7 +2,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   home = {
     packages = with pkgs; [
       fd
@@ -23,7 +24,11 @@
     enable = true;
     settings = {
       manager = {
-        ratio = [2 4 3];
+        ratio = [
+          2
+          4
+          3
+        ];
         sort_dir_fist = true;
         showhidden = true;
       };

@@ -2,7 +2,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
   ];
@@ -42,7 +43,10 @@
       totem
       yelp
     ];
-    shells = with pkgs; [bashInteractive fish];
+    shells = with pkgs; [
+      bashInteractive
+      fish
+    ];
     systemPackages = with pkgs; [
       coreutils
       git
@@ -72,8 +76,11 @@
     optimise.automatic = true;
     settings = {
       auto-optimise-store = true;
-      experimental-features = ["nix-command" "flakes"];
-      trusted-users = ["@wheel"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      trusted-users = [ "@wheel" ];
     };
   };
   nixpkgs = {
@@ -91,7 +98,11 @@
     btrfs.autoScrub = {
       enable = true;
       interval = "monthly";
-      fileSystems = ["/" "/var" "/data"];
+      fileSystems = [
+        "/"
+        "/var"
+        "/data"
+      ];
     };
     displayManager = {
       enable = true;
@@ -113,13 +124,16 @@
     printing.enable = true;
     qemuGuest.enable = true;
     spice-vdagentd.enable = true;
-    udev.packages = with pkgs; [zsa-udev-rules logitech-udev-rules];
+    udev.packages = with pkgs; [
+      zsa-udev-rules
+      logitech-udev-rules
+    ];
     xserver = {
       enable = true;
       displayManager.gdm.enable = true;
       desktopManager.gnome = {
         enable = true;
-        extraGSettingsOverridePackages = [pkgs.nautilus-open-any-terminal];
+        extraGSettingsOverridePackages = [ pkgs.nautilus-open-any-terminal ];
       };
       xkb = {
         layout = "us";

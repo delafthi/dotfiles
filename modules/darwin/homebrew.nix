@@ -1,34 +1,36 @@
 {
-  environment.systemPath = ["/opt/homebrew/bin"];
+  environment.systemPath = [ "/opt/homebrew/bin" ];
   homebrew = {
     enable = true;
-    brews = ["lgogdownloader"];
+    brews = [ "lgogdownloader" ];
     caskArgs = {
       no_quarantine = true;
       require_sha = true;
     };
     casks =
-      builtins.map (cask: {
-        name = cask;
-        greedy = true;
-      }) [
-        "alcove"
-        "blender"
-        "element"
-        "ghostty"
-        "krita"
-        "lunar"
-        "meetingbar"
-        "monodraw"
-        "popclip"
-        "proton-drive"
-        "proton-mail"
-        "protonvpn"
-        "shottr"
-        "subler"
-        "wacom-tablet"
-        "zen-browser"
-      ];
+      builtins.map
+        (cask: {
+          name = cask;
+          greedy = true;
+        })
+        [
+          "alcove"
+          "blender"
+          "element"
+          "ghostty"
+          "krita"
+          "lunar"
+          "meetingbar"
+          "monodraw"
+          "popclip"
+          "proton-drive"
+          "proton-mail"
+          "protonvpn"
+          "shottr"
+          "subler"
+          "wacom-tablet"
+          "zen-browser"
+        ];
     # masApps = {
     #   Amphetamine = 937984704;
     #   AnyConnect = 1135064690;

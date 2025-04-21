@@ -1,12 +1,10 @@
-{pkgs, ...}: {
-  home.packages = [pkgs.nerd-fonts.iosevka-term-slab];
+{ pkgs, ... }:
+{
+  home.packages = [ pkgs.nerd-fonts.iosevka-term-slab ];
   programs.ghostty = {
     enable = true;
     # The ghostty package is currently broken on darwin
-    package =
-      if pkgs.hostPlatform.isDarwin
-      then null
-      else pkgs.ghostty;
+    package = if pkgs.hostPlatform.isDarwin then null else pkgs.ghostty;
     enableBashIntegration = true;
     enableFishIntegration = true;
     enableZshIntegration = true;

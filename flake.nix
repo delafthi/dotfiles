@@ -20,68 +20,73 @@
     };
   };
 
-  outputs = {
-    nixpkgs,
-    darwin,
-    flake-utils,
-    home-manager,
-    catppuccin,
-    treefmt-nix,
-    zen-browser,
-    ...
-  }:
-    flake-utils.lib.eachDefaultSystem (system: let
-      pkgs = (import nixpkgs) {inherit system;};
-      inherit (pkgs.lib) optionalAttrs;
-      treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
-      user = "delafthi";
-    in {
-      formatter = treefmtEval.config.build.wrapper;
-      packages = {
-        darwinConfigurations = optionalAttrs pkgs.hostPlatform.isDarwin {
-          "Thierrys-MacBook-Air" = darwin.lib.darwinSystem {
-            inherit system;
-            modules = [
-              ./modules/darwin/configuration.nix
-              home-manager.darwinModules.home-manager
-              {
-                home-manager = {
-                  useUserPackages = true;
-                  users.${user} = {
-                    imports = [
-                      ./modules/home-manager/darwin/home.nix
-                      catppuccin.homeModules.catppuccin
-                    ];
+  outputs =
+    {
+      nixpkgs,
+      darwin,
+      flake-utils,
+      home-manager,
+      catppuccin,
+      treefmt-nix,
+      zen-browser,
+      ...
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
+      let
+        pkgs = (import nixpkgs) { inherit system; };
+        inherit (pkgs.lib) optionalAttrs;
+        treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
+        user = "delafthi";
+      in
+      {
+        formatter = treefmtEval.config.build.wrapper;
+        packages = {
+          darwinConfigurations = optionalAttrs pkgs.hostPlatform.isDarwin {
+            "Thierrys-MacBook-Air" = darwin.lib.darwinSystem {
+              inherit system;
+              modules = [
+                ./modules/darwin/configuration.nix
+                home-manager.darwinModules.home-manager
+                {
+                  home-manager = {
+                    useUserPackages = true;
+                    users.${user} = {
+                      imports = [
+                        ./modules/home-manager/darwin/home.nix
+                        catppuccin.homeModules.catppuccin
+                      ];
+                    };
                   };
-                };
-              }
-            ];
+                }
+              ];
+            };
+          };
+          nixosConfigurations = optionalAttrs pkgs.hostPlatform.isLinux {
+            "Thierrys-MacBook-Air" = nixpkgs.lib.nixosSystem {
+              inherit system;
+              modules = [
+                ./modules/nixos/configuration.nix
+                catppuccin.nixosModules.catppuccin
+                home-manager.nixosModules.home-manager
+                {
+                  home-manager = {
+                    extraSpecialArgs = {
+                      zen-browser = zen-browser.packages.${system};
+                    };
+                    useUserPackages = true;
+                    users.${user} = {
+                      imports = [
+                        ./modules/home-manager/linux/home.nix
+                        catppuccin.homeManagerModules.catppuccin
+                      ];
+                    };
+                  };
+                }
+              ];
+            };
           };
         };
-        nixosConfigurations = optionalAttrs pkgs.hostPlatform.isLinux {
-          "Thierrys-MacBook-Air" = nixpkgs.lib.nixosSystem {
-            inherit system;
-            modules = [
-              ./modules/nixos/configuration.nix
-              catppuccin.nixosModules.catppuccin
-              home-manager.nixosModules.home-manager
-              {
-                home-manager = {
-                  extraSpecialArgs = {
-                    zen-browser = zen-browser.packages.${system};
-                  };
-                  useUserPackages = true;
-                  users.${user} = {
-                    imports = [
-                      ./modules/home-manager/linux/home.nix
-                      catppuccin.homeManagerModules.catppuccin
-                    ];
-                  };
-                };
-              }
-            ];
-          };
-        };
-      };
-    });
+      }
+    );
 }

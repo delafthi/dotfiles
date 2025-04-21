@@ -2,10 +2,11 @@
   lib,
   config,
   ...
-}: {
+}:
+{
   home = {
     activation = {
-      createTemplatesDirectory = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      createTemplatesDirectory = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         run mkdir -p $VERBOSE_ARG ${config.home.homeDirectory}/Templates
       '';
     };

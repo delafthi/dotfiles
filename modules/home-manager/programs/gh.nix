@@ -1,5 +1,6 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [bat];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [ bat ];
   programs.gh = {
     enable = true;
     gitCredentialHelper.hosts = [

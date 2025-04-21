@@ -24,7 +24,7 @@
               --template 'separate(" ", change_id.shortest(4), bookmarks)'
           '';
           description = "The current jj change";
-          detect_folders = [".jj"];
+          detect_folders = [ ".jj" ];
           format = "[$symbol]($style)$output ";
           ignore_timeout = true;
           style = "bold purple";
@@ -36,7 +36,7 @@
               --template 'concat( if(conflict, " "), if(divergent, " "), if(hidden, " "), if(immutable, " "))'
           '';
           description = "The current jj status";
-          detect_folders = [".jj"];
+          detect_folders = [ ".jj" ];
           format = "([\\[ $output \\]]($style) )";
           ignore_timeout = true;
           style = "bold red";
