@@ -44,6 +44,7 @@
               trim_trailing_whitespace = true
               indent_style = space
               indent_size = 2
+              insert_final_newline = true
 
               [{Justfile,Makefile}]
               indent_style = tab
