@@ -4,7 +4,6 @@
     ./fish.nix
     ./bash.nix
     ./bat.nix
-    ./clang.nix
     ./dircolors.nix
     ./direnv.nix
     ./eza.nix
