@@ -17,9 +17,9 @@
     ./helix.nix
     ./jujutsu.nix
     ./password-store.nix
-    ./python.nix
     ./starship.nix
     ./tmux.nix
+    ./uv.nix
     ./yazi.nix
     ./zoxide.nix
     ./bins
