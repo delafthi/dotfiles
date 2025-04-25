@@ -5,9 +5,6 @@
     enable = true;
     # The ghostty package is currently broken on darwin
     package = if pkgs.hostPlatform.isDarwin then null else pkgs.ghostty;
-    enableBashIntegration = true;
-    enableFishIntegration = true;
-    enableZshIntegration = true;
     settings = {
       font-family = "IosevkaTermSlab Nerd Font Mono";
       font-size = 14;

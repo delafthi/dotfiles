@@ -5,9 +5,7 @@
   ];
   environment = {
     darwinConfig = "$HOME/Developer/repos/nix-config/modules/darwin/configuration.nix";
-    shells = with pkgs; [
-      fish
-    ];
+    shells = [ pkgs.fish ];
     systemPackages = with pkgs; [
       coreutils
       git
@@ -36,10 +34,7 @@
       enable = true;
       completion.enable = true;
     };
-    fish = {
-      enable = true;
-      useBabelfish = true;
-    };
+    fish.enable = true;
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;

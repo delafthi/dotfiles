@@ -1,12 +1,13 @@
 {
   imports = [
     ./bat.nix
-    ./fish.nix
+    ./carapace.nix
     ./bash.nix
     ./bat.nix
     ./dircolors.nix
     ./direnv.nix
     ./eza.nix
+    ./fish.nix
     ./fzf.nix
     ./ghostty.nix
     ./gh.nix
@@ -16,6 +17,7 @@
     ./gpg.nix
     ./helix.nix
     ./jujutsu.nix
+    ./nushell.nix
     ./password-store.nix
     ./starship.nix
     ./tmux.nix
