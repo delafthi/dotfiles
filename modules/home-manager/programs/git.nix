@@ -2,9 +2,6 @@
 {
   home = {
     packages = with pkgs; [ gh ];
-    shellAliases = {
-      cdr = "cd $(git rev-parse --show-toplevel)";
-    };
   };
   programs.git = {
     enable = true;

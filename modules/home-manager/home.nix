@@ -58,8 +58,6 @@
     ];
     preferXdgDirectories = true;
     shellAliases = {
-      ".." = "cd ..";
-      "..." = "cd ../..";
       ":q" = "exit";
       cp = "cp -i";
       df = "df -h";
