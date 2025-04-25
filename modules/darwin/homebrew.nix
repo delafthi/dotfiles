@@ -5,7 +5,7 @@
     brews = [ "lgogdownloader" ];
     caskArgs = {
       no_quarantine = true;
-      require_sha = true;
+      # require_sha = true;
     };
     casks =
       builtins.map
