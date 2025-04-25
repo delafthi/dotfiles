@@ -27,6 +27,7 @@
           "proton-mail"
           "protonvpn"
           "shottr"
+          "steam"
           "subler"
           "wacom-tablet"
           "zen-browser"

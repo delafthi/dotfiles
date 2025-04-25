@@ -91,6 +91,7 @@
   programs = {
     fish.enable = true;
     nix-ld.enable = true;
+    steam.enable = true;
     zsh.enable = true;
   };
   time.timeZone = "Europe/Zurich";
