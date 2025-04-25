@@ -43,10 +43,6 @@
       totem
       yelp
     ];
-    shells = with pkgs; [
-      bashInteractive
-      fish
-    ];
     systemPackages = with pkgs; [
       coreutils
       git
@@ -89,10 +85,10 @@
     };
   };
   programs = {
+    bash.completion.enable = true;
     fish.enable = true;
     nix-ld.enable = true;
     steam.enable = true;
-    zsh.enable = true;
   };
   time.timeZone = "Europe/Zurich";
   services = {

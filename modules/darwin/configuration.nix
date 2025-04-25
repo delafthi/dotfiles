@@ -5,11 +5,7 @@
   ];
   environment = {
     darwinConfig = "$HOME/Developer/repos/nix-config/modules/darwin/configuration.nix";
-    shellAliases = {
-      bash = "${pkgs.bashInteractive}/bin/bash";
-    };
     shells = with pkgs; [
-      bashInteractive
       fish
     ];
     systemPackages = with pkgs; [
@@ -48,7 +44,6 @@
       enable = true;
       enableSSHSupport = true;
     };
-    zsh.enable = true;
   };
   security.pam.services.sudo_local = {
     enable = true;
