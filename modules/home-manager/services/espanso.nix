@@ -57,21 +57,18 @@
           {
             trigger = ":default.nix";
             replace = ''
-              (
-                import
-                (
-                  let
-                    lock = builtins.fromJSON (builtins.readFile ./flake.lock);
-                    nodeName = lock.nodes.root.inputs.flake-compat;
-                  in
-                    fetchTarball {
-                      url = lock.nodes.''${nodeName}.locked.url or "https://github.com/edolstra/flake-compat/archive/''${lock.nodes.''${nodeName}.locked.rev}.tar.gz";
-                      sha256 = lock.nodes.''${nodeName}.locked.narHash;
-                    }
-                )
-                {src = ./.;}
-              )
-              .defaultNix
+              (import (
+                let
+                  lock = builtins.fromJSON (builtins.readFile ./flake.lock);
+                  nodeName = lock.nodes.root.inputs.flake-compat;
+                in
+                fetchTarball {
+                  url =
+                    lock.nodes.''${nodeName}.locked.url
+                      or "https://github.com/edolstra/flake-compat/archive/''${lock.nodes.''${nodeName}.locked.rev}.tar.gz";
+                  sha256 = lock.nodes.''${nodeName}.locked.narHash;
+                }
+              ) { src = ./.; }).defaultNix
             '';
           }
           {
@@ -86,32 +83,36 @@
                   treefmt-nix.url = "github:numtide/treefmt-nix";
                 };
 
-                outputs = {
+                outputs =
+                {
                   self,
                   nixpkgs,
                   flake-utils,
                   treefmt-nix,
                   ...
-                }: lib.eachDefaultSystem (system: let
-                  pkgs = (import nixpkgs) {
-                    inherit system;
-                  };
-                  treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix);
-                in {
-                  checks = {
-                    formatting = treefmtEval.config.build.check self;
-                  };
-                  formatter = treefmtEval.config.build.wrapper;
-                  packages = {
-                    default = pkgs.callPackage ./nix/{{prompt.name}}.nix;
-                  };
-                  devShells = {
-                    default = pkgs.mkShell {
-                      name = "{{prompt.name}}";
-                      packages = [];
+                }:
+                flake-utils.lib.eachDefaultSystem (
+                  system:
+                  let
+                    pkgs = (import nixpkgs) { inherit system; };
+                    treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
+                  in
+                  {
+                    checks = {
+                      formatting = treefmtEval.config.build.check self;
                     };
-                  };
-                });
+                    formatter = treefmtEval.config.build.wrapper;
+                    packages = {
+                      default = pkgs.callPackage ./nix/{{prompt.name}}.nix;
+                    };
+                    devShells = {
+                      default = pkgs.mkShell {
+                        name = "{{prompt.name}}";
+                        packages = [];
+                      };
+                    };
+                  }
+                );
               }
             '';
             vars = [
@@ -131,7 +132,6 @@
             trigger = '':package.nix'';
             replace = ''
               {
-                lib,
                 stdenv,
               }:
               stdenv.mkDerivation {
@@ -164,21 +164,18 @@
           {
             trigger = ":shell.nix";
             replace = ''
-              (
-                import
-                (
-                  let
-                    lock = builtins.fromJSON (builtins.readFile ./flake.lock);
-                    nodeName = lock.nodes.root.inputs.flake-compat;
-                  in
-                    fetchTarball {
-                      url = lock.nodes.''${nodeName}.locked.url or "https://github.com/edolstra/flake-compat/archive/''${lock.nodes.''${nodeName}.locked.rev}.tar.gz";
-                      sha256 = lock.nodes.''${nodeName}.locked.narHash;
-                    }
-                )
-                {src = ./.;}
-              )
-              .shellNix
+              (import (
+                let
+                  lock = builtins.fromJSON (builtins.readFile ./flake.lock);
+                  nodeName = lock.nodes.root.inputs.flake-compat;
+                in
+                fetchTarball {
+                  url =
+                    lock.nodes.''${nodeName}.locked.url
+                      or "https://github.com/edolstra/flake-compat/archive/''${lock.nodes.''${nodeName}.locked.rev}.tar.gz";
+                  sha256 = lock.nodes.''${nodeName}.locked.narHash;
+                }
+              ) { src = ./.; }).shellNix
             '';
           }
           {
