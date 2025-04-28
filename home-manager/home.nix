@@ -57,6 +57,7 @@
       zip
     ];
     preferXdgDirectories = true;
+    sessionPath = ["$HOME/.local/bin"];
     shellAliases = {
       ":q" = "exit";
       cp = "cp -i";

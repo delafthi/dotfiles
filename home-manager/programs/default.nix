@@ -23,7 +23,6 @@
     ./uv.nix
     ./yazi.nix
     ./zoxide.nix
-    ./bins
     ./gtkwave
   ];
 }

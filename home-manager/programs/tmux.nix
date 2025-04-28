@@ -4,6 +4,16 @@
   ...
 }:
 {
+  home = {
+    file.".local/bin/tmux-sessionizer" = {
+      source = ./tmux-sessionizer.sh;
+      executable = true;
+    };
+    shellAliases = {
+      tms = "tmux-sessionizer";
+      cdp = "tmux-sessionizer";
+    };
+  };
   programs.tmux = {
     enable = true;
     aggressiveResize = true;
