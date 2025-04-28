@@ -14,6 +14,7 @@
     ./git.nix
     ./git-cliff.nix
     ./gpg.nix
+    ./gtkwave.nix
     ./helix.nix
     ./jujutsu.nix
     ./nushell.nix
@@ -23,6 +24,5 @@
     ./uv.nix
     ./yazi.nix
     ./zoxide.nix
-    ./gtkwave
   ];
 }
