@@ -4,7 +4,7 @@
     ./homebrew.nix
   ];
   environment = {
-    darwinConfig = "$HOME/Developer/repos/nix-config/modules/darwin/configuration.nix";
+    darwinConfig = "$HOME/Developer/repos/nix-config/darwin/configuration.nix";
     shells = [ pkgs.fish ];
     systemPackages = with pkgs; [
       coreutils

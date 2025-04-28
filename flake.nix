@@ -46,14 +46,14 @@
             "Thierrys-MacBook-Air" = darwin.lib.darwinSystem {
               inherit system;
               modules = [
-                ./modules/darwin/configuration.nix
+                ./darwin/configuration.nix
                 home-manager.darwinModules.home-manager
                 {
                   home-manager = {
                     useUserPackages = true;
                     users.${user} = {
                       imports = [
-                        ./modules/home-manager/darwin/home.nix
+                        ./home-manager/darwin/home.nix
                         catppuccin.homeModules.catppuccin
                       ];
                     };
@@ -66,7 +66,7 @@
             "Thierrys-MacBook-Air" = nixpkgs.lib.nixosSystem {
               inherit system;
               modules = [
-                ./modules/nixos/configuration.nix
+                ./nixos/configuration.nix
                 catppuccin.nixosModules.catppuccin
                 home-manager.nixosModules.home-manager
                 {
@@ -77,7 +77,7 @@
                     useUserPackages = true;
                     users.${user} = {
                       imports = [
-                        ./modules/home-manager/linux/home.nix
+                        ./home-manager/linux/home.nix
                         catppuccin.homeModules.catppuccin
                       ];
                     };
