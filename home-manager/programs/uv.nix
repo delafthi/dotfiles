@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       python-downloads = "never";
-      python-preference = "only-system";  
+      python-preference = "only-system";
     };
   };
 }
