@@ -11,7 +11,6 @@
     ./fzf.nix
     ./ghostty.nix
     ./gh.nix
-    ./gh-dash.nix
     ./git.nix
     ./git-cliff.nix
     ./gpg.nix
