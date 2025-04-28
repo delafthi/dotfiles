@@ -39,6 +39,9 @@
         backend = "gpg";
         key = "F28424F9874E6696";
       };
+      snapshot = {
+        auto-track = "none()";
+      };
       template-aliases = {
         "format_timestamp(timestamp)" = "timestamp.ago()";
       };
