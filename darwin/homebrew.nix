@@ -2,7 +2,6 @@
   environment.systemPath = [ "/opt/homebrew/bin" ];
   homebrew = {
     enable = true;
-    brews = [ "lgogdownloader" ];
     caskArgs = {
       no_quarantine = true;
       # require_sha = true;

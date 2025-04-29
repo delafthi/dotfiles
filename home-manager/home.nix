@@ -39,6 +39,14 @@
       htop
       hyperfine
       just
+      (
+        (lgogdownloader.overrideAttrs (
+          finalAttrs: previousAttrs: {
+            meta.platforms = previousAttrs.meta.platforms ++ lib.platforms.darwin;
+          }
+        )).override
+        { enableGui = false; }
+      )
       nerd-fonts.symbols-only
       p7zip
       pandoc
