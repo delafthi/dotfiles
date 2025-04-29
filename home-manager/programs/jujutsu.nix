@@ -23,6 +23,11 @@
           "fetch"
           "--all-remotes"
         ];
+        l = [
+          "log"
+          "-r"
+          "::"
+        ];
         n = [ "new" ];
         p = [
           "git"
