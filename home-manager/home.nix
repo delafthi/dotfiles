@@ -32,7 +32,6 @@
     packages = with pkgs; [
       asciinema
       chatgpt-cli
-      discord
       du-dust
       fd
       gnutar
@@ -50,6 +49,7 @@
       tree
       unrar
       unzip
+      vesktop
       watch
       yubikey-manager
       yubikey-personalization
