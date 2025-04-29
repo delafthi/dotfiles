@@ -21,7 +21,7 @@
           {
             trigger = ":.envrc";
             replace = ''
-              if ! command -v nix > /dev/null; then
+              if ! has nix; then
                 echo -e "\033[0;31mNix is not installed. Please install Nix to use flakes."
                 exit 1
               fi
