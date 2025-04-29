@@ -44,6 +44,7 @@
       pandoc
       procs
       ripgrep
+      sshs
       tealdeer
       tokei
       tree
