@@ -31,7 +31,6 @@
     username = "delafthi";
     packages = with pkgs; [
       asciinema
-      chatgpt-cli
       du-dust
       fd
       gnutar

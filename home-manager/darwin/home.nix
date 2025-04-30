@@ -18,7 +18,6 @@
     };
     homeDirectory = "/Users/delafthi";
     packages = with pkgs; [
-      chatgpt
       ice-bar
       iina
       podman
