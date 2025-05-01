@@ -8,7 +8,7 @@
     enableSshSupport = true;
     maxCacheTtl = 30;
     maxCacheTtlSsh = 30;
-    pinentryPackage =
+    pinentry.package =
       if pkgs.hostPlatform.isDarwin then
         pkgs.pinentry_mac
       else if pkgs.hostPlatform.isLinux then
