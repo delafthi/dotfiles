@@ -32,6 +32,7 @@
         p = [
           "git"
           "push"
+          "--allow-new"
         ];
         P = [
           "git"
