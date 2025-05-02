@@ -122,8 +122,9 @@
     qemuGuest.enable = true;
     spice-vdagentd.enable = true;
     udev.packages = with pkgs; [
-      zsa-udev-rules
       logitech-udev-rules
+      zsa-udev-rules
+      yubikey-personalization
     ];
     xserver = {
       enable = true;
