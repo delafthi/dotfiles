@@ -5,10 +5,6 @@
       "ignoredups"
       "ignorespace"
     ];
-    historyIgnore = [
-      "ls"
-      "exit"
-    ];
     shellOptions = [
       "autocd"
       "cdspell"

@@ -11,12 +11,7 @@
       completions = {
         algorithm = "fuzzy";
       };
-      cursor_shape = {
-        vi_insert = "line";
-        vi_normal = "block";
-      };
       history = {
-        file_format = "plaintext";
         isolation = false;
         max_size = 100000;
         sync_on_enter = true;
