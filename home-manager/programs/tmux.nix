@@ -96,9 +96,9 @@
       { plugin = tmux-thumbs; }
       { plugin = yank; }
     ];
+    prefix = "C-Space";
     reverseSplit = true;
     secureSocket = true;
-    shortcut = "a";
     terminal = "tmux-256color";
   };
 }
