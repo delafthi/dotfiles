@@ -15,7 +15,6 @@
         vi_insert = "line";
         vi_normal = "block";
       };
-      edit_mode = "vi";
       history = {
         file_format = "plaintext";
         isolation = false;
