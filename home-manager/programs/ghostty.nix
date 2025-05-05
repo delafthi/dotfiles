@@ -9,7 +9,7 @@
       cursor-style = "bar";
       font-family = "IosevkaTermSlab Nerd Font Mono";
       font-size = 14;
-      macos-option-as-alt = false;
+      macos-option-as-alt = "left";
       window-padding-x = 8;
     };
   };
