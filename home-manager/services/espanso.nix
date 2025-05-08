@@ -79,40 +79,37 @@
                 inputs = {
                   nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
                   flake-compat.url = "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz";
-                  flake-utils.url = "github:numtide/flake-utils";
                   treefmt-nix.url = "github:numtide/treefmt-nix";
                 };
 
                 outputs =
-                {
-                  self,
-                  nixpkgs,
-                  flake-utils,
-                  treefmt-nix,
-                  ...
-                }:
-                flake-utils.lib.eachDefaultSystem (
-                  system:
-                  let
-                    pkgs = (import nixpkgs) { inherit system; };
-                    treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
-                  in
-                  {
-                    checks = {
-                      formatting = treefmtEval.config.build.check self;
-                    };
-                    formatter = treefmtEval.config.build.wrapper;
-                    packages = {
-                      default = pkgs.callPackage ./nix/{{prompt.name}}.nix;
-                    };
-                    devShells = {
-                      default = pkgs.mkShell {
-                        name = "{{prompt.name}}";
-                        packages = [];
+                  inputs@{ flake-parts, ... }:
+                  flake-parts.lib.mkFlake { inherit inputs; } {
+                    imports = [ inputs.treefmt-nix.flakeModule ];
+                    systems = [
+                      "aarch64-linux"
+                      "x86_64-linux"
+                      "aarch64-darwin"
+                      "x86_64-darwin"
+                    ];
+                    perSystem =
+                      { pkgs, ... }:
+                      {
+                        packages = {
+                          default = pkgs.callPackage ./nix/{{prompt.name}}.nix;
+                        };
+                        devShells = {
+                          default = pkgs.mkShell {
+                            name = "{{prompt.name}}";
+                            packages = [ ];
+                          };
+                        };
+                        treefmt = {
+                          projectRootFile = "flake.nix";
+                          programs.nixfmt.enable = true;
+                        };
                       };
-                    };
-                  }
-                );
+                  };
               }
             '';
             vars = [
