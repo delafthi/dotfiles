@@ -27,6 +27,7 @@
       element-desktop
       krita
       mpv
+      obsidian
       proton-pass
       protonmail-desktop
       protonvpn-gui
