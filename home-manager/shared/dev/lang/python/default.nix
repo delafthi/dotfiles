@@ -1,0 +1,5 @@
+{
+  imports = [
+    ./uv.nix
+  ];
+}
