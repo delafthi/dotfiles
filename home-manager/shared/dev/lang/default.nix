@@ -1,0 +1,6 @@
+{
+  imports = [
+    ./hdl
+    ./python
+  ];
+}
