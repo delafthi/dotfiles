@@ -7,7 +7,6 @@
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,72 +20,127 @@
   };
 
   outputs =
-    {
-      nixpkgs,
-      darwin,
-      flake-utils,
-      home-manager,
-      catppuccin,
-      treefmt-nix,
-      zen-browser,
+    inputs@{
+      flake-parts,
       ...
     }:
-    flake-utils.lib.eachDefaultSystem (
-      system:
-      let
-        pkgs = (import nixpkgs) { inherit system; };
-        inherit (pkgs.lib) optionalAttrs;
-        treefmtEval = treefmt-nix.lib.evalModule pkgs ./treefmt.nix;
-        user = "delafthi";
-      in
+    flake-parts.lib.mkFlake { inherit inputs; } (
+      { config, ... }:
       {
-        formatter = treefmtEval.config.build.wrapper;
-        packages = {
-          darwinConfigurations = optionalAttrs pkgs.hostPlatform.isDarwin {
-            "Thierrys-MacBook-Air" = darwin.lib.darwinSystem {
-              inherit system;
-              modules = [
-                ./darwin/configuration.nix
-                home-manager.darwinModules.home-manager
+        imports = [ inputs.treefmt-nix.flakeModule ];
+        flake =
+          let
+            mergeAttrSets = sets: builtins.foldl' (acc: set: acc // set) { } sets;
+          in
+          {
+            darwinConfigurations = mergeAttrSets [
+              (
+                let
+                  host = "Thierrys-MacBook-Air";
+                  ssh-keys = [
+                    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIED0iUQ9rApXnM61UGv7Jm4bZx0xCaV+wEPlIShkoy8P openpgp:0x71B978AF"
+                  ];
+                  system = "aarch64-darwin";
+                  user = "delafthi";
+                in
                 {
-                  home-manager = {
-                    useUserPackages = true;
-                    users.${user} = {
-                      imports = [
-                        ./home-manager/darwin/home.nix
-                        catppuccin.homeModules.catppuccin
-                      ];
-                    };
+                  "${host}" = inputs.darwin.lib.darwinSystem {
+                    inherit system;
+                    specialArgs = { inherit host ssh-keys user; };
+                    modules = [
+                      inputs.home-manager.darwinModules.home-manager
+                      {
+                        home-manager = {
+                          extraSpecialArgs = { inherit user; };
+                          useUserPackages = true;
+                          users.${user} = {
+                            imports = [
+                              inputs.catppuccin.homeModules.catppuccin
+                              inputs.zen-browser.homeModules.beta
+                              ./hosts/darwin/macbookair/home.nix
+                            ];
+                          };
+                        };
+                      }
+                      ./hosts/darwin/macbookair/configuration.nix
+                    ];
                   };
                 }
-              ];
-            };
-          };
-          nixosConfigurations = optionalAttrs pkgs.hostPlatform.isLinux {
-            "Thierrys-MacBook-Air" = nixpkgs.lib.nixosSystem {
-              inherit system;
-              modules = [
-                ./nixos/configuration.nix
-                catppuccin.nixosModules.catppuccin
-                home-manager.nixosModules.home-manager
+              )
+            ];
+            nixosConfigurations = mergeAttrSets [
+              (
+                let
+                  host = "Thierrys-MacBook-Air-VM";
+                  ssh-keys = [
+                    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIED0iUQ9rApXnM61UGv7Jm4bZx0xCaV+wEPlIShkoy8P openpgp:0x71B978AF"
+                  ];
+                  system = "aarch64-linux";
+                  user = "delafthi";
+                in
                 {
-                  home-manager = {
-                    extraSpecialArgs = {
-                      zen-browser = zen-browser.packages.${system};
-                    };
-                    useUserPackages = true;
-                    users.${user} = {
-                      imports = [
-                        ./home-manager/linux/home.nix
-                        catppuccin.homeModules.catppuccin
-                      ];
-                    };
+                  "${host}" = inputs.nixpkgs.lib.nixosSystem {
+                    specialArgs = { inherit host ssh-keys user; };
+                    inherit system;
+                    modules = [
+                      inputs.catppuccin.nixosModules.catppuccin
+                      inputs.home-manager.nixosModules.home-manager
+                      {
+                        home-manager = {
+                          extraSpecialArgs = { inherit user; };
+                          useUserPackages = true;
+                          users.${user} = {
+                            imports = [
+                              inputs.catppuccin.homeModules.catppuccin
+                              inputs.zen-browser.homeModules.beta
+                              ./hosts/nixos/vm/home.nix
+                            ];
+                          };
+                        };
+                      }
+                      ./hosts/nixos/vm/configuration.nix
+                    ];
                   };
                 }
-              ];
+              )
+            ];
+            overlays.default = import ./overlays;
+          };
+        systems = [
+          "aarch64-linux"
+          "x86_64-linux"
+          "aarch64-darwin"
+        ];
+        perSystem =
+          {
+            lib,
+            pkgs,
+            system,
+            ...
+          }:
+          {
+            _module.args.pkgs = import inputs.nixpkgs {
+              inherit system;
+              overlays = lib.attrValues config.flake.overlays;
+            };
+            devShells = {
+              default = pkgs.mkShell {
+                name = "dotfiles";
+                packages = with pkgs; [
+                  just
+                  nixd
+                ];
+              };
+            };
+            treefmt = {
+              projectRootFile = "flake.nix";
+              programs = {
+                nixfmt.enable = true;
+                prettier.enable = true;
+                shfmt.enable = true;
+              };
             };
           };
-        };
       }
     );
 }
