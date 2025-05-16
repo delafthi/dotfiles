@@ -6,6 +6,10 @@
     settings = {
       aliases = {
         a = [ "abandon" ];
+        add = [
+          "file"
+          "track"
+        ];
         b = [ "bookmark" ];
         c = [ "commit" ];
         d = [ "describe" ];
