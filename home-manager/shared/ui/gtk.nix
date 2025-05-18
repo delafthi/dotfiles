@@ -7,11 +7,11 @@
         "file://${config.home.homeDirectory}/Developer"
         "file://${config.xdg.userDirs.download}"
         "file://${config.home.homeDirectory}"
-        "file://${config.xdg.userDirs.documents}/0-inbox"
-        "file://${config.xdg.userDirs.documents}/1-projects"
-        "file://${config.xdg.userDirs.documents}/2-areas"
-        "file://${config.xdg.userDirs.documents}/3-resources"
-        "file://${config.xdg.userDirs.documents}/4-archives"
+        "file://${config.xdg.userDirs.documents}/00-inbox"
+        "file://${config.xdg.userDirs.documents}/01-projects"
+        "file://${config.xdg.userDirs.documents}/02-areas"
+        "file://${config.xdg.userDirs.documents}/03-resources"
+        "file://${config.xdg.userDirs.documents}/04-archives"
       ];
     };
   };
