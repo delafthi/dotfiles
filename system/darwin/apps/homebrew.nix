@@ -33,7 +33,7 @@
           "steam"
           "subler"
           "wacom-tablet"
-          "zen-browser"
+          "zen"
         ];
     # masApps = {
     #   Amphetamine = 937984704;
