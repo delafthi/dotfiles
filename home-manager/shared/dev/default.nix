@@ -11,7 +11,6 @@
     ./helix.nix
     ./podman.nix
     ./tmux.nix
-    ./user.nix
     ./yazi.nix
   ];
 }

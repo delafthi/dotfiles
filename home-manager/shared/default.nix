@@ -8,5 +8,6 @@
     ./home-manager.nix
     ./nixpkgs.nix
     ./user-dirs.nix
+    ./user.nix
   ];
 }
