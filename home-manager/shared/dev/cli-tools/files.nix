@@ -4,6 +4,7 @@
     packages = with pkgs; [
       hexyl
       pandoc
+      tesseract
       watch
     ];
     sessionVariables = {
