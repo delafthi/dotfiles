@@ -2,7 +2,7 @@
 {
   environment = {
     systemPackages = with pkgs; [
-      coreutils
+      uutils-coreutils-noprefix
       curl
       git
       vim
