@@ -1,3 +1,0 @@
-{
-  programs.carapace.enable = true;
-}
