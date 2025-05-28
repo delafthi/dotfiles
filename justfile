@@ -9,7 +9,7 @@ apply hostname=`hostname` *args:
 [group('Main')]
 [macos]
 apply hostname=`hostname` *args:
-  @darwin-rebuild switch --flake .#{{hostname}} {{args}}
+  @sudo darwin-rebuild switch --flake .#{{hostname}} {{args}}
 
 [group('Main')]
 update *args:
