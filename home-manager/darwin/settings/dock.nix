@@ -14,7 +14,6 @@
         })
         [
           "/Applications/Zen.app"
-          "/Applications/WhatsApp.app"
           "/Applications/Proton Mail.app"
           "/Applications/Proton Pass.app"
           "/System/Applications/Music.app"
