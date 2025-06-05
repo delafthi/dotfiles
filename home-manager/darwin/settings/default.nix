@@ -4,6 +4,7 @@
     ./dock.nix
     ./finder.nix
     ./image-capture.nix
+    ./karabiner-elements.nix
     ./keybindings.nix
     ./keyboard.nix
     ./localisation.nix
