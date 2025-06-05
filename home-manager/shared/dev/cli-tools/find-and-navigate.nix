@@ -4,6 +4,7 @@
     packages = with pkgs; [
       fd
       ripgrep
+      sd
     ];
     sessionVariables = {
       # Required on macOS
