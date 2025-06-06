@@ -1,6 +1,10 @@
+{ pkgs, ... }:
 {
   imports = [
-    ./misc.nix
     ./ux.nix
+  ];
+  home.packages = with pkgs; [
+    iina
+    utm
   ];
 }

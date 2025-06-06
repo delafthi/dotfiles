@@ -1,7 +1,10 @@
+{ pkgs, ... }:
 {
   imports = [
-    ./bibliography.nix
     ./browser.nix
-    ./com.nix
+  ];
+  home.packages = with pkgs; [
+    vesktop
+    zotero
   ];
 }

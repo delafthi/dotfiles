@@ -1,8 +1,12 @@
+{ pkgs, ... }:
 {
   imports = [
-    ./com.nix
     ./creative.nix
-    ./misc.nix
     ./proton.nix
+  ];
+  home.packages = with pkgs; [
+    element-desktop
+    mpv
+    virt-manager
   ];
 }
