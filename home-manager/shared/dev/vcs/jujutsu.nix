@@ -41,9 +41,9 @@
         ];
       };
       signing = {
-        behavior = "own";
         backend = "gpg";
-        key = "F28424F9874E6696";
+        behavior = "own";
+        key = "00926686981863CB";
       };
       snapshot.auto-track = "none()";
       template-aliases."format_timestamp(timestamp)" = "timestamp.ago()";
@@ -57,8 +57,8 @@
         ];
       };
       user = {
+        email = "delafthi@pm.me";
         name = "Thierry Delafontaine";
-        email = "thierry@delafontaine.xyz";
       };
     };
   };

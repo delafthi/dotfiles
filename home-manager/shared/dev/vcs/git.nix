@@ -185,10 +185,10 @@
     ];
     lfs.enable = true;
     signing = {
-      key = "F28424F9874E6696";
+      key = "00926686981863CB";
       signByDefault = true;
     };
-    userEmail = "thierry@delafontaine.xyz";
+    userEmail = "delafthi@pm.me";
     userName = "Thierry Delafontaine";
   };
 }
