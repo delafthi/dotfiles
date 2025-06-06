@@ -33,6 +33,7 @@
           "shottr"
           "steam"
           "subler"
+          "transmission"
           "wacom-tablet"
           "zen"
         ];

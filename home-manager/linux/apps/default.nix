@@ -7,6 +7,7 @@
   home.packages = with pkgs; [
     element-desktop
     mpv
+    transmission_4-gtk
     virt-manager
   ];
 }
