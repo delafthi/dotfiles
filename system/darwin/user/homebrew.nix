@@ -43,7 +43,6 @@
     #   Developer = 640199958;
     #   Deepstash = 1445023295;
     #   Delta = 1048524688;
-    #   Habits = 1514915737;
     #   "Hand Mirror" = 1502839586;
     #   Keynote = 409183694;
     #   MeteoSwiss = 589772015;
