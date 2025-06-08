@@ -21,7 +21,7 @@
   programs.yazi = {
     enable = true;
     settings = {
-      manager = {
+      mgr = {
         ratio = [
           2
           4
