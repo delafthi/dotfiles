@@ -17,7 +17,6 @@
           "affinity-photo"
           "affinity-publisher"
           "alcove"
-          "blender"
           "element"
           "karabiner-elements"
           "krita"
