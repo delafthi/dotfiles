@@ -57,6 +57,7 @@
                             imports = [
                               inputs.catppuccin.homeModules.catppuccin
                               inputs.zen-browser.homeModules.beta
+                              config.flake.homeModules
                               ./hosts/darwin/macbookair/home.nix
                             ];
                           };
@@ -93,6 +94,7 @@
                             imports = [
                               inputs.catppuccin.homeModules.catppuccin
                               inputs.zen-browser.homeModules.beta
+                              config.flake.homeModules
                               ./hosts/nixos/vm/home.nix
                             ];
                           };
@@ -104,6 +106,7 @@
                 }
               )
             ];
+            homeModules = import ./modules/home-manager;
             overlays.default = import ./overlays;
           };
         systems = [
