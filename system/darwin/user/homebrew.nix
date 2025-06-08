@@ -19,7 +19,6 @@
           "alcove"
           "blender"
           "element"
-          "ghostty"
           "karabiner-elements"
           "krita"
           "lunar"
