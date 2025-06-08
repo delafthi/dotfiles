@@ -4,7 +4,7 @@
     ./lang
     ./shells
     ./vcs
-    ./ai.nix
+    ./ai
     ./editorconfig.nix
     ./espanso.nix
     ./ghostty.nix

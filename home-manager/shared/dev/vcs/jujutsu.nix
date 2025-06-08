@@ -13,6 +13,14 @@
         b = [ "bookmark" ];
         c = [ "commit" ];
         d = [ "describe" ];
+        dai = [
+          "util"
+          "exec"
+          "--"
+          "sh"
+          "-c"
+          "jj diff --no-pager | mods --role commit-message-generator | jj describe --edit --stdin"
+        ];
         e = [ "edit" ];
         f = [
           "git"
