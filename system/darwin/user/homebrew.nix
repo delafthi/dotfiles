@@ -26,7 +26,6 @@
           "meetingbar"
           "monodraw"
           "obsidian"
-          "popclip"
           "proton-drive"
           "proton-mail"
           "protonvpn"
