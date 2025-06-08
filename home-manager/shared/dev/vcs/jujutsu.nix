@@ -49,7 +49,7 @@
       template-aliases."format_timestamp(timestamp)" = "timestamp.ago()";
       ui = {
         default-command = "log";
-        diff.tool = [
+        diff-formatter = [
           "difft"
           "--color=always"
           "$left"
