@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   imports = [
     ./archives.nix
@@ -6,6 +7,13 @@
     ./networking.nix
     ./projects.nix
     ./system.nix
-    ./terminal.nix
+  ];
+  home.packages = with pkgs; [
+    asciinema
+    charm-freeze
+    glow
+    gum
+    hyperfine
+    vhs
   ];
 }
