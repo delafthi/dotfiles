@@ -1,4 +1,4 @@
 {
-  additions = final: prev: import ../pkgs final.pkgs;
+  additions = final: _: import ../pkgs final.pkgs;
   modifications = import ./modifications;
 }
