@@ -3,6 +3,6 @@
   home.packages = with pkgs; [
     curl
     jq
-    sshs
+    wishlist
   ];
 }
