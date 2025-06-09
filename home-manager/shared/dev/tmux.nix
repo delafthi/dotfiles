@@ -5,7 +5,10 @@
 }:
 {
   home = {
-    packages = [ pkgs.tmux-sessionizer ];
+    packages = with pkgs; [
+      tmux-scratch-terminal
+      tmux-sessionizer
+    ];
     shellAliases = {
       cdp = "tmux-sessionizer";
     };
@@ -43,12 +46,7 @@
       bind -N "Source the tmux config file" r run-shell " \
         tmux source-file ~/.config/tmux/tmux.conf > /dev/null; \
         tmux display-message 'Sourced ~/.config/tmux/tmux.conf'"
-      bind -N "Open scratch terminal" t run-shell " \
-        if [ \"$(tmux display-message -p -F '#{session_name}')\" = 'scratch' ]; then \
-          tmux detach-client; \
-        else \
-          tmux popup -d '#{pane_current_path}' -h 90% -w 90% -E 'tmux attach-session -t scratch || tmux new-session -s scratch'; \
-        fi"
+      bind -N "Open scratch terminal" t run-shell "tmux-scratch-terminal" 
       bind -N "Enter copy-mode to copy text or view the history" V copy-mode
       bind -N "Select text in copy mode" -T copy-mode-vi v send -X begin-selection
       bind -N "Copy text in copy mode" -T copy-mode-vi y send -X copy-selection
