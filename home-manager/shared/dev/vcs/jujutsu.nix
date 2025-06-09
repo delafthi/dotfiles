@@ -23,6 +23,10 @@
           "fetch"
           "--all-remotes"
         ];
+        i = [
+          "new"
+          "--after"
+        ];
         l = [
           "log"
           "-r"
