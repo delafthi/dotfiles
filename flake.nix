@@ -25,7 +25,7 @@
       ...
     }:
     flake-parts.lib.mkFlake { inherit inputs; } (
-      { config, ... }:
+      { config, lib, ... }:
       {
         imports = [ inputs.treefmt-nix.flakeModule ];
         flake =
@@ -48,6 +48,9 @@
                     inherit system;
                     specialArgs = { inherit host ssh-keys user; };
                     modules = [
+                      {
+                        nixpkgs.overlays = lib.attrValues config.flake.overlays;
+                      }
                       inputs.home-manager.darwinModules.home-manager
                       {
                         home-manager = {
@@ -85,6 +88,9 @@
                     specialArgs = { inherit host ssh-keys user; };
                     inherit system;
                     modules = [
+                      {
+                        nixpkgs.overlays = lib.attrValues config.flake.overlays;
+                      }
                       inputs.catppuccin.nixosModules.catppuccin
                       inputs.home-manager.nixosModules.home-manager
                       {
@@ -109,7 +115,7 @@
               )
             ];
             homeModules = import ./modules/home-manager;
-            overlays.default = import ./overlays;
+            overlays = import ./overlays;
           };
         systems = [
           "aarch64-linux"
@@ -128,6 +134,7 @@
               inherit system;
               overlays = lib.attrValues config.flake.overlays;
             };
+            packages = import ./pkgs pkgs;
             devShells = {
               default = pkgs.mkShell {
                 name = "dotfiles";
