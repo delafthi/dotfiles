@@ -52,6 +52,7 @@
                       {
                         home-manager = {
                           extraSpecialArgs = { inherit user; };
+                          useGlobalPkgs = true;
                           useUserPackages = true;
                           users.${user} = {
                             imports = [
@@ -89,6 +90,7 @@
                       {
                         home-manager = {
                           extraSpecialArgs = { inherit user; };
+                          useGlobalPkgs = true;
                           useUserPackages = true;
                           users.${user} = {
                             imports = [
