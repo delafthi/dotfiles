@@ -147,9 +147,9 @@
             treefmt = {
               projectRootFile = "flake.nix";
               programs = {
+                fish_indent.enable = true;
                 nixfmt.enable = true;
                 prettier.enable = true;
-                shfmt.enable = true;
               };
             };
           };
