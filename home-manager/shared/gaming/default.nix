@@ -1,5 +1,4 @@
+{ pkgs, ... }:
 {
-  imports = [
-    ./gog.nix
-  ];
+  home.packages = [ (pkgs.lgogdownloader.override { enableGui = false; }) ];
 }
