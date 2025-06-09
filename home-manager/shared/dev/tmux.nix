@@ -6,6 +6,7 @@
 {
   home = {
     packages = with pkgs; [
+      tmux-gh-dash
       tmux-scratch-terminal
       tmux-sessionizer
     ];
@@ -40,6 +41,7 @@
       bind -N "Change to the previous window" p previous-window
       bind -N "Open file browser" e popup -h 90% -w 90% -E "yazi"
       bind -N "Toggle maximize window" f resize-pane -Z
+      bind -N "Toggle GitHub Dash" g run-shell "tmux-gh-dash"
       bind -N "Leave the copy-mode" -T copy-mode-vi i send -X cancel
       bind -N "Open projects" k run-shell "tmux-sessionizer"
       bind -N "Select a new session for the attached client interactively" S choose-session -Z
