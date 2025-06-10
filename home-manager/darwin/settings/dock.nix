@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   targets.darwin.defaults."com.apple.dock" = {
     autohide = true;
@@ -19,7 +20,7 @@
           "/System/Applications/Music.app"
           "/Applications/Things3.app"
           "/Applications/Obsidian.app"
-          "/Applications/ghostty.app"
+          "${pkgs.ghostty-bin}/Applications/ghostty.app"
         ];
     show-recents = false;
     showhidden = true;
