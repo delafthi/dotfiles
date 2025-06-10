@@ -20,11 +20,11 @@
     displayManager = {
       enable = true;
       defaultSession = "gnome-xorg";
+      gdm.enable = true;
     };
     gnome.gnome-keyring.enable = lib.mkForce false;
-    xserver = {
-      displayManager.gdm.enable = true;
-      desktopManager.gnome = {
+    desktopManager = {
+      gnome = {
         enable = true;
         extraGSettingsOverridePackages = [ pkgs.nautilus-open-any-terminal ];
       };
