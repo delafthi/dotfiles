@@ -1,4 +1,4 @@
-# Dotfiles
+# delafthi's dotfiles
 
 This repository contains my personal configuration files and setup scripts for managing Linux and macOS (Darwin) environments using Nix.
 
