@@ -1,4 +1,9 @@
-{ lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   ollama-base-url = "http://localhost:11434/v1";
   ollama-api-key-env = "OLLAMA_API_KEY";
@@ -6,6 +11,9 @@ let
   openrouter-api-key-env = "OPENROUTER_API_KEY";
 in
 {
+  home.sessionVariables = {
+    OPENROUTER_API_KEY = ''$(${pkgs.uutils-coreutils-noprefix}/bin/cat ${config.sops.secrets.openrouter-api-key.path})'';
+  };
   programs = {
     codex = {
       enable = true;

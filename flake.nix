@@ -12,6 +12,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin.url = "github:catppuccin/nix";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     treefmt-nix.url = "github:numtide/treefmt-nix";
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
@@ -60,6 +64,7 @@
                           users.${user} = {
                             imports = [
                               inputs.catppuccin.homeModules.catppuccin
+                              inputs.sops-nix.homeManagerModules.sops
                               inputs.zen-browser.homeModules.beta
                               config.flake.homeModules
                               ./hosts/darwin/macbookair/home.nix
@@ -101,6 +106,7 @@
                           users.${user} = {
                             imports = [
                               inputs.catppuccin.homeModules.catppuccin
+                              inputs.sops-nix.homeManagerModules.sops
                               inputs.zen-browser.homeModules.beta
                               config.flake.homeModules
                               ./hosts/nixos/vm/home.nix
