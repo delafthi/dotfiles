@@ -1,4 +1,10 @@
 { lib, ... }:
+let
+  ollama-base-url = "http://localhost:11434/v1";
+  ollama-api-key-env = "OLLAMA_API_KEY";
+  openrouter-base-url = "https://openrouter.ai/api/v1";
+  openrouter-api-key-env = "OPENROUTER_API_KEY";
+in
 {
   programs = {
     codex = {
@@ -10,15 +16,15 @@
         fullAutoErrorMode = "ask-user";
         notify = true;
         providers = {
-          openai = {
-            name = "OpenAI";
-            baseURL = "https://api.openai.com/v1";
-            envKey = "OPENAI_API_KEY";
-          };
           ollama = {
             name = "Ollama";
-            baseURL = "http://localhost:11434/v1";
-            envKey = "OLLAMA_API_KEY";
+            baseURL = ollama-base-url;
+            envKey = ollama-api-key-env;
+          };
+          openrouter = {
+            name = "OpenRouter";
+            baseURL = openrouter-base-url;
+            envKey = openrouter-api-key-env;
           };
         };
         history = {
@@ -33,7 +39,7 @@
     mods = {
       enable = true;
       settings = {
-        default-model = "gpt-4o";
+        default-model = "o4-mini";
         roles =
           let
             readLines = filePath: lib.strings.splitString "\n" (builtins.readFile filePath);
@@ -47,40 +53,80 @@
             test-generator = readLines ./prompts/test-generator.md;
           };
         apis = {
-          openai = {
-            base-url = "https://api.openai.com/v1";
-            api-key-env = "OPENAI_API_KEY";
-            models = {
-              gpt-4o-mini = {
-                aliases = [ "4o-mini" ];
-                max-input-chars = 504000;
-                max-completion-tokens = 2000;
-                fallback = "gpt-4o";
-              };
-              gpt-4o = {
-                aliases = [ "4o" ];
-                max-input-chars = 496000;
-                max-completion-tokens = 4000;
-                fallback = "gemma3:4b-it-qat";
-              };
-            };
-          };
           ollama = {
-            base-url = "http://localhost:11434/api";
-            api-key-env = "OLLAMA_API_KEY";
+            base-url = ollama-base-url;
+            api-key-env = ollama-api-key-env;
             models = {
               "qwen3:latest" = {
-                aliases = [ "qwen3" ];
+                aliases = [ "local-qwen3" ];
                 max-input-chars = 112000;
                 max-completion-tokens = 4000;
                 fallback = "gemma3:4b-it-qat";
               };
               "gemma3:4b-it-qat" = {
-                aliases = [ "g3" ];
+                aliases = [ "local-gemma3" ];
                 max-input-chars = 24000;
                 max-completion-tokens = 2000;
               };
             };
+          };
+          openrouter = {
+            base-url = openrouter-base-url;
+            api-key-env = openrouter-api-key-env;
+            models =
+              let
+                fallback = "google/gemma-3n-e4b-it:free";
+              in
+              {
+                "anthropic/claude-sonnet-4" = {
+                  inherit fallback;
+                  aliases = [ "sonnet4" ];
+                  max-input-chars = 504000;
+                  max-completion-tokens = 4000;
+                };
+                "google/gemini-2.0-flash-001" = {
+                  inherit fallback;
+                  aliases = [ "gemini2" ];
+                  max-input-chars = 504000;
+                  max-completion-tokens = 4000;
+                };
+                "google/gemma-3-27b-it" = {
+                  inherit fallback;
+                  aliases = [ "gemma3" ];
+                  max-input_chars = 112000;
+                  max-completion-tokens = 4000;
+                };
+                "google/gemma-3n-e4b-it:free" = {
+                  inherit fallback;
+                  aliases = [ "gemma3-free" ];
+                  max-input_chars = 24000;
+                  max-completion-tokens = 4000;
+                };
+                "microsoft/phi-4" = {
+                  inherit fallback;
+                  aliases = [ "phi4" ];
+                  max-input-chars = 504000;
+                  max-completion-tokens = 2000;
+                };
+                "microsoft/phi-4-reasoning-plus:free" = {
+                  inherit fallback;
+                  aliases = [ "phi4-free" ];
+                  max-input-chars = 504000;
+                  max-completion-tokens = 2000;
+                };
+                "mistralai/devstral-small:free" = {
+                  inherit fallback;
+                  aliases = [ "devstral-free" ];
+                  max-input-chars = 24000;
+                  max-completion-tokens = 2000;
+                };
+                "openai/gpt-4o-mini" = {
+                  inherit fallback;
+                  aliases = [ "4o-mini" ];
+                  max-input-chars = 504000;
+                  max-completion-tokens = 2000;
+                };
+              };
           };
         };
       };
