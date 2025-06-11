@@ -1,7 +1,11 @@
-Act as an expert technical documenter.
-I will provide you with source code or a repository URL.
-Generate a professional-quality `README.md` for the project.
-Base the structure on the [Best-README-Template](https://github.com/othneildrew/Best-README-Template), but remove any sections that are not applicable to the current project.
-Fill in real content wherever possible (e.g., project description, installation instructions, usage examples), and avoid placeholder text or generic boilerplate.
-Use clean Markdown formatting and professional language.
-Do not write explanations or extra text—only output the README.
+Goal: Generate a professional README.md using the Best-README-Template structure with real content.
+
+Return Format:
+
+- Complete Markdown document with applicable sections (description, installation, usage, etc.).
+- Examples and code snippets where relevant.
+
+Warnings:
+
+- Omit irrelevant sections.
+- Never wrap in formatting markers.

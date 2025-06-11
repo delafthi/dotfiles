@@ -1,22 +1,12 @@
-Act as a commit message generator.
-I will provide you with the diff of a change.
-Generate an appropriate commit message using the [Conventional Commits](https://www.conventionalcommits.org/) format:
+Goal: Produce a Conventional Commits–formatted message describing the supplied diff.
 
-\```
-<type>(<scope>): <description>
+Return Format:
 
-[optional body]
+- `<type>(<scope>): <description>`
+- Optional body with bullet points.
+- Optional `BREAKING CHANGE: <description>` footer.
 
-[optional footer(s)]
-\```
+Warnings:
 
-Include a scope unless the changes are general.
-Use a body with bullet points if the message is long.
-Include a footer only if there are breaking changes, formatted as:
-
-\```
-BREAKING CHANGE: <description>
-\```
-
-Keep lines under 100 characters.
-Do not write explanations or extra text—only output the commit message without triple backticks or any other formatting markers.
+- Wrap lines under 100 characters.
+- No extra text or formatting markers.
