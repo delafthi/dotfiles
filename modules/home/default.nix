@@ -1,3 +1,3 @@
 {
-  imports = [ ];
+  imports = [ ./services/podman-darwin.nix ];
 }
