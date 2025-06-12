@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   home = {
     packages = with pkgs; [
@@ -9,7 +14,7 @@
     sessionVariables = {
       # Required on macOS
       EZA_CONFIG_DIR = "${config.xdg.configHome}/eza";
-      LS_COLORS = "$(${pkgs.vivid}/bin/vivid generate catppuccin-${config.catppuccin.flavor})";
+      LS_COLORS = "$(${lib.getExe pkgs.vivid} generate catppuccin-${config.catppuccin.flavor})";
     };
     shellAliases.cd = "z";
   };
@@ -26,7 +31,7 @@
       enable = true;
       changeDirWidgetCommand = "fd --type d --hidden --strip-cwd-prefix --exclude .git";
       changeDirWidgetOptions = [
-        "--preview= '${pkgs.eza}/bin/eza --tree --color=always {} | head -200'"
+        "--preview= '${lib.getExe pkgs.eza} --tree --color=always {} | head -200'"
       ];
       defaultCommand = "fd --hidden --strip-cwd-prefix --exclude .git";
       defaultOptions = [ "--layout reverse" ];

@@ -12,7 +12,7 @@ let
 in
 {
   home.sessionVariables = {
-    OPENROUTER_API_KEY = ''$(${pkgs.uutils-coreutils-noprefix}/bin/cat ${config.sops.secrets.openrouter-api-key.path})'';
+    OPENROUTER_API_KEY = ''$(${lib.getExe' pkgs.uutils-coreutils-noprefix "cat"} ${config.sops.secrets.openrouter-api-key.path})'';
   };
   programs = {
     codex = {
