@@ -9,6 +9,39 @@ let
   ollama-api-key-env = "OLLAMA_API_KEY";
   openrouter-base-url = "https://openrouter.ai/api/v1";
   openrouter-api-key-env = "OPENROUTER_API_KEY";
+  mcpservers = {
+    context7 = {
+      command = "${pkgs.podman}/bin/podman";
+      args = [
+        "run"
+        "-i"
+        "--rm"
+        "context7-mcp"
+      ];
+    };
+    fetch = {
+      command = "${pkgs.podman}/bin/podman";
+      args = [
+        "run"
+        "-i"
+        "--rm"
+        "mcp/fetch"
+      ];
+    };
+    github = {
+      command = "";
+      args = [ ];
+    };
+    sequential-thinking = {
+      command = "${pkgs.podman}/bin/podman";
+      args = [
+        "run"
+        "-i"
+        "--rm"
+        "mcp/sequentialthinking"
+      ];
+    };
+  };
 in
 {
   home.sessionVariables = {
@@ -18,6 +51,7 @@ in
     codex = {
       enable = true;
       settings = {
+        inherit mcpservers;
         model = "openai/gpt-4.1";
         provider = "openrouter";
         approvalMode = "suggest";
@@ -46,6 +80,7 @@ in
       settings = {
         default-model = "openai/gpt-4o-mini";
         default-api = "openrouter";
+        inherit mcpservers;
         roles =
           let
             readLines = filePath: lib.strings.splitString "\n" (builtins.readFile filePath);
