@@ -2,25 +2,19 @@
   description = "delafthi's dotfiles";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    darwin = {
-      url = "github:LnL7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # keep-sorted start
     catppuccin.url = "github:catppuccin/nix";
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
+    darwin.url = "github:LnL7/nix-darwin";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    sops-nix.url = "github:Mic92/sops-nix";
     treefmt-nix.url = "github:numtide/treefmt-nix";
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    zen-browser.inputs.nixpkgs.follows = "nixpkgs";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    # keep-sorted end
   };
 
   outputs =
@@ -153,9 +147,22 @@
             treefmt = {
               projectRootFile = "flake.nix";
               programs = {
+                actionlint.enable = true;
+                deadnix.enable = true;
                 fish_indent.enable = true;
+                keep-sorted.enable = true;
                 nixfmt.enable = true;
                 prettier.enable = true;
+                shellcheck.enable = true;
+                shfmt.enable = true;
+                statix.enable = true;
+              };
+              settings = {
+                editorconfig-checker = {
+                  command = pkgs.editorconfig-checker;
+                  includes = [ "*" ];
+                  priority = 9; # last
+                };
               };
             };
           };

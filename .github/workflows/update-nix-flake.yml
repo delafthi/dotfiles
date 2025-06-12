@@ -25,7 +25,8 @@ jobs:
       - name: Check for changes
         id: git-check
         run: |
-          echo "::set-output name=changed::$(git status --porcelain | grep flake.lock || echo '')"
+          changed=$(git status --porcelain | grep flake.lock || echo '')
+          echo "changed=$changed" >> "$GITHUB_OUTPUT"
 
       - name: Commit and push changes
         if: steps.git-check.outputs.changed != ''

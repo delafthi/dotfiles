@@ -8,11 +8,11 @@
     plugins = [
       {
         name = "autopair";
-        src = pkgs.fishPlugins.autopair-fish.src;
+        inherit (pkgs.fishPlugins.autopair-fish) src;
       }
       {
         name = "foreign-env";
-        src = pkgs.fishPlugins.foreign-env.src;
+        inherit (pkgs.fishPlugins.foreign-env) src;
       }
     ];
   };
