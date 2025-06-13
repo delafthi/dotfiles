@@ -5,7 +5,7 @@ on:
     paths:
       - "**/*.nix"
       - "**/*.lock"
-      - ".github/workflows/check.yml"
+      - ".github/workflows/check-flake.yml"
 
 permissions:
   contents: read
