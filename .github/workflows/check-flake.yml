@@ -28,20 +28,21 @@ jobs:
       - name: Run Deadnix to detect unused dependencies
         uses: astro/deadnix-action@main
 
-  check:
-    strategy:
-      matrix:
-        os: [macos-latest, ubuntu-latest]
-    runs-on: ${{ matrix.os }}
-    needs: deadnix
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+  # NOTE: Disable `nix flake check` until https://github.com/catppuccin/nix/issues/392 is fixed
+  # check:
+  #   strategy:
+  #     matrix:
+  #       os: [macos-latest, ubuntu-latest]
+  #   runs-on: ${{ matrix.os }}
+  #   needs: deadnix
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
 
-      - name: Install Nix
-        uses: cachix/install-nix-action@v31
-        with:
-          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+  #     - name: Install Nix
+  #       uses: cachix/install-nix-action@v31
+  #       with:
+  #         github_access_token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Run nix flake check
-        run: nix flake check --print-build-logs --show-trace
+  #     - name: Run nix flake check
+  #       run: nix flake check --print-build-logs --show-trace
