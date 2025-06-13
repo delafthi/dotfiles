@@ -1,7 +1,7 @@
 {
   imports = [
-    ../../../home-manager/linux
-    ../../../home-manager/shared
+    ../../../home/linux
+    ../../../home/shared
   ];
   nixpkgs.config.allowUnsupportedSystem = true;
 }
