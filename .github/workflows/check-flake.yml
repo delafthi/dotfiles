@@ -29,7 +29,10 @@ jobs:
         uses: astro/deadnix-action@main
 
   check:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
     needs: deadnix
     steps:
       - name: Checkout code
@@ -41,4 +44,4 @@ jobs:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Run nix flake check
-        run: nix flake check --show-trace
+        run: nix flake check --print-build-logs --show-trace
