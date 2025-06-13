@@ -5,5 +5,6 @@
     ./hardware
     ./settings
     ./state-version.nix
+    ./theming.nix
   ];
 }
