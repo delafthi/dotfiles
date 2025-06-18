@@ -48,7 +48,7 @@
       bind -N "Source the tmux config file" r run-shell " \
         tmux source-file ~/.config/tmux/tmux.conf > /dev/null; \
         tmux display-message 'Sourced ~/.config/tmux/tmux.conf'"
-      bind -N "Open scratch terminal" t run-shell "tmux-scratch-terminal" 
+      bind -N "Open scratch terminal" t run-shell "tmux-scratch-terminal"
       bind -N "Enter copy-mode to copy text or view the history" V copy-mode
       bind -N "Select text in copy mode" -T copy-mode-vi v send -X begin-selection
       bind -N "Copy text in copy mode" -T copy-mode-vi y send -X copy-selection

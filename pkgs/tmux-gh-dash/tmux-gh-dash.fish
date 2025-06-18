@@ -11,7 +11,7 @@ function toggle_gh_dash
     end
 end
 
-# Main function 
+# Main function
 function main
     # if we're currently not in tmux
     if test -z $TMUX

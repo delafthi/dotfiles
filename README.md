@@ -20,13 +20,13 @@ To set up your environment using these dotfiles, follow the steps below:
 
 1. **Clone the Repository**
 
-   ```bash
-   git clone https://github.com/delafthi/dotfiles.git
-   cd dotfiles
-   ```
+```bash
+git clone https://github.com/delafthi/dotfiles.git
+cd dotfiles
+```
 
 2. **Apply Configurations**
 
-   ```bash
-   just apply
-   ```
+```bash
+just apply
+```
