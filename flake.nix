@@ -157,7 +157,7 @@
                 shfmt.enable = true;
                 statix.enable = true;
               };
-              settings = {
+              settings.formatter = {
                 editorconfig-checker = {
                   command = pkgs.editorconfig-checker;
                   includes = [ "*" ];
