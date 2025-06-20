@@ -36,7 +36,7 @@
                 let
                   host = "Thierrys-MacBook-Air";
                   ssh-keys = [
-                    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIED0iUQ9rApXnM61UGv7Jm4bZx0xCaV+wEPlIShkoy8P openpgp:0x71B978AF"
+                    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINChtXQ7ivyX2e104DONznwNzg74e+6+wzeW2PMzYpmz openpgp:0x31D1E"
                   ];
                   system = "aarch64-darwin";
                   user = "delafthi";
@@ -77,7 +77,7 @@
                 let
                   host = "Thierrys-MacBook-Air-VM";
                   ssh-keys = [
-                    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIED0iUQ9rApXnM61UGv7Jm4bZx0xCaV+wEPlIShkoy8P openpgp:0x71B978AF"
+                    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINChtXQ7ivyX2e104DONznwNzg74e+6+wzeW2PMzYpmz openpgp:0x31D1E"
                   ];
                   system = "aarch64-linux";
                   user = "delafthi";
