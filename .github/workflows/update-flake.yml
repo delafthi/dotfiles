@@ -40,5 +40,7 @@ jobs:
           delete-branch: true
           branch-suffix: short-commit-hash
           title: Update flake
-          assignees: delafthi
+          labels: |
+            auto-merge
+            dependencies
           add-paths: flake.lock
