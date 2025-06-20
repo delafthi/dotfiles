@@ -7,12 +7,12 @@ on:
       - "**/*.lock"
       - ".github/workflows/check-flake.yml"
 
-permissions:
-  contents: read
-
 jobs:
   deadnix:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -35,6 +35,9 @@ jobs:
   #       os: [macos-latest, ubuntu-latest]
   #   runs-on: ${{ matrix.os }}
   #   needs: deadnix
+  #   permissions:
+  #     contents: read
+
   #   steps:
   #     - name: Checkout code
   #       uses: actions/checkout@v4
