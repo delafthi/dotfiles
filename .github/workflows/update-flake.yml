@@ -5,14 +5,13 @@ on:
     - cron: "0 0 * * 0" # Every Sunday at 00:00
   workflow_dispatch: # Allow manual trigger
 
-permissions:
-  contents: write
-  pull-requests: write
-
 jobs:
   update-flake:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' # Ensure workflow_dispatch only runs on main
+    permissions:
+      contents: write
+      pull-requests: write
 
     steps:
       - name: Checkout repository
