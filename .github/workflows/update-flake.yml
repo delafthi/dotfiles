@@ -24,9 +24,17 @@ jobs:
       - name: Update flake
         run: nix flake update
 
+      - name: Create a Token
+        uses: actions/create-github-app-token@v2
+        id: create-token
+        with:
+          app-id: ${{ vars.CI_TOKEN_GENERATOR_APP_ID }}
+          private-key: ${{ secrets.CI_TOKEN_GENERATOR_PRIVATE_KEY }}
+
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7
         with:
+          token: ${{ steps.create-token.outputs.token }}
           commit-message: "chore: update flake"
           branch: chore/update
           delete-branch: true
