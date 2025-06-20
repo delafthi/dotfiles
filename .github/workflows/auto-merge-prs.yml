@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Auto merge
-        uses: pascalgn/automerge-action@v0.15.5
+        uses: pascalgn/automerge-action@v0.16.4
         with:
           merge_method: rebase
           label: auto-merge
