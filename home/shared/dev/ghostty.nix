@@ -9,6 +9,9 @@
       cursor-style = "bar";
       font-family = "IosevkaTermSlab Nerd Font Mono";
       font-size = 14;
+      keybind = [
+        "cmd+k=text:\\x00k" # opens tmux-sessionizer
+      ];
       macos-option-as-alt = "left";
       window-padding-x = 8;
     };
