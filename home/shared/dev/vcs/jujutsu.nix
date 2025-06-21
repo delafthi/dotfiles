@@ -19,7 +19,7 @@
           "--"
           "sh"
           "-c"
-          "jj diff --no-pager | mods --role commit-message-generator | jj describe --edit --stdin"
+          "jj diff --git --context 10 --no-pager | mods --role commit-message-generator | jj describe --edit --stdin"
         ];
         e = [ "edit" ];
         f = [
