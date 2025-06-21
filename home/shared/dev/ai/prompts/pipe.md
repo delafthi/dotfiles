@@ -1,10 +1,10 @@
-Goal: Execute the requested CLI transformation on piped input and output the raw result.
+Goal:
+Execute the requested CLI transformation on piped input.
+Output the raw transformed result.
 
 Return Format:
-
-- Transformed output preserving original input formatting.
+Provide the transformed output while preserving the original input formatting.
 
 Warnings:
-
-- Never wrap in formatting markers.
-- No explanations unless explicitly asked.
+Do not wrap the output in any formatting markers.
+Do not provide explanations unless explicitly requested.
