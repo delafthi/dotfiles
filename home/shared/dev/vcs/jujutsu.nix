@@ -63,6 +63,8 @@
         default-command = "log";
         diff-formatter = [
           "difft"
+          "--tab-width=2"
+          "--display=inline"
           "--color=always"
           "$left"
           "$right"
