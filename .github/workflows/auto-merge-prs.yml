@@ -1,8 +1,9 @@
 name: Auto Merge PR
 
 on:
-  pull_request:
+  pull_request_target:
     types: [labeled, unlabeled]
+
   workflow_dispatch:
     inputs:
       pr_number:
@@ -18,12 +19,14 @@ on:
 jobs:
   auto-merge:
     runs-on: ubuntu-latest
+    concurrency:
+      group: auto-merge-pr-${{ github.event.pull_request.number || github.event.inputs.pr_number }}
+      cancel-in-progress: false
 
     permissions:
       contents: write
       pull-requests: write
       checks: read
-      statuses: read
 
     steps:
       - name: Auto-merge PR
