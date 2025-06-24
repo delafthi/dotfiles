@@ -46,6 +46,7 @@ in
       settings = {
         default-model = "openai/gpt-4o-mini";
         default-api = "openrouter";
+        max-input-chars = 392200;
         roles =
           let
             readLines = filePath: lib.strings.splitString "\n" (builtins.readFile filePath);
@@ -62,72 +63,22 @@ in
           ollama = {
             base-url = ollama-base-url;
             api-key-env = ollama-api-key-env;
-            models =
-              let
-                fallback = "gemma3:4b-it-qat";
-              in
-              {
-                "qwen3:latest" = {
-                  inherit fallback;
-                  aliases = [ "qwen3" ];
-                  # “Qwen3” has a 32 K token context window → ≃ 32 000 tokens * 4 chars/token
-                  max-input-chars = 28000 * 4; # -> 112000 chars
-                  max-completion-tokens = 4000; # give it up to 4 K for the completion
-                };
+            models = {
+              "qwen3:latest".aliases = [ "qwen3" ];
 
-                "gemma3:4b-it-qat" = {
-                  inherit fallback;
-                  aliases = [ "gemma3" ];
-                  # “Gemma3 4b-it-qat” has an 8 K token context window → ≃ 8 000 tokens * 4 chars/token
-                  max-input-chars = 6000 * 4; # -> 24000 chars
-                  max-completion-tokens = 2000; # give it up to 2 K for the completion
-                };
-              };
+              "gemma3:4b-it-qat".aliases = [ "gemma3" ];
+            };
           };
           openrouter = {
             base-url = openrouter-base-url;
             api-key-env = openrouter-api-key-env;
-            models =
-              let
-                fallback = "openai/gpt-4o-mini";
-              in
-              {
-                "anthropic/claude-sonnet-4" = {
-                  inherit fallback;
-                  aliases = [ "sonnet4" ];
-                  # “Sonnet” has a 64 K token context window → ≃ 64 000 tokens * 4 chars/token
-                  max-input-chars = 64000 * 4; # -> 256000 chars
-                  max-completion-tokens = 8192; # give it up to 8 K for the completion
-                };
-                "google/gemini-2.0-flash-001" = {
-                  inherit fallback;
-                  aliases = [ "gemini2" ];
-                  # “Flash” has an 8 K token context window → ≃ 8 000 tokens * 4 chars/token
-                  max-input-chars = 8000 * 4; # -> 32000 chars
-                  max-completion-tokens = 1024; # give it up to 1 K for the completion
-                };
-                "microsoft/phi-4" = {
-                  inherit fallback;
-                  aliases = [ "phi4" ];
-                  # “Phi-4” has a 32 K token context window → ≃ 32 000 tokens * 4 chars/token
-                  max-input-chars = 32000 * 4; # -> 128000 chars
-                  max-completion-tokens = 8192; # give it up to 8 K for the completion
-                };
-                "openai/gpt-4.1-mini" = {
-                  inherit fallback;
-                  aliases = [ "4.1-mini" ];
-                  # “GPT-4.1-mini” has an 8 K token context window → ≃ 8 000 tokens * 4 chars/token
-                  max-input-chars = 8000 * 4; # -> 32000 chars
-                  max-completion-tokens = 2048; # give it up to 2 K for the completion
-                };
-                "openai/gpt-4o-mini" = {
-                  inherit fallback;
-                  aliases = [ "4o-mini" ];
-                  # “GPT-4o-mini” has an 8 K token context window → ≃ 8 000 tokens * 4 chars/token
-                  max-input-chars = 8000 * 4; # -> 32000 chars
-                  max-completion-tokens = 2048; # give it up to 2 K for the completion
-                };
-              };
+            models = {
+              "anthropic/claude-sonnet-4".aliases = [ "claude-sonnet-4" ];
+              "google/gemini-2.0-flash-001".aliases = [ "gemini-2.0-flash" ];
+              "microsoft/phi-4".aliases = [ "phi-4" ];
+              "openai/gpt-4.1-mini".aliases = [ "gpt-4.1-mini" ];
+              "openai/gpt-4o-mini".aliases = [ "gpt-4o-mini" ];
+            };
           };
         };
       };
