@@ -15,32 +15,6 @@ in
     OPENROUTER_API_KEY = ''$(${lib.getExe' pkgs.uutils-coreutils-noprefix "cat"} ${config.sops.secrets.openrouter-api-key.path})'';
   };
   programs = {
-    codex = {
-      enable = true;
-      settings = {
-        model = "openai/gpt-4.1";
-        provider = "openrouter";
-        approvalMode = "suggest";
-        fullAutoErrorMode = "ask-user";
-        notify = true;
-        providers = {
-          ollama = {
-            name = "Ollama";
-            baseURL = ollama-base-url;
-            envKey = ollama-api-key-env;
-          };
-          openrouter = {
-            name = "OpenRouter";
-            baseURL = openrouter-base-url;
-            envKey = openrouter-api-key-env;
-          };
-        };
-        history = {
-          maxSize = 1000;
-          saveHistory = true;
-        };
-      };
-    };
     mods = {
       enable = true;
       settings = {
@@ -78,6 +52,58 @@ in
               "microsoft/phi-4".aliases = [ "phi-4" ];
               "openai/gpt-4.1-mini".aliases = [ "gpt-4.1-mini" ];
               "openai/gpt-4o-mini".aliases = [ "gpt-4o-mini" ];
+            };
+          };
+        };
+      };
+    };
+    opencode = {
+      enable = true;
+      settings = {
+        theme = "catppuccin";
+        mcp = {
+          context7 = {
+            type = "local";
+            command = [
+              "${lib.getExe' pkgs.bun "bunx"}"
+              "-y"
+              "@upstash/context7-mcp"
+            ];
+          };
+          fetch = {
+            type = "local";
+            command = [
+              "${lib.getExe' pkgs.uv "uvx"}"
+              "mcp-server-fetch"
+            ];
+          };
+          sequential-thinking = {
+            type = "local";
+            command = [
+              "${lib.getExe' pkgs.bun "bunx"}"
+              "-y"
+              "@modelcontextprotocol/server-sequential-thinking"
+            ];
+          };
+        };
+        model = "openrouter/anthropic/claude-sonnet-4";
+        provider = {
+          ollama = {
+            name = "Ollama";
+            npm = "@ai-sdk/openai-compatible";
+            options.baseURL = ollama-base-url;
+            models = {
+              "qwen3:latest".name = "qwen3";
+              "gemma3:4b-it-qat".name = "gemma3";
+            };
+          };
+          openrouter = {
+            name = "OpenRouter";
+            npm = "@openrouter/ai-sdk-provider";
+
+            models = {
+              "anthropic/claude-sonnet-4".name = "claude-sonnet-4";
+              "chatgpt/gpt-4.1".name = "gpt-4.1";
             };
           };
         };
