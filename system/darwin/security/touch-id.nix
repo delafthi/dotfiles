@@ -3,5 +3,6 @@
     enable = true;
     reattach = true;
     touchIdAuth = true;
+    watchIdAuth = true;
   };
 }
