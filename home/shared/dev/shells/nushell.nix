@@ -5,7 +5,7 @@
     plugins = with pkgs.nushellPlugins; [
       formats
       query
-      units
+      # units
     ];
     settings = {
       completions = {
