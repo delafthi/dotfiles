@@ -27,6 +27,8 @@ jobs:
 
       - name: Run Deadnix to detect unused dependencies
         uses: astro/deadnix-action@main
+        with:
+          create_pr: false
 
   # NOTE: Disable `nix flake check` until https://github.com/catppuccin/nix/issues/392 is fixed
   # check:
