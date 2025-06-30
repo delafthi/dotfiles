@@ -181,6 +181,7 @@
       ".git"
       ".helix"
       ".jj"
+      ".opencode"
       "compile_commands.json"
       "result"
     ];
