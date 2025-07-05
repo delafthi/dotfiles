@@ -5,7 +5,6 @@
   ];
   home.packages = with pkgs; [
     ascii-draw
-    element-desktop
     krita
     mpv
     obsidian

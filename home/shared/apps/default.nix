@@ -5,6 +5,7 @@
   ];
   home.packages = with pkgs; [
     blender
+    element-desktop
     vesktop
     zotero
   ];
