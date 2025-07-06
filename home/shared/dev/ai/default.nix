@@ -77,6 +77,14 @@ in
               "mcp-server-fetch"
             ];
           };
+          memory = {
+            type = "local";
+            command = [
+              "${lib.getExe' pkgs.bun "bunx"}"
+              "-y"
+              "@modelcontextprotocol/server-memory"
+            ];
+          };
           sequential-thinking = {
             type = "local";
             command = [
