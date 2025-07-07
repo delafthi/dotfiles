@@ -3,7 +3,7 @@
     ./security
     ./settings
     ./user
-    ./linux-builders.nix
+    ./linux-builder.nix
     ./state-version.nix
   ];
 }
