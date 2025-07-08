@@ -26,8 +26,12 @@
     };
     settings = {
       experimental-features = [
-        "nix-command"
+        "auto-allocate-uids"
+        "ca-derivations"
+        "dynamic-derivations"
         "flakes"
+        "nix-command"
+        "pipe-operators"
       ];
       sandbox = true;
       trusted-users = if pkgs.hostPlatform.isDarwin then [ "@admin" ] else [ "@wheel" ];
