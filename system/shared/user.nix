@@ -24,9 +24,6 @@
         ];
         initialPassword = "01234567";
         isNormalUser = true;
-      }
-      // lib.optionalAttrs pkgs.hostPlatform.isDarwin {
-        isHidden = false;
       };
   };
 }

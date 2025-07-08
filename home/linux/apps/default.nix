@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
+    ./browser.nix
     ./proton.nix
   ];
   home.packages = with pkgs; [
