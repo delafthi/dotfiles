@@ -10,4 +10,5 @@
     qemuGuest.enable = true;
     spice-vdagentd.enable = true;
   };
+  virtualisation.rosetta.enable = true;
 }
