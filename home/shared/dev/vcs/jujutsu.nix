@@ -12,6 +12,11 @@
         ];
         b = [ "bookmark" ];
         c = [ "commit" ];
+        clone = [
+          "git"
+          "clone"
+          "--colocate"
+        ];
         d = [ "describe" ];
         dai = [
           "util"
