@@ -2,6 +2,7 @@
 {
   home.packages = with pkgs; [
     just
+    svu
     tokei
   ];
   programs.direnv = {

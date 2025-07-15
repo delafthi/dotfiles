@@ -4,5 +4,6 @@
     du-dust
     htop
     procs
+    watch
   ];
 }

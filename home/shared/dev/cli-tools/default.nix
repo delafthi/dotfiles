@@ -11,9 +11,11 @@
   home.packages = with pkgs; [
     asciinema
     charm-freeze
+    clipboard-jh
     glow
     gum
     hyperfine
+    tealdeer
     vhs
   ];
 }
