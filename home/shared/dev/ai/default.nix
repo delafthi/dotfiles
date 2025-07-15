@@ -9,6 +9,7 @@ let
   ollama-api-key-env = "OLLAMA_API_KEY";
   openrouter-base-url = "https://openrouter.ai/api/v1";
   openrouter-api-key-env = "OPENROUTER_API_KEY";
+  theme = "catppuccin";
 in
 {
   home.sessionVariables = {
@@ -18,9 +19,10 @@ in
     mods = {
       enable = true;
       settings = {
-        default-model = "openai/gpt-4o-mini";
         default-api = "openrouter";
-        max-input-chars = 392200;
+        default-model = "openai/gpt-4.1-mini";
+        max-input-chars = 32000;
+        inherit theme;
         roles =
           let
             readLines = filePath: lib.strings.splitString "\n" (builtins.readFile filePath);
@@ -39,7 +41,6 @@ in
             api-key-env = ollama-api-key-env;
             models = {
               "qwen3:latest".aliases = [ "qwen3" ];
-
               "gemma3:4b-it-qat".aliases = [ "gemma3" ];
             };
           };
@@ -60,7 +61,7 @@ in
     opencode = {
       enable = true;
       settings = {
-        theme = "catppuccin";
+        inherit theme;
         mcp = {
           context7 = {
             type = "local";
