@@ -78,6 +78,13 @@ in
               "mcp-server-fetch"
             ];
           };
+          git = {
+            type = "local";
+            command = [
+              "${lib.getExe' pkgs.uv "uvx"}"
+              "mcp-server-git"
+            ];
+          };
           memory = {
             type = "local";
             command = [
