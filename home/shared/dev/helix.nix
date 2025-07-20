@@ -11,13 +11,13 @@
       basedpyright
       bibtex-tidy
       clippy
-      delve
       bash-language-server
-      buf
-      clang-tools
       cmake-language-server
       dockerfile-language-server-nodejs
+      fish-lsp
       gopls
+      golangci-lint-langserver
+      just-lsp
       lua-language-server
       marksman
       nixd
@@ -25,19 +25,16 @@
       nodePackages.prettier
       ruff
       rust-analyzer
-      swift-format
-      texlab
       tinymist
+      typescript-language-server
       vhdl-ls
       vscode-extensions.llvm-org.lldb-vscode
       vscode-langservers-extracted
       yaml-language-server
-      zig
       zls
     ];
     languages = {
       language-server = {
-        nixd.command = "nixd";
         pyright = {
           command = "basedpyright-langserver";
           args = [ "--stdio" ];
@@ -54,10 +51,6 @@
               "markdown"
             ];
           };
-        }
-        {
-          name = "nix";
-          language-servers = [ "nixd" ];
         }
         {
           name = "python";
@@ -93,7 +86,6 @@
         indent-guides.render = true;
         inline-diagnostics.cursor-line = "warning";
         line-number = "relative";
-        scrolloff = 8;
         soft-wrap.enable = true;
         statusline = {
           left = [
@@ -108,6 +100,7 @@
             "read-only-indicator"
             "file-type"
             "separator"
+            "primary-selection-length"
             "position"
             "total-line-numbers"
           ];
