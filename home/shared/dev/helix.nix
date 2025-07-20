@@ -21,6 +21,7 @@
       lua-language-server
       marksman
       nixd
+      nixfmt-rfc-style
       nodePackages.prettier
       ruff
       rust-analyzer
