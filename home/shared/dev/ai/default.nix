@@ -62,6 +62,7 @@ in
       enable = true;
       settings = {
         inherit theme;
+        "$schema" = "https://opencode.ai/config.json";
         mcp = {
           context7 = {
             type = "local";
