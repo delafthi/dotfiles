@@ -69,7 +69,6 @@ in
         model = "openrouter/anthropic/claude-sonnet-4";
         provider = {
           ollama = {
-            name = "Ollama";
             npm = "@ai-sdk/openai-compatible";
             options.baseURL = ollama-base-url;
             models = {
@@ -79,8 +78,6 @@ in
           };
           openrouter = {
             name = "OpenRouter";
-            npm = "@openrouter/ai-sdk-provider";
-
             models = {
               "anthropic/claude-sonnet-4".name = "claude-sonnet-4";
               "chatgpt/gpt-4.1".name = "gpt-4.1";
