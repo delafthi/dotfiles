@@ -5,7 +5,7 @@
     element-desktop
     qmk
     signal-desktop-bin
-    vesktop
+    # vesktop
     zotero
   ];
 }
