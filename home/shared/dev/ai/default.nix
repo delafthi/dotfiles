@@ -12,6 +12,9 @@ let
   theme = "catppuccin";
 in
 {
+  imports = [
+    ./mcp.nix
+  ];
   home.sessionVariables = {
     OPENROUTER_API_KEY = ''$(${lib.getExe' pkgs.uutils-coreutils-noprefix "cat"} ${config.sops.secrets.openrouter-api-key.path})'';
   };
@@ -63,46 +66,6 @@ in
       settings = {
         inherit theme;
         "$schema" = "https://opencode.ai/config.json";
-        mcp = {
-          context7 = {
-            type = "local";
-            command = [
-              "${lib.getExe' pkgs.bun "bunx"}"
-              "-y"
-              "@upstash/context7-mcp"
-            ];
-          };
-          fetch = {
-            type = "local";
-            command = [
-              "${lib.getExe' pkgs.uv "uvx"}"
-              "mcp-server-fetch"
-            ];
-          };
-          git = {
-            type = "local";
-            command = [
-              "${lib.getExe' pkgs.uv "uvx"}"
-              "mcp-server-git"
-            ];
-          };
-          memory = {
-            type = "local";
-            command = [
-              "${lib.getExe' pkgs.bun "bunx"}"
-              "-y"
-              "@modelcontextprotocol/server-memory"
-            ];
-          };
-          sequential-thinking = {
-            type = "local";
-            command = [
-              "${lib.getExe' pkgs.bun "bunx"}"
-              "-y"
-              "@modelcontextprotocol/server-sequential-thinking"
-            ];
-          };
-        };
         model = "openrouter/anthropic/claude-sonnet-4";
         provider = {
           ollama = {
