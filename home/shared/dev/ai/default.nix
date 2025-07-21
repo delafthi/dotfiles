@@ -69,20 +69,15 @@ in
         model = "openrouter/anthropic/claude-sonnet-4";
         provider = {
           ollama = {
+            name = "Ollama";
             npm = "@ai-sdk/openai-compatible";
             options.baseURL = ollama-base-url;
             models = {
-              "qwen3:latest".name = "qwen3";
-              "gemma3:4b-it-qat".name = "gemma3";
+              "qwen3:latest".name = "Qwen3";
+              "gemma3:4b-it-qat".name = "Gemma3";
             };
           };
-          openrouter = {
-            name = "OpenRouter";
-            models = {
-              "anthropic/claude-sonnet-4".name = "claude-sonnet-4";
-              "chatgpt/gpt-4.1".name = "gpt-4.1";
-            };
-          };
+          openrouter.models."anthropic/claude-sonnet-4".name = "Claude Sonnet 4";
         };
       };
     };
