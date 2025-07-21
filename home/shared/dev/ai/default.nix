@@ -52,10 +52,7 @@ in
             api-key-env = openrouter-api-key-env;
             models = {
               "anthropic/claude-sonnet-4".aliases = [ "claude-sonnet-4" ];
-              "google/gemini-2.0-flash-001".aliases = [ "gemini-2.0-flash" ];
-              "microsoft/phi-4".aliases = [ "phi-4" ];
               "openai/gpt-4.1-mini".aliases = [ "gpt-4.1-mini" ];
-              "openai/gpt-4o-mini".aliases = [ "gpt-4o-mini" ];
             };
           };
         };
