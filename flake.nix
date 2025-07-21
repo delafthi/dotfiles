@@ -90,7 +90,6 @@
                       {
                         nixpkgs.overlays = lib.attrValues config.flake.overlays;
                       }
-                      inputs.catppuccin.nixosModules.catppuccin
                       inputs.home-manager.nixosModules.home-manager
                       {
                         home-manager = {
