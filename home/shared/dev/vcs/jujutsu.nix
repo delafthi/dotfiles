@@ -5,8 +5,7 @@
     enable = true;
     settings = {
       aliases = {
-        a = [ "abandon" ];
-        add = [
+        a = [
           "file"
           "track"
         ];
@@ -24,7 +23,7 @@
           "--"
           "sh"
           "-c"
-          "jj diff --git --context 10 --no-pager | mods --role commit-message-generator | jj describe --edit --stdin"
+          "jj diff --git --context 5 --no-pager | mods --role commit-message-generator | jj describe --edit --stdin"
         ];
         e = [ "edit" ];
         f = [
