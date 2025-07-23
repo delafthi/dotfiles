@@ -8,27 +8,35 @@
     enable = true;
     defaultEditor = true;
     extraPackages = with pkgs; [
-      basedpyright
+      # Debugging
+      vscode-extensions.llvm-org.lldb-vscode
+      # Formatters
       bibtex-tidy
-      clippy
+      cmake-format
+      nixfmt-rfc-style
+      nodePackages.prettier
+      rustfmt
+      shfmt
+      typstyle
+      # Language servers/Linters
+      basedpyright
       bash-language-server
       cmake-language-server
       dockerfile-language-server-nodejs
       fish-lsp
       gopls
       golangci-lint-langserver
+      golangci-lint
       just-lsp
       lua-language-server
       marksman
       nixd
-      nixfmt-rfc-style
-      nodePackages.prettier
       ruff
       rust-analyzer
+      clippy
       tinymist
       typescript-language-server
       vhdl-ls
-      vscode-extensions.llvm-org.lldb-vscode
       vscode-langservers-extracted
       yaml-language-server
       zls
