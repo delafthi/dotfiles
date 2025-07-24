@@ -9,8 +9,8 @@
       map
         (app: {
           tile-data.file-data = {
-            _CFURLString = app;
-            _CFURLStringType = 0;
+            _CFURLString = "file://${app}/";
+            _CFURLStringType = 15;
           };
         })
         [
