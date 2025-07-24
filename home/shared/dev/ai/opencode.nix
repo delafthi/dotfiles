@@ -12,8 +12,9 @@
           npm = "@ai-sdk/openai-compatible";
           options.baseURL = ollama-base-url;
           models = {
-            "qwen3:latest".name = "Qwen3";
             "gemma3:4b-it-qat".name = "Gemma3";
+            "qwen2.5-coder:latest".name = "Qwen2.5 Coder";
+            "qwen3:latest".name = "Qwen3";
           };
         };
         openrouter.models."anthropic/claude-sonnet-4".name = "Claude Sonnet 4";

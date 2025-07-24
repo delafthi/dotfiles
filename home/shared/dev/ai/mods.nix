@@ -32,8 +32,9 @@
           base-url = ollama-base-url;
           api-key-env = ollama-api-key-env;
           models = {
-            "qwen3:latest".aliases = [ "qwen3" ];
             "gemma3:4b-it-qat".aliases = [ "gemma3" ];
+            "qwen2.5-coder:latest".aliases = [ "qwen2.5-coder" ];
+            "qwen3:latest".aliases = [ "qwen3" ];
           };
         };
         openrouter = {
