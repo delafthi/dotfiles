@@ -32,7 +32,7 @@
           base-url = ollama-base-url;
           api-key-env = ollama-api-key-env;
           models = {
-            "gemma3:4b-it-qat".aliases = [ "gemma3" ];
+            "gemma3n:latest".aliases = [ "gemma3n" ];
             "qwen2.5-coder:latest".aliases = [ "qwen2.5-coder" ];
             "qwen3:latest".aliases = [ "qwen3" ];
           };
