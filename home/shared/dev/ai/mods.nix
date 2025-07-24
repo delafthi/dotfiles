@@ -12,7 +12,7 @@
     enable = true;
     settings = {
       default-api = "openrouter";
-      default-model = "openai/gpt-4.1-mini";
+      default-model = "qwen/qwen3-235b-a22b-07-25";
       max-input-chars = 32000;
       inherit theme;
       roles =
@@ -42,6 +42,8 @@
           models = {
             "anthropic/claude-sonnet-4".aliases = [ "claude-sonnet-4" ];
             "openai/gpt-4.1-mini".aliases = [ "gpt-4.1-mini" ];
+            "qwen/qwen3-235b-a22b-07-25".aliases = [ "qwen3" ];
+            "qwen/qwen3-coder".aliases = [ "qwen3-coder" ];
           };
         };
       };
