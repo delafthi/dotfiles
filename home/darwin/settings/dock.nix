@@ -20,7 +20,7 @@
           "/System/Applications/Music.app"
           "/Applications/Things3.app"
           "/Applications/Obsidian.app"
-          "${pkgs.ghostty-bin}/Applications/ghostty.app"
+          "${pkgs.ghostty-bin}/Applications/Ghostty.app"
         ];
     show-recents = false;
     showhidden = true;
