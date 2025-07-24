@@ -10,27 +10,26 @@ let
 in
 {
   home = {
-    activation =
-      {
-        createDeveloperDirectory = lib.hm.dag.entryAfter [ "linkGeneration" ] (
-          mkdir "${config.home.homeDirectory}/Developer"
-        );
-      }
-      // lib.optionalAttrs pkgs.hostPlatform.isDarwin {
-        createXdgUserDirectories = lib.hm.dag.entryAfter [ "linkGeneration" ] (
-          lib.strings.concatMapStringsSep "\n" mkdir [
-            "${config.home.homeDirectory}/Desktop"
-            "${config.home.homeDirectory}/Documents"
-            "${config.home.homeDirectory}/Downloads"
-            "${config.home.homeDirectory}/Music"
-            "${config.home.homeDirectory}/Movies"
-            "${config.home.homeDirectory}/Pictures"
-            "${config.home.homeDirectory}/Public"
-            "${config.home.homeDirectory}/Templates"
-            "${config.home.homeDirectory}/Templates"
-          ]
-        );
-      };
+    activation = {
+      createDeveloperDirectory = lib.hm.dag.entryAfter [ "linkGeneration" ] (
+        mkdir "${config.home.homeDirectory}/Developer"
+      );
+    }
+    // lib.optionalAttrs pkgs.hostPlatform.isDarwin {
+      createXdgUserDirectories = lib.hm.dag.entryAfter [ "linkGeneration" ] (
+        lib.strings.concatMapStringsSep "\n" mkdir [
+          "${config.home.homeDirectory}/Desktop"
+          "${config.home.homeDirectory}/Documents"
+          "${config.home.homeDirectory}/Downloads"
+          "${config.home.homeDirectory}/Music"
+          "${config.home.homeDirectory}/Movies"
+          "${config.home.homeDirectory}/Pictures"
+          "${config.home.homeDirectory}/Public"
+          "${config.home.homeDirectory}/Templates"
+          "${config.home.homeDirectory}/Templates"
+        ]
+      );
+    };
     homeDirectory = if pkgs.hostPlatform.isDarwin then "/Users/${user}" else "/home/${user}";
     preferXdgDirectories = true;
     sessionVariables = lib.optionalAttrs pkgs.hostPlatform.isDarwin {
