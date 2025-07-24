@@ -4,7 +4,7 @@
     ./coms
   ];
   home.packages = with pkgs; [
-    blender
+    # blender
     qmk
     zotero
   ];
