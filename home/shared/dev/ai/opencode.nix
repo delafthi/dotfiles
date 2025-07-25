@@ -4,7 +4,6 @@
     enable = true;
     settings = {
       inherit theme;
-      "$schema" = "https://opencode.ai/config.json";
       model = "openrouter/anthropic/claude-sonnet-4";
       provider = {
         ollama = {
