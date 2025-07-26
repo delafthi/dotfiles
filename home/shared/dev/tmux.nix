@@ -89,7 +89,17 @@
       }
       { plugin = open; }
       { plugin = resurrect; }
-      { plugin = tmux-thumbs; }
+      {
+        plugin = tmux-thumbs;
+        extraConfig = ''
+          set -g @thumbs-key F
+          set -g @thumbs-alphabet dvorak-homerow
+          set -g @thumbs-reverse enabled
+          set -g @thumbs-command "tmux set-buffer -w -- {} && tmux display-message 'Copied {}'"
+          set -g @thumbs-upcase-command "tmux set-buffer -w -- {} && tmux paste-buffer && tmux display-message 'Copied {}'"
+          set -g @thumbs-multi-command "tmux set-buffer -w -- {} && tmux paste-buffer && tmux send-keys ' ' && tmux display-message 'Copied multiple items!'"
+        '';
+      }
       { plugin = yank; }
     ];
     prefix = "C-Space";
