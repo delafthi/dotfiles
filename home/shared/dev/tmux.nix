@@ -81,12 +81,7 @@
           set -g @catppuccin_window_current_text " #W#{?window_zoomed_flag,[],}"
         '';
       }
-      {
-        plugin = continuum;
-        extraConfig = ''
-          set -g @continuum-restore "on"
-        '';
-      }
+      { plugin = continuum; }
       { plugin = open; }
       { plugin = resurrect; }
       {
