@@ -6,7 +6,7 @@
     enable = true;
     xkb = {
       layout = "us";
-      options = "mac";
+      variant = "mac";
     };
   };
 }
