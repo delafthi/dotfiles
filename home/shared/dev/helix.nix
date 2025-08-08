@@ -20,7 +20,6 @@
       swift-format
       typstyle
       # Language servers/Linters
-      basedpyright
       bash-language-server
       cmake-language-server
       dockerfile-language-server-nodejs
@@ -36,6 +35,7 @@
       rust-analyzer
       clippy
       tinymist
+      ty
       typescript-language-server
       vhdl-ls
       vscode-langservers-extracted
@@ -47,10 +47,6 @@
         biome = {
           command = "biome";
           args = [ "lsp-proxy" ];
-        };
-        pyright = {
-          command = "basedpyright-langserver";
-          args = [ "--stdio" ];
         };
         rust-analyzer.config.check.command = "clippy";
       };
@@ -108,13 +104,6 @@
               except-features = [ "format" ];
             }
             "biome"
-          ];
-        }
-        {
-          name = "python";
-          language-servers = [
-            "ruff"
-            "pyright"
           ];
         }
       ];
