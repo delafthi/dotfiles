@@ -1,4 +1,9 @@
-{ ollama-base-url, theme, ... }:
+{
+  ollama-base-url,
+  ollama-api-key-env,
+  theme,
+  ...
+}:
 {
   programs.opencode = {
     enable = true;
@@ -9,7 +14,10 @@
         ollama = {
           name = "Ollama";
           npm = "@ai-sdk/openai-compatible";
-          options.baseURL = ollama-base-url;
+          options = {
+            baseURL = ollama-base-url;
+            apiKey = "{env:${ollama-api-key-env}}";
+          };
           models."qwen2.5-coder:latest".name = "Qwen2.5 Coder";
         };
         openrouter.models = {

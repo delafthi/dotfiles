@@ -27,8 +27,6 @@ in
       inherit
         ollama-base-url
         ollama-api-key-env
-        openrouter-base-url
-        openrouter-api-key-env
         theme
         ;
     })
