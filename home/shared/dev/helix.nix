@@ -12,9 +12,9 @@
       vscode-extensions.llvm-org.lldb-vscode
       # Formatters
       bibtex-tidy
+      biome
       cmake-format
       nixfmt-rfc-style
-      nodePackages.prettier
       rustfmt
       shfmt
       typstyle
@@ -43,6 +43,10 @@
     ];
     languages = {
       language-server = {
+        biome = {
+          command = "biome";
+          args = [ "lsp-proxy" ];
+        };
         pyright = {
           command = "basedpyright-langserver";
           args = [ "--stdio" ];
@@ -51,14 +55,59 @@
       };
       language = [
         {
-          name = "markdown";
-          formatter = {
-            command = "prettier";
-            args = [
-              "--parser"
-              "markdown"
-            ];
-          };
+          name = "javascript";
+          auto-format = true;
+          language-servers = [
+            {
+              name = "typescript-language-server";
+              except-features = [ "format" ];
+            }
+            "biome"
+          ];
+        }
+        {
+          name = "typescript";
+          auto-format = true;
+          language-servers = [
+            {
+              name = "typescript-language-server";
+              except-features = [ "format" ];
+            }
+            "biome"
+          ];
+        }
+        {
+          name = "tsx";
+          auto-format = true;
+          language-servers = [
+            {
+              name = "typescript-language-server";
+              except-features = [ "format" ];
+            }
+            "biome"
+          ];
+        }
+        {
+          name = "jsx";
+          auto-format = true;
+          language-servers = [
+            {
+              name = "typescript-language-server";
+              except-features = [ "format" ];
+            }
+            "biome"
+          ];
+        }
+        {
+          name = "json";
+          auto-format = true;
+          language-servers = [
+            {
+              name = "vscode-json-language-server";
+              except-features = [ "format" ];
+            }
+            "biome"
+          ];
         }
         {
           name = "python";
@@ -66,16 +115,6 @@
             "ruff"
             "pyright"
           ];
-        }
-        {
-          name = "yaml";
-          formatter = {
-            command = "prettier";
-            args = [
-              "--parser"
-              "yaml"
-            ];
-          };
         }
       ];
     };
