@@ -1,4 +1,4 @@
 { pkgs, ... }:
 {
-  home.packages = [ (pkgs.lgogdownloader.override { enableGui = false; }) ];
+  home.packages = [ pkgs.lgogdownloader ];
 }

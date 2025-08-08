@@ -1,3 +1,1 @@
-final: prev: {
-  lgogdownloader = import ./lgogdownloader.nix final prev;
-}
+_final: _prev: { }
