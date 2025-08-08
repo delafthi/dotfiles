@@ -43,7 +43,7 @@ in
     OPENROUTER_API_KEY = ''$(${lib.getExe' pkgs.uutils-coreutils-noprefix "cat"} ${config.sops.secrets.openrouter-api-key.path})'';
   };
   services.ollama = {
-    enable = true;
+    enable = false;
     environmentVariables.OLLAMA_CONTEXT_SIZE = "8192";
   };
 }
