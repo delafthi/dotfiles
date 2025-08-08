@@ -6,7 +6,7 @@
   theme,
   ...
 }:
-{ lib, ... }:
+{ config, lib, ... }:
 {
   programs.mods = {
     enable = true;
@@ -14,6 +14,7 @@
       default-api = "openrouter";
       default-model = "openai/gpt-5-mini";
       max-input-chars = 32000;
+      mcp-servers = config.programs.mcp.servers;
       inherit theme;
       roles =
         let
