@@ -17,6 +17,7 @@
       nixfmt-rfc-style
       rustfmt
       shfmt
+      swift-format
       typstyle
       # Language servers/Linters
       basedpyright
