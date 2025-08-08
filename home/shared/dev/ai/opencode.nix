@@ -4,7 +4,7 @@
     enable = true;
     settings = {
       inherit theme;
-      model = "openrouter/qwen/qwen3-coder";
+      model = "openrouter/openai/gpt-5";
       provider = {
         ollama = {
           name = "Ollama";
@@ -14,7 +14,7 @@
         };
         openrouter.models = {
           "anthropic/claude-sonnet-4".name = "Claude Sonnet 4";
-          "qwen/qwen3-coder".name = "Qwen3 Coder";
+          "openai/gpt-5".name = "GPT-5";
         };
       };
     };
