@@ -5,8 +5,7 @@
   ...
 }:
 let
-  ollama-base-url = "http://localhost:11434";
-  ollama-api-key-env = "OLLAMA_API_KEY";
+  ollama-base-url = "http://localhost:11434/v1";
   openrouter-base-url = "https://openrouter.ai/api/v1";
   openrouter-api-key-env = "OPENROUTER_API_KEY";
   theme = "catppuccin";
@@ -16,7 +15,6 @@ in
     (import ./codex.nix {
       inherit
         ollama-base-url
-        ollama-api-key-env
         openrouter-base-url
         openrouter-api-key-env
         ;
@@ -25,7 +23,6 @@ in
     (import ./mods.nix {
       inherit
         ollama-base-url
-        ollama-api-key-env
         openrouter-base-url
         openrouter-api-key-env
         theme
@@ -34,7 +31,6 @@ in
     (import ./opencode.nix {
       inherit
         ollama-base-url
-        ollama-api-key-env
         theme
         ;
     })

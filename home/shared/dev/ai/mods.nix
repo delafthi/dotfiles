@@ -1,6 +1,5 @@
 {
   ollama-base-url,
-  ollama-api-key-env,
   openrouter-base-url,
   openrouter-api-key-env,
   theme,
@@ -30,8 +29,7 @@
         };
       apis = {
         ollama = {
-          base-url = ollama-base-url;
-          api-key-env = ollama-api-key-env;
+          base-url = lib.removeSuffix "/v1" ollama-base-url;
           models = {
             "gemma3n:latest".aliases = [ "gemma3n" ];
             "qwen2.5-coder:latest".aliases = [ "qwen2.5-coder" ];
