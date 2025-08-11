@@ -18,11 +18,7 @@
         ollama = {
           name = "Ollama";
           base_url = ollama-base-url;
-          models = {
-            "gemma3n:latest".aliases = [ "gemma3n" ];
-            "qwen2.5-coder:latest".aliases = [ "qwen2.5-coder" ];
-            "qwen3:latest".aliases = [ "qwen3" ];
-          };
+          models."qwen2.5-coder:latest".aliases = [ "qwen2.5-coder" ];
         };
         openrouter = {
           name = "OpenRouter";
