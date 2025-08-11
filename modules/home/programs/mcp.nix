@@ -50,12 +50,6 @@ in
       in
       {
         "mcp/mcp.json".source = jsonFormat.generate "mcp.json" mcp-config;
-        "opencode/mcp.json" = mkIf config.programs.opencode.enable {
-          source = jsonFormat.generate "mcp.json" mcp-config;
-        };
-        "mods/mcp.json" = mkIf config.programs.mods.enable {
-          source = jsonFormat.generate "mcp.json" mcp-config;
-        };
       }
     );
   };
