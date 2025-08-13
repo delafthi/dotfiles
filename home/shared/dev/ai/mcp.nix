@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   programs.mcp = {
     enable = true;
@@ -14,6 +19,14 @@
         command = "${lib.getExe' pkgs.uv "uvx"}";
         args = [
           "mcp-server-fetch"
+        ];
+      };
+      filesystem = {
+        command = "${lib.getExe' pkgs.bun "bunx"}";
+        args = [
+          "-y"
+          "@modelcontextprotocol/server-filesystem"
+          "${config.home.homeDirectory}/Developer"
         ];
       };
       git = {

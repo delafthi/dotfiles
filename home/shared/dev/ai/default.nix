@@ -28,8 +28,11 @@ in
         ;
     })
   ];
-  home.sessionVariables = {
-    OPENROUTER_API_KEY = ''$(${lib.getExe' pkgs.uutils-coreutils-noprefix "cat"} ${config.sops.secrets.openrouter-api-key.path})'';
+  home = {
+    packages = with pkgs; [ code-review ];
+    sessionVariables = {
+      OPENROUTER_API_KEY = ''$(${lib.getExe' pkgs.uutils-coreutils-noprefix "cat"} ${config.sops.secrets.openrouter-api-key.path})'';
+    };
   };
   services.ollama = {
     enable = false;

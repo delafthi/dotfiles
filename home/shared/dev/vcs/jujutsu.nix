@@ -55,6 +55,14 @@
           "push"
           "--all"
         ];
+        review = [
+          "util"
+          "exec"
+          "--"
+          "sh"
+          "-c"
+          "${pkgs.code-review}/bin/review $@"
+        ];
       };
       signing = {
         backend = "gpg";
