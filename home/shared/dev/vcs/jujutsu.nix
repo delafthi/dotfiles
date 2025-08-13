@@ -16,8 +16,7 @@
           "clone"
           "--colocate"
         ];
-        d = [ "describe" ];
-        dai = [
+        d = [
           "util"
           "exec"
           "--"
@@ -25,6 +24,7 @@
           "-c"
           "jj diff --git --context 5 --no-pager | mods --role commit-message-generator | jj describe --edit --stdin"
         ];
+        desc = [ "describe" ];
         e = [ "edit" ];
         f = [
           "git"
