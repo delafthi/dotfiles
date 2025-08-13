@@ -3,11 +3,19 @@
   theme,
   ...
 }:
+{ config, lib, ... }:
 {
   programs.opencode = {
     enable = true;
     settings = {
       inherit theme;
+      mcp = lib.attrsets.concatMapAttrs (name: value: {
+        ${name} = {
+          command = [ value.command ] ++ value.args;
+          enabled = true;
+          type = "local";
+        };
+      }) config.programs.mcp.servers;
       model = "openrouter/openai/gpt-5";
       provider = {
         ollama = {
