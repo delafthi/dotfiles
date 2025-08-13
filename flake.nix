@@ -133,7 +133,7 @@
               inherit system;
               overlays = lib.attrValues config.flake.overlays;
             };
-            packages = import ./pkgs pkgs;
+            packages = import ./pkgs { inherit pkgs; };
             devShells = {
               default = pkgs.mkShell {
                 name = "dotfiles";
