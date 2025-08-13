@@ -11,7 +11,7 @@
     enable = true;
     settings = {
       default-api = "openrouter";
-      default-model = "openai/gpt-5-mini";
+      default-model = "qwen/qwen3-coder";
       max-input-chars = 32000;
       mcp-servers = config.programs.mcp.servers;
       inherit theme;
@@ -41,8 +41,9 @@
           api-key-env = openrouter-api-key-env;
           models = {
             "anthropic/claude-sonnet-4".aliases = [ "claude-sonnet-4" ];
-            "openai/gpt-5".aliases = [ "gpt-5" ];
             "openai/gpt-5-mini".aliases = [ "gpt-5-mini" ];
+            "openai/gpt-4o-mini".aliases = [ "gpt-4o-mini" ];
+            "qwen/qwen3-coder".aliases = [ "qwen3-coder" ];
           };
         };
       };
