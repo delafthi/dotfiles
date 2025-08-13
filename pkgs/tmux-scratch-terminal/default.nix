@@ -2,7 +2,7 @@
   stdenvNoCC,
   tmux,
 }:
-stdenvNoCC.mkDerivation {
+stdenvNoCC.mkDerivation (finalAttrs: {
   name = "tmux-scratch-terminal";
   version = "unstable";
   src = ./.;
@@ -10,8 +10,10 @@ stdenvNoCC.mkDerivation {
   buildInputs = [ tmux ];
 
   installPhase = ''
-    mkdir -p $out/bin
-    cp $src/tmux-scratch-terminal.fish $out/bin/tmux-scratch-terminal
-    chmod +x $out/bin/tmux-scratch-terminal
+    runHook preInstall
+
+    install -Dm 755 $src/tmux-scratch-terminal.fish $out/bin/${finalAttrs.name}
+
+    runHook postInstall
   '';
-}
+})

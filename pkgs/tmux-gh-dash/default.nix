@@ -4,7 +4,7 @@
   gh-dash,
   tmux,
 }:
-stdenvNoCC.mkDerivation {
+stdenvNoCC.mkDerivation (finalAttrs: {
   name = "tmux-gh-dash";
   version = "unstable";
   src = ./.;
@@ -16,8 +16,10 @@ stdenvNoCC.mkDerivation {
   ];
 
   installPhase = ''
-    mkdir -p $out/bin
-    cp $src/tmux-gh-dash.fish $out/bin/tmux-gh-dash
-    chmod +x $out/bin/tmux-gh-dash
+    runHook preInstall
+
+    install -Dm755 $src/tmux-gh-dash.fish $out/bin/${finalAttrs.name}
+
+    runHook postInstall
   '';
-}
+})

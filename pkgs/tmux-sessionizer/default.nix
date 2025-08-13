@@ -7,7 +7,7 @@
   sd,
   tmux,
 }:
-stdenvNoCC.mkDerivation {
+stdenvNoCC.mkDerivation (finalAttrs: {
   name = "tmux-sessionizer";
   version = "unstable";
   src = ./.;
@@ -22,8 +22,10 @@ stdenvNoCC.mkDerivation {
   ];
 
   installPhase = ''
-    mkdir -p $out/bin
-    cp $src/tmux-sessionizer.fish $out/bin/tmux-sessionizer
-    chmod +x $out/bin/tmux-sessionizer
+    runHook preInstall
+
+    install -Dm 755 $src/tmux-sessionizer.fish $out/bin/${finalAttrs.name}
+
+    runHook postInstall
   '';
-}
+})
