@@ -12,13 +12,6 @@ let
 in
 {
   imports = [
-    (import ./codex.nix {
-      inherit
-        ollama-base-url
-        openrouter-base-url
-        openrouter-api-key-env
-        ;
-    })
     ./mcp.nix
     (import ./mods.nix {
       inherit
