@@ -75,9 +75,11 @@
               {
                 description = "{{prompt.description}}";
                 inputs = {
-                  nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+                  # keep-sorted start
                   flake-compat.url = "https://flakehub.com/f/edolstra/flake-compat/1.tar.gz";
+                  nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
                   treefmt-nix.url = "github:numtide/treefmt-nix";
+                  # keep-sorted end
                 };
 
                 outputs =
@@ -104,7 +106,10 @@
                         };
                         treefmt = {
                           projectRootFile = "flake.nix";
-                          programs.nixfmt.enable = true;
+                          programs = {
+                            keep-sorted.enable = true;
+                            nixfmt.enable = true;
+                          }
                         };
                       };
                   };
@@ -179,6 +184,7 @@
               {
                 projectRootFile = "flake.nix";
                 programs = {
+                  keep-sorted.enable = true;
                   nixfmt.enable = true;
                 };
                 settings.global.excludes = [
