@@ -9,6 +9,10 @@
           "file"
           "track"
         ];
+        add = [
+          "file"
+          "track"
+        ];
         b = [ "bookmark" ];
         c = [ "commit" ];
         clone = [
