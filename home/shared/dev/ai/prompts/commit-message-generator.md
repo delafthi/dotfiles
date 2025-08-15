@@ -33,6 +33,8 @@ Footer:
 Format: `<token>: <value>`
 
 - Maximum of 100 characters per line
+- Use the github-mcp-server to fetch information about issues
+- Only add a reference to issues if you are sure they are related to the current commit
 - Types of Footer:
   - `BREAKING CHANGE: <description>`: To indicate significant changes that are not backward-compatible.
   - `Fixes #<issue number>`: Typically used when the commit addresses a bug.

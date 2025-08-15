@@ -5,6 +5,9 @@
   ...
 }:
 {
+  home.sessionVariables = {
+    GITHUB_PERSONAL_ACCESS_TOKEN = ''$(${lib.getExe' pkgs.uutils-coreutils-noprefix "cat"} ${config.sops.secrets.github-personal-access-token.path})'';
+  };
   programs.mcp = {
     enable = true;
     servers = {
@@ -13,6 +16,17 @@
         args = [
           "-y"
           "@upstash/context7-mcp"
+        ];
+      };
+      github = {
+        command = "${lib.getExe pkgs.podman}";
+        args = [
+          "run"
+          "-i"
+          "--rm"
+          "-e"
+          "GITHUB_PERSONAL_ACCESS_TOKEN"
+          "ghcr.io/github/github-mcp-server"
         ];
       };
       fetch = {
