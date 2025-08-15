@@ -8,7 +8,7 @@
       co = "checkout";
       c = "commit";
       ca = "commit --amend";
-      cai = "!git --no-pager diff --cached | mods --role commit-message-generator | git commit --edit --file=-";
+      cai = "!git --no-pager diff --cached | mods --format --quiet --raw --role commit-message-generator | git commit --edit --file=-";
       cane = "commit --amend --no-edit";
       cf = "commit --fixup";
       g = "!git log --oneline --all --graph || true";

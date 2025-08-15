@@ -4,16 +4,14 @@ diff.
 
 Return Format:
 
-```md
 <type>(<scope>): <description>
 <BLANK LINE>
 [optional <body>]
 <BLANK LINE>
 [optional <footer(s)>]
-```
 
 Subject Line:
-Format: `<type>[optional (<scope>)]: <description>``
+Format: `<type>[optional (<scope>)]: <description>`
 
 - Scope must be in English
 - Imperative mood

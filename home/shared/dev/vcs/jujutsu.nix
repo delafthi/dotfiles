@@ -26,7 +26,7 @@
           "--"
           "sh"
           "-c"
-          "jj diff --git --context 5 --no-pager | mods --role commit-message-generator | jj describe --edit --stdin"
+          "jj diff --git --context 5 --no-pager | mods --format --quiet --raw --role commit-message-generator | jj describe --edit --stdin"
         ];
         desc = [ "describe" ];
         e = [ "edit" ];
