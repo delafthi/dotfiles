@@ -14,7 +14,7 @@
       g = "!git log --oneline --all --graph || true";
       last = "log -1 HEAD";
       pf = "push --force-with-lease";
-      save = "!git add -A && git commit -m 'chore: WIP'";
+      save = "!git add --all && git commit --message 'chore: WIP'";
       st = "status --short --branch --show-stash -unormal";
       unstage = "reset HEAD --";
       undo = "reset HEAD~1 --mixed";
