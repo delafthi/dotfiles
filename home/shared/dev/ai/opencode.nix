@@ -29,7 +29,6 @@
         openrouter.models = {
           "anthropic/claude-sonnet-4".name = "Claude Sonnet 4";
           "openai/gpt-5".name = "GPT-5";
-          "qwen/qwen3-coder".name = "Qwen3 Coder";
         };
       };
     };
