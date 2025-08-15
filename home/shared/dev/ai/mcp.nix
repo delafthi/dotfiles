@@ -5,8 +5,13 @@
   ...
 }:
 {
-  home.sessionVariables = {
-    GITHUB_PERSONAL_ACCESS_TOKEN = ''$(${lib.getExe' pkgs.uutils-coreutils-noprefix "cat"} ${config.sops.secrets.github-personal-access-token.path})'';
+  programs = {
+    bash.initExtra = ''
+      export GITHUB_PERSONAL_ACCESS_TOKEN=$(${lib.getExe' pkgs.uutils-coreutils-noprefix "cat"} ${config.sops.secrets.github-personal-access-token.path})
+    '';
+    fish.interactiveShellInit = ''
+      set -gx GITHUB_PERSONAL_ACCESS_TOKEN (${lib.getExe' pkgs.uutils-coreutils-noprefix "cat"} ${config.sops.secrets.github-personal-access-token.path})
+    '';
   };
   programs.mcp = {
     enable = true;
