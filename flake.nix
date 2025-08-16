@@ -54,7 +54,6 @@
                         home-manager = {
                           extraSpecialArgs = { inherit user; };
                           useGlobalPkgs = true;
-                          useUserPackages = true;
                           users.${user} = {
                             imports = [
                               inputs.catppuccin.homeModules.catppuccin
@@ -95,7 +94,6 @@
                         home-manager = {
                           extraSpecialArgs = { inherit user; };
                           useGlobalPkgs = true;
-                          useUserPackages = true;
                           users.${user} = {
                             imports = [
                               inputs.catppuccin.homeModules.catppuccin
