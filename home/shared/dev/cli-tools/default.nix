@@ -15,7 +15,7 @@
     glow
     gum
     hyperfine
-    tealdeer
+    outfieldr
     vhs
   ];
 }
