@@ -17,7 +17,7 @@
       typstyle
       # Language servers/Linters
       bash-language-server
-      cmake-language-server
+      # cmake-language-server
       dockerfile-language-server-nodejs
       fish-lsp
       gopls
