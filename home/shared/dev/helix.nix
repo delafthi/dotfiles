@@ -27,6 +27,7 @@
       lua-language-server
       marksman
       nixd
+      protols
       ruff
       rust-analyzer
       clippy
