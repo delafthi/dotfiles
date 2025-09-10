@@ -45,6 +45,10 @@
           command = "biome";
           args = [ "lsp-proxy" ];
         };
+        clangd.args = [
+          "--background-index"
+          "--clang-tidy"
+        ];
         rust-analyzer.config.check.command = "clippy";
       };
       language = [
