@@ -11,7 +11,7 @@
     enable = true;
     settings = {
       default-api = "openrouter";
-      default-model = "openai/gpt-4o-mini";
+      default-model = "openai/gpt-oss-20b";
       max-input-chars = 32000;
       mcp-servers = config.programs.mcp.servers;
       inherit theme;
@@ -40,9 +40,8 @@
           base-url = openrouter-base-url;
           api-key-env = openrouter-api-key-env;
           models = {
-            "anthropic/claude-sonnet-4".aliases = [ "claude-sonnet-4" ];
             "openai/gpt-5-mini".aliases = [ "gpt-5-mini" ];
-            "openai/gpt-4o-mini".aliases = [ "gpt-4o-mini" ];
+            "openai/gpt-oss-20b".aliases = [ "gpt-oss-20b" ];
           };
         };
       };
