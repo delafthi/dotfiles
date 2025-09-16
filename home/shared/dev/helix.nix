@@ -18,7 +18,7 @@
       # Language servers/Linters
       bash-language-server
       cmake-language-server
-      dockerfile-language-server-nodejs
+      dockerfile-language-server
       fish-lsp
       gopls
       golangci-lint-langserver
