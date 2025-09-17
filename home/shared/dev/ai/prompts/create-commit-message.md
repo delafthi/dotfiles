@@ -25,7 +25,7 @@ Body:
 - Bullet points with "-"
 - Maximum of 100 characters per line including any spaces or special characters
 - Bullet points that exceed the 100 characters per line count should use line breaks without adding extra bullet points
-- Explain what and why
+- Explain why changes where made and not what was changed
 - Be objective
 - Must be in English
 
@@ -33,7 +33,7 @@ Footer:
 Format: `<token>: <value>`
 
 - Maximum of 100 characters per line
-- Use the github-mcp-server to fetch information about issues
+- Use the github-mcp-server or the github cli to fetch information about issues
 - Only add a reference to issues if you are sure they are related to the current commit
 - Types of Footer:
   - `BREAKING CHANGE: <description>`: To indicate significant changes that are not backward-compatible.

@@ -20,12 +20,12 @@
           readLines = filePath: lib.strings.splitString "\n" (builtins.readFile filePath);
         in
         {
-          code-documenter = readLines ./prompts/code-documenter.md;
-          code-reviewer = readLines ./prompts/code-reviewer.md;
-          commit-message-generator = readLines ./prompts/commit-message-generator.md;
+          document-code = readLines ./prompts/document-code.md;
+          review-code = readLines ./prompts/review-code.md;
+          create-commit-message = readLines ./prompts/create-commit-message.md;
           pipe = readLines ./prompts/pipe.md;
-          readme-generator = readLines ./prompts/readme-generator.md;
-          test-generator = readLines ./prompts/test-generator.md;
+          create-readme = readLines ./prompts/create-readme.md;
+          create-tests = readLines ./prompts/create-tests.md;
         };
       apis = {
         ollama = {
