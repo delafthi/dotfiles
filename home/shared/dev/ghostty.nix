@@ -13,6 +13,7 @@
         "cmd+k=text:\\x00k" # opens tmux-sessionizer
       ];
       macos-option-as-alt = "left";
+      window-inherit-working-directory = false;
       window-padding-x = 8;
     };
   };
