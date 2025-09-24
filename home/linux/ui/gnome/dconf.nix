@@ -61,12 +61,12 @@ with lib.hm.gvariant;
       };
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
         binding = "<Control><Super>Return";
-        command = "ghostty";
+        command = "bash -c \"wlrctl window focus ghostty || ghostty\"";
         name = "Ghostty";
       };
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
         binding = "<Control><Super>b";
-        command = "zen";
+        command = "bash -c \"wlrctl window focus zen || zen\"";
         name = "Zen";
       };
       "org/gnome/shell" = {

@@ -15,6 +15,7 @@
       nautilus-python
       nautilus-open-any-terminal
       wl-clipboard
+      wlrctl
     ];
   };
   services = {
