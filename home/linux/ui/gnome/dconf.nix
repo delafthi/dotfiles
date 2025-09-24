@@ -72,7 +72,7 @@ with lib.hm.gvariant;
       "org/gnome/shell" = {
         favorite-apps = [
           "org.gnome.Nautilus.desktop"
-          "zen.desktop"
+          "zen-beta.desktop"
           "proton-mail.desktop"
           "proton-pass.desktop"
           "com.mitchellh.ghostty.desktop"
