@@ -1,6 +1,7 @@
 # Agent Guidelines for delafthi's Dotfiles
 
 ## Build/Lint/Test Commands
+
 - **Format code**: `just fmt` or `nix fmt`
 - **Check flake validity**: `just check` or `nix flake check`
 - **Update dependencies**: `just update` or `nix flake update`
@@ -10,6 +11,7 @@
 ## Code Style Guidelines
 
 ### Formatting
+
 - **Indentation**: 2 spaces (except Makefiles/Justfiles: tabs)
 - **Line endings**: LF (Unix)
 - **Encoding**: UTF-8
@@ -17,6 +19,7 @@
 - **Trim trailing whitespace**: Yes
 
 ### Nix-Specific
+
 - **Formatter**: nixfmt (via treefmt)
 - **Import sorting**: keep-sorted for attributes and imports
 - **Dead code detection**: deadnix enabled
@@ -24,6 +27,7 @@
 - **Modular structure**: Separate platform-specific and shared configs
 
 ### File Organization
+
 - `hosts/` - Host-specific configurations
 - `home/` - Home-manager modules (darwin/linux/shared)
 - `modules/` - Custom Nix modules
@@ -32,6 +36,7 @@
 - `system/` - System-level configurations
 
 ### Additional Formatters
+
 - **Shell scripts**: shellcheck + shfmt
 - **Fish**: fish_indent
 - **GitHub Actions**: actionlint
@@ -39,6 +44,7 @@
 - **EditorConfig**: editorconfig-checker
 
 ### Best Practices
+
 - Use flake-parts for modular flake organization
 - Follow NixOS wiki conventions for stateVersion
 - Keep inputs sorted with keep-sorted

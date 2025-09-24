@@ -14,12 +14,13 @@
     systemPackages = with pkgs; [
       nautilus-python
       nautilus-open-any-terminal
+      wl-clipboard
     ];
   };
   services = {
     displayManager = {
       enable = true;
-      defaultSession = "gnome-xorg";
+      defaultSession = "gnome";
       gdm.enable = true;
     };
     gnome.gnome-keyring.enable = lib.mkForce false;
