@@ -6,7 +6,6 @@
     ./vcs
     ./ai
     ./editorconfig.nix
-    ./espanso.nix
     ./ghostty.nix
     ./helix.nix
     ./tmux.nix
