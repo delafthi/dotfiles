@@ -20,7 +20,6 @@
           "discord"
           "gog-galaxy"
           "karabiner-elements"
-          "krita"
           "lunar"
           "meetingbar"
           "monodraw"
