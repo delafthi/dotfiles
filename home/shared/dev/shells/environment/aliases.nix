@@ -8,7 +8,6 @@
     htop = "htop -t";
     mv = "mv -i";
     rm = "rm -i";
-    sudo = "sudo -E";
   }
   // lib.optionalAttrs pkgs.hostPlatform.isLinux {
     open = "xdg-open";
