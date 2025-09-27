@@ -11,7 +11,7 @@
     enable = true;
     settings = {
       default-api = "openrouter";
-      default-model = "openai/gpt-oss-20b";
+      default-model = "openai/gpt-5-nano";
       max-input-chars = 32000;
       mcp-servers = config.programs.mcp.servers;
       inherit theme;
@@ -41,7 +41,7 @@
           api-key-env = openrouter-api-key-env;
           models = {
             "openai/gpt-5-mini".aliases = [ "gpt-5-mini" ];
-            "openai/gpt-oss-20b".aliases = [ "gpt-oss-20b" ];
+            "openai/gpt-5-nano".aliases = [ "gpt-5-nano" ];
           };
         };
       };
