@@ -16,7 +16,7 @@
           type = "local";
         };
       }) config.programs.mcp.servers;
-      model = "openrouter/openai/gpt-5";
+      model = "openrouter/openai/gpt-5-codex";
       provider = {
         ollama = {
           name = "Ollama";
@@ -27,7 +27,7 @@
           models."qwen2.5-coder:latest".name = "Qwen2.5 Coder";
         };
         openrouter.models = {
-          "openai/gpt-5".name = "GPT-5";
+          "openai/gpt-5-codex".name = "GPT-5 Codex";
         };
       };
     };
