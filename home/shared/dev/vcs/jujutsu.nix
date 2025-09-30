@@ -67,6 +67,7 @@
           "${pkgs.code-review}/bin/review $@"
         ];
       };
+      colors."diff token".underline = false;
       signing = {
         backend = "gpg";
         behavior = "own";
