@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-  home.packages = [ pkgs.difftastic ];
   programs.jujutsu = {
     enable = true;
     settings = {
@@ -75,17 +74,7 @@
       };
       snapshot.auto-track = "none()";
       template-aliases."format_timestamp(timestamp)" = "timestamp.ago()";
-      ui = {
-        default-command = "log";
-        diff-formatter = [
-          "difft"
-          "--tab-width=2"
-          "--display=inline"
-          "--color=always"
-          "$left"
-          "$right"
-        ];
-      };
+      ui.default-command = "log";
       user = {
         email = "delafthi@pm.me";
         name = "Thierry Delafontaine";

@@ -19,10 +19,6 @@
       unstage = "reset HEAD --";
       undo = "reset HEAD~1 --mixed";
     };
-    difftastic = {
-      enable = true;
-      display = "inline";
-    };
     extraConfig = {
       branch.sort = "committerdate";
       column.ui = "auto";
