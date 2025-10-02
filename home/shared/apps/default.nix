@@ -5,6 +5,7 @@
   ];
   home.packages = with pkgs; [
     # blender
+    # kicad
     qmk
   ];
 }

@@ -21,6 +21,7 @@
           "discord"
           "gog-galaxy"
           "karabiner-elements"
+          "kicad"
           "lunar"
           "meetingbar"
           "monodraw"
