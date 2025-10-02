@@ -17,6 +17,7 @@
           "affinity-photo"
           "affinity-publisher"
           "alcove"
+          "blender"
           "discord"
           "gog-galaxy"
           "karabiner-elements"
