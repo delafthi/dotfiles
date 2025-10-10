@@ -8,6 +8,8 @@
     darwin.url = "github:LnL7/nix-darwin";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
+    nix-ai-tools.inputs.nixpkgs.follows = "nixpkgs";
+    nix-ai-tools.url = "github:numtide/nix-ai-tools";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
@@ -52,7 +54,11 @@
                       inputs.home-manager.darwinModules.home-manager
                       {
                         home-manager = {
-                          extraSpecialArgs = { inherit user; };
+                          extraSpecialArgs = {
+                            inherit user;
+                            nix-ai-tools = inputs.nix-ai-tools.packages.${system};
+                          };
+
                           useGlobalPkgs = true;
                           users.${user} = {
                             imports = [
@@ -92,7 +98,10 @@
                       inputs.home-manager.nixosModules.home-manager
                       {
                         home-manager = {
-                          extraSpecialArgs = { inherit user; };
+                          extraSpecialArgs = {
+                            inherit user;
+                            nix-ai-tools = inputs.nix-ai-tools.packages.${system};
+                          };
                           useGlobalPkgs = true;
                           users.${user} = {
                             imports = [

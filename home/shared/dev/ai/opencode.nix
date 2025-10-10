@@ -3,10 +3,16 @@
   theme,
   ...
 }:
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  nix-ai-tools,
+  ...
+}:
 {
   programs.opencode = {
     enable = true;
+    package = nix-ai-tools.opencode;
     settings = {
       inherit theme;
       mcp = lib.attrsets.concatMapAttrs (name: value: {
