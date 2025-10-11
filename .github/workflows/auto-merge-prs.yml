@@ -12,9 +12,9 @@ on:
         type: string
       merge_method:
         description: "Merge method"
-        default: "rebase"
+        default: "merge"
         type: choice
-        options: [rebase, squash, merge]
+        options: [merge, squash, rebase]
 
 jobs:
   auto-merge:
@@ -49,4 +49,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number || github.event.inputs.pr_number }}
-          MERGE_METHOD: ${{ github.event.inputs.merge_method || 'rebase' }}
+          MERGE_METHOD: ${{ github.event.inputs.merge_method || 'merge' }}
