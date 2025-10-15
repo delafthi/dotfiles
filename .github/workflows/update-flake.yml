@@ -1,14 +1,13 @@
 name: Update flake
 
 on:
+  workflow_dispatch:
   schedule:
-    - cron: "0 0 * * 0" # Every Sunday at 00:00
-  workflow_dispatch: # Allow manual trigger
+    - cron: "0 0 2 * *" # Every day at 02:00
 
 jobs:
   update-flake:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' # Ensure workflow_dispatch only runs on main
     permissions:
       contents: write
       pull-requests: write
@@ -21,25 +20,10 @@ jobs:
         uses: cachix/install-nix-action@v31
 
       - name: Update flake
-        run: nix flake update
-
-      - name: Create a Token
-        uses: actions/create-github-app-token@v2
-        id: create-token
+        uses: DeterminateSystems/update-flake-lock@v27
         with:
-          app-id: ${{ secrets.CI_TOKEN_GENERATOR_APP_ID }}
-          private-key: ${{ secrets.CI_TOKEN_GENERATOR_PRIVATE_KEY }}
-
-      - name: Create pull request
-        uses: peter-evans/create-pull-request@v7
-        with:
-          token: ${{ steps.create-token.outputs.token }}
-          commit-message: "chore: update flake"
-          branch: chore/update
-          delete-branch: true
-          branch-suffix: short-commit-hash
-          title: Update flake
-          labels: |
+          commit-msg: 'chore: update flake'
+          pr-title: 'chore: update flake'
+          pr-labels: |
             auto-merge
             dependencies
-          add-paths: flake.lock
