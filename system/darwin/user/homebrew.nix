@@ -27,7 +27,6 @@
           "monodraw"
           "obsidian"
           "proton-drive"
-          "proton-mail"
           "protonvpn"
           "signal"
           "steam"
