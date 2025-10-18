@@ -20,11 +20,14 @@
 
 ### Nix-Specific
 
-- **Formatter**: nixfmt (via treefmt)
-- **Import sorting**: keep-sorted for attributes and imports
+- **Formatter**: nixfmt-rfc-style (via treefmt)
+- **Import sorting**: keep-sorted for attributes and imports (use `# keep-sorted start/end` comments)
+<!-- keep-sorted end -->
 - **Dead code detection**: deadnix enabled
 - **Static analysis**: statix enabled
-- **Modular structure**: Separate platform-specific and shared configs
+- **Modular structure**: Separate platform-specific (`darwin/`, `linux/`) and `shared/` configs
+- **Attribute order**: `enable`, `package`, config options, then `extraPackages`/`extraConfig`
+- **Function parameters**: Use destructured sets, avoid `with pkgs;` in function signatures
 
 ### File Organization
 
@@ -46,8 +49,10 @@
 ### Best Practices
 
 - Use flake-parts for modular flake organization
-- Follow NixOS wiki conventions for stateVersion
-- Keep inputs sorted with keep-sorted
-- Use descriptive variable names
-- Document complex configurations with comments
+- Follow NixOS wiki conventions for `stateVersion`
+- Keep flake inputs sorted with keep-sorted comments
+- Use descriptive variable names (e.g., `host`, `user`, `ssh-keys`)
+- Prefer `imports = [ ]` pattern for modular organization
+- Use `mkDerivation` with explicit `meta.mainProgram` for custom packages
 - Test configurations on target systems before committing
+- NEVER add comments to code unless explicitly requested
