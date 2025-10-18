@@ -15,7 +15,7 @@
         })
         [
           "/Applications/Zen.app"
-          "/Applications/Proton Mail.app"
+          "${pkgs.protonmail-desktop}/Applications/Proton Mail.app"
           "/Applications/Proton Pass.app"
           "/System/Applications/Music.app"
           "/Applications/Things3.app"
