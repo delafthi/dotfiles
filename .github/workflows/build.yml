@@ -1,0 +1,63 @@
+name: Build System Configurations
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - "**/*.nix"
+      - "**/*.lock"
+      - ".github/workflows/build.yml"
+  pull_request:
+    paths:
+      - "**/*.nix"
+      - "**/*.lock"
+      - ".github/workflows/build.yml"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NIXPKGS_BRANCH: nixpkgs-unstable
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        include:
+          - runner: ubuntu-24.04-arm
+            hostnames: Thierrys-MacBook-Air-VM
+            system: aarch64-linux
+          - runner: macos-latest
+            hostnames: Thierrys-MacBook-Air
+            system: aarch64-darwin
+    name: "${{ matrix.system }} [${{ matrix.hostnames }}]"
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 30
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: |
+            # Sandbox is disabled on MacOS by default.
+            sandbox = true
+          nix_path: nixpkgs=channel:${{ env.NIXPKGS_BRANCH }}
+
+      - name: Setup Magic Nix Cache
+        uses: DeterminateSystems/magic-nix-cache-action@v8
+
+      - name: Build System
+        run: |
+          for hostname in ${{ matrix.hostnames }}; do
+            echo "::notice::Building configuration for $hostname..."
+            config_prefix=$([[ "${{ contains(matrix.system, 'linux') }}" == "true" ]] && echo nixosConfigurations || echo darwinConfigurations)
+            nix build --print-build-logs .#"$config_prefix"."$hostname".config.system.build.toplevel
+          done

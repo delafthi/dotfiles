@@ -2,14 +2,17 @@ name: Check flake
 
 on:
   push:
-    paths:
-      - "**/*.nix"
-      - "**/*.lock"
-      - ".github/workflows/check-flake.yml"
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+env:
+  NIXPKGS_BRANCH: nixpkgs-unstable
 
 jobs:
-  deadnix:
+  check:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     permissions:
       contents: read
 
@@ -19,35 +22,15 @@ jobs:
 
       - name: Install Nix
         uses: cachix/install-nix-action@v31
-
-      - name: Setup Cachix cache
-        uses: cachix/cachix-action@v16
         with:
-          name: deadnix
+          extra_nix_config: |
+            # Sandbox is disabled on MacOS by default.
+            sandbox = true
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+          nix_path: nixpkgs=channel:${{ env.NIXPKGS_BRANCH }}
 
-      - name: Run Deadnix to detect unused dependencies
-        uses: astro/deadnix-action@main
-        with:
-          create_pr: false
+      - name: Setup Magic Nix Cache
+        uses: DeterminateSystems/magic-nix-cache-action@v8
 
-  # NOTE: Disable `nix flake check` until https://github.com/catppuccin/nix/issues/392 is fixed
-  # check:
-  #   strategy:
-  #     matrix:
-  #       os: [macos-latest, ubuntu-latest]
-  #   runs-on: ${{ matrix.os }}
-  #   needs: deadnix
-  #   permissions:
-  #     contents: read
-
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v5
-
-  #     - name: Install Nix
-  #       uses: cachix/install-nix-action@v31
-  #       with:
-  #         github_access_token: ${{ secrets.GITHUB_TOKEN }}
-
-  #     - name: Run nix flake check
-  #       run: nix flake check --print-build-logs --show-trace
+      - name: Check formatting
+        run: nix build .#checks.x86_64-linux.treefmt
