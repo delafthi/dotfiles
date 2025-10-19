@@ -57,6 +57,7 @@
       codedocs = ./commands/codedocs.md;
       commit = ./commands/commit.md;
       onboard = ./commands/onboard.md;
+      pr = ./commands/pr.md;
       readme = ./commands/readme.md;
       review = ./commands/review.md;
       write-tests = ./commands/write-tests.md;
