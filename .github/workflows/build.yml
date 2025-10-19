@@ -3,15 +3,7 @@ name: Build System Configurations
 on:
   push:
     branches: [main, master]
-    paths:
-      - "**/*.nix"
-      - "**/*.lock"
-      - ".github/workflows/build.yml"
   pull_request:
-    paths:
-      - "**/*.nix"
-      - "**/*.lock"
-      - ".github/workflows/build.yml"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -40,10 +32,22 @@ jobs:
       contents: read
 
     steps:
+      - name: Check for relevant changes
+        id: filter
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            nix:
+              - '**/*.nix'
+              - '**/*.lock'
+              - '.github/workflows/build.yml'
+
       - name: Checkout code
+        if: steps.filter.outputs.nix == 'true'
         uses: actions/checkout@v5
 
       - name: Install Nix
+        if: steps.filter.outputs.nix == 'true'
         uses: cachix/install-nix-action@v31
         with:
           extra_nix_config: |
@@ -52,9 +56,11 @@ jobs:
           nix_path: nixpkgs=channel:${{ env.NIXPKGS_BRANCH }}
 
       - name: Setup Magic Nix Cache
+        if: steps.filter.outputs.nix == 'true'
         uses: DeterminateSystems/magic-nix-cache-action@v8
 
       - name: Build System
+        if: steps.filter.outputs.nix == 'true'
         run: |
           for hostname in ${{ matrix.hostnames }}; do
             echo "::notice::Building configuration for $hostname..."
@@ -69,8 +75,11 @@ jobs:
     steps:
       - name: Check build status
         run: |
-          if [[ "${{ needs.build.result }}" != "success" ]]; then
+          result="${{ needs.build.result }}"
+          if [[ "$result" == "success" || "$result" == "skipped" ]]; then
+            echo "::notice::Builds passed or skipped (no relevant changes)"
+            exit 0
+          else
             echo "::error::Build job failed or was cancelled"
             exit 1
           fi
-          echo "::notice::All builds passed successfully"
