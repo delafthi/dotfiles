@@ -26,10 +26,10 @@ in
   home.packages = with pkgs; [ code-review ];
   programs = {
     bash.initExtra = ''
-      export OPENROUTER_API_KEY=$(${lib.getExe' pkgs.uutils-coreutils-noprefix "cat"} ${config.sops.secrets.openrouter-api-key.path})
+      export ${openrouter-api-key-env}=$(${lib.getExe' pkgs.uutils-coreutils-noprefix "cat"} ${config.sops.secrets.openrouter-api-key.path})
     '';
     fish.interactiveShellInit = ''
-      set -gx OPENROUTER_API_KEY (${lib.getExe' pkgs.uutils-coreutils-noprefix "cat"} ${config.sops.secrets.openrouter-api-key.path})
+      set -gx ${openrouter-api-key-env} (${lib.getExe' pkgs.uutils-coreutils-noprefix "cat"} ${config.sops.secrets.openrouter-api-key.path})
     '';
   };
   services.ollama = {
