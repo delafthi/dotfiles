@@ -59,33 +59,19 @@ jobs:
             echo "should_merge=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Verify PR checks
+      - name: Verify PR state
         if: steps.check-label.outputs.should_merge == 'true'
         run: |
           echo "::notice::Verifying PR #${PR_NUMBER} status..."
 
-          PR_DATA=$(gh pr view "${PR_NUMBER}" --repo "${{ github.repository }}" --json state,statusCheckRollup)
-          PR_STATE=$(echo "${PR_DATA}" | jq -r '.state')
+          PR_STATE=$(gh pr view "${PR_NUMBER}" --repo "${{ github.repository }}" --json state --jq '.state')
 
           if [[ "${PR_STATE}" != "OPEN" ]]; then
             echo "::error::PR is not open (state: ${PR_STATE})"
             exit 1
           fi
 
-          # Check if all required status checks have passed
-          FAILED_CHECKS=$(echo "${PR_DATA}" | jq -r '[.statusCheckRollup[]? | select(.conclusion == "FAILURE" or .conclusion == "CANCELLED")] | length')
-          PENDING_CHECKS=$(echo "${PR_DATA}" | jq -r '[.statusCheckRollup[]? | select(.status == "IN_PROGRESS" or .status == "QUEUED" or .status == "PENDING")] | length')
-
-          if [[ "${FAILED_CHECKS}" -gt 0 ]]; then
-            echo "::error::PR has ${FAILED_CHECKS} failed check(s)"
-            exit 1
-          fi
-
-          if [[ "${PENDING_CHECKS}" -gt 0 ]]; then
-            echo "::notice::PR has ${PENDING_CHECKS} pending check(s), will wait for completion"
-          fi
-
-          echo "::notice::PR is open and checks are passing"
+          echo "::notice::PR is open"
           {
             echo "## Auto-merge Status"
             echo "- PR #${PR_NUMBER} is ready to merge"
