@@ -16,22 +16,29 @@ jobs:
   check-changes:
     runs-on: ubuntu-latest
     outputs:
-      nix: ${{ steps.filter.outputs.nix }}
+      has-relevant-changes: ${{ steps.filter.outputs.has-relevant-changes }}
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: ${{ github.event_name == 'pull_request' && 0 || 2 }}
       - name: Check for relevant changes
         id: filter
-        uses: dorny/paths-filter@v3
-        with:
-          filters: |
-            nix:
-              - '**/*.nix'
-              - '**/*.lock'
-              - '.github/workflows/build.yml'
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            files=$(git diff --name-only "${{ github.event.pull_request.base.sha }}..HEAD")
+          else
+            files=$(git diff --name-only HEAD^ HEAD 2>/dev/null || git diff --name-only --diff-filter=A HEAD)
+          fi
+
+          if echo "$files" | grep -qE '\.(nix|lock)$|\.github/workflows/build\.yml'; then
+            echo "has-relevant-changes=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "has-relevant-changes=false" >> "$GITHUB_OUTPUT"
+          fi
 
   build:
     needs: check-changes
-    if: needs.check-changes.outputs.nix == 'true'
+    if: needs.check-changes.outputs.has-relevant-changes == 'true'
     strategy:
       fail-fast: false
       max-parallel: 2
