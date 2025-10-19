@@ -69,8 +69,11 @@ jobs:
     steps:
       - name: Check build status
         run: |
-          if [[ "${{ needs.build.result }}" != "success" ]]; then
+          result="${{ needs.build.result }}"
+          if [[ "$result" == "success" || "$result" == "skipped" ]]; then
+            echo "::notice::Builds passed or skipped (no relevant changes)"
+            exit 0
+          else
             echo "::error::Build job failed or was cancelled"
             exit 1
           fi
-          echo "::notice::All builds passed successfully"
