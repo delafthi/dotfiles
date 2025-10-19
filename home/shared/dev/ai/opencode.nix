@@ -1,9 +1,4 @@
 {
-  ollama-base-url,
-  theme,
-  ...
-}:
-{
   config,
   lib,
   nix-ai-tools,
@@ -14,7 +9,6 @@
     enable = true;
     package = nix-ai-tools.opencode;
     settings = {
-      inherit theme;
       mcp = lib.attrsets.concatMapAttrs (name: value: {
         ${name} = {
           command = [ value.command ] ++ value.args;
@@ -22,20 +16,30 @@
           type = "local";
         };
       }) config.programs.mcp.servers;
-      model = "openrouter/anthropic/claude-sonnet-4.5";
+      model = "anthropic/claude-sonnet-4-5";
       provider = {
+        anthropic = {
+          models = {
+            claude-sonnet-4-5 = {
+              options = {
+                thinking = {
+                  type = "enabled";
+                  budgetTokens = 16000;
+                };
+              };
+            };
+          };
+        };
         ollama = {
           name = "Ollama";
           npm = "@ai-sdk/openai-compatible";
           options = {
-            baseURL = ollama-base-url;
+            baseURL = "http://localhost:11434/v1";
           };
           models."qwen2.5-coder:latest".name = "Qwen2.5 Coder";
         };
-        openrouter.models = {
-          "anthropic/claude-sonnet-4.5".name = "sonnet-4.5";
-        };
       };
+      theme = "catppuccin";
     };
   };
 }

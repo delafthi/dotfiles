@@ -21,12 +21,7 @@ in
         theme
         ;
     })
-    (import ./opencode.nix {
-      inherit
-        ollama-base-url
-        theme
-        ;
-    })
+    ./opencode.nix
   ];
   home.packages = with pkgs; [ code-review ];
   programs = {
