@@ -3,23 +3,23 @@
   home.packages = with pkgs; [ gh ];
   programs.git = {
     enable = true;
-    aliases = {
-      br = "branch";
-      co = "checkout";
-      c = "commit";
-      ca = "commit --amend";
-      cai = "!git --no-pager diff --cached | mods --format --quiet --raw --role commit-message-generator | git commit --edit --file=-";
-      cane = "commit --amend --no-edit";
-      cf = "commit --fixup";
-      g = "!git log --oneline --all --graph || true";
-      last = "log -1 HEAD";
-      pf = "push --force-with-lease";
-      save = "!git add --all && git commit --message 'chore: WIP'";
-      st = "status --short --branch --show-stash -unormal";
-      unstage = "reset HEAD --";
-      undo = "reset HEAD~1 --mixed";
-    };
-    extraConfig = {
+    settings = {
+      aliases = {
+        br = "branch";
+        co = "checkout";
+        c = "commit";
+        ca = "commit --amend";
+        cai = "!git --no-pager diff --cached | mods --format --quiet --raw --role commit-message-generator | git commit --edit --file=-";
+        cane = "commit --amend --no-edit";
+        cf = "commit --fixup";
+        g = "!git log --oneline --all --graph || true";
+        last = "log -1 HEAD";
+        pf = "push --force-with-lease";
+        save = "!git add --all && git commit --message 'chore: WIP'";
+        st = "status --short --branch --show-stash -unormal";
+        unstage = "reset HEAD --";
+        undo = "reset HEAD~1 --mixed";
+      };
       branch.sort = "committerdate";
       column.ui = "auto";
       commit.verbose = "true";
@@ -61,6 +61,15 @@
       };
       submodole.recurse = true;
       tag.sort = "version:refname";
+      user = {
+        email = "delafthi@pm.me";
+        name = "Thierry Delafontaine";
+      };
+    };
+    lfs.enable = true;
+    signing = {
+      key = "00926686981863CB";
+      signByDefault = true;
     };
     ignores = [
       # github/gitignores/Global/Archives.gitignore
@@ -181,12 +190,5 @@
       "compile_commands.json"
       "result"
     ];
-    lfs.enable = true;
-    signing = {
-      key = "00926686981863CB";
-      signByDefault = true;
-    };
-    userEmail = "delafthi@pm.me";
-    userName = "Thierry Delafontaine";
   };
 }
