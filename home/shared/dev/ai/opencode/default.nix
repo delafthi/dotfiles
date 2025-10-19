@@ -121,6 +121,40 @@
       - Respect the detected hierarchy
       - When both `flake.nix` and `justfile` exist, prefer Nix commands (just may wrap Nix for convenience)
 
+      ## Contribution Guidelines Detection
+
+      Always look for contribution guidelines in the project before making changes or creating documentation.
+
+      ### Common Locations
+      - `CONTRIBUTING.md` in repository root
+      - `CONTRIBUTING` (without extension)
+      - `.github/CONTRIBUTING.md`
+      - `docs/CONTRIBUTING.md`
+      - `CONTRIBUTE.md`
+
+      ### Usage Rules
+      When contribution guidelines are found:
+      - Follow specified commit message formats and conventions
+      - Adhere to code style requirements beyond what formatters enforce
+      - Respect branch naming conventions
+      - Follow PR/MR templates and requirements
+      - Apply testing requirements
+      - Use specified changelog format
+
+      ### Special Cases
+      - **AGENTS.md creation**: When using `init` command, check contribution guidelines first to:
+        - Match project's preferred format and structure
+        - Include project-specific build/test/lint commands
+        - Respect existing documentation patterns
+        - Align with project's coding standards
+
+      ### Detection Command
+      ```bash
+      for file in CONTRIBUTING.md CONTRIBUTING .github/CONTRIBUTING.md docs/CONTRIBUTING.md CONTRIBUTE.md; do
+        [ -f "$file" ] && echo "Found: $file" && break
+      done
+      ```
+
       ## Personal Preferences
 
       - **VCS**: Prefer jujutsu when available
