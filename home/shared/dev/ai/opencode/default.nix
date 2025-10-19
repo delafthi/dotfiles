@@ -49,12 +49,14 @@
       theme = "catppuccin";
     };
     agents = {
+      investigate = ./agents/investigate.md;
       review = ./agents/review.md;
       vcs = ./agents/vcs.md;
     };
     commands = {
       codedocs = ./commands/codedocs.md;
       commit = ./commands/commit.md;
+      onboard = ./commands/onboard.md;
       readme = ./commands/readme.md;
       review = ./commands/review.md;
       write-tests = ./commands/write-tests.md;
