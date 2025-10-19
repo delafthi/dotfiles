@@ -56,3 +56,78 @@
 - Use `mkDerivation` with explicit `meta.mainProgram` for custom packages
 - Test configurations on target systems before committing
 - NEVER add comments to code unless explicitly requested
+
+## Version Control System Detection
+
+Detect the version control system used by the project before performing any VCS operations.
+
+### Detection Method
+
+Check for VCS-specific directories in the repository root:
+
+- **Jujutsu**: `.jj/` directory present → use `jj` commands
+- **Git**: `.git/` directory present → use `git` commands (default)
+
+### Usage Rules
+
+- If `.jj/` is detected, use jujutsu commands for ALL version control operations:
+  - Status: `jj status` (not `git status`)
+  - Diff: `jj diff` (not `git diff`)
+  - Commit: `jj commit` (not `git commit`)
+  - Branches: `jj branch` (not `git branch`)
+  - Log: `jj log` (not `git log`)
+- If only `.git/` is present, use standard git commands
+- NEVER mix git and jujutsu commands in the same repository
+- When in doubt, check for `.jj/` first: `test -d .jj && echo "jujutsu" || echo "git"`
+
+## Build System Detection
+
+Detect the build system and tooling used by the project before running build, format, or check operations.
+
+### Detection Method
+
+Check for build system files in the repository root (in priority order):
+
+1. **Nix Flakes**: `flake.nix` present
+2. **Just**: `justfile` or `Justfile` present
+3. **Language-specific**: `package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`, `Makefile`, etc.
+
+### Priority Rules
+
+When multiple build systems are detected, use the following priority:
+
+1. **Nix takes precedence**: If `flake.nix` exists, prefer Nix commands:
+
+- Format: `nix fmt` (not `just fmt`)
+- Check/Lint: `nix flake check` (not `just check`)
+- Build: `nix build` (not `just build`)
+- Update: `nix flake update` (not `just update`)
+
+2. **Just as secondary**: If `justfile` exists but no `flake.nix`:
+
+- Use `just <command>` for available tasks
+- Check available tasks: `just --list`
+
+3. **Language-specific tools**: If neither Nix nor Just are present:
+
+- Use project-specific tools (npm, cargo, go, make, etc.)
+- Always check project documentation for preferred commands
+
+### Detection Command
+
+```bash
+if [ -f flake.nix ]; then
+  echo "nix"
+elif [ -f justfile ] || [ -f Justfile ]; then
+  echo "just"
+else
+  echo "language-specific"
+fi
+```
+
+### Best Practices
+
+- Always detect build system before running operations
+- Respect the project's chosen tooling hierarchy
+- When `flake.nix` and `justfile` coexist, use Nix commands but be aware that `just` commands may wrap Nix for convenience
+- Never assume a build system without verification

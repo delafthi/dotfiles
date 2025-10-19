@@ -41,6 +41,17 @@
       };
       theme = "catppuccin";
     };
+    agents = {
+      review = ./agents/review.md;
+      vcs = ./agents/vcs.md;
+    };
+    commands = {
+      codedocs = ./commands/codedocs.md;
+      commit = ./commands/commit.md;
+      readme = ./commands/readme.md;
+      review = ./commands/review.md;
+      write-tests = ./commands/write-tests.md;
+    };
     rules = ''
       # Global Agent Guidelines
 
@@ -90,20 +101,20 @@
 
       ### Priority Rules
       1. **Nix takes precedence** when `flake.nix` exists:
-         - Format: `nix fmt` (prefer over `just fmt`)
-         - Check: `nix flake check` (prefer over `just check`)
-         - Build: `nix build` (prefer over `just build`)
-         - Update: `nix flake update` (prefer over `just update`)
+        - Format: `nix fmt` (prefer over `just fmt`)
+        - Check: `nix flake check` (prefer over `just check`)
+        - Build: `nix build` (prefer over `just build`)
+        - Update: `nix flake update` (prefer over `just update`)
 
       2. **Just as secondary** when no `flake.nix`:
-         - List tasks: `just --list`
-         - Use for project-specific workflows
+        - List tasks: `just --list`
+        - Use for project-specific workflows
 
       3. **Language-specific tools** when neither Nix nor Just exist:
-         - npm/pnpm/yarn for `package.json`
-         - cargo for `Cargo.toml`
-         - go for `go.mod`
-         - Check project README/CONTRIBUTING for preferred commands
+        - npm/pnpm/yarn for `package.json`
+        - cargo for `Cargo.toml`
+        - go for `go.mod`
+        - Check project README/CONTRIBUTING for preferred commands
 
       ### Best Practices
       - Always detect before assuming tool availability
