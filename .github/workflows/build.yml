@@ -13,7 +13,25 @@ env:
   NIXPKGS_BRANCH: nixpkgs-unstable
 
 jobs:
+  check-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      nix: ${{ steps.filter.outputs.nix }}
+    steps:
+      - uses: actions/checkout@v5
+      - name: Check for relevant changes
+        id: filter
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            nix:
+              - '**/*.nix'
+              - '**/*.lock'
+              - '.github/workflows/build.yml'
+
   build:
+    needs: check-changes
+    if: needs.check-changes.outputs.nix == 'true'
     strategy:
       fail-fast: false
       max-parallel: 2
@@ -32,22 +50,10 @@ jobs:
       contents: read
 
     steps:
-      - name: Check for relevant changes
-        id: filter
-        uses: dorny/paths-filter@v3
-        with:
-          filters: |
-            nix:
-              - '**/*.nix'
-              - '**/*.lock'
-              - '.github/workflows/build.yml'
-
       - name: Checkout code
-        if: steps.filter.outputs.nix == 'true'
         uses: actions/checkout@v5
 
       - name: Install Nix
-        if: steps.filter.outputs.nix == 'true'
         uses: cachix/install-nix-action@v31
         with:
           extra_nix_config: |
@@ -56,11 +62,9 @@ jobs:
           nix_path: nixpkgs=channel:${{ env.NIXPKGS_BRANCH }}
 
       - name: Setup Magic Nix Cache
-        if: steps.filter.outputs.nix == 'true'
         uses: DeterminateSystems/magic-nix-cache-action@v8
 
       - name: Build System
-        if: steps.filter.outputs.nix == 'true'
         run: |
           for hostname in ${{ matrix.hostnames }}; do
             echo "::notice::Building configuration for $hostname..."
