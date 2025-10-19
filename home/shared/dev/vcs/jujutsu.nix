@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+_: {
   programs.jujutsu = {
     enable = true;
     settings = {
@@ -19,15 +18,7 @@
           "clone"
           "--colocate"
         ];
-        d = [
-          "util"
-          "exec"
-          "--"
-          "sh"
-          "-c"
-          "jj diff --git --context 5 --no-pager | mods --format --quiet --raw --role create-commit-message | jj describe --edit --stdin"
-        ];
-        desc = [ "describe" ];
+        d = [ "describe" ];
         e = [ "edit" ];
         f = [
           "git"
@@ -57,14 +48,6 @@
           "git"
           "push"
           "--all"
-        ];
-        review = [
-          "util"
-          "exec"
-          "--"
-          "sh"
-          "-c"
-          "${pkgs.code-review}/bin/review $@"
         ];
       };
       colors."diff token".underline = false;

@@ -61,6 +61,10 @@
       set -g status-position "top"
       set -g status-right "%a %b %e %H:%M"
       set -g status-right-length 60
+
+      # Fix shift+enter for opencode
+      set -g extended-keys on
+      bind S-Enter send-keys "^[[13;2u"
     '';
     focusEvents = true;
     historyLimit = 10000;
