@@ -69,7 +69,7 @@ jobs:
           nix_path: nixpkgs=channel:${{ env.NIXPKGS_BRANCH }}
 
       - name: Setup Magic Nix Cache
-        uses: DeterminateSystems/magic-nix-cache-action@v8
+        uses: DeterminateSystems/magic-nix-cache-action@v13
 
       - name: Build System
         run: |
