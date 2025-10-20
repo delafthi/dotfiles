@@ -36,23 +36,80 @@ jobs:
             echo "has-relevant-changes=false" >> "$GITHUB_OUTPUT"
           fi
 
+  prepare-matrix:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    outputs:
+      matrix: ${{ steps.create-matrix.outputs.matrix }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+
+      - name: Create matrix
+        id: create-matrix
+        run: |
+          matrix_json=$(jq -n '[]')
+
+          nixos_hosts=$(nix eval --json '.#nixosConfigurations' --apply 'x: builtins.attrNames x' 2>/dev/null || echo '[]')
+          for host in $(echo "$nixos_hosts" | jq -r '.[]'); do
+            system=$(nix eval --raw ".#nixosConfigurations.$host.config.nixpkgs.system" 2>/dev/null || echo "")
+            case "$system" in
+              aarch64-linux)
+                runner="ubuntu-24.04-arm"
+                ;;
+              x86_64-linux)
+                runner="ubuntu-latest"
+                ;;
+              *)
+                echo "::warning::Skipping unsupported system: $system for $host"
+                continue
+                ;;
+            esac
+            matrix_json=$(echo "$matrix_json" | jq --arg host "$host" --arg system "$system" --arg runner "$runner" --arg config "nixosConfigurations" \
+              '. += [{"hostname": $host, "system": $system, "runner": $runner, "config": $config}]')
+          done
+
+          darwin_hosts=$(nix eval --json '.#darwinConfigurations' --apply 'x: builtins.attrNames x' 2>/dev/null || echo '[]')
+          for host in $(echo "$darwin_hosts" | jq -r '.[]'); do
+            system=$(nix eval --raw ".#darwinConfigurations.$host.config.nixpkgs.system" 2>/dev/null || echo "")
+            case "$system" in
+              aarch64-darwin)
+                runner="macos-latest"
+                ;;
+              x86_64-darwin)
+                runner="macos-14"
+                ;;
+              *)
+                echo "::warning::Skipping unsupported system: $system for $host"
+                continue
+                ;;
+            esac
+            matrix_json=$(echo "$matrix_json" | jq --arg host "$host" --arg system "$system" --arg runner "$runner" --arg config "darwinConfigurations" \
+              '. += [{"hostname": $host, "system": $system, "runner": $runner, "config": $config}]')
+          done
+
+          echo "matrix=$(echo "$matrix_json" | jq -c .)" >> "$GITHUB_OUTPUT"
+
+          total=$(echo "$matrix_json" | jq 'length')
+          echo "::notice::Detected $total system configuration(s)"
+
   build:
-    needs: check-changes
+    needs: [check-changes, prepare-matrix]
     if: needs.check-changes.outputs.has-relevant-changes == 'true'
     strategy:
       fail-fast: false
       max-parallel: 2
       matrix:
-        include:
-          - runner: ubuntu-24.04-arm
-            hostnames: Thierrys-MacBook-Air-VM
-            system: aarch64-linux
-          - runner: macos-latest
-            hostnames: Thierrys-MacBook-Air
-            system: aarch64-darwin
-    name: "${{ matrix.system }} [${{ matrix.hostnames }}]"
+        include: ${{ fromJson(needs.prepare-matrix.outputs.matrix) }}
+    name: "${{ matrix.hostname }} [${{ matrix.system }}]"
     runs-on: ${{ matrix.runner }}
-    timeout-minutes: 30
+    timeout-minutes: 60
     permissions:
       contents: read
 
@@ -73,11 +130,8 @@ jobs:
 
       - name: Build System
         run: |
-          for hostname in ${{ matrix.hostnames }}; do
-            echo "::notice::Building configuration for $hostname..."
-            config_prefix=$([[ "${{ contains(matrix.system, 'linux') }}" == "true" ]] && echo nixosConfigurations || echo darwinConfigurations)
-            nix build --print-build-logs .#"$config_prefix"."$hostname".config.system.build.toplevel
-          done
+          echo "::notice::Building configuration for ${{ matrix.hostname }}..."
+          nix build --print-build-logs .#${{ matrix.config }}.${{ matrix.hostname }}.config.system.build.toplevel
 
   all-builds-pass:
     runs-on: ubuntu-latest
