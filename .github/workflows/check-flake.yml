@@ -3,15 +3,35 @@ name: Check flake
 on:
   push:
     branches: [main]
+    paths:
+      - "**.nix"
+      - flake.lock
+      - .github/workflows/check-flake.yml
   pull_request:
+    paths:
+      - "**.nix"
+      - flake.lock
+      - .github/workflows/check-flake.yml
   workflow_dispatch:
 
-env:
-  NIXPKGS_BRANCH: nixpkgs-unstable
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   check:
-    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - system: x86_64-linux
+            runner: ubuntu-latest
+          - system: aarch64-linux
+            runner: ubuntu-24.04-arm
+          - system: aarch64-darwin
+            runner: macos-latest
+    name: Check [${{ matrix.system }}]
+    runs-on: ${{ matrix.runner }}
     timeout-minutes: 15
     permissions:
       contents: read
@@ -20,30 +40,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
 
-      - name: Install Nix
-        uses: cachix/install-nix-action@v31
+      - name: Setup Nix
+        uses: ./.github/actions/setup-nix
         with:
-          extra_nix_config: |
-            # Sandbox is disabled on MacOS by default.
-            sandbox = true
-          github_access_token: ${{ secrets.GITHUB_TOKEN }}
-          nix_path: nixpkgs=channel:${{ env.NIXPKGS_BRANCH }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Setup Magic Nix Cache
-        uses: DeterminateSystems/magic-nix-cache-action@v13
-
-      - name: Check formatting
-        run: nix build .#checks.x86_64-linux.treefmt
+      - name: Check flake validity
+        run: |
+          echo "::notice::Running nix flake check for ${{ matrix.system }}..."
+          nix flake check --system ${{ matrix.system }}
 
   all-checks-pass:
-    runs-on: ubuntu-latest
     needs: [check]
     if: always()
-    steps:
-      - name: Check status
-        run: |
-          if [[ "${{ needs.check.result }}" != "success" ]]; then
-            echo "::error::Check job failed or was cancelled"
-            exit 1
-          fi
-          echo "::notice::All checks passed successfully"
+    name: All checks pass
+    uses: ./.github/workflows/status-check.yml
+    with:
+      job-name: Check
+      needs-result: ${{ needs.check.result }}
