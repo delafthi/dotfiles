@@ -1,4 +1,4 @@
-name: Build System Configurations
+name: Build system configurations
 
 on:
   push:
@@ -9,9 +9,6 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-env:
-  NIXPKGS_BRANCH: nixpkgs-unstable
-
 jobs:
   check-changes:
     runs-on: ubuntu-latest
@@ -20,14 +17,18 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          fetch-depth: ${{ github.event_name == 'pull_request' && 0 || 2 }}
+          fetch-depth: 2
       - name: Check for relevant changes
         id: filter
         run: |
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             files=$(git diff --name-only "${{ github.event.pull_request.base.sha }}..HEAD")
           else
-            files=$(git diff --name-only HEAD^ HEAD 2>/dev/null || git diff --name-only --diff-filter=A HEAD)
+            if git rev-parse HEAD^ >/dev/null 2>&1; then
+              files=$(git diff --name-only HEAD^ HEAD)
+            else
+              files=$(git ls-files)
+            fi
           fi
 
           if echo "$files" | grep -qE '\.(nix|lock)$|\.github/workflows/build\.yml'; then
@@ -37,6 +38,8 @@ jobs:
           fi
 
   prepare-matrix:
+    needs: check-changes
+    if: needs.check-changes.outputs.has-relevant-changes == 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -48,8 +51,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
 
-      - name: Install Nix
-        uses: cachix/install-nix-action@v31
+      - name: Setup Nix
+        uses: ./.github/actions/setup-nix
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create matrix
         id: create-matrix
@@ -83,7 +88,7 @@ jobs:
                 runner="macos-latest"
                 ;;
               x86_64-darwin)
-                runner="macos-14"
+                runner="macos-13"
                 ;;
               *)
                 echo "::warning::Skipping unsupported system: $system for $host"
@@ -94,9 +99,13 @@ jobs:
               '. += [{"hostname": $host, "system": $system, "runner": $runner, "config": $config}]')
           done
 
-          echo "matrix=$(echo "$matrix_json" | jq -c .)" >> "$GITHUB_OUTPUT"
-
           total=$(echo "$matrix_json" | jq 'length')
+          if [ "$total" -eq 0 ]; then
+            echo "::error::No valid system configurations found. Check flake outputs."
+            exit 1
+          fi
+
+          echo "matrix=$(echo "$matrix_json" | jq -c .)" >> "$GITHUB_OUTPUT"
           echo "::notice::Detected $total system configuration(s)"
 
   build:
@@ -104,10 +113,9 @@ jobs:
     if: needs.check-changes.outputs.has-relevant-changes == 'true'
     strategy:
       fail-fast: false
-      max-parallel: 2
       matrix:
         include: ${{ fromJson(needs.prepare-matrix.outputs.matrix) }}
-    name: "${{ matrix.hostname }} [${{ matrix.system }}]"
+    name: ${{ matrix.hostname }} [${{ matrix.system }}]
     runs-on: ${{ matrix.runner }}
     timeout-minutes: 60
     permissions:
@@ -117,16 +125,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
 
-      - name: Install Nix
-        uses: cachix/install-nix-action@v31
+      - name: Setup Nix
+        uses: ./.github/actions/setup-nix
         with:
-          extra_nix_config: |
-            # Sandbox is disabled on MacOS by default.
-            sandbox = true
-          nix_path: nixpkgs=channel:${{ env.NIXPKGS_BRANCH }}
-
-      - name: Setup Magic Nix Cache
-        uses: DeterminateSystems/magic-nix-cache-action@v13
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build System
         run: |
@@ -134,17 +136,10 @@ jobs:
           nix build --print-build-logs .#${{ matrix.config }}.${{ matrix.hostname }}.config.system.build.toplevel
 
   all-builds-pass:
-    runs-on: ubuntu-latest
     needs: [build]
     if: always()
-    steps:
-      - name: Check build status
-        run: |
-          result="${{ needs.build.result }}"
-          if [[ "$result" == "success" || "$result" == "skipped" ]]; then
-            echo "::notice::Builds passed or skipped (no relevant changes)"
-            exit 0
-          else
-            echo "::error::Build job failed or was cancelled"
-            exit 1
-          fi
+    name: All builds pass
+    uses: ./.github/workflows/status-check.yml
+    with:
+      job-name: Build
+      needs-result: ${{ needs.build.result }}
