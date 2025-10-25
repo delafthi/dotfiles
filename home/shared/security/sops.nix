@@ -10,7 +10,6 @@
     gnupg.home = "${config.home.homeDirectory}/.gnupg";
     secrets = {
       openrouter-api-key = { };
-      github-personal-access-token = { };
     };
   };
 }
