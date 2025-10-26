@@ -51,6 +51,10 @@ _: {
         ];
       };
       colors."diff token".underline = false;
+      merge-tools.delta.diff-expected-exit-codes = [
+        0
+        1
+      ];
       signing = {
         backend = "gpg";
         behavior = "own";
@@ -61,12 +65,24 @@ _: {
       ui = {
         default-command = "log";
         diff-formatter = ":git";
-        pager = "delta";
       };
       user = {
         email = "delafthi@pm.me";
         name = "Thierry Delafontaine";
       };
+      "--scope" = [
+        {
+          "--when".commands = [ "status" ];
+          ui.paginate = "never";
+        }
+        {
+          "--when".commands = [
+            "diff"
+            "show"
+          ];
+          ui.pager = "delta";
+        }
+      ];
     };
   };
 }

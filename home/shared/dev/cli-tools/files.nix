@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   home = {
     packages = with pkgs; [
@@ -15,6 +15,12 @@
     enable = true;
     config = {
       italic-text = "always";
+      style = lib.concatStringsSep "," [
+        "changes"
+        "rule"
+        "numbers"
+        "snip"
+      ];
     };
   };
 }
