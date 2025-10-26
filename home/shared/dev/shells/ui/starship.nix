@@ -1,40 +1,93 @@
+{ lib, ... }:
 {
   programs.starship = {
     enable = true;
     settings = {
+      format = lib.concatStrings [
+        "$username"
+        "$hostname"
+        "$localip"
+        "$shlvl"
+        "$singularity"
+        "$kubernetes"
+        "$directory"
+        "$vcsh"
+        "$fossil_branch"
+        "$fossil_metrics"
+        "\${custom.git_branch}"
+        "\${custom.git_commit}"
+        "$git_state"
+        "$git_metrics"
+        "\${custom.git_status}"
+        "\${custom.jj_bookmark}"
+        "\${custom.jj_change}"
+        "\${custom.jj_status}"
+        "$all"
+      ];
       add_newline = true;
-      aws.symbol = "  ";
-      buf.symbol = " ";
-      c.symbol = " ";
-      cmake.symbol = " ";
       character = {
         success_symbol = "[>](bold green)";
         error_symbol = "[>](bold red)";
-        vimcmd_symbol = "[<](bold green)";
-        vimcmd_replace_one_symbol = "[<](bold green)";
-        vimcmd_replace_symbol = "[<](bold purple)";
-        vimcmd_visual_symbol = "[<](bold blue)";
       };
-      conda.symbol = " ";
-      crystal.symbol = " ";
       custom = {
-        jj_change = {
-          command = ''
-            jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 \
-              --template 'separate(" ", change_id.shortest(4), bookmarks)'
-          '';
-          description = "The current jj change";
+        git_branch = {
+          when = "! jj --ignore-working-copy root";
+          command = "starship module git_branch";
+          description = "Only show git_branch if we're not in a jj repo";
+        };
+        git_commit = {
+          when = "! jj --ignore-working-copy root";
+          command = "starship module git_commit";
+          description = "Only show git_commit if we're not in a jj repo";
+        };
+        git_status = {
+          when = "! jj --ignore-working-copy root";
+          command = "starship module git_status";
+          description = "Only show git_status if we're not in a jj repo";
+        };
+        jj_bookmark = {
+          when = "jj --ignore-working-copy root";
+          command = lib.concatStringsSep " " [
+            "jj log"
+            "--revisions @"
+            "--no-graph"
+            "--ignore-working-copy"
+            "--limit 1"
+            "--template 'if(bookmarks.len() != 0, bookmarks, \"-\")'"
+          ];
+          description = "The current jj bookmark";
           detect_folders = [ ".jj" ];
-          format = "[$symbol]($style)$output ";
+          format = "[$symbol$output]($style) ";
           ignore_timeout = true;
-          style = "bold purple";
-          symbol = " ";
+          symbol = " ";
+          style = "bold mauve";
+        };
+        jj_change = {
+          when = "jj --ignore-working-copy root";
+          command = lib.concatStringsSep " " [
+            "jj log"
+            "--revisions @"
+            "--no-graph"
+            "--ignore-working-copy"
+            "--limit 1"
+            "--template 'change_id.shortest(7)'"
+          ];
+          description = "The current jj change id";
+          detect_folders = [ ".jj" ];
+          format = "[\\($output\\)]($style) ";
+          ignore_timeout = true;
+          style = "bold green";
         };
         jj_status = {
-          command = ''
-            jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 \
-              --template 'concat( if(conflict, " "), if(divergent, " "), if(hidden, " "), if(immutable, " "))'
-          '';
+          when = "jj --ignore-working-copy root";
+          command = lib.concatStringsSep " " [
+            "jj log"
+            "--revisions @"
+            "--no-graph"
+            "--ignore-working-copy"
+            "--limit 1"
+            "--template 'concat( if(conflict, \"=\"), if(divergent, \"⇕\"), if(hidden, \"-\"), if(immutable, \"!\"))'"
+          ];
           description = "The current jj status";
           detect_folders = [ ".jj" ];
           format = "([\\[ $output \\]]($style) )";
@@ -42,61 +95,20 @@
           style = "bold red";
         };
       };
-      dart.symbol = " ";
       directory = {
         truncation_length = 1;
         truncate_to_repo = false;
-        read_only = " 󰌾";
-        style = "bold blue";
+        style = "bold sapphire";
         fish_style_pwd_dir_length = 3;
       };
-      docker_context.symbol = " ";
-      elixir.symbol = " ";
-      elm.symbol = " ";
-      fennel.symbol = " ";
-      fossil_branch.symbol = " ";
-      git_branch.symbol = " ";
-      git_commit.tag_symbol = "  ";
-      git_status = {
-        format = "([\\[ $all_status$ahead_behind\\]]($style) )";
-        style = "bold red";
-        conflicted = "[ ](bold red)";
-        ahead = "[\${count} ](bold purple)";
-        behind = "[\${count} ](bold purple)";
-        diverged = "[\${ahead_count}\${behind_count} ](bold purple)";
-        untracked = "[ \${count} ](bold yellow)";
-        stashed = "[ \${count} ](bold cyan)";
-        modified = "[ \${count} ](bold red)";
-        staged = "[ \${count} ](bold blue)";
-        renamed = "[ \${count} ](bold red)";
-        deleted = "[ \${count} ](bold red)";
+      direnv.style = "bold peach";
+      git_branch = {
+        disabled = true;
+        style = "bold mauve";
       };
-      golang.symbol = " ";
-      guix_shell.symbol = " ";
-      haskell.symbol = " ";
-      haxe.symbol = " ";
-      hg_branch.symbol = " ";
-      hostname.ssh_symbol = " ";
-      java.symbol = " ";
-      julia.symbol = " ";
-      kotlin.symbol = " ";
-      lua.symbol = " ";
-      memory_usage.symbol = "󰍛 ";
-      meson.symbol = "󰔷 ";
-      nim.symbol = "󰆥 ";
-      nix_shell.symbol = " ";
-      nodejs.symbol = " ";
-      ocaml.symbol = " ";
-      package.symbol = "󰏗 ";
-      perl.symbol = " ";
-      php.symbol = " ";
-      pijul_channel.symbol = " ";
-      python.symbol = " ";
-      right_format = "$cmd_duration";
-      rlang.symbol = "󰟔 ";
-      ruby.symbol = " ";
-      rust.symbol = " ";
-      scala.symbol = " ";
+      git_commit.disabled = true;
+      git_status.disabled = true;
+      right_format = "$command_duration";
       shell = {
         disabled = false;
         bash_indicator = "\\[bsh\\]";
@@ -108,11 +120,8 @@
         xonsh_indicator = "\\[xsh\\]";
         nu_indicator = "\\[nu\\]";
         unknown_indicator = "\\[?\\]";
-        style = "#292e42";
+        style = "surface0";
       };
-      swift.symbol = " ";
-      zig.symbol = " ";
-      gradle.symbol = " ";
     };
   };
 }
