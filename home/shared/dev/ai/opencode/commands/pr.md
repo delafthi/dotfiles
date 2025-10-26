@@ -27,6 +27,20 @@ If the bookmark is not pushed to remote, push with:
 jj git push
 ```
 
+## Existing PR Check
+
+Check if a PR already exists for the current branch:
+!`gh pr list --head $(jj bookmark list | grep '@$' | awk '{print $1}' | head -1)`
+
+If a PR exists:
+
+- Update the PR title and description to reflect current/recent changes
+- Use `gh pr edit <number> --title "new title" --body "new description"`
+- Analyze all commits since the PR was created to generate an accurate description
+- Ensure the description captures the full scope of current changes
+
+If no PR exists, proceed with creation below.
+
 ## PR Template Detection
 
 Check for PR templates in common locations:
