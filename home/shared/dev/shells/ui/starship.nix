@@ -9,6 +9,7 @@
       };
       custom = {
         jj_change = {
+          when = "jj --ignore-working-copy root";
           command = ''
             jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 \
               --template 'separate(" ", change_id.shortest(4), bookmarks)'
@@ -20,6 +21,7 @@
           symbol = " ";
         };
         jj_status = {
+          when = "jj --ignore-working-copy root";
           command = ''
             jj log --revisions @ --no-graph --ignore-working-copy --color always --limit 1 \
               --template 'concat( if(conflict, "="), if(divergent, "⇕"), if(hidden, "-"), if(immutable, "!"))'
@@ -35,7 +37,6 @@
         truncation_length = 1;
         truncate_to_repo = false;
         fish_style_pwd_dir_length = 3;
-      };
       };
       right_format = "$command_duration";
       shell = {
