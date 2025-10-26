@@ -33,6 +33,8 @@ Always detect which VCS is in use:
 test -d .jj && echo "jujutsu" || echo "git"
 ```
 
+Use jujutsu commands (`jj`) if detected, otherwise fall back to git commands.
+
 ## Jujutsu Commands
 
 When `.jj/` is detected:
