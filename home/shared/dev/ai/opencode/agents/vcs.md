@@ -65,6 +65,15 @@ Use `gh` for GitHub operations:
 - Releases: `gh release list`, `gh release view`
 - Authentication: `gh auth status`
 
+## GPG Signing
+
+When signing commits/changes with GPG keys (e.g., via YubiKey):
+
+- GPG key unlocking can timeout
+- If a signing operation fails due to timeout, re-execute the command
+- NEVER resort to unsigned commits (e.g., `--no-gpg-sign`)
+- Wait for proper GPG unlock rather than bypassing signature
+
 ## Constraints
 
 - NEVER modify code files directly
