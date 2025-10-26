@@ -26,6 +26,9 @@ in
           "@upstash/context7-mcp"
         ];
       };
+      deepwiki = {
+        serverUrl = "https://mcp.deepwiki.com/mcp";
+      };
       fetch = {
         command = "${lib.getExe' pkgs.uv "uvx"}";
         args = [

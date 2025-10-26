@@ -1,21 +1,9 @@
-{
-  config,
-  lib,
-  nix-ai-tools,
-  ...
-}:
+{ nix-ai-tools, ... }:
 {
   programs.opencode = {
     enable = true;
     package = nix-ai-tools.opencode;
     settings = {
-      mcp = lib.attrsets.concatMapAttrs (name: value: {
-        ${name} = {
-          command = [ value.command ] ++ value.args;
-          enabled = true;
-          type = "local";
-        };
-      }) config.programs.mcp.servers;
       keybinds = {
         leader = "ctrl+x";
         session_new = "<leader>c";
