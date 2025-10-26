@@ -1,6 +1,8 @@
 ---
 description: Executes version control and GitHub operations without modifying code
 mode: subagent
+thinking:
+  type: disabled
 tools:
   write: false
   edit: false
