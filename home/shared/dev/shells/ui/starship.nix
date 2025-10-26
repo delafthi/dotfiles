@@ -60,7 +60,7 @@
           format = "[$symbol$output]($style) ";
           ignore_timeout = true;
           symbol = " ";
-          style = "bold purple";
+          style = "bold mauve";
         };
         jj_change = {
           when = "jj --ignore-working-copy root";
@@ -98,9 +98,14 @@
       directory = {
         truncation_length = 1;
         truncate_to_repo = false;
+        style = "bold sapphire";
         fish_style_pwd_dir_length = 3;
       };
-      git_branch.disabled = true;
+      direnv.style = "bold peach";
+      git_branch = {
+        disabled = true;
+        style = "bold mauve";
+      };
       git_commit.disabled = true;
       git_status.disabled = true;
       right_format = "$command_duration";
@@ -115,7 +120,7 @@
         xonsh_indicator = "\\[xsh\\]";
         nu_indicator = "\\[nu\\]";
         unknown_indicator = "\\[?\\]";
-        style = "#292e42";
+        style = "surface0";
       };
     };
   };
