@@ -7,10 +7,24 @@ template: Commit the current changes.
 
 Commit the current changes. $ARGUMENTS
 
+## Existing Description Check
+
+Check if the current change already has a description:
+!`jj status`
+
+If the working copy shows an existing description (not "(no description set)"):
+
+- Update the existing description to reflect current/recent changes
+- Use `jj describe -m "updated message"` to modify the description
+- Analyze all changes since the description was first set
+- Ensure the updated description captures the full scope of current changes
+
+If no description exists, proceed with creating one below.
+
 ## Analysis
 
 First, analyze recent commits to understand the project's commit style:
-!`jj log -l 20`
+!`jj log --limit 20`
 
 Follow the project's existing commit conventions if they are clearly established.
 If no clear pattern exists or the project uses varied styles, default to the
