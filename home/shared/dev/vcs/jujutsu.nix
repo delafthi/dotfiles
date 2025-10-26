@@ -58,7 +58,11 @@ _: {
       };
       snapshot.auto-track = "none()";
       template-aliases."format_timestamp(timestamp)" = "timestamp.ago()";
-      ui.default-command = "log";
+      ui = {
+        default-command = "log";
+        diff-formatter = ":git";
+        pager = "delta";
+      };
       user = {
         email = "delafthi@pm.me";
         name = "Thierry Delafontaine";
