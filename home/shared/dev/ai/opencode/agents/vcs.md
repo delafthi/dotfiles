@@ -1,6 +1,8 @@
 ---
 description: Executes version control and GitHub operations without modifying code
 mode: subagent
+thinking:
+  type: disabled
 tools:
   write: false
   edit: false
@@ -30,6 +32,8 @@ Always detect which VCS is in use:
 ```bash
 test -d .jj && echo "jujutsu" || echo "git"
 ```
+
+Use jujutsu commands (`jj`) if detected, otherwise fall back to git commands.
 
 ## Jujutsu Commands
 
@@ -64,6 +68,15 @@ Use `gh` for GitHub operations:
 - Repository info: `gh repo view`, `gh repo clone`
 - Releases: `gh release list`, `gh release view`
 - Authentication: `gh auth status`
+
+## GPG Signing
+
+When signing commits/changes with GPG keys (e.g., via YubiKey):
+
+- GPG key unlocking can timeout
+- If a signing operation fails due to timeout, re-execute the command
+- NEVER resort to unsigned commits (e.g., `--no-gpg-sign`)
+- Wait for proper GPG unlock rather than bypassing signature
 
 ## Constraints
 
