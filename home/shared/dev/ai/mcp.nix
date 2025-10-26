@@ -4,7 +4,18 @@
   pkgs,
   ...
 }:
+let
+  context7-api-key-env = "CONTEXT7_API_KEY";
+in
 {
+  programs = {
+    bash.initExtra = ''
+      export ${context7-api-key-env}=$(${lib.getExe' pkgs.uutils-coreutils-noprefix "cat"} ${config.sops.secrets.context7-api-key.path})
+    '';
+    fish.interactiveShellInit = ''
+      set -gx ${context7-api-key-env} (${lib.getExe' pkgs.uutils-coreutils-noprefix "cat"} ${config.sops.secrets.context7-api-key.path})
+    '';
+  };
   programs.mcp = {
     enable = true;
     servers = {
