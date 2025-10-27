@@ -2,7 +2,6 @@
   imports = [
     ./apps
     ./dev
-    ./gaming
     ./security
     ./ui
     ./user-dirs.nix
