@@ -8,6 +8,7 @@
     ./editorconfig.nix
     ./ghostty.nix
     ./helix.nix
+    ./podman.nix
     ./tmux.nix
     ./yazi.nix
   ];

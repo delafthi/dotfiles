@@ -16,7 +16,6 @@
     gum
     hyperfine
     outfieldr
-    podman
     vhs
   ];
 }
