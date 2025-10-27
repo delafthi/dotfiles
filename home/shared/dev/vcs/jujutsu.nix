@@ -65,6 +65,7 @@ _: {
       ui = {
         default-command = "log";
         diff-formatter = ":git";
+        pager = "delta";
       };
       user = {
         email = "delafthi@pm.me";
@@ -74,13 +75,6 @@ _: {
         {
           "--when".commands = [ "status" ];
           ui.paginate = "never";
-        }
-        {
-          "--when".commands = [
-            "diff"
-            "show"
-          ];
-          ui.pager = "delta";
         }
       ];
     };
