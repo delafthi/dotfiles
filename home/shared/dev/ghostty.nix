@@ -4,7 +4,7 @@
   programs.ghostty = {
     enable = true;
     # The ghostty package is currently broken on darwin
-    package = if pkgs.hostPlatform.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
+    package = if pkgs.stdenv.hostPlatform.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
     settings = {
       cursor-style = "bar";
       font-family = "IosevkaTermSlab Nerd Font Mono";

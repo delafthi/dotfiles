@@ -13,7 +13,7 @@
       transmission_4-gtk
       virt-manager
     ]
-    ++ lib.optionals (pkgs.hostPlatform == "x86_64-linux") [
+    ++ lib.optionals (pkgs.stdenv.hostPlatform == "x86_64-linux") [
       proton-pass
     ];
 }

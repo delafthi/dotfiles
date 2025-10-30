@@ -3,7 +3,7 @@
   services.openssh = {
     enable = true;
   }
-  // lib.optionalAttrs pkgs.hostPlatform.isLinux {
+  // lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
     settings = {
       KbdInteractiveAuthentication = false;
       PasswordAuthentication = false;

@@ -8,6 +8,7 @@
     enableSshSupport = true;
     maxCacheTtl = 30;
     maxCacheTtlSsh = 30;
-    pinentry.package = if pkgs.hostPlatform.isDarwin then pkgs.pinentry_mac else pkgs.pinentry-gnome3;
+    pinentry.package =
+      if pkgs.stdenv.hostPlatform.isDarwin then pkgs.pinentry_mac else pkgs.pinentry-gnome3;
   };
 }

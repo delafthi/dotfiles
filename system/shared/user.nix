@@ -9,11 +9,11 @@
   users.users = {
     "${user}" = {
       description = "Thierry Delafontaine";
-      home = if pkgs.hostPlatform.isDarwin then "/Users/${user}" else "/home/${user}";
+      home = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/${user}" else "/home/${user}";
       shell = pkgs.fish;
       openssh.authorizedKeys.keys = ssh-keys;
     }
-    // lib.optionalAttrs pkgs.hostPlatform.isLinux {
+    // lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
       extraGroups = [
         "wheel"
         "audio"

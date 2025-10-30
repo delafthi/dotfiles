@@ -15,7 +15,7 @@ in
         mkdir "${config.home.homeDirectory}/Developer"
       );
     }
-    // lib.optionalAttrs pkgs.hostPlatform.isDarwin {
+    // lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
       createXdgUserDirectories = lib.hm.dag.entryAfter [ "linkGeneration" ] (
         lib.strings.concatMapStringsSep "\n" mkdir [
           "${config.home.homeDirectory}/Desktop"
@@ -30,9 +30,9 @@ in
         ]
       );
     };
-    homeDirectory = if pkgs.hostPlatform.isDarwin then "/Users/${user}" else "/home/${user}";
+    homeDirectory = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/${user}" else "/home/${user}";
     preferXdgDirectories = true;
-    sessionVariables = lib.optionalAttrs pkgs.hostPlatform.isDarwin {
+    sessionVariables = lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
       # define xdg userdirs here because the userdirs module is only available on linux
       XDG_DEVELOPER_DIR = "$HOME/Developer";
       XDG_DESKTOP_DIR = "$HOME/Desktop";
@@ -48,7 +48,7 @@ in
   };
   xdg = {
     enable = true;
-    userDirs = lib.optionalAttrs pkgs.hostPlatform.isLinux {
+    userDirs = lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
       enable = true;
       createDirectories = true;
       extraConfig = {

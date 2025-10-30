@@ -9,7 +9,7 @@
     mv = "mv -i";
     rm = "rm -i";
   }
-  // lib.optionalAttrs pkgs.hostPlatform.isLinux {
+  // lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
     open = "xdg-open";
   };
 }
