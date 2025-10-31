@@ -51,10 +51,6 @@ _: {
         ];
       };
       colors."diff token".underline = false;
-      merge-tools.delta.diff-expected-exit-codes = [
-        0
-        1
-      ];
       signing = {
         backend = "gpg";
         behavior = "own";
@@ -64,8 +60,6 @@ _: {
       template-aliases."format_timestamp(timestamp)" = "timestamp.ago()";
       ui = {
         default-command = "log";
-        diff-formatter = ":git";
-        pager = "delta";
       };
       user = {
         email = "delafthi@pm.me";
