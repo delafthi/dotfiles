@@ -5,7 +5,7 @@
   ];
   home.packages =
     with pkgs;
-    lib.optionals (pkgs.hostPlatform.isDarwin || pkgs.hostPlatform == "x86_64-linux") [
+    lib.optionals (pkgs.stdenv.hostPlatform.isDarwin || pkgs.stdenv.hostPlatform == "x86_64-linux") [
       protonmail-desktop
     ];
 }
