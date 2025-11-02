@@ -1,15 +1,13 @@
-{ nix-ai-tools, ... }:
-{
+_: {
   programs.opencode = {
     enable = true;
-    package = nix-ai-tools.opencode;
     settings = {
       keybinds = {
         leader = "ctrl+x";
         session_new = "<leader>c";
         session_compact = "<leader>C";
-        session_child_cycle = "<leader>n";
-        session_child_cycle_reverse = "<leader>p";
+        # session_child_cycle = "<leader>n";
+        # session_child_cycle_reverse = "<leader>p";
       };
       model = "anthropic/claude-sonnet-4-5";
       provider = {
