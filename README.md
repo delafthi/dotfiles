@@ -1,79 +1,125 @@
 # delafthi's dotfiles
 
-This repository contains my personal configuration files and setup scripts for managing Linux and macOS (Darwin) environments using Nix and home-manager.
-
-The configuration is organized using a modular approach with shared components between platforms and platform-specific settings.
+Personal configuration files for managing Linux and macOS (Darwin) environments using Nix and home-manager.
 
 ## Features
 
-- Cross-platform configuration (macOS and Linux)
+- Cross-platform configuration (macOS and Linux/NixOS)
 - Modular organization for easy maintenance
-- Managed applications, development tools, and system settings
-- Secrets management with sops-nix
+- Declarative application and system settings management
+- Secrets management with sops-nix and GPG
 - Consistent theming with Catppuccin
-- Automated formatting with treefmt
+- Automated code formatting and linting with treefmt
+- Custom packages and overlays
+- GitHub Actions for automated checks and updates
 
 ## Installation
 
-To set up your environment using these dotfiles, follow the steps below:
-
 ### Prerequisites
 
-- Ensure Nix is installed on your system. You can find installation instructions [here](https://nixos.org/download.html).
-- Follow [these](https://nixos.wiki/wiki/Flakes) instructions to enable flakes.
-- Install `just` with:
+- Nix with flakes enabled ([installation guide](https://nixos.org/download.html))
+- **macOS only**: nix-darwin ([installation guide](https://github.com/LnL7/nix-darwin#install))
+- GPG key for secrets management (optional, required for sops-encrypted secrets)
 
-  ```bash
-  nix shell nixpkgs#just
-  ```
+### Quick Start
 
-### Setup
-
-1. **Clone the Repository**
+1. **Clone the repository**
 
 ```bash
 git clone https://github.com/delafthi/dotfiles.git
 cd dotfiles
 ```
 
-2. **Apply Configurations**
+2. **Apply the configuration**
 
-For macOS:
+The system auto-detects your platform and hostname:
 
 ```bash
+nix shell nixpkgs#just
 just apply
 ```
 
-For Linux:
+Or use Nix directly:
 
 ```bash
-just apply-linux
+# macOS
+sudo darwin-rebuild switch --flake .#$(hostname)
+
+# NixOS
+sudo nixos-rebuild switch --flake .#$(hostname)
 ```
 
-Note: The system will automatically detect your hostname and apply the appropriate configuration.
+3. **Log out and back in** to apply all settings
+
+### Adding a New Host
+
+1. Create a new directory under `hosts/darwin/` or `hosts/nixos/`
+2. Add `configuration.nix` and `home.nix` files
+3. Reference the new host in `flake.nix`
+4. Update the hostname and SSH keys in the flake configuration
 
 ## Development
 
-This repository provides several helpful commands for development:
+### Available Commands
 
 ```bash
-# Format all nix files
-just fmt
+# Format all files
+nix fmt
 
-# Check flake validity
-just check
+# Check flake validity and run linters
+nix flake check
 
-# Update flake inputs
-just update
+# Update flake dependencies
+nix flake update
+
+# List all available commands
+just --list
 ```
 
-## Structure
+### Development Shell
 
-- `hosts/` - Host-specific configurations
-- `home/` - Home-manager configurations
-  - `darwin/` - macOS-specific settings
-  - `linux/` - Linux-specific settings
-  - `shared/` - Shared configurations between platforms
-- `modules/` - Custom Nix modules
-- `overlays/` - Package overlays
-- `pkgs/` - Custom packages
+The repository includes direnv integration for automatic shell activation. With direnv and nix-direnv installed, the development shell loads automatically when entering the directory.
+
+**Manual activation:**
+
+```bash
+nix develop
+```
+
+This provides `just`, `nixd` (Nix language server), and `sops` automatically.
+
+**Automatic activation with direnv:**
+
+1. Install direnv and nix-direnv (included in this configuration)
+2. Run `direnv allow` in the repository root
+3. The development shell will activate automatically when you `cd` into the directory
+
+## Secrets Management
+
+Secrets are managed using [sops-nix](https://github.com/Mic92/sops-nix) with GPG encryption.
+
+### Setup
+
+1. Import your GPG key:
+
+```bash
+gpg --import your-private-key.asc
+```
+
+2. Update `.sops.yaml` with your GPG key fingerprint
+
+3. Create or edit secrets:
+
+```bash
+sops secrets.yaml
+```
+
+### Structure
+
+- `.sops.yaml` - SOPS configuration with GPG keys
+- `secrets.yaml` - Encrypted secrets file
+- Secrets are referenced in Nix configurations using `config.sops.secrets.*`
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
