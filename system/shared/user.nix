@@ -20,6 +20,7 @@
         "dialout"
         "libvirtd"
         "networkmanager"
+        "podman"
       ];
       initialPassword = "01234567";
       isNormalUser = true;
