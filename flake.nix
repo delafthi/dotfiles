@@ -151,6 +151,7 @@
                 packages = with pkgs; [
                   just
                   nixd
+                  sops
                 ];
               };
             };
