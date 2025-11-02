@@ -2,7 +2,6 @@
   lib,
   stdenvNoCC,
   fetchurl,
-  autoPatchelfHook,
   common-updater-scripts,
   curl,
   installShellFiles,
@@ -24,8 +23,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
   nativeBuildInputs = [
     unzip
     installShellFiles
-  ]
-  ++ lib.optionals stdenvNoCC.hostPlatform.isLinux [ autoPatchelfHook ];
+  ];
 
   dontConfigure = true;
   dontBuild = true;
