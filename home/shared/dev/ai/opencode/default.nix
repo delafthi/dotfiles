@@ -1,8 +1,6 @@
-{ nix-ai-tools, ... }:
-{
+_: {
   programs.opencode = {
     enable = true;
-    package = nix-ai-tools.opencode;
     settings = {
       keybinds = {
         leader = "ctrl+x";
