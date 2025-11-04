@@ -33,7 +33,6 @@
           "subler"
           "transmission"
           "wacom-tablet"
-          "zen"
         ];
     # masApps = {
     #   Amphetamine = 937984704;

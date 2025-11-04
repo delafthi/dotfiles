@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   targets.darwin.defaults."com.apple.dock" = {
     autohide = true;
@@ -14,7 +14,7 @@
           };
         })
         [
-          "/Applications/Zen.app"
+          "${config.programs.zen-browser.package}/Applications/Zen Browser (Beta).app"
           "${pkgs.protonmail-desktop}/Applications/Proton Mail.app"
           "/Applications/Proton Pass.app"
           "/System/Applications/Music.app"

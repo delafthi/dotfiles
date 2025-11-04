@@ -60,6 +60,7 @@
                             inherit user;
                             iamb = inputs.iamb.packages.${system};
                             nix-ai-tools = inputs.nix-ai-tools.packages.${system};
+                            zen-browser = inputs.zen-browser.packages.${system};
                           };
 
                           useGlobalPkgs = true;
