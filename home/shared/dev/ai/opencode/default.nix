@@ -1,6 +1,7 @@
 _: {
   programs.opencode = {
     enable = true;
+    enableMcpIntegration = true;
     settings = {
       keybinds = {
         leader = "ctrl+x";

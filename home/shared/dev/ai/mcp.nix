@@ -27,7 +27,7 @@ in
         ];
       };
       deepwiki = {
-        serverUrl = "https://mcp.deepwiki.com/mcp";
+        url = "https://mcp.deepwiki.com/mcp";
       };
       fetch = {
         command = "${lib.getExe' pkgs.uv "uvx"}";
