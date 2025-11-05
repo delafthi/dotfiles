@@ -1,6 +1,9 @@
-_: {
+{ nix-ai-tools, ... }:
+{
   programs.opencode = {
     enable = true;
+    package = nix-ai-tools.opencode;
+    enableMcpIntegration = true;
     settings = {
       keybinds = {
         leader = "ctrl+x";
