@@ -8,7 +8,6 @@
     [
       ascii-draw
       mpv
-      obsidian
       protonvpn-gui
       transmission_4-gtk
       virt-manager
