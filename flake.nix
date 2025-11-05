@@ -16,8 +16,6 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
     treefmt-nix.url = "github:numtide/treefmt-nix";
-    zen-browser.inputs.nixpkgs.follows = "nixpkgs";
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
     # keep-sorted end
   };
 
@@ -67,7 +65,6 @@
                             imports = [
                               inputs.catppuccin.homeModules.catppuccin
                               inputs.sops-nix.homeManagerModules.sops
-                              inputs.zen-browser.homeModules.beta
                               config.flake.homeModules
                               ./hosts/darwin/macbookair/home.nix
                             ];
@@ -111,7 +108,6 @@
                             imports = [
                               inputs.catppuccin.homeModules.catppuccin
                               inputs.sops-nix.homeManagerModules.sops
-                              inputs.zen-browser.homeModules.beta
                               config.flake.homeModules
                               ./hosts/nixos/vm/home.nix
                             ];

@@ -3,6 +3,7 @@
     ./bootloader
     ./desktop
     ./hardware
+    ./user
     ./nix.nix
     ./settings
   ];
