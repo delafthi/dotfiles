@@ -24,7 +24,6 @@
           "monodraw"
           "proton-drive"
           "protonvpn"
-          "signal"
           "steam"
           "subler"
           "transmission"

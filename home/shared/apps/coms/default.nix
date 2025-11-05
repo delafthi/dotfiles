@@ -5,7 +5,10 @@
   ];
   home.packages =
     with pkgs;
-    lib.optionals (pkgs.stdenv.hostPlatform.isDarwin || pkgs.stdenv.hostPlatform == "x86_64-linux") [
+    [
+      signal-desktop-bin
+    ]
+    ++ lib.optionals (pkgs.stdenv.hostPlatform.isDarwin || pkgs.stdenv.hostPlatform == "x86_64-linux") [
       protonmail-desktop
     ];
 }
