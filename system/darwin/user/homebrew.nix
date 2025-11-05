@@ -13,9 +13,6 @@
           greedy = true;
         })
         [
-          "affinity-designer"
-          "affinity-photo"
-          "affinity-publisher"
           "alcove"
           "blender"
           "discord"
