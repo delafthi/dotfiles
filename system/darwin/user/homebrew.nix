@@ -22,7 +22,6 @@
           "lunar"
           "meetingbar"
           "monodraw"
-          "obsidian"
           "proton-drive"
           "protonvpn"
           "signal"

@@ -19,7 +19,7 @@
           "/Applications/Proton Pass.app"
           "/System/Applications/Music.app"
           "/Applications/Things3.app"
-          "/Applications/Obsidian.app"
+          "${pkgs.obsidian}/Applications/Obsidian.app"
           "${pkgs.ghostty-bin}/Applications/Ghostty.app"
         ];
     show-recents = false;
