@@ -15,7 +15,6 @@
         [
           "alcove"
           "blender"
-          "discord"
           "gog-galaxy"
           "karabiner-elements"
           "kicad"

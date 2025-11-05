@@ -6,6 +6,7 @@
   home.packages =
     with pkgs;
     [
+      discord
       signal-desktop-bin
     ]
     ++ lib.optionals (pkgs.stdenv.hostPlatform.isDarwin || pkgs.stdenv.hostPlatform == "x86_64-linux") [
