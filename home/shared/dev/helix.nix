@@ -8,7 +8,6 @@
       vscode-extensions.llvm-org.lldb-vscode
       # Formatters
       bibtex-tidy
-      biome
       cmake-format
       nixfmt-rfc-style
       rustfmt
@@ -41,73 +40,12 @@
     ];
     languages = {
       language-server = {
-        biome = {
-          command = "biome";
-          args = [ "lsp-proxy" ];
-        };
         clangd.args = [
           "--background-index"
           "--clang-tidy"
         ];
         rust-analyzer.config.check.command = "clippy";
       };
-      language = [
-        {
-          name = "javascript";
-          auto-format = true;
-          language-servers = [
-            {
-              name = "typescript-language-server";
-              except-features = [ "format" ];
-            }
-            "biome"
-          ];
-        }
-        {
-          name = "typescript";
-          auto-format = true;
-          language-servers = [
-            {
-              name = "typescript-language-server";
-              except-features = [ "format" ];
-            }
-            "biome"
-          ];
-        }
-        {
-          name = "tsx";
-          auto-format = true;
-          language-servers = [
-            {
-              name = "typescript-language-server";
-              except-features = [ "format" ];
-            }
-            "biome"
-          ];
-        }
-        {
-          name = "jsx";
-          auto-format = true;
-          language-servers = [
-            {
-              name = "typescript-language-server";
-              except-features = [ "format" ];
-            }
-            "biome"
-          ];
-        }
-        {
-          name = "json";
-          auto-format = true;
-          language-servers = [
-            {
-              name = "vscode-json-language-server";
-              except-features = [ "format" ];
-            }
-            "biome"
-          ];
-        }
-      ];
     };
     settings = {
       editor = {
