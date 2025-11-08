@@ -1,16 +1,22 @@
-{ config, lib, ... }:
 {
   nix = {
-    gc.interval = [
-      {
-        Hour = 3;
-        Minute = 15;
-        Weekday = 1;
-      }
-    ];
-    optimise.interval = lib.lists.forEach config.nix.gc.interval (e: {
-      inherit (e) Minute Weekday;
-      Hour = e.Hour + 1;
-    });
+    gc = {
+      automatic = true;
+      interval = [
+        {
+          Hour = 3;
+          Minute = 45;
+        }
+      ];
+    };
+    optimise = {
+      automatic = true;
+      interval = [
+        {
+          Hour = 4;
+          Minute = 45;
+        }
+      ];
+    };
   };
 }

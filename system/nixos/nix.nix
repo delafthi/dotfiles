@@ -3,7 +3,13 @@
     daemonCPUSchedPolicy = "batch";
     daemonIOSchedClass = "idle";
     daemonIOSchedPriority = 7;
-    gc.dates = [ "03:15" ];
-    optimise.dates = [ "04:15" ];
+    gc = {
+      automatic = true;
+      dates = [ "03:45" ];
+    };
+    optimise = {
+      automatic = true;
+      dates = [ "04:45" ];
+    };
   };
 }
