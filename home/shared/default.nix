@@ -4,6 +4,7 @@
     ./dev
     ./security
     ./ui
+    ./nix.nix
     ./user-dirs.nix
     ./user.nix
   ];
