@@ -2,9 +2,17 @@
 {
   environment = {
     systemPackages = with pkgs; [
-      uutils-coreutils-noprefix
       curl
+      gavin-bc
+      gawk
       git
+      gnugrep
+      gnused
+      gnutar
+      procps
+      uutils-coreutils-noprefix
+      uutils-diffutils
+      uutils-findutils
       vim
     ];
   };
