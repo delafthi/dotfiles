@@ -1,5 +1,8 @@
 { nix-ai-tools, ... }:
 {
+  home.shellAliases = {
+    oc = "opencode";
+  };
   programs.opencode = {
     enable = true;
     package = nix-ai-tools.opencode;
