@@ -52,7 +52,8 @@ Check current changes:
 
 ## Body Requirements
 
-- Bullet points with "-"
+- For multiple/complex changes: use bullet points with "-"
+- For single/simple changes: use prose to describe why the change was necessary
 - Maximum 100 characters per line
 - Explain WHY changes were made, not WHAT changed
 - Be objective
@@ -69,4 +70,3 @@ Check current changes:
 ## General Requirements
 
 - Wrap all paths, commands, or environment variables in backticks
-- Output only the commit message with no formatting markers or explanations

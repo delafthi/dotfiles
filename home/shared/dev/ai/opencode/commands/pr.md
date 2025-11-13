@@ -16,6 +16,32 @@ First, verify the current bookmark and recent commits:
 Check if there are any uncommitted changes:
 !`jj status`
 
+## Branch Creation
+
+Before creating a PR, ensure you have a bookmark pointing to your changes.
+
+Check if the current change has a bookmark:
+!`jj log -r @`
+
+If no bookmark exists, create one:
+
+```bash
+jj bookmark create <bookmark-name>
+```
+
+Bookmark naming conventions:
+
+- Use descriptive names: `feat/add-auth`, `fix/memory-leak`, `docs/update-readme`
+- Follow project conventions if established
+- Use lowercase with hyphens or slashes
+- Keep concise but meaningful
+
+If you need to move an existing bookmark to the current change:
+
+```bash
+jj bookmark set <bookmark-name>
+```
+
 ## Remote Status
 
 Verify the bookmark is pushed to remote:
@@ -58,12 +84,7 @@ Use GitHub CLI to create the PR:
 - Use the format:
 
   ```
-  ## Summary
   [Brief overview of changes]
-
-  ## Changes
-  - [Key change 1]
-  - [Key change 2]
 
   [Additional sections from template if present]
   ```
