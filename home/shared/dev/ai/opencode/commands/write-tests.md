@@ -1,9 +1,6 @@
----
-description: write tests
-agent: build
-subtask: true
-template: Create comprehensive, high-quality test cases for the provided files or current changes.
----
+______________________________________________________________________
+
+## description: write tests agent: build subtask: true template: Create comprehensive, high-quality test cases for the provided files or current changes.
 
 Create comprehensive, high-quality test cases for the files $ARGUMENTS or the current changes.
 

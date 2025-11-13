@@ -1,9 +1,6 @@
----
-description: review code
-agent: review
-subtask: false
-template: Provide a structured code review for the provided files or current changes.
----
+______________________________________________________________________
+
+## description: review code agent: review subtask: false template: Provide a structured code review for the provided files or current changes.
 
 Provide a structured code review for the files $ARGUMENTS or the current changes.
 
@@ -21,24 +18,24 @@ First, understand the project context:
 Analyze in priority order:
 
 1. **Security**: Vulnerabilities, exposed secrets, injection risks, unsafe operations
-2. **Correctness**: Logic errors, edge cases, potential bugs, race conditions
-3. **Performance**: Inefficient algorithms, memory leaks, unnecessary operations
-4. **Maintainability**: Code complexity, readability, modularity, naming
-5. **Best Practices**: Language idioms, framework patterns, error handling
-6. **Testing**: Missing tests, inadequate coverage, test quality
-7. **Documentation**: Missing/outdated docs, unclear APIs
-8. **Style**: Consistency with project conventions (only if not caught by automated tools)
+1. **Correctness**: Logic errors, edge cases, potential bugs, race conditions
+1. **Performance**: Inefficient algorithms, memory leaks, unnecessary operations
+1. **Maintainability**: Code complexity, readability, modularity, naming
+1. **Best Practices**: Language idioms, framework patterns, error handling
+1. **Testing**: Missing tests, inadequate coverage, test quality
+1. **Documentation**: Missing/outdated docs, unclear APIs
+1. **Style**: Consistency with project conventions (only if not caught by automated tools)
 
 ## Issue Structure
 
 For each issue found, include:
 
 1. **Severity**: CRITICAL | HIGH | MEDIUM | LOW | SUGGESTION
-2. **Category**: From list above
-3. **Location**: `file:line` or `file:startLine-endLine`
-4. **Description**: Clear, specific explanation
-5. **Impact**: Why this matters
-6. **Fix**: Concrete, actionable suggestion with code example if applicable
+1. **Category**: From list above
+1. **Location**: `file:line` or `file:startLine-endLine`
+1. **Description**: Clear, specific explanation
+1. **Impact**: Why this matters
+1. **Fix**: Concrete, actionable suggestion with code example if applicable
 
 ## Output Format
 

@@ -1,24 +1,24 @@
 default:
-  @just --list
+    @just --list
 
 [group('Main')]
 [linux]
 apply hostname=`hostname` *args:
-  @sudo nixos-rebuild switch --flake .#{{hostname}} {{args}}
+    @sudo nixos-rebuild switch --flake .#{{ hostname }} {{ args }}
 
 [group('Main')]
 [macos]
 apply hostname=`hostname` *args:
-  @sudo darwin-rebuild switch --flake .#{{hostname}} {{args}}
+    @sudo darwin-rebuild switch --flake .#{{ hostname }} {{ args }}
 
 [group('Main')]
 update *args:
-  @nix flake update {{args}}
+    @nix flake update {{ args }}
 
 [group('dev')]
 fmt *args:
-  @nix fmt {{args}}
+    @nix fmt {{ args }}
 
 [group('dev')]
 check *args:
-  @nix flake check {{args}}
+    @nix flake check {{ args }}

@@ -35,8 +35,8 @@ Detect the build system before running build, format, or check operations.
 ### Detection Priority
 
 1. **Nix Flakes**: Check for `flake.nix`
-2. **Just**: Check for `justfile` or `Justfile`
-3. **Language-specific**: Check for `package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`, etc.
+1. **Just**: Check for `justfile` or `Justfile`
+1. **Language-specific**: Check for `package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`, etc.
 
 ### Detection Command
 

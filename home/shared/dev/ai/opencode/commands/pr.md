@@ -1,9 +1,6 @@
----
-description: create pull request
-agent: vcs
-subtask: false
-template: Create a pull request from the current branch.
----
+______________________________________________________________________
+
+## description: create pull request agent: vcs subtask: false template: Create a pull request from the current branch.
 
 Create a pull request from the current branch. $ARGUMENTS
 
@@ -79,8 +76,11 @@ If a template exists, use it as the base for the PR description.
 Use GitHub CLI to create the PR:
 
 - If PR template exists, incorporate its structure
+
 - Generate a concise title based on the commits
+
 - Write a clear description explaining the changes
+
 - Use the format:
 
   ```
@@ -97,7 +97,7 @@ gh pr create --title "title" --body "description"
 
 ## Requirements
 
-- Title: Concise, imperative mood, <100 characters
+- Title: Concise, imperative mood, \<100 characters
 - Description: Clear explanation of WHY (not just WHAT)
 - Reference related issues if applicable
 - Follow project's existing PR conventions if evident from recent PRs

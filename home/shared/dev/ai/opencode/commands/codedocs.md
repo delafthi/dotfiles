@@ -1,9 +1,6 @@
----
-description: document code
-agent: build
-subtask: true
-template: Add or update documentation to all functions, class, and modules in the provided files or current changes.
----
+______________________________________________________________________
+
+## description: document code agent: build subtask: true template: Add or update documentation to all functions, class, and modules in the provided files or current changes.
 
 Add or update documentation to all functions, class, and modules in the files $ARGUMENTS or the current changes.
 

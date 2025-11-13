@@ -4,49 +4,18 @@
     enable = true;
     defaultEditor = true;
     extraPackages = with pkgs; [
-      # Debugging
       vscode-extensions.llvm-org.lldb-vscode
-      # Formatters
-      bibtex-tidy
-      cmake-format
-      nixfmt-rfc-style
-      rustfmt
       shfmt
-      swift-format
-      typstyle
-      # Language servers/Linters
       bash-language-server
-      cmake-language-server
       dockerfile-language-server
       fish-lsp
-      gopls
-      golangci-lint-langserver
-      golangci-lint
+      jq-lsp
       just-lsp
-      lua-language-server
       marksman
-      nixd
-      protols
       ruff
-      rust-analyzer
-      clippy
-      tinymist
       ty
-      typescript-language-server
-      vhdl-ls
-      vscode-langservers-extracted
       yaml-language-server
-      zls
     ];
-    languages = {
-      language-server = {
-        clangd.args = [
-          "--background-index"
-          "--clang-tidy"
-        ];
-        rust-analyzer.config.check.command = "clippy";
-      };
-    };
     settings = {
       editor = {
         bufferline = "multiple";
