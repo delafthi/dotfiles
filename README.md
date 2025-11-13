@@ -54,9 +54,9 @@ sudo nixos-rebuild switch --flake .#$(hostname)
 ### Adding a New Host
 
 1. Create a new directory under `hosts/darwin/` or `hosts/nixos/`
-2. Add `configuration.nix` and `home.nix` files
-3. Reference the new host in `flake.nix`
-4. Update the hostname and SSH keys in the flake configuration
+1. Add `configuration.nix` and `home.nix` files
+1. Reference the new host in `flake.nix`
+1. Update the hostname and SSH keys in the flake configuration
 
 ## Development
 
@@ -91,8 +91,8 @@ This provides `just`, `nixd` (Nix language server), and `sops` automatically.
 **Automatic activation with direnv:**
 
 1. Install direnv and nix-direnv (included in this configuration)
-2. Run `direnv allow` in the repository root
-3. The development shell will activate automatically when you `cd` into the directory
+1. Run `direnv allow` in the repository root
+1. The development shell will activate automatically when you `cd` into the directory
 
 ## Secrets Management
 
@@ -108,7 +108,7 @@ gpg --import your-private-key.asc
 
 2. Update `.sops.yaml` with your GPG key fingerprint
 
-3. Create or edit secrets:
+1. Create or edit secrets:
 
 ```bash
 sops secrets.yaml

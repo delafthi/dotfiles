@@ -1,14 +1,11 @@
 name: Build system configurations
-
 on:
   push:
     branches: [main]
   pull_request:
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
-
 jobs:
   check-changes:
     runs-on: ubuntu-latest
@@ -36,26 +33,21 @@ jobs:
           else
             echo "has-relevant-changes=false" >> "$GITHUB_OUTPUT"
           fi
-
   prepare-matrix:
     needs: check-changes
     if: needs.check-changes.outputs.has-relevant-changes == 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: read
-
     outputs:
       matrix: ${{ steps.create-matrix.outputs.matrix }}
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
-
       - name: Setup Nix
         uses: ./.github/actions/setup-nix
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Create matrix
         id: create-matrix
         run: |
@@ -107,7 +99,6 @@ jobs:
 
           echo "matrix=$(echo "$matrix_json" | jq -c .)" >> "$GITHUB_OUTPUT"
           echo "::notice::Detected $total system configuration(s)"
-
   build:
     needs: [check-changes, prepare-matrix]
     if: needs.check-changes.outputs.has-relevant-changes == 'true'
@@ -120,21 +111,17 @@ jobs:
     timeout-minutes: 60
     permissions:
       contents: read
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v5
-
       - name: Setup Nix
         uses: ./.github/actions/setup-nix
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Build System
         run: |
           echo "::notice::Building configuration for ${{ matrix.hostname }}..."
           nix build --print-build-logs .#${{ matrix.config }}.${{ matrix.hostname }}.config.system.build.toplevel
-
   all-builds-pass:
     needs: [build]
     if: always()

@@ -22,7 +22,13 @@
 
 - **Formatter**: nixfmt-rfc-style (via treefmt)
 - **Import sorting**: keep-sorted for attributes and imports (use `# keep-sorted start/end` comments)
+
 <!-- keep-sorted end -->
+
+- **Keep-sorted**: Automatically maintains sorted lists; wrap sections with `# keep-sorted start` and `# keep-sorted end`
+
+<!-- keep-sorted end -->
+
 - **Dead code detection**: deadnix enabled
 - **Static analysis**: statix enabled
 - **Modular structure**: Separate platform-specific (`darwin/`, `linux/`) and `shared/` configs
@@ -43,8 +49,11 @@
 - **Shell scripts**: shellcheck + shfmt
 - **Fish**: fish_indent
 - **GitHub Actions**: actionlint
-- **JSON/YAML**: prettier
-- **EditorConfig**: editorconfig-checker
+- **JSON/TypeScript**: biome (indentStyle: space)
+- **YAML**: yamlfmt
+- **Markdown**: mdformat
+- **Justfiles**: just
+- **EditorConfig**: editorconfig-checker (priority: 9)
 
 ### Best Practices
 
@@ -57,9 +66,9 @@
 - Test configurations on target systems before committing
 - NEVER add comments to code unless explicitly requested
 
-## Version Control System Detection
+## Version Control System
 
-Detect the version control system used by the project before performing any VCS operations.
+**This repository uses Jujutsu (`.jj/` present).**
 
 ### Detection Method
 
@@ -73,7 +82,8 @@ Check for VCS-specific directories in the repository root:
 - If `.jj/` is detected, use jujutsu commands for ALL version control operations:
   - Status: `jj status` (not `git status`)
   - Diff: `jj diff` (not `git diff`)
-  - Commit: `jj commit` (not `git commit`)
+  - Create change: `jj new` (not `git commit`)
+  - Describe change: `jj describe -m "message"` (not `git commit -m`)
   - Branches: `jj branch` (not `git branch`)
   - Log: `jj log` (not `git log`)
 - If only `.git/` is present, use standard git commands
@@ -89,8 +99,8 @@ Detect the build system and tooling used by the project before running build, fo
 Check for build system files in the repository root (in priority order):
 
 1. **Nix Flakes**: `flake.nix` present
-2. **Just**: `justfile` or `Justfile` present
-3. **Language-specific**: `package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`, `Makefile`, etc.
+1. **Just**: `justfile` or `Justfile` present
+1. **Language-specific**: `package.json`, `Cargo.toml`, `pyproject.toml`, `go.mod`, `Makefile`, etc.
 
 ### Priority Rules
 
