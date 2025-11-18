@@ -1,6 +1,9 @@
-______________________________________________________________________
-
-## description: create commit agent: vcs subtask: false template: Commit the current changes.
+---
+description: create commit
+agent: vcs
+subtask: false
+template: Commit the current changes.
+---
 
 Commit the current changes. $ARGUMENTS
 

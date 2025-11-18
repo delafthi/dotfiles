@@ -1,6 +1,9 @@
-______________________________________________________________________
-
-## description: review code agent: review subtask: false template: Provide a structured code review for the provided files or current changes.
+---
+description: review code
+agent: review
+subtask: false
+template: Provide a structured code review for the provided files or current changes.
+---
 
 Provide a structured code review for the files $ARGUMENTS or the current changes.
 
