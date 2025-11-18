@@ -1,6 +1,9 @@
-______________________________________________________________________
-
-## description: create pull request agent: vcs subtask: false template: Create a pull request from the current branch.
+---
+description: create pull request
+agent: vcs
+subtask: false
+template: Create a pull request from the current branch.
+---
 
 Create a pull request from the current branch. $ARGUMENTS
 

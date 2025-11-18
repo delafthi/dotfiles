@@ -1,6 +1,9 @@
-______________________________________________________________________
-
-## description: onboard to a project agent: investigate subtask: false template: Analyze the project and provide a concise onboarding introduction to help get started quickly.
+---
+description: onboard to a project
+agent: investigate
+subtask: false
+template: Analyze the project and provide a concise onboarding introduction to help get started quickly.
+---
 
 Analyze the project and provide a concise onboarding introduction to help get started quickly.
 

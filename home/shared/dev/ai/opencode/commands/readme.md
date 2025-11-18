@@ -1,6 +1,9 @@
-______________________________________________________________________
-
-## description: create/update README.md agent: build subtask: true template: Generate or improve the project's README.md.
+---
+description: create/update README.md
+agent: build
+subtask: true
+template: Generate or improve the project's README.md.
+---
 
 Generate or improve the project's README.md.
 
