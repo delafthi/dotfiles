@@ -20,7 +20,6 @@
           "proton-drive" # not in nixpkgs
           "protonvpn" # only linux (protonvpn-gui)
           "steam" # only as a nixos module
-          "transmission" # in nixpkgs as transmission_4-gtk without maintainers
           "wacom-tablet" # only for linux as (wacomtablet)
           "zen" # weir darwin implementation at https://github.com/0xc000022070/zen-browser-flake
         ];

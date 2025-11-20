@@ -11,7 +11,6 @@
     meetingbar
     monodraw
     shottr
-    subler
     utm
   ];
 }
