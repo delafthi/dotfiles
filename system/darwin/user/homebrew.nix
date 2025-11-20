@@ -13,18 +13,13 @@
           greedy = true;
         })
         [
-          "alcove" # not in nixpkgs
           "blender" # broken on darwin
           "gog-galaxy" # not in nixpkgs
           "karabiner-elements" # broken see https://github.com/nix-darwin/nix-darwin/issues/1041
           "kicad" # broken on darwin
-          "lunar" # not in nixpkgs
-          "meetingbar" # not in nixpkgs
-          "monodraw" # not in nixpkgs
           "proton-drive" # not in nixpkgs
           "protonvpn" # only linux (protonvpn-gui)
           "steam" # only as a nixos module
-          "subler" # not in nixpkgs
           "transmission" # in nixpkgs as transmission_4-gtk without maintainers
           "wacom-tablet" # only for linux as (wacomtablet)
           "zen" # weir darwin implementation at https://github.com/0xc000022070/zen-browser-flake
