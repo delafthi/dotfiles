@@ -42,7 +42,6 @@ _: {
         p = [
           "git"
           "push"
-          "--allow-new"
         ];
         P = [
           "git"
@@ -51,6 +50,7 @@ _: {
         ];
       };
       colors."diff token".underline = false;
+      git.push-new-bookmarks = true;
       signing = {
         backend = "gpg";
         behavior = "own";
