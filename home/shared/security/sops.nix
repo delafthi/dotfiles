@@ -9,6 +9,8 @@
     defaultSopsFile = ../../../secrets.yaml;
     gnupg.home = "${config.home.homeDirectory}/.gnupg";
     secrets = {
+      atuin-key = { };
+      atuin-session = { };
       context7-api-key = { };
       openrouter-api-key = { };
     };
