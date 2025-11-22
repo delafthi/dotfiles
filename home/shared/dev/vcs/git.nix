@@ -16,6 +16,7 @@
         F = "fetch --all";
         l = "!git log --oneline --all --graph || true";
         last = "log -1 HEAD";
+        mkpatch = "format-patch -1 HEAD --signoff --stdout";
         p = "push --force-with-lease";
         P = "push --all --force-with-lease";
         st = "status --short --branch --show-stash -unormal";
