@@ -42,7 +42,6 @@ _: {
         p = [
           "git"
           "push"
-          "--allow-new"
         ];
         P = [
           "git"
@@ -51,6 +50,7 @@ _: {
         ];
       };
       colors."diff token".underline = false;
+      git.push-new-bookmarks = true;
       signing = {
         backend = "gpg";
         behavior = "own";
@@ -58,6 +58,7 @@ _: {
       };
       snapshot.auto-track = "none()";
       template-aliases."format_timestamp(timestamp)" = "timestamp.ago()";
+      templates.git_push_bookmark = ''"delafthi/push-" ++ change_id.short()'';
       ui = {
         default-command = "log";
       };
