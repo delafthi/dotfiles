@@ -58,6 +58,7 @@ _: {
       };
       snapshot.auto-track = "none()";
       template-aliases."format_timestamp(timestamp)" = "timestamp.ago()";
+      templates.git_push_bookmark = ''"delafthi/push-" ++ change_id.short()'';
       ui = {
         default-command = "log";
       };
