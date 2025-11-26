@@ -12,7 +12,8 @@ jobs:
     outputs:
       has-relevant-changes: ${{ steps.filter.outputs.has-relevant-changes }}
     steps:
-      - uses: actions/checkout@v6
+      - name: Checkout code
+        uses: actions/checkout@v6
         with:
           fetch-depth: 2
       - name: Check for relevant changes
