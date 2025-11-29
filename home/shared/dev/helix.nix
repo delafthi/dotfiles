@@ -26,7 +26,7 @@
         end-of-line-diagnostics = "hint";
         file-picker.hidden = false;
         indent-guides.render = true;
-        inline-diagnostics.cursor-line = "warning";
+        inline-diagnostics.cursor-line = "hint";
         line-number = "relative";
         soft-wrap.enable = true;
         statusline = {
