@@ -1,17 +1,17 @@
 default:
     @just --list
 
-[group('Main')]
+[group('main')]
 [linux]
 apply hostname=`hostname` *args:
     @sudo nixos-rebuild switch --flake .#{{ hostname }} {{ args }}
 
-[group('Main')]
+[group('main')]
 [macos]
 apply hostname=`hostname` *args:
     @sudo darwin-rebuild switch --flake .#{{ hostname }} {{ args }}
 
-[group('Main')]
+[group('main')]
 update *args:
     @nix flake update {{ args }}
 
