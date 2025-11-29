@@ -7,13 +7,10 @@
       vscode-extensions.llvm-org.lldb-vscode
       shfmt
       bash-language-server
-      dockerfile-language-server
       fish-lsp
       jq-lsp
       just-lsp
       marksman
-      ruff
-      ty
       yaml-language-server
     ];
     settings = {
