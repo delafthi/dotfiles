@@ -149,6 +149,8 @@
                 packages = with pkgs; [
                   just
                   nixd
+                  pam_u2f
+                  pamtester
                   sops
                 ];
               };
