@@ -7,13 +7,10 @@
       vscode-extensions.llvm-org.lldb-vscode
       shfmt
       bash-language-server
-      dockerfile-language-server
       fish-lsp
       jq-lsp
       just-lsp
       marksman
-      ruff
-      ty
       yaml-language-server
     ];
     settings = {
@@ -29,7 +26,7 @@
         end-of-line-diagnostics = "hint";
         file-picker.hidden = false;
         indent-guides.render = true;
-        inline-diagnostics.cursor-line = "warning";
+        inline-diagnostics.cursor-line = "hint";
         line-number = "relative";
         soft-wrap.enable = true;
         statusline = {

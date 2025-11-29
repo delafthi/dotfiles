@@ -25,7 +25,7 @@
       ...
     }:
     flake-parts.lib.mkFlake { inherit inputs; } (
-      { config, lib, ... }:
+      { config, lib, ... }@toplevel:
       {
         imports = [ inputs.treefmt-nix.flakeModule ];
         flake =
@@ -130,6 +130,7 @@
         ];
         perSystem =
           {
+            config,
             lib,
             pkgs,
             system,
@@ -138,15 +139,18 @@
           {
             _module.args.pkgs = import inputs.nixpkgs {
               inherit system;
-              overlays = lib.attrValues config.flake.overlays;
+              overlays = lib.attrValues toplevel.config.flake.overlays;
             };
             packages = import ./pkgs { inherit pkgs; };
             devShells = {
               default = pkgs.mkShell {
                 name = "dotfiles";
+                inputsFrom = [ config.treefmt.build.devShell ];
                 packages = with pkgs; [
                   just
                   nixd
+                  pam_u2f
+                  pamtester
                   sops
                 ];
               };
