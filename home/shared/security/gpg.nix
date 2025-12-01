@@ -1,3 +1,6 @@
 {
-  programs.gpg.enable = true;
+  programs.gpg = {
+    enable = true;
+    scdaemonSettings.disable-ccid = true;
+  };
 }
