@@ -16,6 +16,8 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
     treefmt-nix.url = "github:numtide/treefmt-nix";
+    zen-browser.inputs.nixpkgs.follows = "nixpkgs";
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
     # keep-sorted end
   };
 
@@ -58,6 +60,7 @@
                             inherit user;
                             iamb = inputs.iamb.packages.${system};
                             nix-ai-tools = inputs.nix-ai-tools.packages.${system};
+                            zen-browser = inputs.zen-browser.packages.${system};
                           };
 
                           useGlobalPkgs = true;
@@ -102,6 +105,7 @@
                             inherit user;
                             iamb = inputs.iamb.packages.${system};
                             nix-ai-tools = inputs.nix-ai-tools.packages.${system};
+                            zen-browser = inputs.zen-browser.packages.${system};
                           };
                           useGlobalPkgs = true;
                           users.${user} = {

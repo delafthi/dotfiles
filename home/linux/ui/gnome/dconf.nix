@@ -66,13 +66,13 @@ with lib.hm.gvariant;
       };
       "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
         binding = "<Control><Super>b";
-        command = "bash -c \"wlrctl window focus zen || flatpak run app.zen_browser.zen\"";
+        command = "bash -c \"wlrctl window focus zen || zen\"";
         name = "Zen";
       };
       "org/gnome/shell" = {
         favorite-apps = [
           "org.gnome.Nautilus.desktop"
-          "app.zen_browser.zen.desktop"
+          "zen-beta.desktop"
           "proton-mail.desktop"
           "proton-pass.desktop"
           "com.mitchellh.ghostty.desktop"
