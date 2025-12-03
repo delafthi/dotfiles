@@ -152,6 +152,27 @@
         "type": "github"
       }
     },
+    "home-manager_2": {
+      "inputs": {
+        "nixpkgs": [
+          "zen-browser",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1764780230,
+        "narHash": "sha256-/hLZoLxzr2jwMStuUofB6PZm2eE3kpw91WObm66vPUs=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "af324afa72de6d23162f0cdcb0716afe6e626683",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
     "iamb": {
       "inputs": {
         "crane": "crane",
@@ -270,7 +291,8 @@
         "nix-ai-tools": "nix-ai-tools",
         "nixpkgs": "nixpkgs_2",
         "sops-nix": "sops-nix",
-        "treefmt-nix": "treefmt-nix_2"
+        "treefmt-nix": "treefmt-nix_2",
+        "zen-browser": "zen-browser"
       }
     },
     "rust-analyzer-src": {
@@ -376,6 +398,27 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
+        "type": "github"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "home-manager": "home-manager_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1764736168,
+        "narHash": "sha256-CQcj/oWKH4zN8Xkc1RglX+uOJTW1fwNWvMQWRXRlEys=",
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
+        "rev": "df63ce4f706567e6efa083ba63d5e7792bf70ffa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
         "type": "github"
       }
     }
