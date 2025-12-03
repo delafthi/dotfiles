@@ -19,6 +19,7 @@
           "kicad" # broken on darwin
           "proton-drive" # not in nixpkgs
           "protonvpn" # only linux (protonvpn-gui)
+          "retroarch" # broken on darwin
           "steam" # only as a nixos module
           "wacom-tablet" # only for linux as (wacomtablet)
         ];
