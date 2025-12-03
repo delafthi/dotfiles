@@ -21,7 +21,6 @@
           "protonvpn" # only linux (protonvpn-gui)
           "steam" # only as a nixos module
           "wacom-tablet" # only for linux as (wacomtablet)
-          "zen" # weir darwin implementation at https://github.com/0xc000022070/zen-browser-flake
         ];
     # masApps = {
     #   Amphetamine = 937984704;
