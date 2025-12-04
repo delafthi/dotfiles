@@ -35,6 +35,7 @@ If no clear pattern exists, use language-specific conventions:
 - Preserve original code structure and formatting
 - Use clear, concise language
 - Keep documentation up-to-date with code changes
+- Keep documentation minimal and concise
 
 ## Exclusions
 

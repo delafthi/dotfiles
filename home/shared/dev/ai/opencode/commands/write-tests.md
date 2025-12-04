@@ -112,3 +112,4 @@ Do NOT test:
 - Follow project's test file organization
 - Include necessary imports and setup
 - Add TODO comments for tests requiring manual setup (e.g., integration tests needing infrastructure)
+- Keep test code minimal and concise

@@ -67,3 +67,4 @@ For each issue found, include:
 - Be objective and constructive
 - Provide context for suggestions
 - Only flag style issues if they significantly impact readability or differ from project norms
+- Keep review output minimal and concise

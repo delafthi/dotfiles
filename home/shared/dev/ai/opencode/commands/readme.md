@@ -124,6 +124,7 @@ Use clear sections with descriptive headings. Include only applicable sections:
 - Use relative links for internal documentation
 - Include a table of contents for long READMEs (>500 lines)
 - Use consistent heading levels (# for title, ## for main sections, ### for subsections)
+- Keep README content minimal and concise
 
 ## Quality Requirements
 

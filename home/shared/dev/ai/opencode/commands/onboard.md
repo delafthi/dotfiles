@@ -102,7 +102,7 @@ Provide a structured overview:
 ```
 
 ## Guidelines
-- Keep it concise (aim for <30 lines of output)
+- Keep output minimal and concise (aim for <30 lines)
 - Focus on actionable information
 - Prioritize what someone needs to start contributing
 - Skip obvious/standard information
