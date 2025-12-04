@@ -70,3 +70,4 @@ Check current changes:
 ## General Requirements
 
 - Wrap all paths, commands, or environment variables in backticks
+- Keep commit messages minimal and concise

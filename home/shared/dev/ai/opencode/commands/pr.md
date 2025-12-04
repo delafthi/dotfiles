@@ -105,3 +105,4 @@ gh pr create --title "title" --body "description"
 - Reference related issues if applicable
 - Follow project's existing PR conventions if evident from recent PRs
 - English only
+- Keep PR description minimal and concise
