@@ -50,17 +50,22 @@ _: {
         ];
       };
       colors."diff token".underline = false;
-      git.push-new-bookmarks = true;
+      git.sign-on-push = true;
+      remotes = {
+        origin.auto-track-bookmarks = "glob:*";
+        upstream.auto-track-bookmarks = "glob:{delafthi/*,main,master}";
+      };
       signing = {
         backend = "gpg";
-        behavior = "own";
+        behavior = "drop";
         key = "00926686981863CB";
       };
       snapshot.auto-track = "none()";
       template-aliases."format_timestamp(timestamp)" = "timestamp.ago()";
-      templates.git_push_bookmark = ''"delafthi/push-" ++ change_id.short()'';
+      templates.git_push_bookmark = ''"delafthi/" ++ change_id.short()'';
       ui = {
         default-command = "log";
+        diff-editor = ":builtin";
       };
       user = {
         email = "delafthi@pm.me";
