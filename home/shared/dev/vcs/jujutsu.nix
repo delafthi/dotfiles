@@ -50,7 +50,10 @@ _: {
         ];
       };
       colors."diff token".underline = false;
-      git.push-new-bookmarks = true;
+      remotes = {
+        origin.auto-track-bookmarks = "glob:*";
+        upstream.auto-track-bookmarks = "glob:{delafthi/*,main,master}";
+      };
       signing = {
         backend = "gpg";
         behavior = "own";
