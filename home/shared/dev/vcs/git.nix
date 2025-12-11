@@ -72,7 +72,7 @@
     lfs.enable = true;
     signing = {
       key = "00926686981863CB";
-      signByDefault = true;
+      signByDefault = false;
     };
     ignores = [
       # github/gitignores/Global/Archives.gitignore
