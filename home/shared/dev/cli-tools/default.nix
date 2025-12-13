@@ -16,6 +16,7 @@
     gum
     hyperfine
     outfieldr
+    proton-pass-cli
     vhs
   ];
 }
