@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }:
@@ -14,5 +15,8 @@
       context7-api-key = { };
       openrouter-api-key = { };
     };
+  };
+  systemd.user.services.sops-nix = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
+    Install.WantedBy = lib.mkForce [ "graphical-session.target" ];
   };
 }
