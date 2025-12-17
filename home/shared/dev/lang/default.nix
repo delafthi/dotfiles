@@ -1,5 +1,6 @@
 {
   imports = [
+    ./clang
     ./hdl
     ./python
   ];

@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   imports = [
     ./cli-tools
@@ -12,9 +11,5 @@
     ./podman.nix
     ./tmux.nix
     ./yazi.nix
-  ];
-  home.packages = with pkgs; [
-    man-pages
-    man-pages-posix
   ];
 }
