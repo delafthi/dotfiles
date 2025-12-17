@@ -4,8 +4,9 @@
     ./desktop
     ./hardware
     ./security
-    ./nix.nix
     ./settings
+    ./man.nix
+    ./nix.nix
   ];
 
   # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
