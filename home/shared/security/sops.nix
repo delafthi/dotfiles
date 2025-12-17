@@ -1,5 +1,6 @@
 {
   config,
+  lib,
   pkgs,
   ...
 }:
@@ -13,6 +14,12 @@
       atuin-session = { };
       context7-api-key = { };
       openrouter-api-key = { };
+    };
+  };
+  systemd.user.services.sops-nix = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
+    Service = {
+      Restart = "on-failure";
+      RestartSec = "5s";
     };
   };
 }
