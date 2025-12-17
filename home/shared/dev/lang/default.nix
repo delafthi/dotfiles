@@ -1,7 +1,8 @@
 {
   imports = [
-    ./clang
     ./hdl
     ./python
+    ./clang.nix
+    ./nix.nix
   ];
 }
