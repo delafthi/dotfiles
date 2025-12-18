@@ -27,7 +27,6 @@
     #   AnyConnect = 1135064690;
     #   Developer = 640199958;
     #   Deepstash = 1445023295;
-    #   Delta = 1048524688;
     #   "Hand Mirror" = 1502839586;
     #   Keynote = 409183694;
     #   MeteoSwiss = 589772015;
@@ -44,6 +43,7 @@
     #   Swisstopo = 1505986543;
     #   Testflight = 899247664;
     #   Things = 904280696;
+    #   "Wipr 2" = 1662217862
     #   XCode = 497799835;
     # };
     onActivation = {
