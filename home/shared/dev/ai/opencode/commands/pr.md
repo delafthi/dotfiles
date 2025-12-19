@@ -84,13 +84,17 @@ Use GitHub CLI to create the PR:
 
 - Write a clear description explaining the changes
 
-- Use the format:
+- Description format:
 
-  ```
-  [Brief overview of changes]
+  **Default (small to medium changes):**
+  - Keep minimal and concise without headings
+  - Brief paragraph explaining the changes and motivation
+  - Example: "Refactors the authentication module to use async/await for better error handling and readability."
 
-  [Additional sections from template if present]
-  ```
+  **Large/complex changes only:**
+  - Use headings and structured sections when changes are extensive
+  - Include sections like "## Summary", "## Changes", "## Testing" only when necessary for clarity
+  - Example criteria: multiple features, significant refactoring, breaking changes, or cross-cutting concerns
 
 Create the PR with:
 
@@ -101,8 +105,10 @@ gh pr create --title "title" --body "description"
 ## Requirements
 
 - Title: Concise, imperative mood, \<100 characters
-- Description: Clear explanation of WHY (not just WHAT)
+- Description: 
+  - Default to minimal format without headings
+  - Clear explanation of WHY (not just WHAT)
+  - Only use headings/elaborate structure for big or complex changes
 - Reference related issues if applicable
 - Follow project's existing PR conventions if evident from recent PRs
 - English only
-- Keep PR description minimal and concise
