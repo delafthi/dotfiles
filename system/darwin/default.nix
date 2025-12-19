@@ -1,6 +1,6 @@
 {
   imports = [
-    ./security
+    ./hardware
     ./settings
     ./user
     ./linux-builder.nix

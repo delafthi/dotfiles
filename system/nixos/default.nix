@@ -3,9 +3,9 @@
     ./bootloader
     ./desktop
     ./hardware
+    ./programs
     ./security
     ./settings
-    ./man.nix
     ./nix.nix
   ];
 
