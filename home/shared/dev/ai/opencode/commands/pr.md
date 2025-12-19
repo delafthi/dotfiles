@@ -7,6 +7,8 @@ template: Create a pull request from the current branch.
 
 Create a pull request from the current branch. $ARGUMENTS
 
+**Note:** Backticks do not need to be escaped in PR descriptions or when using this template.
+
 ## Branch Analysis
 
 First, verify the current bookmark and recent commits:
