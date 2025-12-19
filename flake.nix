@@ -53,6 +53,7 @@
                       {
                         nixpkgs.overlays = lib.attrValues config.flake.overlays;
                       }
+                      ./modules/nix-darwin
                       inputs.home-manager.darwinModules.home-manager
                       {
                         home-manager = {
