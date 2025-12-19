@@ -1,11 +1,11 @@
-{ nix-ai-tools, ... }:
+{ llm-agents, ... }:
 {
   home.shellAliases = {
     oc = "opencode";
   };
   programs.opencode = {
     enable = true;
-    package = nix-ai-tools.opencode;
+    package = llm-agents.opencode;
     enableMcpIntegration = true;
     settings = {
       keybinds = {

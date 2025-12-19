@@ -48,6 +48,19 @@ _: {
           "push"
           "--all"
         ];
+        track-all = [
+          "bookmark"
+          "track"
+          "glob:*@*"
+        ];
+        tug = [
+          "bookmark"
+          "move"
+          "--from"
+          "heads(::@- & bookmarks())"
+          "--to"
+          "@-"
+        ];
       };
       colors."diff token".underline = false;
       git.sign-on-push = true;
