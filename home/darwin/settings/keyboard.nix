@@ -6,6 +6,7 @@
     NSAutomaticPeriodSubstitutionEnabled = false;
     NSAutomaticQuoteSubstitutionEnabled = false;
     NSAutomaticSpellingCorrectionEnabled = false;
-
   };
+  xdg.configFile."karabiner/karabiner.json".source = ./karabiner.json;
+
 }

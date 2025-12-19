@@ -1,7 +1,7 @@
 {
   imports = [
     ./apps
-    ./ui
+    ./settings
     ./create-para-dirs.nix
     ./reload-systemd.nix
   ];
