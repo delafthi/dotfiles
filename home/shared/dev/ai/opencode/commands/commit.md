@@ -70,4 +70,5 @@ Check current changes:
 ## General Requirements
 
 - Wrap all paths, commands, or environment variables in backticks
+- Backticks must be escaped (\`) when used on the command line
 - Keep commit messages minimal and concise
