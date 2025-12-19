@@ -10,8 +10,8 @@
     home-manager.url = "github:nix-community/home-manager";
     iamb.inputs.nixpkgs.follows = "nixpkgs";
     iamb.url = "github:ulyssa/iamb";
-    nix-ai-tools.inputs.nixpkgs.follows = "nixpkgs";
-    nix-ai-tools.url = "github:numtide/nix-ai-tools";
+    llm-agents.inputs.nixpkgs.follows = "nixpkgs";
+    llm-agents.url = "github:numtide/llm-agents.nix";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
@@ -59,7 +59,7 @@
                           extraSpecialArgs = {
                             inherit user;
                             iamb = inputs.iamb.packages.${system};
-                            nix-ai-tools = inputs.nix-ai-tools.packages.${system};
+                            llm-agents = inputs.llm-agents.packages.${system};
                             zen-browser = inputs.zen-browser.packages.${system};
                           };
 
@@ -104,7 +104,7 @@
                           extraSpecialArgs = {
                             inherit user;
                             iamb = inputs.iamb.packages.${system};
-                            nix-ai-tools = inputs.nix-ai-tools.packages.${system};
+                            llm-agents = inputs.llm-agents.packages.${system};
                             zen-browser = inputs.zen-browser.packages.${system};
                           };
                           useGlobalPkgs = true;
