@@ -8,8 +8,8 @@
         snapshot_preserve = "14d";
         target_preserve_min = "no";
         target_preserve = "20d 10w *m";
-        volume."/".subvolume."home" = {
-          snapshot_dir = "home/.snapshots";
+        volume."/".subvolume.home = {
+          snapshot_dir = "/home/.snapshots";
         };
       };
     };
