@@ -14,6 +14,6 @@ lib.mkIf osConfig.system.gui.enable {
       IncludeDevelopMenu = true;
       SendDoNotTrackHTTPHeader = true;
     };
-    search = "Google";
+    search = "Ecosia";
   };
 }
