@@ -1,14 +1,21 @@
-{ pkgs, ... }:
+{
+  lib,
+  osConfig,
+  pkgs,
+  ...
+}:
 {
   imports = [
-    ./coms
     ./browser.nix
+    ./coms
     ./obsidian.nix
     ./yubikey.nix
   ];
-  home.packages = with pkgs; [
-    # blender
-    # kicad
-    qmk
-  ];
+  home.packages =
+    with pkgs;
+    [ qmk ]
+    ++ lib.optionals osConfig.system.gui.enable [
+      # blender
+      # kicad
+    ];
 }

@@ -1,5 +1,10 @@
-{ pkgs, ... }:
 {
+  lib,
+  osConfig,
+  pkgs,
+  ...
+}:
+lib.mkIf osConfig.system.gui.enable {
   programs.gnome-shell = {
     enable = true;
     extensions = with pkgs.gnomeExtensions; [

@@ -1,5 +1,10 @@
-{ lib, pkgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+lib.mkIf config.system.gui.enable {
   environment = {
     gnome.excludePackages = with pkgs; [
       cheese

@@ -6,6 +6,7 @@
     catppuccin.url = "github:catppuccin/nix";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     darwin.url = "github:LnL7/nix-darwin";
+    flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     iamb.inputs.nixpkgs.follows = "nixpkgs";
@@ -69,7 +70,7 @@
                             imports = [
                               inputs.catppuccin.homeModules.catppuccin
                               inputs.sops-nix.homeManagerModules.sops
-                              config.flake.homeModules
+                              config.flake.homeModules.default
                               ./hosts/darwin/macbookair/home.nix
                             ];
                           };
@@ -113,12 +114,13 @@
                             imports = [
                               inputs.catppuccin.homeModules.catppuccin
                               inputs.sops-nix.homeManagerModules.sops
-                              config.flake.homeModules
+                              config.flake.homeModules.default
                               ./hosts/nixos/vm/home.nix
                             ];
                           };
                         };
                       }
+                      config.flake.nixosModules.default
                       ./hosts/nixos/vm/configuration.nix
                     ];
                   };
@@ -126,6 +128,7 @@
               )
             ];
             homeModules = import ./modules/home;
+            nixosModules = import ./modules/nixos;
             overlays = import ./overlays;
           };
         systems = [

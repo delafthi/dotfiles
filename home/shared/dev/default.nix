@@ -1,3 +1,4 @@
+{ lib, osConfig, ... }:
 {
   imports = [
     ./cli-tools

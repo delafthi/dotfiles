@@ -1,5 +1,11 @@
-{ pkgs, zen-browser, ... }:
 {
+  lib,
+  osConfig,
+  pkgs,
+  zen-browser,
+  ...
+}:
+lib.mkIf osConfig.system.gui.enable {
   targets.darwin.defaults."com.apple.dock" = {
     autohide = true;
     mineffect = "scale";
