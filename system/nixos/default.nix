@@ -5,6 +5,7 @@
     ./hardware
     ./programs
     ./security
+    ./services
     ./settings
     ./nix.nix
   ];
