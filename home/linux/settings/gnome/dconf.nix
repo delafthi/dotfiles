@@ -1,6 +1,10 @@
-{ lib, ... }:
-with lib.hm.gvariant;
 {
+  lib,
+  osConfig,
+  ...
+}:
+with lib.hm.gvariant;
+lib.mkIf osConfig.system.gui.enable {
   dconf = {
     settings = {
       "com/github/stunkymonkey/nautilus-open-any-terminal" = {

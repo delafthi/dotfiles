@@ -1,7 +1,7 @@
 {
   default = {
     imports = [
-      ./services
+      ./system.nix
     ];
   };
 }

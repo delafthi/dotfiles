@@ -3,5 +3,5 @@
     ../../../system/darwin
     ../../../system/shared
   ];
-  environment.darwinConfig = builtins.toString ./configuration.nix;
+  environment.darwinConfig = toString ./configuration.nix;
 }
