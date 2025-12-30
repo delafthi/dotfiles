@@ -1,5 +1,11 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
+  programs.bash.initExtra = lib.mkIf pkgs.stdenv.hostPlatform.isLinux ''
+    export SSH_AUTH_SOCK=$(${pkgs.gnupg}/bin/gpgconf --list-dirs agent-ssh-socket)
+  '';
+  programs.fish.interactiveShellInit = lib.mkIf pkgs.stdenv.hostPlatform.isLinux ''
+    set -gx SSH_AUTH_SOCK (${pkgs.gnupg}/bin/gpgconf --list-dirs agent-ssh-socket)
+  '';
   services.gpg-agent = {
     enable = true;
     defaultCacheTtl = 30;
