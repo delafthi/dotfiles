@@ -12,7 +12,7 @@
       # require_sha = true;
     };
     casks =
-      builtins.map
+      map
         (cask: {
           name = cask;
           greedy = true;

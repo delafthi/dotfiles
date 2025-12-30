@@ -3,6 +3,7 @@
     ./control-center.nix
     ./dock.nix
     ./finder.nix
+    ./gui.nix
     ./image-capture.nix
     ./keybindings.nix
     ./keyboard.nix
@@ -13,6 +14,5 @@
     ./safari.nix
     ./screencapture.nix
     ./touchpad.nix
-    ./ui.nix
   ];
 }
