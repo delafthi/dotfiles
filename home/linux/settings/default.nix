@@ -1,6 +1,5 @@
 {
   imports = [
-    ./gnome
-    ./gtk.nix
+    ./gui.nix
   ];
 }
