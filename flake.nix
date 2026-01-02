@@ -28,7 +28,7 @@
       ...
     }:
     flake-parts.lib.mkFlake { inherit inputs; } (
-      { config, lib, ... }@toplevel:
+      toplevel@{ config, lib, ... }:
       {
         imports = [ inputs.treefmt-nix.flakeModule ];
         flake =
