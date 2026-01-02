@@ -3,22 +3,24 @@
   ...
 }:
 {
-  home = {
-    packages = with pkgs; [
+  home.shellAliases.y = "yazi";
+  programs.yazi = {
+    enable = true;
+    extraPackages = with pkgs; [
       fd
       ffmpeg
+      file
       fzf
+      glow
       imagemagick
       jq
+      ouch
       p7zip
       poppler
+      resvg
       ripgrep
       zoxide
     ];
-    shellAliases.y = "yazi";
-  };
-  programs.yazi = {
-    enable = true;
     settings = {
       mgr = {
         ratio = [

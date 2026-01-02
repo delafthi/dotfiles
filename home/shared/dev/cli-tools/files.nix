@@ -3,6 +3,7 @@
   home = {
     packages = with pkgs; [
       hexyl
+      ouch
       pandoc
       tesseract
     ];
