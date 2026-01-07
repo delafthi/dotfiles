@@ -1,6 +1,4 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    manix
-  ];
+  home.packages = [ pkgs.manix ];
 }
