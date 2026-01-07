@@ -14,10 +14,14 @@ in
   ];
   programs = {
     bash.initExtra = ''
-      export ${openrouter-api-key-env}=$(${lib.getExe' pkgs.uutils-coreutils-noprefix "cat"} ${config.sops.secrets.openrouter-api-key.path})
+      export ${openrouter-api-key-env}=$(${lib.getExe' pkgs.uutils-coreutils-noprefix "cat"} ${
+        config.sops.secrets."api-keys/openrouter".path
+      })
     '';
     fish.interactiveShellInit = ''
-      set -gx ${openrouter-api-key-env} (${lib.getExe' pkgs.uutils-coreutils-noprefix "cat"} ${config.sops.secrets.openrouter-api-key.path})
+      set -gx ${openrouter-api-key-env} (${lib.getExe' pkgs.uutils-coreutils-noprefix "cat"} ${
+        config.sops.secrets."api-keys/openrouter".path
+      })
     '';
   };
   services.ollama = {

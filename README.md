@@ -7,7 +7,7 @@ Personal configuration files for managing Linux and macOS (Darwin) environments 
 - Cross-platform configuration (macOS and Linux/NixOS)
 - Modular organization for easy maintenance
 - Declarative application and system settings management
-- Secrets management with sops-nix and GPG
+- Secrets management with sops-nix and age
 - Consistent theming with Catppuccin
 - Automated code formatting and linting with treefmt
 - Custom packages and overlays
@@ -19,7 +19,7 @@ Personal configuration files for managing Linux and macOS (Darwin) environments 
 
 - Nix with flakes enabled ([installation guide](https://nixos.org/download.html))
 - **macOS only**: nix-darwin ([installation guide](https://github.com/LnL7/nix-darwin#install))
-- GPG key for secrets management (optional, required for sops-encrypted secrets)
+- age key for secrets management (optional, required for sops-encrypted secrets)
 
 ### Quick Start
 
@@ -96,17 +96,21 @@ This provides `just`, `nixd` (Nix language server), and `sops` automatically.
 
 ## Secrets Management
 
-Secrets are managed using [sops-nix](https://github.com/Mic92/sops-nix) with GPG encryption.
+Secrets are managed using [sops-nix](https://github.com/Mic92/sops-nix) with age encryption.
 
 ### Setup
 
-1. Import your GPG key:
+1. Generate or import your age key:
 
 ```bash
-gpg --import your-private-key.asc
+# Generate a new age key
+rage-keygen -o ~/.config/sops/age/keys.txt
+
+# Or use age-plugin-yubikey
+age-plugin-yubikey --generate
 ```
 
-2. Update `.sops.yaml` with your GPG key fingerprint
+2. Update `.sops.yaml` with your age key
 
 1. Create or edit secrets:
 
@@ -116,7 +120,7 @@ sops secrets.yaml
 
 ### Structure
 
-- `.sops.yaml` - SOPS configuration with GPG keys
+- `.sops.yaml` - SOPS configuration with age keys
 - `secrets.yaml` - Encrypted secrets file
 - Secrets are referenced in Nix configurations using `config.sops.secrets.*`
 

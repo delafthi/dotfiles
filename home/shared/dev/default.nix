@@ -9,6 +9,7 @@
     ./ghostty.nix
     ./helix.nix
     ./podman.nix
+    ./ssh.nix
     ./tmux.nix
     ./yazi.nix
   ];
