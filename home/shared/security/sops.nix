@@ -2,24 +2,63 @@
   config,
   lib,
   pkgs,
+  sops,
   ...
 }:
 {
-  home.packages = [ pkgs.sops ];
   sops = {
-    defaultSopsFile = ./secrets.yaml;
-    gnupg.home = "${config.home.homeDirectory}/.gnupg";
+    age.keyFile = "${config.xdg.configHome}/sops/age/keys.txt";
+    defaultSopsFile = ./secrets.yml;
+    package = sops.sops-install-secrets.overrideAttrs (
+      _: prev: {
+        nativeBuildInputs = prev.nativeBuildInputs ++ [ pkgs.makeBinaryWrapper ];
+        postFixup = ''
+          wrapProgram $out/bin/sops-install-secrets \
+            --prefix PATH : ${lib.makeBinPath [ pkgs.age-plugin-yubikey ]}
+        '';
+      }
+    );
     secrets = {
-      atuin-key = { };
-      atuin-session = { };
-      context7-api-key = { };
-      openrouter-api-key = { };
+      "api-keys/context7" = { };
+      "api-keys/openrouter" = { };
+      "atuin/key" = { };
+      "atuin/session" = { };
+      "ssh/clt-dsk-t-6006/private" = {
+        path = "${config.home.homeDirectory}/.ssh/id_clt-dsk-t-6006";
+      };
+      "ssh/clt-dsk-t-6006/public" = {
+        path = "${config.home.homeDirectory}/.ssh/id_clt-dsk-t-6006.pub";
+      };
+      "ssh/deaa/private" = {
+        path = "${config.home.homeDirectory}/.ssh/id_deaa";
+      };
+      "ssh/deaa/public" = {
+        path = "${config.home.homeDirectory}/.ssh/id_deaa.pub";
+      };
+      "ssh/github.com/private" = {
+        path = "${config.home.homeDirectory}/.ssh/id_github.com";
+      };
+      "ssh/github.com/public" = {
+        path = "${config.home.homeDirectory}/.ssh/id_github.com.pub";
+      };
+      "ssh/github.zhaw.ch/private" = {
+        path = "${config.home.homeDirectory}/.ssh/id_github.zhaw.ch";
+      };
+      "ssh/github.zhaw.ch/public" = {
+        path = "${config.home.homeDirectory}/.ssh/id_github.zhaw.ch.pub";
+      };
     };
   };
   systemd.user.services.sops-nix = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
     Service = {
       Restart = "on-failure";
-      RestartSec = "5s";
+      RestartSec = "10s";
+    };
+  };
+  launchd.agents.sops-nix = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
+    config.KeepAlive = lib.mkForce {
+      Crashed = true;
+      SuccessfulExit = false;
     };
   };
 }

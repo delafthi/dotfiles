@@ -72,6 +72,7 @@ _: {
         backend = "gpg";
         behavior = "drop";
         key = "00926686981863CB";
+        backends.ssh.allowed-signers = "~/.ssh/allowed_signers";
       };
       snapshot.auto-track = "none()";
       template-aliases."format_timestamp(timestamp)" = "timestamp.ago()";
@@ -88,6 +89,15 @@ _: {
         {
           "--when".commands = [ "status" ];
           ui.paginate = "never";
+        }
+        {
+          "--when".repositories = [ "~/Developer/zhaw" ];
+          remotes.origin.auto-track-bookmarks = "glob:{main,master,deaa/*}";
+          templates.git_push_bookmark = ''"deaa/" ++ change_id.short()'';
+          signing = {
+            backend = "ssh";
+            key = "~/.ssh/id_deaa";
+          };
         }
       ];
     };
