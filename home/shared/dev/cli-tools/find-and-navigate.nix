@@ -13,7 +13,7 @@
     ];
     sessionVariables = {
       # Required on macOS
-      EZA_CONFIG_DIR = "${config.xdg.configHome}/eza";
+      EZA_CONFIG_DIR = "$XDG_CONFIG_HOME/eza";
       LS_COLORS = "$(${lib.getExe pkgs.vivid} generate catppuccin-${config.catppuccin.flavor})";
     };
     shellAliases.cd = "z";

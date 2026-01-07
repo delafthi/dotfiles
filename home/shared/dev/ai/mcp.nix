@@ -44,7 +44,7 @@ in
         args = [
           "-y"
           "@modelcontextprotocol/server-filesystem"
-          "${config.home.homeDirectory}/Developer"
+          "~/Developer"
         ];
       };
       git = {
