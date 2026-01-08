@@ -1,8 +1,9 @@
 {
   imports = [
-    ./gpg-agent.nix
     ./gpg.nix
+    ./gpg-agent.nix
     ./password-store.nix
     ./sops.nix
+    ./ssh-agent.nix
   ];
 }

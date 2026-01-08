@@ -40,9 +40,7 @@
               (
                 let
                   host = "Thierrys-MacBook-Air";
-                  ssh-keys = [
-                    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINChtXQ7ivyX2e104DONznwNzg74e+6+wzeW2PMzYpmz openpgp:0x31D1E"
-                  ];
+                  ssh-keys = [ ];
                   system = "aarch64-darwin";
                   user = "delafthi";
                 in
@@ -62,6 +60,7 @@
                             inherit user;
                             iamb = inputs.iamb.packages.${system};
                             llm-agents = inputs.llm-agents.packages.${system};
+                            sops = inputs.sops-nix.packages.${system};
                             zen-browser = inputs.zen-browser.packages.${system};
                           };
 
@@ -86,9 +85,7 @@
               (
                 let
                   host = "Thierrys-MacBook-Air-VM";
-                  ssh-keys = [
-                    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINChtXQ7ivyX2e104DONznwNzg74e+6+wzeW2PMzYpmz openpgp:0x31D1E"
-                  ];
+                  ssh-keys = [ ];
                   system = "aarch64-linux";
                   user = "delafthi";
                 in
@@ -107,6 +104,7 @@
                             inherit user;
                             iamb = inputs.iamb.packages.${system};
                             llm-agents = inputs.llm-agents.packages.${system};
+                            sops = inputs.sops-nix.packages.${system};
                             zen-browser = inputs.zen-browser.packages.${system};
                           };
                           useGlobalPkgs = true;
@@ -155,6 +153,7 @@
                 name = "dotfiles";
                 inputsFrom = [ config.treefmt.build.devShell ];
                 packages = with pkgs; [
+                  age-plugin-yubikey
                   just
                   nixd
                   pam_u2f
