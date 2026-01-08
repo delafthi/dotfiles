@@ -1,7 +1,6 @@
-keys:
-  - &delafthi 6DBB0BB9AEE62C2A80597E1C00926686981863CB
 creation_rules:
-  - path_regex: secrets\.(yaml|json|env|ini)$
+  - path_regex: secrets\.(yaml|yml|json|env|ini)$
     key_groups:
-      - pgp:
-          - *delafthi
+      - age:
+          - age1yubikey1qtwxgmr3ay562c5wrgh7veepnemejrnmx08ueyde42k5wxkh8qf8qk9lmr7
+          - age1ga363sl0st48mv6vjghrkatvfng20tsp3am9j57eh22nwm03r4rqwcsz7c
