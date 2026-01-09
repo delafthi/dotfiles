@@ -98,6 +98,7 @@ _: {
             backend = "ssh";
             key = "~/.ssh/id_deaa";
           };
+          user.email = "deaa@zhaw.ch";
         }
       ];
     };
