@@ -104,7 +104,7 @@ Secrets are managed using [sops-nix](https://github.com/Mic92/sops-nix) with age
 
 ```bash
 # Generate a new age key
-rage-keygen -o ~/.config/sops/age/keys.txt
+age-keygen -o ~/.config/sops/age/keys.txt
 
 # Or use age-plugin-yubikey
 age-plugin-yubikey --generate
