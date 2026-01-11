@@ -1,11 +1,22 @@
 ---
-description: document code
-agent: build
-subtask: true
-template: Add or update documentation to all functions, class, and modules in the provided files or current changes.
+allowed-tools: Read, Glob, Grep, Edit
+description: Add or update documentation to all functions, class, and modules in the provided files or current changes.
 ---
 
 Add or update documentation to all functions, class, and modules in the files $ARGUMENTS or the current changes.
+
+## Task Planning
+
+Use the TodoWrite tool to track documentation steps:
+
+1. Identify files to document
+1. Analyze existing documentation patterns
+1. Document each public API in each file
+1. Verify documentation completeness
+
+Mark tasks as in_progress/completed as you work.
+
+**Important:** Always use Read tool before Edit tool (Claude Code requirement).
 
 ## Analysis
 

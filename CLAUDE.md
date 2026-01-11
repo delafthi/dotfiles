@@ -1,4 +1,6 @@
-# Agent Guidelines for delafthi's Dotfiles
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Build/Lint/Test Commands
 
@@ -37,12 +39,36 @@
 
 ### File Organization
 
-- `hosts/` - Host-specific configurations
-- `home/` - Home-manager modules (darwin/linux/shared)
-- `modules/` - Custom Nix modules
+- `hosts/` - Host-specific configurations (darwin/nixos subdirectories)
+- `home/` - Home-manager modules organized by platform (darwin/linux/shared)
+- `modules/` - Custom Nix modules (nix-darwin, nixos, home)
 - `overlays/` - Package overlays
 - `pkgs/` - Custom packages
 - `system/` - System-level configurations
+- `nix/` - Build system configuration (treefmt.nix)
+
+### Home-Manager Module Structure
+
+The `home/` directory uses a three-tier architecture:
+
+1. **Platform-specific**: `home/darwin/` and `home/linux/` for platform-specific configurations
+1. **Shared**: `home/shared/` for cross-platform configurations
+1. **Category-based organization**: Each tier is organized by category:
+
+- `apps/` - Application configurations (e.g., `apps/coms/` for communication apps)
+- `dev/` - Development tools (shells, VCS, languages, CLI tools, AI tools)
+- `security/` - Security-related configurations (gpg, ssh, sops, password-store)
+- `ui/` - UI/UX configurations (fonts, theming)
+- `settings/` - Platform-specific system settings (macOS defaults, Linux systemd services)
+
+Host configurations import the appropriate platform and shared modules:
+
+```nix
+imports = [
+  ../../../home/darwin
+  ../../../home/shared
+];
+```
 
 ### Additional Formatters
 
@@ -65,30 +91,6 @@
 - Use `mkDerivation` with explicit `meta.mainProgram` for custom packages
 - Test configurations on target systems before committing
 - NEVER add comments to code unless explicitly requested
-
-## Version Control System
-
-**This repository uses Jujutsu (`.jj/` present).**
-
-### Detection Method
-
-Check for VCS-specific directories in the repository root:
-
-- **Jujutsu**: `.jj/` directory present → use `jj` commands
-- **Git**: `.git/` directory present → use `git` commands (default)
-
-### Usage Rules
-
-- If `.jj/` is detected, use jujutsu commands for ALL version control operations:
-  - Status: `jj status` (not `git status`)
-  - Diff: `jj diff` (not `git diff`)
-  - Create change: `jj new` (not `git commit`)
-  - Describe change: `jj describe -m "message"` (not `git commit -m`)
-  - Branches: `jj branch` (not `git branch`)
-  - Log: `jj log` (not `git log`)
-- If only `.git/` is present, use standard git commands
-- NEVER mix git and jujutsu commands in the same repository
-- When in doubt, check for `.jj/` first: `test -d .jj && echo "jujutsu" || echo "git"`
 
 ## Build System Detection
 
@@ -141,3 +143,49 @@ fi
 - Respect the project's chosen tooling hierarchy
 - When `flake.nix` and `justfile` coexist, use Nix commands but be aware that `just` commands may wrap Nix for convenience
 - Never assume a build system without verification
+
+## Architecture and Special Patterns
+
+### Flake Structure
+
+The flake uses flake-parts for modular organization with the following key components:
+
+- **Inputs**: All flake inputs use `nixpkgs.follows` to ensure consistent versions (catppuccin, darwin, home-manager, sops-nix, iamb, llm-agents, zen-browser)
+- **Overlays**: Custom overlays are defined in `overlays/` and applied to both system and per-system nixpkgs
+- **Special args**: Configurations receive `user`, `host`, and `ssh-keys` as special args throughout the module system
+- **perSystem**: Used for per-system outputs (packages, devShells, treefmt configuration)
+- **Supported systems**: aarch64-linux, x86_64-linux, aarch64-darwin
+
+### Adding a New Host
+
+When adding a new host configuration:
+
+1. Create directory under `hosts/darwin/` or `hosts/nixos/`
+1. Add `configuration.nix` (system config) and `home.nix` (home-manager config)
+1. In `flake.nix`, define the host with required special args:
+
+- `host` - hostname (e.g., "Thierrys-MacBook-Air")
+- `user` - username (e.g., "delafthi")
+- `ssh-keys` - list of authorized SSH keys
+- `system` - platform (e.g., "aarch64-darwin")
+
+4. Add to `darwinConfigurations` or `nixosConfigurations` using the mergeAttrSets pattern
+
+### Secrets Management
+
+This repository uses sops-nix with age encryption:
+
+- **Age keys**: Configured in `.sops.yaml` (currently uses Yubikey and a standard age key)
+- **Secrets file**: `secrets.yaml` (encrypted)
+- **Access in configs**: Reference via `config.sops.secrets.*`
+- **Development**: Use `sops secrets.yaml` to edit encrypted files
+- **Key location**: Age keys stored in `~/.config/sops/age/keys.txt` or via age-plugin-yubikey
+
+### Development Environment
+
+The repository includes a development shell with direnv integration:
+
+- **Automatic activation**: When direnv is installed, the shell loads automatically on `cd`
+- **Manual activation**: `nix develop`
+- **Available tools**: just, nixd (Nix LSP), sops, age, age-plugin-yubikey, pam_u2f, pamtester
+- **Formatters**: All treefmt formatters are available in the dev shell

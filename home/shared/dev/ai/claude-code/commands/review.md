@@ -1,11 +1,36 @@
 ---
-description: review code
-agent: review
-subtask: false
-template: Provide a structured code review for the provided files or current changes.
+allowed-tools: Read, Glob, Grep, Bash, Task
+description: Provide a structured code review for the provided files or current changes.
 ---
 
 Provide a structured code review for the files $ARGUMENTS or the current changes.
+
+## Task Planning
+
+Use the TodoWrite tool to track review steps:
+
+1. Identify files to review
+1. Understand project context and conventions
+1. Analyze each file for issues
+1. Generate structured review output
+1. Provide actionable recommendations
+
+Mark tasks as in_progress/completed as you work.
+
+## Exploration Strategy
+
+**Use Task tool with subagent_type=Explore for:**
+
+- Finding similar files to understand patterns
+- Understanding how reviewed code fits in the architecture
+- Identifying all usage of reviewed code
+- Understanding the broader context
+
+**Use direct tools (Read, Grep, Glob) for:**
+
+- Reading the specific files being reviewed
+- Checking for linting/formatting configs
+- Reading style guides or review guidelines
 
 ## Project Context
 
@@ -15,6 +40,8 @@ First, understand the project context:
 - Check for linting/formatting configs (e.g., `.eslintrc`, `pyproject.toml`, `rustfmt.toml`)
 - Identify the project's tech stack and frameworks
 - Check if there are existing code review guidelines or style guides
+
+Consider using Task/Explore agent to understand the architectural context.
 
 ## Review Categories
 
@@ -59,6 +86,31 @@ For each issue found, include:
 ---
 ```
 
+## Version Control Context
+
+If reviewing current changes, detect the VCS:
+
+```bash
+test -d .jj && echo "jujutsu" || (test -d .git && echo "git" || echo "none")
+```
+
+**Jujutsu:**
+Check current changes:
+
+```bash
+jj status
+jj diff
+```
+
+**Git:**
+Check current changes:
+
+```bash
+git status
+git diff
+git diff --staged
+```
+
 ## Guidelines
 
 - Focus on actionable feedback
@@ -68,3 +120,6 @@ For each issue found, include:
 - Provide context for suggestions
 - Only flag style issues if they significantly impact readability or differ from project norms
 - Keep review output minimal and concise
+- Reference code locations as `file:line` format for easy navigation
+- Don't over-engineer reviews with excessive detail
+- Avoid comments on obvious or already well-handled aspects
