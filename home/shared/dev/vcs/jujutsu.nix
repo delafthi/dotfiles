@@ -65,8 +65,8 @@ _: {
       colors."diff token".underline = false;
       git.sign-on-push = true;
       remotes = {
-        origin.auto-track-bookmarks = "glob:*";
-        upstream.auto-track-bookmarks = "glob:{delafthi/*,main,master}";
+        origin.auto-track-bookmarks = "*";
+        upstream.auto-track-bookmarks = "delafthi/* | main | master";
       };
       signing = {
         backend = "gpg";
@@ -74,7 +74,6 @@ _: {
         key = "00926686981863CB";
         backends.ssh.allowed-signers = "~/.ssh/allowed_signers";
       };
-      snapshot.auto-track = "none()";
       template-aliases."format_timestamp(timestamp)" = "timestamp.ago()";
       templates.git_push_bookmark = ''"delafthi/" ++ change_id.short()'';
       ui = {
@@ -92,7 +91,7 @@ _: {
         }
         {
           "--when".repositories = [ "~/Developer/zhaw" ];
-          remotes.origin.auto-track-bookmarks = "glob:{main,master,deaa/*}";
+          remotes.origin.auto-track-bookmarks = "deaa/* | main | master";
           templates.git_push_bookmark = ''"deaa/" ++ change_id.short()'';
           signing = {
             backend = "ssh";
