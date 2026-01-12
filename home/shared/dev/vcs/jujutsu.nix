@@ -65,8 +65,8 @@ _: {
       colors."diff token".underline = false;
       git.sign-on-push = true;
       remotes = {
-        origin.auto-track-bookmarks = "glob:*";
-        upstream.auto-track-bookmarks = "glob:{delafthi/*,main,master}";
+        origin.auto-track-bookmarks = "*";
+        upstream.auto-track-bookmarks = "delafthi/* | main | master";
       };
       signing = {
         backend = "gpg";
@@ -92,7 +92,7 @@ _: {
         }
         {
           "--when".repositories = [ "~/Developer/zhaw" ];
-          remotes.origin.auto-track-bookmarks = "glob:{main,master,deaa/*}";
+          remotes.origin.auto-track-bookmarks = "deaa/* | main | master";
           templates.git_push_bookmark = ''"deaa/" ++ change_id.short()'';
           signing = {
             backend = "ssh";
