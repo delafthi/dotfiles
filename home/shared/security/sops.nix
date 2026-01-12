@@ -23,30 +23,6 @@
       "api-keys/openrouter" = { };
       "atuin/key" = { };
       "atuin/session" = { };
-      "ssh/clt-dsk-t-6006/private" = {
-        path = "${config.home.homeDirectory}/.ssh/id_clt-dsk-t-6006";
-      };
-      "ssh/clt-dsk-t-6006/public" = {
-        path = "${config.home.homeDirectory}/.ssh/id_clt-dsk-t-6006.pub";
-      };
-      "ssh/deaa/private" = {
-        path = "${config.home.homeDirectory}/.ssh/id_deaa";
-      };
-      "ssh/deaa/public" = {
-        path = "${config.home.homeDirectory}/.ssh/id_deaa.pub";
-      };
-      "ssh/github.com/private" = {
-        path = "${config.home.homeDirectory}/.ssh/id_github.com";
-      };
-      "ssh/github.com/public" = {
-        path = "${config.home.homeDirectory}/.ssh/id_github.com.pub";
-      };
-      "ssh/github.zhaw.ch/private" = {
-        path = "${config.home.homeDirectory}/.ssh/id_github.zhaw.ch";
-      };
-      "ssh/github.zhaw.ch/public" = {
-        path = "${config.home.homeDirectory}/.ssh/id_github.zhaw.ch.pub";
-      };
     };
   };
   systemd.user.services.sops-nix = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
