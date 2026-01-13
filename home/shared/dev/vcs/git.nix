@@ -183,6 +183,7 @@
 
       # Other common directories I don't want to be included
       ".cache"
+      ".claude"
       ".direnv"
       ".env"
       ".git"
