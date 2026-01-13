@@ -4,8 +4,8 @@ _: {
     settings = {
       aliases = {
         a = [
-          "file"
-          "track"
+          "new"
+          "--insert-after"
         ];
         add = [
           "file"
@@ -31,7 +31,7 @@ _: {
         ];
         i = [
           "new"
-          "--after"
+          "--insert-before"
         ];
         l = [
           "log"
@@ -53,6 +53,7 @@ _: {
           "track"
           "glob:*@*"
         ];
+        t = [ "tug" ];
         tug = [
           "bookmark"
           "move"
