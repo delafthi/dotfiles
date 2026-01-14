@@ -10,10 +10,10 @@
         indent_style = "space";
         indent_size = 2;
       };
-      Makefile = {
+      "{Justfile,Makefile}" = {
         indent_style = "tab";
       };
-      "*.py" = {
+      "*.{py,rs}" = {
         indent_size = 4;
       };
     };
