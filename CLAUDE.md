@@ -79,7 +79,6 @@ imports = [
 - **YAML**: yamlfmt
 - **Markdown**: mdformat
 - **Justfiles**: just
-- **EditorConfig**: editorconfig-checker (priority: 9)
 
 ### Best Practices
 

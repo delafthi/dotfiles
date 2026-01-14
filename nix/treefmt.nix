@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   projectRootFile = "flake.nix";
   programs = {
@@ -22,12 +21,5 @@
     shfmt.enable = true;
     statix.enable = true;
     yamlfmt.enable = true;
-  };
-  settings.formatter = {
-    editorconfig-checker = {
-      command = pkgs.editorconfig-checker;
-      includes = [ "*" ];
-      priority = 9; # last
-    };
   };
 }
