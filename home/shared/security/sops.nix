@@ -56,9 +56,12 @@
     };
   };
   launchd.agents.sops-nix = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin {
-    config.KeepAlive = lib.mkForce {
-      Crashed = true;
-      SuccessfulExit = false;
+    config = {
+      EnvironmentVariables.PATH = pkgs.lib.mkForce "/usr/bin:/bin:/usr/sbin:/sbin";
+      KeepAlive = lib.mkForce {
+        Crashed = true;
+        SuccessfulExit = false;
+      };
     };
   };
 }
