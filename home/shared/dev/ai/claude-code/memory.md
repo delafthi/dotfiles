@@ -112,16 +112,13 @@ When contribution guidelines are found:
 
 ### Special Cases
 
-- **AGENTS.md creation**: When using `init` command, check contribution guidelines first to:
+- **CLAUDE.md creation**: When using `init` command to create project-specific instructions:
 
+  - Do NOT include a VCS section
   - Match project's preferred format and structure
   - Include project-specific build/test/lint commands
   - Respect existing documentation patterns
   - Align with project's coding standards
-
-- **CLAUDE.md creation**: When using `init` command to create project-specific instructions:
-
-  - Do NOT include a VCS section
 
 ### Detection Command
 
@@ -131,39 +128,130 @@ for file in CONTRIBUTING.md CONTRIBUTING .github/CONTRIBUTING.md docs/CONTRIBUTI
 done
 ```
 
-## Claude Code Tool Usage
+## Custom Agent Usage
 
-### Task Tool vs Direct Tools
+Use specialized custom agents for specific tasks to improve efficiency and reduce blocking:
 
-**Use Task tool with subagent_type=Explore when:**
+### Code Agent
 
-- Exploring codebase structure and organization
-- Finding patterns and conventions across multiple files
-- Answering open-ended questions about the codebase
-- Understanding architectural context
-- Searching for concepts rather than specific strings
+**Use for:**
 
-**Use direct tools (Glob, Grep, Read) when:**
+- Writing new code and features
+- Implementing bug fixes
+- Creating test suites
+- Modifying existing code
 
-- Looking for a specific file, class, or function name
-- Reading a known file path
-- Searching for an exact string or pattern
-- You need results in 1-2 attempts
+**When to spawn:**
+
+- User requests code implementation or tests
+- Multi-file code changes needed
+- Run in **background** for non-blocking test creation
+
+**Agent handles:**
+
+- Language-specific patterns and conventions
+- Security best practices (OWASP Top 10)
+- Testing frameworks and patterns
+- Build system integration
+
+### Documentation Agent
+
+**Use for:**
+
+- Creating or updating README files
+- Adding code documentation (docstrings, API docs)
+- Writing user guides
+
+**When to spawn:**
+
+- User requests documentation creation/improvement
+- README generation or enhancement
+- Run in **background** for non-blocking documentation work
+
+**Agent handles:**
+
+- Build system detection and commands
+- Documentation style by language
+- README structure and content
+- Spawns Explore agent for README creation (to understand project)
+
+### Review Agent
+
+**Use for:**
+
+- Conducting structured code reviews
+- Analyzing security and correctness
+- Providing actionable feedback
+
+**When to spawn:**
+
+- User requests code review
+- Reviewing specific files or current changes
+- Keep **blocking** so review completes before user continues
+
+**Agent handles:**
+
+- Project context analysis via Explore agent
+- Issue categorization and prioritization
+- Language-specific security checks
+- Structured review output format
+
+### VCS Agent
+
+**Use for:**
+
+- Creating commits with proper messages
+- Creating pull requests
+- Managing branches
+- Analyzing diffs and history
+
+**When to spawn:**
+
+- User requests commit or PR creation
+- VCS operations needed
+- Keep **blocking** for commits/PRs to ensure completion
+
+**Agent handles:**
+
+- VCS detection (jujutsu vs git)
+- Commit message format (Conventional Commits)
+- Contribution guidelines detection
+- PR analysis and description generation
+
+### Built-in Agents
+
+**Explore agent** (`subagent_type=Explore`):
+
+- Use for codebase exploration
+- Understanding architecture and patterns
+- Open-ended questions about code structure
+
+**Direct tools** (Glob, Grep, Read):
+
+- Use for specific file/class/function lookups
+- Reading known file paths
+- Exact string searches
 
 **Examples:**
 
 ```
-User: "Where are errors from the client handled?"
-→ Use Task tool with Explore agent
+User: "Write tests for auth.py"
+→ Spawn Code agent (background)
 
-User: "Read the main.rs file"
+User: "Create a README for this project"
+→ Spawn Documentation agent (background)
+
+User: "Review my current changes"
+→ Spawn Review agent (blocking)
+
+User: "Commit these changes"
+→ Spawn VCS agent (blocking)
+
+User: "How does authentication work?"
+→ Use Explore agent
+
+User: "Read src/main.rs"
 → Use Read tool directly
-
-User: "Find the UserAuth class"
-→ Use Glob tool: "**/*User*Auth*" or Grep: "class UserAuth"
-
-User: "How does the authentication system work?"
-→ Use Task tool with Explore agent
 ```
 
 ### TodoWrite Usage
@@ -193,53 +281,28 @@ User: "How does the authentication system work?"
 
 ## Code Quality Guidelines
 
-### What to Avoid
-
-**Over-engineering:**
-
-- Don't add features beyond what was asked
-- Don't refactor code that isn't directly related
-- Don't add "improvements" unless clearly necessary
-- Don't create abstractions for one-time operations
-- Don't add error handling for scenarios that can't happen
-- Don't design for hypothetical future requirements
-
-**Documentation:**
-
-- Don't add docstrings to code you didn't change
-- Don't add comments where logic is self-evident
-- Don't create documentation files (\*.md) unless explicitly requested
-- Only document public APIs and non-obvious logic
-
-**Backwards compatibility:**
-
-- Don't use backwards-compatibility hacks (renaming unused vars, re-exporting types, etc.)
-- If something is unused, delete it completely
-- Don't add `// removed` comments for removed code
-
-### What to Do
-
-**Code changes:**
+**General principles:**
 
 - Read files before modifying them (Claude Code requirement)
 - Prefer editing existing files over creating new ones
 - Keep solutions simple and focused
 - Follow existing patterns in the codebase
-- Use the Edit tool for modifications (not sed/awk via Bash)
+- Avoid over-engineering and unnecessary abstractions
+- Don't add features beyond what was asked
+- Only document public APIs and non-obvious logic
 
 **Security:**
 
-- Be careful of command injection, XSS, SQL injection, OWASP top 10
+- Watch for command injection, XSS, SQL injection, OWASP top 10
 - If you write insecure code, immediately fix it
 - Only validate at system boundaries (user input, external APIs)
-- Trust internal code and framework guarantees
 
 **Tool usage:**
 
-- Use Read tool for reading files (not cat/head/tail via Bash)
-- Use Edit tool for editing files (not sed/awk via Bash)
-- Use Write tool for new files (not echo/heredoc via Bash)
-- Use Bash only for actual terminal operations (git, npm, docker, etc.)
+- Use Read/Edit/Write for file operations (not cat/sed/awk via Bash)
+- Use Bash only for terminal operations (git, npm, docker, etc.)
+
+**Note:** Custom agents (code, documentation, review) contain detailed quality guidelines for their domains.
 
 ## Workflow Optimization
 

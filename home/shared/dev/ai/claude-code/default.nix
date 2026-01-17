@@ -41,6 +41,12 @@ in
       env.CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC = 1;
       theme = "dark";
     };
+    agents = {
+      code = ./agents/code.md;
+      documentation = ./agents/documentation.md;
+      review = ./agents/review.md;
+      vcs = ./agents/vcs.md;
+    };
     commands = {
       codedocs = ./commands/codedocs.md;
       commit = ./commands/commit.md;
