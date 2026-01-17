@@ -1,6 +1,6 @@
 ---
-allowed-tools: Read, Write, Edit, Glob, Grep, Bash
 description: Specialized agent for writing code, tests, and implementing features
+tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 
 # Code Agent

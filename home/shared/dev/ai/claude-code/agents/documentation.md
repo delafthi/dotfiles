@@ -1,6 +1,6 @@
 ---
-allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Task
 description: Specialized agent for creating and maintaining project documentation
+tools: Read, Write, Edit, Glob, Grep, Bash, Task
 ---
 
 # Documentation Agent

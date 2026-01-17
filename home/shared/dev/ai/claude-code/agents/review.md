@@ -1,6 +1,6 @@
 ---
-allowed-tools: Read, Glob, Grep, Bash, Task
 description: Specialized agent for conducting thorough code reviews
+tools: Read, Glob, Grep, Bash, Task
 ---
 
 # Review Agent

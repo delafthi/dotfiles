@@ -1,7 +1,7 @@
 ---
-allowed-tools: Bash, Read, Glob, Grep
 description: Specialized agent for version control system operations
 model: haiku
+tools: Read, Glob, Grep, Bash
 ---
 
 # VCS Agent
