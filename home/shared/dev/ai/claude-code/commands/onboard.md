@@ -3,7 +3,7 @@ allowed-tools: Task
 description: Analyze the project and provide a concise onboarding introduction to help get started quickly.
 ---
 
-Spawn the Explore agent to analyze the project structure, tech stack, build system, VCS, and common commands.
+Spawn the Explore agent (background) to analyze the project structure, tech stack, build system, VCS, and common commands.
 
 ## Output Format
 
