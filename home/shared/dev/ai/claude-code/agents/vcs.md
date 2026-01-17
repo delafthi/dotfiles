@@ -10,36 +10,46 @@ Handle version control operations: commits, branches, diffs, and history.
 
 ## VCS Detection
 
-Detect before any operation:
-
 ```bash
 test -d .jj && echo "jujutsu" || (test -d .git && echo "git" || echo "none")
 ```
 
-Prefer jujutsu when available. Never mix VCS commands in the same repository.
+Prefer jujutsu when available. Never mix VCS commands.
 
-## Common Operations
-
-### Status and Diffs
+## Arguments
 
 ```bash
-# Status
-jj status              # jujutsu
-git status             # git
+TARGET="${1:-}"  # Empty = working copy (@/HEAD), otherwise branch/bookmark/commit/change-id
+```
 
-# Diffs
-jj diff                # jujutsu current change
-jj diff -r <rev>       # jujutsu specific revision
-git diff               # git unstaged
-git diff --staged      # git staged
-git diff <ref>         # git against reference
+## Target Type Detection
+
+**Jujutsu bookmarks:**
+
+```bash
+jj bookmark list | grep -q "^$TARGET:" && BOOKMARK="$TARGET" || BOOKMARK=$(jj log -r "$TARGET" --no-graph -T 'bookmarks' | head -1)
+```
+
+**Git branches:**
+
+```bash
+git show-ref --verify --quiet "refs/heads/$TARGET" || git show-ref --verify --quiet "refs/remotes/origin/$TARGET"
+```
+
+## Operations
+
+### Status & Diffs
+
+```bash
+jj status / git status
+jj diff / git diff [--staged]
+jj diff -r "$TARGET" / git show "$TARGET"
 ```
 
 ### History
 
 ```bash
-jj log --limit 20      # jujutsu
-git log --oneline -20  # git
+jj log --limit 20 / git log --oneline -20
 ```
 
 ### Commits
@@ -47,12 +57,12 @@ git log --oneline -20  # git
 **Jujutsu:**
 
 ```bash
-jj describe -m "$(cat <<'EOF'
+jj describe [-r "$TARGET"] -m "$(cat <<'EOF'
 <type>(<scope>): <description>
 
-[optional body]
+[body explaining WHY]
 
-[optional footer(s)]
+[footer: Fixes #123]
 EOF
 )"
 ```
@@ -60,84 +70,72 @@ EOF
 **Git:**
 
 ```bash
-git add <files>
-git commit -m "$(cat <<'EOF'
-<type>(<scope>): <description>
-
-[optional body]
-
-[optional footer(s)]
-EOF
-)"
+git commit [-m "..." | --amend | --fixup="$TARGET"]
+# Historical: git commit --fixup="$TARGET" && git rebase -i --autosquash "$TARGET^"
 ```
 
 ### Branches
 
 ```bash
-# Jujutsu
-jj branch list
-jj branch create <name>
-jj branch set <name>
-jj branch delete <name>
-
-# Git
-git branch
-git branch <name>
-git checkout -b <name>
-git branch -d <name>
+jj bookmark [list|create|set|delete] <name>
+git branch [-d] <name> / git checkout -b <name>
 ```
 
-## Commit Message Format
+### Pull Requests
 
-Use Conventional Commits unless project conventions differ:
+**Jujutsu:**
+
+```bash
+# Detect or create bookmark
+if ! jj bookmark list | grep -q "^$TARGET:"; then
+  BOOKMARK=$(jj log -r "$TARGET" --no-graph -T 'bookmarks' | head -1)
+  [ -z "$BOOKMARK" ] && BOOKMARK="pr-$(jj log -r "$TARGET" --no-graph -T 'change_id.shortest()' | head -1)" && jj bookmark create "$BOOKMARK" -r "$TARGET"
+else
+  BOOKMARK="$TARGET"
+fi
+jj git push --bookmark "$BOOKMARK"
+gh pr create --head "$BOOKMARK" --title "..." --body "..."
+```
+
+**Git:**
+
+```bash
+# Detect branch
+git show-ref --verify --quiet "refs/heads/$TARGET" && BRANCH="$TARGET" || BRANCH=$(git branch --contains "$TARGET" | grep -v '^\*' | head -1 | xargs)
+git push -u origin "$BRANCH" 2>/dev/null || true
+gh pr create --head "$BRANCH" --title "..." --body "..."
+```
+
+## Commit Format
+
+Conventional Commits (unless project differs):
 
 ```
 <type>(<scope>): <description>
 
-[optional body]
+- Bullet points for multiple changes
+- Prose explaining WHY for single change
 
-[optional footer(s)]
+Footer: <token>: <value>
 ```
 
-**Subject:**
-
-- Imperative mood, lowercase, no period
-- Max 100 characters
-- Format: `<type>(<scope>): <description>` (scope optional)
-
-**Body:**
-
-- Bullet points with "-" for multiple changes
-- Prose for single change explaining WHY
-- Max 100 characters per line
-- Escape backticks in command line: \`
-
-**Footer:**
-
-- Format: `<token>: <value>`
-- Types: `BREAKING CHANGE:`, `Fixes #`, `Closes #`, `Resolves #`, `Related to #`
-- Max 100 characters per line
+**Rules:** Imperative, lowercase, no period, max 100 chars/line
 
 ## Convention Detection
 
-Check project conventions before committing:
-
-1. Read contribution guidelines if present:
-
 ```bash
-for file in CONTRIBUTING.md CONTRIBUTING .github/CONTRIBUTING.md docs/CONTRIBUTING.md CONTRIBUTE.md; do
+for file in CONTRIBUTING.md CONTRIBUTING .github/CONTRIBUTING.md docs/CONTRIBUTING.md; do
   test -f "$file" && cat "$file" && break
 done
 ```
 
-2. Analyze recent commits for established patterns
+Analyze recent commits. Follow existing patterns or use Conventional Commits.
 
-Follow existing patterns if clear, otherwise use Conventional Commits.
+## Best Practices
 
-## Key Practices
-
-- Verify VCS type before commands
-- Check existing jujutsu description before creating new one
-- Keep commit messages minimal and focused on WHY
-- Verify operation success
-- On errors: check VCS detection, command syntax, and repository state
+- Detect VCS before any operation
+- Validate target exists and detect type (branch/bookmark vs commit/change-id)
+- Jujutsu: `-r "$TARGET"` for non-working-copy changes (non-blocking)
+- Git: `--fixup`/`--amend` for target commits (non-blocking when not HEAD)
+- PRs: Auto-create bookmarks for jujutsu change-ids, find branches for git commits
+- Verify success, check errors (VCS type, target validity, syntax, state)
