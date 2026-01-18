@@ -5,11 +5,13 @@
     enableMcpIntegration = true;
     package = llm-agents.claude-code;
     settings = {
-      env.CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC = 1;
-      theme = "dark";
       attribution = {
         commit = "";
         pr = "";
+      };
+      env = {
+        CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR = "1";
+        USE_BUILTIN_RIPGREP = "0";
       };
       permissions.allow = [
         # Git (read-only + local operations)
@@ -48,6 +50,14 @@
         "Bash(test -d:*)"
         "Bash(test -f:*)"
       ];
+      showTurnDuration = false;
+      spinnerTipsEnabled = false;
+      statusLine = {
+        type = "command";
+        command = ''cat | jq -r '"[\(.model.display_name)] \(.workspace.current_dir | split("/") | .[-1]) | \(.context_window.used_percentage | floor)% | +\(.cost.total_lines_added // 0)/-\(.cost.total_lines_removed // 0)"' '';
+        padding = 0;
+      };
+      theme = "dark";
     };
     agents = {
       code = ./agents/code.md;
