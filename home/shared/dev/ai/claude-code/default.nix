@@ -7,6 +7,10 @@
     settings = {
       env.CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC = 1;
       theme = "dark";
+      attribution = {
+        commit = "";
+        pr = "";
+      };
       permissions.allow = [
         # Git (read-only + local operations)
         "Bash(git add:*)"
