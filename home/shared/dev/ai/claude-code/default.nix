@@ -7,6 +7,43 @@
     settings = {
       env.CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC = 1;
       theme = "dark";
+      permissions.allow = [
+        # Git (read-only + local operations)
+        "Bash(git add:*)"
+        "Bash(git branch:*)"
+        "Bash(git commit:*)"
+        "Bash(git diff:*)"
+        "Bash(git log:*)"
+        "Bash(git show:*)"
+        "Bash(git show-ref:*)"
+        "Bash(git status:*)"
+        # GitHub CLI (read-only)
+        "Bash(gh issue list:*)"
+        "Bash(gh issue view:*)"
+        "Bash(gh pr checks:*)"
+        "Bash(gh pr diff:*)"
+        "Bash(gh pr list:*)"
+        "Bash(gh pr view:*)"
+        # Jujutsu (read-only + local operations)
+        "Bash(jj bookmark:*)"
+        "Bash(jj describe:*)"
+        "Bash(jj diff:*)"
+        "Bash(jj log:*)"
+        "Bash(jj new:*)"
+        "Bash(jj show:*)"
+        "Bash(jj status:*)"
+        # Just
+        "Bash(just:*)"
+        # Mise
+        "Bash(mise:*)"
+        # Nix
+        "Bash(nix build:*)"
+        "Bash(nix flake check:*)"
+        "Bash(nix fmt:*)"
+        # Test
+        "Bash(test -d:*)"
+        "Bash(test -f:*)"
+      ];
     };
     agents = {
       code = ./agents/code.md;
