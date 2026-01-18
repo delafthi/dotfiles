@@ -106,6 +106,22 @@ git push -u origin "$BRANCH" 2>/dev/null || true
 gh pr create --head "$BRANCH" --title "..." --body "..."
 ```
 
+### Issues
+
+When an issue is mentioned (e.g., `#123`, `issue 456`, or a GitHub URL):
+
+```bash
+gh issue view <number>
+gh issue list [--state open|closed|all] [--label <label>]
+gh issue create --title "..." --body "..."
+```
+
+Use issue context to:
+
+- Understand requirements when creating commits/PRs that fix issues
+- Include `Fixes #<number>` in commit footers when appropriate
+- Reference related issues in PR descriptions
+
 ## Commit Format
 
 Conventional Commits (unless project differs):
