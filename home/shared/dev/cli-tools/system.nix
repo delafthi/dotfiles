@@ -1,8 +1,8 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    btop
     dust
-    htop
     procs
     watch
   ];
