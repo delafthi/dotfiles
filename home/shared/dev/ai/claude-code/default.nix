@@ -1,44 +1,62 @@
-{
-  config,
-  lib,
-  llm-agents,
-  ...
-}:
-let
-  transformMcpServer =
-    name: server:
-    let
-      # Remove the disabled field from the server config
-      cleanServer = lib.filterAttrs (n: _v: n != "disabled") server;
-    in
-    {
-      inherit name;
-      value = {
-        enabled = !(server.disabled or false);
-      }
-      // (
-        if server ? url then
-          {
-            type = "http";
-          }
-          // cleanServer
-        else if server ? command then
-          {
-            type = "stdio";
-          }
-          // cleanServer
-        else
-          { }
-      );
-    };
-
-in
+{ llm-agents, ... }:
 {
   programs.claude-code = {
     enable = true;
+    enableMcpIntegration = true;
     package = llm-agents.claude-code;
     settings = {
-      env.CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC = 1;
+      attribution = {
+        commit = "";
+        pr = "";
+      };
+      env = {
+        CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR = "1";
+        USE_BUILTIN_RIPGREP = "0";
+      };
+      permissions.allow = [
+        # Git (read-only + local operations)
+        "Bash(git add:*)"
+        "Bash(git branch:*)"
+        "Bash(git commit:*)"
+        "Bash(git diff:*)"
+        "Bash(git log:*)"
+        "Bash(git show:*)"
+        "Bash(git show-ref:*)"
+        "Bash(git status:*)"
+        # GitHub CLI (read-only)
+        "Bash(gh issue list:*)"
+        "Bash(gh issue view:*)"
+        "Bash(gh pr checks:*)"
+        "Bash(gh pr diff:*)"
+        "Bash(gh pr list:*)"
+        "Bash(gh pr view:*)"
+        # Jujutsu (read-only + local operations)
+        "Bash(jj bookmark:*)"
+        "Bash(jj describe:*)"
+        "Bash(jj diff:*)"
+        "Bash(jj log:*)"
+        "Bash(jj new:*)"
+        "Bash(jj show:*)"
+        "Bash(jj status:*)"
+        # Just
+        "Bash(just:*)"
+        # Mise
+        "Bash(mise:*)"
+        # Nix
+        "Bash(nix build:*)"
+        "Bash(nix flake check:*)"
+        "Bash(nix fmt:*)"
+        # Test
+        "Bash(test -d:*)"
+        "Bash(test -f:*)"
+      ];
+      showTurnDuration = false;
+      spinnerTipsEnabled = false;
+      statusLine = {
+        type = "command";
+        command = ''cat | jq -r '"[\(.model.display_name)] \(.workspace.current_dir | split("/") | .[-1]) | \(.context_window.used_percentage | floor)% | +\(.cost.total_lines_added // 0)/-\(.cost.total_lines_removed // 0)"' '';
+        padding = 0;
+      };
       theme = "dark";
     };
     agents = {
@@ -56,7 +74,6 @@ in
       review = ./commands/review.md;
       write-tests = ./commands/write-tests.md;
     };
-    mcpServers = lib.listToAttrs (lib.mapAttrsToList transformMcpServer config.programs.mcp.servers);
     memory.source = ./memory.md;
   };
 }

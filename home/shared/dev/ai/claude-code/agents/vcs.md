@@ -93,6 +93,11 @@ if ! jj bookmark list | grep -q "^$TARGET:"; then
 else
   BOOKMARK="$TARGET"
 fi
+
+# Analyze all changes in the tree from trunk to bookmark
+jj log -r "trunk()..$BOOKMARK" --no-graph
+jj diff -r "trunk()..$BOOKMARK"
+
 jj git push --bookmark "$BOOKMARK"
 gh pr create --head "$BOOKMARK" --title "..." --body "..."
 ```
@@ -102,9 +107,44 @@ gh pr create --head "$BOOKMARK" --title "..." --body "..."
 ```bash
 # Detect branch
 git show-ref --verify --quiet "refs/heads/$TARGET" && BRANCH="$TARGET" || BRANCH=$(git branch --contains "$TARGET" | grep -v '^\*' | head -1 | xargs)
+
+# Analyze all changes in the tree from main to branch
+git log main.."$BRANCH" --oneline
+git diff main..."$BRANCH"
+
 git push -u origin "$BRANCH" 2>/dev/null || true
 gh pr create --head "$BRANCH" --title "..." --body "..."
 ```
+
+**PR Format:**
+
+```bash
+gh pr create --head "$BRANCH_OR_BOOKMARK" --title "<type>(<scope>): <description>" --body "$(cat <<'EOF'
+<1-3 sentences summarizing WHY these changes were made>
+EOF
+)"
+```
+
+- Title: Conventional commit format
+- Body: Brief summary of the reason for changes (not a changelog)
+- Analyze all commits from trunk/main to target, distill into overall purpose
+- No test plan or checklist needed
+
+### Issues
+
+When an issue is mentioned (e.g., `#123`, `issue 456`, or a GitHub URL):
+
+```bash
+gh issue view <number>
+gh issue list [--state open|closed|all] [--label <label>]
+gh issue create --title "..." --body "..."
+```
+
+Use issue context to:
+
+- Understand requirements when creating commits/PRs that fix issues
+- Include `Fixes #<number>` in commit footers when appropriate
+- Reference related issues in PR descriptions
 
 ## Commit Format
 
