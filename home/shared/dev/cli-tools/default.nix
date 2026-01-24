@@ -12,6 +12,7 @@
     asciinema
     charm-freeze
     clipboard-jh
+    glamour
     glow
     gum
     hyperfine
