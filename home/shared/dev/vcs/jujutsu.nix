@@ -96,7 +96,7 @@ _: {
           templates.git_push_bookmark = ''"deaa/" ++ change_id.short()'';
           signing = {
             backend = "ssh";
-            key = "~/.ssh/id_deaa";
+            key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGQ+Mydcr20/iHD3M0eLG56t336qydjGBwSBoCIYozy+";
           };
           user.email = "deaa@zhaw.ch";
         }
