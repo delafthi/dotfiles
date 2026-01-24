@@ -1,5 +1,5 @@
 {
   imports = [
-    ./gui.nix
+    ./gtk.nix
   ];
 }
