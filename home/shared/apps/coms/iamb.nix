@@ -1,8 +1,6 @@
-{ iamb, ... }:
 {
   programs.iamb = {
     enable = true;
-    package = iamb.default;
     settings = {
       profiles.user.user_id = "@delafthi:matrix.org";
       layout.style = "restore";

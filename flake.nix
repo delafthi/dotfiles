@@ -9,8 +9,6 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
-    iamb.inputs.nixpkgs.follows = "nixpkgs";
-    iamb.url = "github:ulyssa/iamb";
     llm-agents.inputs.nixpkgs.follows = "nixpkgs";
     llm-agents.url = "github:numtide/llm-agents.nix";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -58,7 +56,6 @@
                         home-manager = {
                           extraSpecialArgs = {
                             inherit user;
-                            iamb = inputs.iamb.packages.${system};
                             llm-agents = inputs.llm-agents.packages.${system};
                             sops = inputs.sops-nix.packages.${system};
                             zen-browser = inputs.zen-browser.packages.${system};
@@ -102,7 +99,6 @@
                         home-manager = {
                           extraSpecialArgs = {
                             inherit user;
-                            iamb = inputs.iamb.packages.${system};
                             llm-agents = inputs.llm-agents.packages.${system};
                             sops = inputs.sops-nix.packages.${system};
                             zen-browser = inputs.zen-browser.packages.${system};
