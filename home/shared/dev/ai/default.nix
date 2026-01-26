@@ -9,7 +9,6 @@ let
 in
 {
   imports = [
-    ./claude-code
     ./mcp.nix
   ];
   programs = {
