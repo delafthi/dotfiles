@@ -1,9 +1,9 @@
-{ osConfig, ... }:
+{ config, osConfig, ... }:
 {
   programs.zathura = {
     inherit (osConfig.system.gui) enable;
     options = {
-      font = "IosevkaTermSlab Nerd Font Mono";
+      font = builtins.head config.fonts.fontconfig.defaultFonts.sansSerif;
       selection-clipboard = "clipboard";
     };
   };
