@@ -3,7 +3,7 @@
     ./apps
     ./dev
     ./security
-    ./ui
+    ./settings
     ./nix.nix
     ./user-dirs.nix
     ./user.nix
