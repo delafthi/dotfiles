@@ -1,17 +1,17 @@
 {
+  config,
   lib,
   osConfig,
   pkgs,
   ...
 }:
 lib.mkIf osConfig.system.gui.enable {
-  home.packages = [ pkgs.nerd-fonts.iosevka-term-slab ];
   programs.ghostty = {
     enable = true;
     package = if pkgs.stdenv.hostPlatform.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
     settings = {
       cursor-style = "bar";
-      font-family = "IosevkaTermSlab Nerd Font Mono";
+      font-family = builtins.head config.fonts.fontconfig.defaultFonts.monospace;
       font-size = 14;
       keybind = [
         "cmd+k=text:\\x00k"
