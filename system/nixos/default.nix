@@ -3,6 +3,7 @@
     ./bootloader
     ./desktop
     ./hardware
+    ./networking
     ./programs
     ./security
     ./services
