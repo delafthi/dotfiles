@@ -1,5 +1,6 @@
 {
   imports = [
+    ./bluetooth.nix
     ./btrbk.nix
     ./btrfs.nix
     ./pipewire.nix
