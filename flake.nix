@@ -63,7 +63,7 @@
                           users.${user} = {
                             imports = [
                               inputs.catppuccin.homeModules.catppuccin
-                              inputs.sops-nix.homeManagerModules.sops
+                              inputs.sops-nix.homeModules.sops
                               config.flake.homeModules.default
                               ./hosts/darwin/macbookair/home.nix
                             ];
@@ -105,7 +105,7 @@
                           users.${user} = {
                             imports = [
                               inputs.catppuccin.homeModules.catppuccin
-                              inputs.sops-nix.homeManagerModules.sops
+                              inputs.sops-nix.homeModules.sops
                               config.flake.homeModules.default
                               ./hosts/nixos/vm/home.nix
                             ];
