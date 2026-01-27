@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 {
   fonts.fontconfig = {
     enable = true;
@@ -17,10 +16,5 @@
         "Noto Serif"
       ];
     };
-  };
-  gtk.font = {
-    package = pkgs.noto-fonts;
-    name = "Noto Sans";
-    size = 12;
   };
 }
