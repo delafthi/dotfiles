@@ -1,6 +1,16 @@
 {
+  config,
+  lib,
+  user,
+  ...
+}:
+lib.mkIf config.system.gui.enable {
   imports = [
-    ./cosmic.nix
-    ./cosmic-greeter.nix
+    ./sway.nix
+    ./swaylock.nix
+    ./wayland.nix
+    ./xdg-portal.nix
   ];
+  users.users.${user}.extraGroups = [ "video" ];
+
 }
