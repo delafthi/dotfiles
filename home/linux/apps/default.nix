@@ -1,6 +1,7 @@
 { osConfig, pkgs, ... }:
 {
   imports = [
+    ./imv.nix
     ./zathura.nix
   ];
   home.packages =
@@ -12,7 +13,6 @@
       (lib.mkIf (pkgs.stdenv.hostPlatform == "x86_64-linux") proton-pass)
     ];
   programs = {
-    imv.enable = osConfig.system.gui.enable;
     mpv.enable = osConfig.system.gui.enable;
   };
 }
