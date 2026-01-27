@@ -1,5 +1,8 @@
 { osConfig, pkgs, ... }:
 {
+  imports = [
+    ./zathura.nix
+  ];
   home.packages =
     with pkgs;
     lib.optionals osConfig.system.gui.enable [
@@ -11,6 +14,5 @@
   programs = {
     imv.enable = osConfig.system.gui.enable;
     mpv.enable = osConfig.system.gui.enable;
-    zathura.enable = osConfig.system.gui.enable;
   };
 }
