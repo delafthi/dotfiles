@@ -10,6 +10,7 @@
     gc.automatic = true;
     optimise.automatic = true;
     settings = {
+      download-buffer-size = 524288000;
       experimental-features = [
         "auto-allocate-uids"
         "ca-derivations"
