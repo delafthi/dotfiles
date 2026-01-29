@@ -112,7 +112,7 @@ age-plugin-yubikey --generate
 
 2. Update `.sops.yaml` with your age key
 
-1. Create or edit secrets:
+3. Create or edit secrets:
 
 ```bash
 sops secrets.yaml
