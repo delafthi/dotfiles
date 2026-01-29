@@ -1,7 +1,5 @@
 {
   default = {
-    imports = [
-      ./services
-    ];
+    imports = [ ];
   };
 }
