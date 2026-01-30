@@ -181,17 +181,17 @@
       # github/gitignores/Global/VirtualEnv.gitignore
       ".venv"
 
-      # Other common directories I don't want to be included
-      ".cache"
-      ".claude"
-      ".direnv"
-      ".env"
-      ".git"
-      ".helix"
-      ".jj"
-      ".opencode"
+      # Other common directories and files I don't want to include
+      ".cache/"
+      ".direnv/"
+      ".env/"
+      ".git/"
+      ".helix/"
+      ".jj/"
+      ".opencode/"
+      "result/"
+      ".envrc.local"
       "compile_commands.json"
-      "result"
     ];
   };
 }
