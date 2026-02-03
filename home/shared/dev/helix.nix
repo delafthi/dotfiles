@@ -4,6 +4,7 @@
     enable = true;
     defaultEditor = true;
     extraPackages = with pkgs; [
+      awk-language-server
       bash-language-server
       fish-lsp
       jq-lsp
