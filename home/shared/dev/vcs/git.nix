@@ -190,7 +190,6 @@
       ".jj/"
       ".opencode/"
       "result/"
-      ".envrc.local"
       "compile_commands.json"
     ];
   };
