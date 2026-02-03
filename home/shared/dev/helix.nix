@@ -15,6 +15,7 @@
       shfmt
       tombi
       vscode-extensions.llvm-org.lldb-vscode
+      vscode-json-languageserver
       yaml-language-server
     ];
     languages = {
