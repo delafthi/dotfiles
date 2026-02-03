@@ -10,9 +10,21 @@
       fish-lsp
       jq-lsp
       just-lsp
-      marksman
+      rumdl
       yaml-language-server
     ];
+    languages = {
+      language = [
+        {
+          name = "markdown";
+          language-servers = [ "rumdl" ];
+        }
+      ];
+      language-server.rumdl = {
+        command = "rumdl";
+        args = [ "server" ];
+      };
+    };
     settings = {
       editor = {
         bufferline = "multiple";
