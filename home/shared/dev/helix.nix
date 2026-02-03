@@ -4,13 +4,18 @@
     enable = true;
     defaultEditor = true;
     extraPackages = with pkgs; [
-      vscode-extensions.llvm-org.lldb-vscode
-      shfmt
+      awk-language-server
       bash-language-server
       fish-lsp
       jq-lsp
       just-lsp
+      nixd
+      nixfmt
       rumdl
+      shfmt
+      tombi
+      vscode-extensions.llvm-org.lldb-vscode
+      vscode-json-languageserver
       yaml-language-server
     ];
     languages = {
