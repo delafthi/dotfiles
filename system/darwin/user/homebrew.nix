@@ -9,7 +9,7 @@
     enable = true;
     caskArgs = {
       no_quarantine = true;
-      # require_sha = true;
+      require_sha = true;
     };
     casks =
       map
