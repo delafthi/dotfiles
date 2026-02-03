@@ -9,7 +9,7 @@
     enable = true;
     caskArgs = {
       no_quarantine = true;
-      # require_sha = true;
+      require_sha = true;
     };
     casks =
       map
@@ -29,30 +29,31 @@
             "wacom-tablet" # only for linux as (wacomtablet)
           ]
         );
-    # masApps = {
-    #   Amphetamine = 937984704;
-    #   AnyConnect = 1135064690;
-    #   Developer = 640199958;
-    #   Deepstash = 1445023295;
-    #   "Hand Mirror" = 1502839586;
-    #   Keynote = 409183694;
-    #   MeteoSwiss = 589772015;
-    #   Numbers = 409203825;
-    #   "Organic Maps" = 1567437057;
-    #   Pages = 409201541;
-    #   PDFgear = 6469021132;
-    #   Photomator = 1444636541;
-    #   "Proton Pass" = 6443490629;
-    #   "Proton Wallet" = 479609548;
-    #   "SAC-CAS" = 1592646841;
-    #   Shazam = 897118787;
-    #   stoic = 1312926037;
-    #   Swisstopo = 1505986543;
-    #   Testflight = 899247664;
-    #   Things = 904280696;
-    #   "Wipr 2" = 1662217862
-    #   XCode = 497799835;
-    # };
+    masApps = {
+      Amphetamine = 937984704;
+      Developer = 640199958;
+      "Hand Mirror" = 1502839586;
+      Keynote = 409183694;
+      Numbers = 409203825;
+      Pages = 409201541;
+      PDFgear = 6469021132;
+      Photomator = 1444636541;
+      Shazam = 897118787;
+      stoic = 1312926037;
+      Testflight = 899247664;
+      Things = 904280696;
+      "Wipr 2" = 1662217862;
+      XCode = 497799835;
+      # Apps designed for iPad. Not supported by MAS (see
+      # https://github.com/mas-cli/mas/issues/321)
+      # AnyConnect = 1135064690;
+      # MeteoSwiss = 589772015;
+      # "Organic Maps" = 1567437057;
+      # "Proton Pass" = 6443490629;
+      # "Proton Wallet" = 479609548;
+      # "SAC-CAS" = 1592646841;
+      # Swisstopo = 1505986543;
+    };
     onActivation = {
       autoUpdate = true;
       cleanup = "zap";
