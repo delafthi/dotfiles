@@ -13,6 +13,7 @@
       nixfmt
       rumdl
       shfmt
+      tombi
       vscode-extensions.llvm-org.lldb-vscode
       yaml-language-server
     ];
