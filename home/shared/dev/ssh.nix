@@ -7,10 +7,14 @@
       "github.com" = {
         hostname = "github.com";
         user = "git";
+        identityFile = "~/.ssh/id_github.com.pub";
+        identitiesOnly = true;
       };
       "github.zhaw.ch" = {
         hostname = "github.zhaw.ch";
         user = "git";
+        identityFile = "~/.ssh/id_github.zhaw.ch.pub";
+        identitiesOnly = true;
       };
       "*" = {
         addKeysToAgent = "no";

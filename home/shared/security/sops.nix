@@ -23,6 +23,9 @@
       "api-keys/openrouter" = { };
       "atuin/key" = { };
       "atuin/session" = { };
+      "ssh/deaa/public".path = "${config.home.homeDirectory}/.ssh/id_deaa.pub";
+      "ssh/github.com/public".path = "${config.home.homeDirectory}/.ssh/id_github.com.pub";
+      "ssh/github.zhaw.ch/public".path = "${config.home.homeDirectory}/.ssh/id_github.zhaw.ch.pub";
     };
   };
   systemd.user.services.sops-nix = lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
