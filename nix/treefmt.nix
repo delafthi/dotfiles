@@ -8,7 +8,6 @@
     };
     deadnix.enable = true;
     fish_indent.enable = true;
-    just.enable = true;
     keep-sorted.enable = true;
     nixfmt.enable = true;
     rumdl-check.enable = true;
