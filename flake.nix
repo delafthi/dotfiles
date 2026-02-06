@@ -53,21 +53,7 @@
               overlays = lib.attrValues toplevel.config.flake.overlays;
             };
             packages = import ./pkgs { inherit pkgs; };
-            devShells = {
-              default = pkgs.mkShell {
-                name = "dotfiles";
-                inputsFrom = [ config.treefmt.build.devShell ];
-                packages = with pkgs; [
-                  age
-                  age-plugin-yubikey
-                  just
-                  nixd
-                  pam_u2f
-                  pamtester
-                  sops
-                ];
-              };
-            };
+            devShells = import ./nix/shell.nix { inherit config pkgs; };
             treefmt = import ./nix/treefmt.nix;
           };
       }
