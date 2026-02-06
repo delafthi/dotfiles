@@ -27,102 +27,13 @@
       toplevel@{ config, lib, ... }:
       {
         imports = [ inputs.treefmt-nix.flakeModule ];
-        flake =
-          let
-            mergeAttrSets = sets: builtins.foldl' (acc: set: acc // set) { } sets;
-          in
-          {
-            darwinConfigurations = mergeAttrSets [
-              (
-                let
-                  host = "Thierrys-MacBook-Air";
-                  ssh-keys = [ ];
-                  system = "aarch64-darwin";
-                  user = "delafthi";
-                in
-                {
-                  "${host}" = inputs.darwin.lib.darwinSystem {
-                    inherit system;
-                    specialArgs = { inherit host ssh-keys user; };
-                    modules = [
-                      {
-                        nixpkgs.overlays = lib.attrValues config.flake.overlays;
-                      }
-                      ./modules/nix-darwin
-                      inputs.home-manager.darwinModules.home-manager
-                      {
-                        home-manager = {
-                          extraSpecialArgs = {
-                            inherit user;
-                            llm-agents = inputs.llm-agents.packages.${system};
-                            sops = inputs.sops-nix.packages.${system};
-                            zen-browser = inputs.zen-browser.packages.${system};
-                          };
-
-                          useGlobalPkgs = true;
-                          users.${user} = {
-                            imports = [
-                              inputs.catppuccin.homeModules.catppuccin
-                              inputs.sops-nix.homeModules.sops
-                              config.flake.homeModules.default
-                              ./hosts/darwin/macbookair/home.nix
-                            ];
-                          };
-                        };
-                      }
-                      ./hosts/darwin/macbookair/configuration.nix
-                    ];
-                  };
-                }
-              )
-            ];
-            nixosConfigurations = mergeAttrSets [
-              (
-                let
-                  host = "Thierrys-MacBook-Air-VM";
-                  ssh-keys = [ ];
-                  system = "aarch64-linux";
-                  user = "delafthi";
-                in
-                {
-                  "${host}" = inputs.nixpkgs.lib.nixosSystem {
-                    specialArgs = { inherit host ssh-keys user; };
-                    inherit system;
-                    modules = [
-                      {
-                        nixpkgs.overlays = lib.attrValues config.flake.overlays;
-                      }
-                      inputs.home-manager.nixosModules.home-manager
-                      {
-                        home-manager = {
-                          extraSpecialArgs = {
-                            inherit user;
-                            llm-agents = inputs.llm-agents.packages.${system};
-                            sops = inputs.sops-nix.packages.${system};
-                            zen-browser = inputs.zen-browser.packages.${system};
-                          };
-                          useGlobalPkgs = true;
-                          users.${user} = {
-                            imports = [
-                              inputs.catppuccin.homeModules.catppuccin
-                              inputs.sops-nix.homeModules.sops
-                              config.flake.homeModules.default
-                              ./hosts/nixos/vm/home.nix
-                            ];
-                          };
-                        };
-                      }
-                      config.flake.nixosModules.default
-                      ./hosts/nixos/vm/configuration.nix
-                    ];
-                  };
-                }
-              )
-            ];
-            homeModules = import ./modules/home;
-            nixosModules = import ./modules/nixos;
-            overlays = import ./overlays;
-          };
+        flake = {
+          darwinConfigurations = import ./hosts/darwin { inherit config inputs lib; };
+          nixosConfigurations = import ./hosts/nixos { inherit config inputs lib; };
+          homeModules = import ./modules/home;
+          nixosModules = import ./modules/nixos;
+          overlays = import ./overlays;
+        };
         systems = [
           "aarch64-linux"
           "x86_64-linux"
