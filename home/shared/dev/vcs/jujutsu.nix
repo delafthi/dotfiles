@@ -43,6 +43,31 @@ _: {
           "git"
           "push"
         ];
+        pr = [
+          "util"
+          "exec"
+          "--"
+          "bash"
+          "-c"
+          ''
+            set -euo pipefail
+
+            head_rev="''${1:-@-}"
+            head="$(jj log -r $head_rev --no-graph -T bookmarks)"
+            if test "$head" = "" ; then
+                jj git push --change $head_rev
+                head="$(jj log -r $head_rev --no-graph -T bookmarks)"
+            fi
+            base="$(jj log -r "heads(::''${head_rev}- & bookmarks())" --no-graph -T bookmarks)"
+            if test "$(echo $base | wc -w)" -gt 1 ; then
+                # parent of $head_rev has multiple bookmarks, fall back to main
+                base=main
+            fi
+
+            echo "gh pr create --base $base --head $head --fill --editor"
+            gh pr create --base $base --head $head --fill --editor
+          ''
+        ];
         P = [
           "git"
           "push"
