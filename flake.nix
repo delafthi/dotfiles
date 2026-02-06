@@ -52,6 +52,12 @@
               inherit system;
               overlays = lib.attrValues toplevel.config.flake.overlays;
             };
+            apps = {
+              apply = import ./nix/apps/apply.nix { inherit pkgs; };
+              setup-yubico-pam = import ./nix/apps/setup-yubico-pam.nix { inherit pkgs; };
+              test-yubico-pam = import ./nix/apps/test-yubico-pam.nix { inherit pkgs; };
+              default = config.apps.apply;
+            };
             packages = import ./pkgs { inherit pkgs; };
             devShells = import ./nix/shell.nix { inherit config pkgs; };
             treefmt = import ./nix/treefmt.nix;

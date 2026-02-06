@@ -8,7 +8,6 @@
       bash-language-server
       fish-lsp
       jq-lsp
-      just-lsp
       nixd
       nixfmt
       rumdl

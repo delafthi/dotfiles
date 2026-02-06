@@ -35,11 +35,10 @@ cd dotfiles
 The system auto-detects your platform and hostname:
 
 ```bash
-nix shell nixpkgs#just
-just apply
+nix run
 ```
 
-Or use Nix directly:
+Or use the rebuild commands directly:
 
 ```bash
 # macOS
@@ -63,6 +62,12 @@ sudo nixos-rebuild switch --flake .#$(hostname)
 ### Available Commands
 
 ```bash
+# Apply configuration (auto-detects platform)
+nix run
+
+# Apply configuration for a specific host
+nix run .#apply -- my-machine
+
 # Format all files
 nix fmt
 
@@ -71,9 +76,6 @@ nix flake check
 
 # Update flake dependencies
 nix flake update
-
-# List all available commands
-just --list
 ```
 
 ### Development Shell
@@ -86,7 +88,7 @@ The repository includes direnv integration for automatic shell activation. With 
 nix develop
 ```
 
-This provides `just`, `nixd` (Nix language server), and `sops` automatically.
+This provides `age`, `age-plugin-yubikey`, `nixd` (Nix language server), and `sops` automatically.
 
 **Automatic activation with direnv:**
 
