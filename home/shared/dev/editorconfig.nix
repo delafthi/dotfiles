@@ -10,7 +10,7 @@
         indent_style = "space";
         indent_size = 2;
       };
-      "{Justfile,Makefile}" = {
+      "Makefile" = {
         indent_style = "tab";
       };
       "*.{py,rs}" = {
