@@ -6,10 +6,7 @@
     packages = with pkgs; [
       age
       age-plugin-yubikey
-      just
       nixd
-      pam_u2f
-      pamtester
       sops
     ];
   };
