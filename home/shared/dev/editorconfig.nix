@@ -10,11 +10,17 @@
         indent_style = "space";
         indent_size = 2;
       };
-      "{Justfile,Makefile}" = {
-        indent_style = "tab";
-      };
-      "*.{py,rs}" = {
+      "*.py" = {
         indent_size = 4;
+      };
+      "*.rs" = {
+        indent_size = 4;
+      };
+      "Justfile" = {
+        indent_size = 4;
+      };
+      "Makefile" = {
+        indent_style = "tab";
       };
     };
   };
