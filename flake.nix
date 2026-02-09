@@ -58,8 +58,8 @@
               test-yubico-pam = import ./nix/apps/test-yubico-pam.nix { inherit pkgs; };
               default = config.apps.apply;
             };
+            devShells.default = pkgs.callPackage ./nix/shell.nix { inherit config; };
             packages = import ./pkgs { inherit pkgs; };
-            devShells = import ./nix/shell.nix { inherit config pkgs; };
             treefmt = import ./nix/treefmt.nix;
           };
       }
