@@ -29,7 +29,7 @@
           3
         ];
         sort_dir_fist = true;
-        showhidden = true;
+        show_hidden = true;
       };
       preview = {
         max_width = 1000;
