@@ -25,9 +25,15 @@
           language-servers = [ "rumdl" ];
         }
       ];
-      language-server.rumdl = {
-        command = "rumdl";
-        args = [ "server" ];
+      language-server = {
+        rumdl = {
+          command = "rumdl";
+          args = [ "server" ];
+        };
+        clangd.args = [
+          "--background-index"
+          "--clang-tidy"
+        ];
       };
     };
     settings = {
