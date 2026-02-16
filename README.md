@@ -2,23 +2,11 @@
 
 Personal configuration files for managing Linux and macOS (Darwin) environments using Nix and home-manager.
 
-## Features
-
-- Cross-platform configuration (macOS and Linux/NixOS)
-- Modular organization for easy maintenance
-- Declarative application and system settings management
-- Secrets management with sops-nix and age
-- Consistent theming with Catppuccin
-- Automated code formatting and linting with treefmt
-- Custom packages and overlays
-- GitHub Actions for automated checks and updates
-
 ## Installation
 
 ### Prerequisites
 
 - Nix with flakes enabled ([installation guide](https://nixos.org/download.html))
-- **macOS only**: nix-darwin ([installation guide](https://github.com/LnL7/nix-darwin#install))
 - age key for secrets management (optional, required for sops-encrypted secrets)
 
 ### Quick Start
@@ -35,7 +23,7 @@ cd dotfiles
 The system auto-detects your platform and hostname:
 
 ```bash
-nix run
+nix run .#apply
 ```
 
 Or use the rebuild commands directly:
@@ -63,7 +51,7 @@ sudo nixos-rebuild switch --flake .#$(hostname)
 
 ```bash
 # Apply configuration (auto-detects platform)
-nix run
+nix run .#apply
 
 # Apply configuration for a specific host
 nix run .#apply -- my-machine
