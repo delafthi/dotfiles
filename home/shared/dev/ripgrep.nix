@@ -1,3 +1,8 @@
 {
-  programs.ripgrep.enable = true;
+  programs.ripgrep = {
+    enable = true;
+    arguments = [
+      "--hidden"
+    ];
+  };
 }
