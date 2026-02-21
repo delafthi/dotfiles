@@ -1,16 +1,53 @@
+{ pkgs, ... }:
 {
   imports = [
-    ./cli-tools
-    ./lang
-    ./shells
-    ./vcs
     ./ai
+    ./lang
+    ./shell
+    ./vcs
+    ./bat.nix
+    ./btop.nix
+    ./direnv.nix
     ./editorconfig.nix
+    ./eza.nix
+    ./fd.nix
+    ./fzf.nix
     ./ghostty.nix
     ./helix.nix
+    ./jq.nix
+    ./pandoc.nix
     ./podman.nix
+    ./ripgrep.nix
     ./ssh.nix
     ./tmux.nix
     ./yazi.nix
+    ./zoxide.nix
+  ];
+  home.packages = with pkgs; [
+    asciinema
+    charm-freeze
+    clipboard-jh
+    curl
+    dust
+    glow
+    gnutar
+    gum
+    hexyl
+    hyperfine
+    just
+    ouch
+    outfieldr
+    p7zip
+    procs
+    sd
+    svu
+    tesseract
+    tokei
+    unrar
+    unzip
+    usbutils
+    vhs
+    watch
+    zip
   ];
 }
