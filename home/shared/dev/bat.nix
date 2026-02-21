@@ -10,7 +10,6 @@
       italic-text = "always";
       style = lib.concatStringsSep "," [
         "changes"
-        "numbers"
         "rule"
         "snip"
       ];
