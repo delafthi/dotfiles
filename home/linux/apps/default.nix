@@ -8,7 +8,6 @@
     with pkgs;
     lib.optionals osConfig.system.gui.enable [
       ascii-draw
-      protonvpn-gui
       virt-manager
     ];
   programs = {

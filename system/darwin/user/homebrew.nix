@@ -24,7 +24,6 @@
             "karabiner-elements" # broken see https://github.com/nix-darwin/nix-darwin/issues/1041
             "kicad" # broken on darwin
             "proton-drive" # not in nixpkgs
-            "protonvpn" # only linux (protonvpn-gui)
             "steam" # only as a nixos module
             "wacom-tablet" # only for linux as (wacomtablet)
           ]
