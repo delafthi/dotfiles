@@ -9,6 +9,7 @@
     ./browser.nix
     ./coms
     ./obsidian.nix
+    ./proton.nix
     ./yubikey.nix
   ];
   home.packages =
