@@ -22,7 +22,7 @@ lib.mkIf osConfig.system.gui.enable {
         [
           "${zen-browser.default}/Applications/Zen Browser (Beta).app"
           "${pkgs.protonmail-desktop}/Applications/Proton Mail.app"
-          "/Applications/Proton Pass.app"
+          "${pkgs.proton-pass}/Applications/Proton Pass.app"
           "/System/Applications/Music.app"
           "/Applications/Things3.app"
           "${pkgs.obsidian}/Applications/Obsidian.app"
