@@ -50,7 +50,6 @@
       # MeteoSwiss = 589772015;
       # "Organic Maps" = 1567437057;
       # "Proton Pass" = 6443490629;
-      # "Proton Wallet" = 479609548;
       # "SAC-CAS" = 1592646841;
       # Swisstopo = 1505986543;
     };
