@@ -32,7 +32,6 @@
         };
         clangd.args = [
           "--background-index"
-          "--clang-tidy"
         ];
       };
     };
