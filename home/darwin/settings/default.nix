@@ -7,7 +7,7 @@
     ./image-capture.nix
     ./keybindings.nix
     ./keyboard.nix
-    ./localisation.nix
+    ./locales.nix
     ./mail.nix
     ./printing.nix
     ./privacy.nix
