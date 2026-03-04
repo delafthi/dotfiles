@@ -1,6 +1,6 @@
 {
   imports = [
-    ./localisation.nix
+    ./locales.nix
     ./virtualisation.nix
   ];
 }
