@@ -8,9 +8,5 @@ lib.mkIf osConfig.system.gui.enable {
     NSGlobalDomain = {
       AppleInterfaceStyle = "Dark";
     };
-    "com.apple.desktopservices" = {
-      DSDontDriveNetworkStores = true;
-      DSDontWriteUSBStores = true;
-    };
   };
 }
