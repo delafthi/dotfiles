@@ -3,6 +3,7 @@
 
   inputs = {
     # keep-sorted start
+    catppuccin.inputs.nixpkgs.follows = "nixpkgs";
     catppuccin.url = "github:catppuccin/nix";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     darwin.url = "github:LnL7/nix-darwin";
@@ -15,6 +16,7 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
     treefmt-nix.url = "github:numtide/treefmt-nix";
+    zen-browser.inputs.home-manager.follows = "home-manager";
     zen-browser.inputs.nixpkgs.follows = "nixpkgs";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
     # keep-sorted end
