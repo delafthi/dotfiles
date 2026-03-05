@@ -7,6 +7,8 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     darwin.url = "github:LnL7/nix-darwin";
     flake-parts.url = "github:hercules-ci/flake-parts";
+    flox.inputs.nixpkgs.follows = "nixpkgs";
+    flox.url = "github:flox/flox";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
