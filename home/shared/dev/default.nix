@@ -16,6 +16,7 @@
     ./helix.nix
     ./jq.nix
     ./pandoc.nix
+    ./pueue.nix
     ./podman.nix
     ./ripgrep.nix
     ./ssh.nix
