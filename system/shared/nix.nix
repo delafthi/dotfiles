@@ -19,8 +19,14 @@
         "nix-command"
         "pipe-operators"
       ];
-      substituters = [ "https://numtide.cachix.org" ];
-      trusted-public-keys = [ "numtide.cachix.org-1:2ps1kLBUWjxIneOy1Ik6cQjb41X0iXVXeHigGmycPPE=" ];
+      substituters = [
+        "https://cache.flox.dev"
+        "https://numtide.cachix.org"
+      ];
+      trusted-public-keys = [
+        "flox-cache-public-1:7F4OyH7ZCnFhcze3fJdfyXYLQw/aV7GEed86nQ7IsOs="
+        "numtide.cachix.org-1:2ps1kLBUWjxIneOy1Ik6cQjb41X0iXVXeHigGmycPPE="
+      ];
       trusted-users = if pkgs.stdenv.hostPlatform.isDarwin then [ "@admin" ] else [ "@wheel" ];
     };
   };
