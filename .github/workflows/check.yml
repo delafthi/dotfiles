@@ -18,4 +18,4 @@ jobs:
       - name: Check flake
         run: |
           echo "::notice::Running nix flake check..."
-          nix flake check --keep-going --print-build-logs
+          nix flake check --system aarch64-darwin --keep-going --print-build-logs
