@@ -12,7 +12,7 @@
     ./eza.nix
     ./fd.nix
     ./flox.nix
-    ./fzf.nix
+    ./television.nix
     ./ghostty.nix
     ./helix.nix
     ./jq.nix
