@@ -3,6 +3,20 @@ _: {
     enable = true;
     settings = {
       aliases = {
+        idiff = [
+          "util"
+          "exec"
+          "--"
+          "tv"
+          "jj-diff"
+        ];
+        ilog = [
+          "util"
+          "exec"
+          "--"
+          "tv"
+          "jj-log"
+        ];
         a = [
           "new"
           "--insert-after"
