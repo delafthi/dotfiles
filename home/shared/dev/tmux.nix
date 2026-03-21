@@ -48,7 +48,7 @@
         tmux source-file ~/.config/tmux/tmux.conf > /dev/null; \
         tmux display-message 'Sourced ~/.config/tmux/tmux.conf'"
       bind -N "Split the pane into two, top and bottom" s split-window -v -c "#{pane_current_path}"
-      bind -N "Select a new session for the attached client interactively" S choose-session -Z
+      bind -N "Select a new session for the attached client interactively" S popup -h 90% -w 90% -E "tv tmux-sessions"
       bind -N "Open scratch terminal" t run-shell "tmux-scratch-terminal"
       bind -N "Split the pane into two, left and right" v split-window -h -c "#{pane_current_path}"
       bind -N "Enter copy-mode to copy text or view the history" V copy-mode
