@@ -42,6 +42,7 @@
     p7zip
     procs
     sd
+    silicon
     svu
     tesseract
     tokei
