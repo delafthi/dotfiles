@@ -39,20 +39,6 @@ in
           "mcp-server-fetch"
         ];
       };
-      filesystem = {
-        command = "${lib.getExe' pkgs.bun "bunx"}";
-        args = [
-          "-y"
-          "@modelcontextprotocol/server-filesystem"
-          "~/Developer"
-        ];
-      };
-      git = {
-        command = "${lib.getExe' pkgs.uv "uvx"}";
-        args = [
-          "mcp-server-git"
-        ];
-      };
       memory = {
         command = "${lib.getExe' pkgs.bun "bunx"}";
         args = [
