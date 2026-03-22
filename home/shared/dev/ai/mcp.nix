@@ -33,40 +33,6 @@ in
       deepwiki = {
         url = "https://mcp.deepwiki.com/mcp";
       };
-      fetch = {
-        command = "${lib.getExe' pkgs.uv "uvx"}";
-        args = [
-          "mcp-server-fetch"
-        ];
-      };
-      filesystem = {
-        command = "${lib.getExe' pkgs.bun "bunx"}";
-        args = [
-          "-y"
-          "@modelcontextprotocol/server-filesystem"
-          "~/Developer"
-        ];
-      };
-      git = {
-        command = "${lib.getExe' pkgs.uv "uvx"}";
-        args = [
-          "mcp-server-git"
-        ];
-      };
-      memory = {
-        command = "${lib.getExe' pkgs.bun "bunx"}";
-        args = [
-          "-y"
-          "@modelcontextprotocol/server-memory"
-        ];
-      };
-      sequential-thinking = {
-        command = "${lib.getExe' pkgs.bun "bunx"}";
-        args = [
-          "-y"
-          "@modelcontextprotocol/server-sequential-thinking"
-        ];
-      };
     };
   };
 }
