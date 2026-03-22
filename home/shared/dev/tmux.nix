@@ -8,10 +8,9 @@
     packages = with pkgs; [
       tmux-gh-dash
       tmux-scratch-terminal
-      tmux-sessionizer
     ];
     shellAliases = {
-      cdp = "tmux-sessionizer";
+      cdp = "tv projects";
     };
   };
   programs.tmux = {
@@ -44,12 +43,12 @@
       bind -N "Toggle maximize window" f resize-pane -Z
       bind -N "Toggle GitHub Dash" g run-shell "tmux-gh-dash"
       bind -N "Leave the copy-mode" -T copy-mode-vi i send -X cancel
-      bind -N "Open projects" k run-shell "tmux-sessionizer"
+      bind -N "Open projects" k popup -h 90% -w 90% -E "tv projects"
       bind -N "Source the tmux config file" r run-shell " \
         tmux source-file ~/.config/tmux/tmux.conf > /dev/null; \
         tmux display-message 'Sourced ~/.config/tmux/tmux.conf'"
       bind -N "Split the pane into two, top and bottom" s split-window -v -c "#{pane_current_path}"
-      bind -N "Select a new session for the attached client interactively" S choose-session -Z
+      bind -N "Select a new session for the attached client interactively" S popup -h 90% -w 90% -E "tv tmux-sessions"
       bind -N "Open scratch terminal" t run-shell "tmux-scratch-terminal"
       bind -N "Split the pane into two, left and right" v split-window -h -c "#{pane_current_path}"
       bind -N "Enter copy-mode to copy text or view the history" V copy-mode
