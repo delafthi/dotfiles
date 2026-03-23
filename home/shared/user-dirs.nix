@@ -17,6 +17,7 @@
         DEVELOPER = "$HOME/Developer";
         MOVIES = "$HOME/Movies";
       };
+      setSessionVariables = true;
       videos = "$HOME/Movies";
     };
   };

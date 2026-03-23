@@ -70,6 +70,7 @@
     };
     lfs.enable = true;
     signing = {
+      format = "openpgp";
       key = "00926686981863CB";
       signByDefault = false;
     };
