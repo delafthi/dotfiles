@@ -8,11 +8,14 @@
         CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC = "1";
       };
       feedbackSurveyRate = 0;
+      model = "claude-sonnet-4-6";
       permissions = {
         allow = [
           "Read(**/*)"
           "WebFetch(*)"
           "WebSearch(*)"
+          "mcp__plugin_claude-code-home-manager_context7__*"
+          "mcp__plugin_claude-code-home-manager_deepwiki__*"
         ];
       };
       statusLine = {
