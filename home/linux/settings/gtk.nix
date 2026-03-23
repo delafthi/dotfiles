@@ -12,5 +12,6 @@ lib.mkIf osConfig.system.gui.enable {
       name = builtins.head config.fonts.fontconfig.defaultFonts.sansSerif;
       size = 12;
     };
+    gtk4.theme = null;
   };
 }
