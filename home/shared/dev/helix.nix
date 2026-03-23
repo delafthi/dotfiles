@@ -48,7 +48,10 @@
         end-of-line-diagnostics = "hint";
         file-picker.hidden = false;
         indent-guides.render = true;
-        inline-diagnostics.cursor-line = "hint";
+        inline-diagnostics = {
+          cursor-line = "hint";
+          max-diagnostics = 3;
+        };
         line-number = "relative";
         soft-wrap.enable = true;
         statusline = {
