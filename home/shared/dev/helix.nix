@@ -18,6 +18,9 @@
       vscode-json-languageserver
       yaml-language-server
     ];
+    ignores = [
+      "!.helix"
+    ];
     languages = {
       language = [
         {
