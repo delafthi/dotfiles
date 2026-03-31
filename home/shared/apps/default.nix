@@ -7,7 +7,6 @@
 {
   imports = [
     ./browser.nix
-    ./coms
     ./obsidian.nix
     ./proton.nix
     ./yubikey.nix
@@ -17,6 +16,8 @@
     [ qmk ]
     ++ lib.optionals osConfig.system.gui.enable [
       # blender
+      discord
+      signal-desktop
       # kicad
     ];
 }
