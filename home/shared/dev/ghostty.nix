@@ -18,6 +18,7 @@ lib.mkIf osConfig.system.gui.enable {
       ];
       macos-option-as-alt = "left";
       mouse-scroll-multiplier = "1";
+      shell-integration-features = true;
       window-inherit-working-directory = false;
       window-padding-x = 8;
     };
