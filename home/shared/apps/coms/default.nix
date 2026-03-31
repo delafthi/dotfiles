@@ -5,9 +5,6 @@
   ...
 }:
 {
-  imports = [
-    ./iamb.nix
-  ];
   home.packages =
     with pkgs;
     lib.optionals osConfig.system.gui.enable [
