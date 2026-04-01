@@ -2,7 +2,7 @@
 {
   programs.git = {
     enable = true;
-    ignores = lib.remove "" (lib.splitString "\n" (builtins.readFile ./ignore));
+    ignores = lib.splitString "\n" (builtins.readFile ./ignore);
     settings = {
       alias = {
         a = "add";
