@@ -103,12 +103,13 @@
               "fd"
               "zoxide"
               "eza"
+              "gum"
             ];
           };
           source.command = ''
             fd . "$XDG_DEVELOPER_DIR" --exact-depth 2 --type d |
             sed 's|/$||' |
-            awk -v d="$XDG_DEVELOPER_DIR/" '
+            awk '
               BEGIN {
                 cmd = "zoxide query --list --score 2>/dev/null"
                 while ((cmd | getline line) > 0) {
@@ -117,18 +118,67 @@
                 }
                 close(cmd)
               }
-              { s = ($0 in sc) ? sc[$0] : "0.0"; sub(d, ""); print s, $0 }
+              { print (($0 in sc) ? sc[$0] : 0), $0 }
             ' |
-            sort -rnk1 |
-            awk '{print $2}'
+            sort -rn |
+            awk '{ $1=""; sub(/^ /, ""); print }'
           '';
-          preview.command = "eza --tree --level=2 --color=always \"$XDG_DEVELOPER_DIR/{}\"";
+          source.ansi = true;
+          source.display = "{split:/:-1} [{split:/:-2}]";
+          source.output = "{}";
+          preview.command = ''eza --tree --level=2 --color=always "{}"'';
           actions.open = {
             description = "Open project in tmux session";
-            command = ''sh -c 'sel="{}"; zoxide add "$XDG_DEVELOPER_DIR/$sel" 2>/dev/null; sess=$(printf "%s" "$sel" | tr . -); tmux has-session -t="$sess" 2>/dev/null || tmux new-session -ds "$sess" -c "$XDG_DEVELOPER_DIR/$sel"; [ -n "$TMUX" ] && tmux switch-client -t "$sess" || tmux attach-session -t "$sess"' '';
+            command = ''sh -c 'sess="$(basename "$1" | tr . -) [$(basename "$(dirname "$1")")]"; zoxide add "$1" 2>/dev/null; tmux has-session -t "$sess" 2>/dev/null || tmux new-session -ds "$sess" -c "$1"; [ -n "$TMUX" ] && tmux switch-client -t "$sess" || tmux attach-session -t "$sess"' -- '{}' '';
+            mode = "execute";
+          };
+          actions.create = {
+            description = "Create new project or clone repository";
+            command = ''
+              sh -c '
+                clear
+                input=$(gum input --placeholder "GitHub URL or project name" --header "New project")
+                [ -z "$input" ] && exit 0
+                pick_ns() {
+                  ns=$(printf "%s\n[new namespace]" "$(ls -1 "$XDG_DEVELOPER_DIR")" | \
+                    gum filter --header "Namespace for $1")
+                  [ -z "$ns" ] && return 1
+                  if [ "$ns" = "[new namespace]" ]; then
+                    clear
+                    ns=$(gum input --placeholder "namespace name" --header "New namespace")
+                    [ -z "$ns" ] && return 1
+                  fi
+                  printf "%s" "$ns"
+                }
+                if echo "$input" | grep -qE "^(git@|https?://)"; then
+                  proj=$(echo "$input" | sed -E "s|.*/||; s|\.git$||")
+                  ns=$(pick_ns "$proj") || exit 0
+                  mkdir -p "$XDG_DEVELOPER_DIR/$ns"
+                  jj git clone "$input" "$XDG_DEVELOPER_DIR/$ns/$proj" || exit 1
+                  target="$XDG_DEVELOPER_DIR/$ns/$proj"
+                else
+                  case "$input" in
+                    */*)
+                      target="$XDG_DEVELOPER_DIR/$input"
+                      mkdir -p "$target"
+                      ;;
+                    *)
+                      ns=$(pick_ns "$input") || exit 0
+                      target="$XDG_DEVELOPER_DIR/$ns/$input"
+                      mkdir -p "$target"
+                      ;;
+                  esac
+                fi
+                zoxide add "$target" 2>/dev/null
+                sess="$(basename "$target" | tr . -) [$(basename "$(dirname "$target")")]"
+                tmux has-session -t "$sess" 2>/dev/null || tmux new-session -ds "$sess" -c "$target"
+                [ -n "$TMUX" ] && tmux switch-client -t "$sess" || tmux attach-session -t "$sess"
+              '
+            '';
             mode = "execute";
           };
           keybindings.enter = "actions:open";
+          keybindings."ctrl-n" = "actions:create";
         };
       };
     };

@@ -21,6 +21,7 @@
     ./podman.nix
     ./ripgrep.nix
     ./ssh.nix
+    ./tealdeer.nix
     ./tmux.nix
     ./yazi.nix
     ./zoxide.nix
@@ -38,7 +39,6 @@
     hyperfine
     just
     ouch
-    outfieldr
     p7zip
     procs
     sd
