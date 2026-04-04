@@ -29,7 +29,6 @@ in
           users.${user} = {
             imports = [
               inputs.catppuccin.homeModules.catppuccin
-              inputs.flox.homeModules.flox
               inputs.sops-nix.homeModules.sops
               config.flake.homeModules.default
               ./home.nix
