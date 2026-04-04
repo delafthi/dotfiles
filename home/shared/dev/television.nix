@@ -178,7 +178,7 @@
             mode = "execute";
           };
           keybindings.enter = "actions:open";
-          keybindings."ctrl-n" = "actions:create";
+          keybindings."ctrl-a" = "actions:create";
         };
       };
     };
