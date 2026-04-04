@@ -11,7 +11,6 @@
     ./editorconfig.nix
     ./eza.nix
     ./fd.nix
-    ./flox.nix
     ./television.nix
     ./ghostty.nix
     ./helix.nix

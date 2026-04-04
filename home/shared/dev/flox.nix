@@ -1,3 +1,0 @@
-{
-  programs.flox.enable = true;
-}

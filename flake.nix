@@ -3,11 +3,9 @@
 
   nixConfig = {
     extra-substituters = [
-      "https://cache.flox.dev"
       "https://nix-community.cachix.org"
     ];
     extra-trusted-public-keys = [
-      "flox-cache-public-1:7F4OyH7ZCnFhcze3fJdfyXYLQw/aV7GEed86nQ7IsOs="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
   };
@@ -19,7 +17,6 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     darwin.url = "github:LnL7/nix-darwin";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    flox.url = "github:flox/flox/latest";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
