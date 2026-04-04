@@ -55,7 +55,7 @@
           cursor-line = "hint";
           max-diagnostics = 3;
         };
-        jump-label-alphabet = "aoeuidhtns;qjkxbmwvzpyfgcrl',./-=";
+        jump-label-alphabet = "uhetoaidnsypgcf,'.rlbmwvxqjkz;/-=";
         line-number = "relative";
         soft-wrap.enable = true;
         statusline = {
