@@ -34,7 +34,7 @@
 
       # Keybindings
       unbind -T copy-mode-vi MouseDragEnd1Pane # Disable auto copy when selecting with the mouse
-      bind -N "Create a new window" c new-window -c "#{pane_current_path}"
+      bind -N "Create a new window" c new-window
       bind -N "Change to the next window" C-n next-window
       bind -N "Change to the next window" n next-window
       bind -N "Change to the previous window" C-p previous-window
@@ -47,10 +47,10 @@
       bind -N "Source the tmux config file" r run-shell " \
         tmux source-file ~/.config/tmux/tmux.conf > /dev/null; \
         tmux display-message 'Sourced ~/.config/tmux/tmux.conf'"
-      bind -N "Split the pane into two, top and bottom" s split-window -v -c "#{pane_current_path}"
+      bind -N "Split the pane into two, top and bottom" s split-window -v
       bind -N "Select a new session for the attached client interactively" S popup -h 90% -w 90% -E "tv tmux-sessions"
       bind -N "Open scratch terminal" t run-shell "tmux-scratch-terminal"
-      bind -N "Split the pane into two, left and right" v split-window -h -c "#{pane_current_path}"
+      bind -N "Split the pane into two, left and right" v split-window -h
       bind -N "Enter copy-mode to copy text or view the history" V copy-mode
       bind -N "Select text in copy mode" -T copy-mode-vi v send -X begin-selection
       bind -N "Copy text in copy mode" -T copy-mode-vi y send -X copy-selection
