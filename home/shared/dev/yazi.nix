@@ -55,7 +55,7 @@
         }
         {
           desc = "Diff the selected file with the hovered file";
-          on = [ "<C-d>" ];
+          on = [ "<A-d>" ];
           run = "plugin diff";
         }
         {
