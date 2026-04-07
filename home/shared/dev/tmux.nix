@@ -28,6 +28,7 @@
       set -g set-titles on
       set -g set-titles-string "#T"
       set -g status-keys emacs # because here emacs keys are still better
+      set -as terminal-features "xterm-ghostty:ccolour:clipboard:cstyle:extkeys:hyperlinks:RGB:sync:usstyle"
       set -ga update-environment TERM
       set -ga update-environment TERM_PROGRAM
 
