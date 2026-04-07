@@ -15,6 +15,7 @@
     ./ghostty.nix
     ./helix.nix
     ./jq.nix
+    ./nix-index.nix
     ./pandoc.nix
     ./pueue.nix
     ./podman.nix
