@@ -6,11 +6,13 @@
 {
   home = {
     packages = with pkgs; [
+      tmux-change-session-dir
       tmux-gh-dash
       tmux-scratch-terminal
     ];
     shellAliases = {
       cdp = "tv projects";
+      csd = "tmux-change-session-dir";
     };
   };
   programs.tmux = {
