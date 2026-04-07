@@ -1,7 +1,11 @@
-{ lib, ... }:
+{ lib, pkgs, ... }:
 {
+  home.packages = with pkgs; [ nerd-fonts.symbols-only ];
   programs.starship = {
     enable = true;
+    presets = [
+      "nerd-font-symbols"
+    ];
     settings = {
       format = lib.concatStrings [
         "$username"
