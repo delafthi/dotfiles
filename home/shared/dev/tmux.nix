@@ -50,6 +50,8 @@
       bind -N "Split the pane into two, top and bottom" s split-window -v
       bind -N "Select a new session for the attached client interactively" S popup -h 90% -w 90% -E "tv tmux-sessions"
       bind -N "Open scratch terminal" t run-shell "tmux-scratch-terminal"
+      bind -N "Update the session directory" C-u attach-session -t . -c '#{pane_current_path}'
+      bind -N "Update the session directory" u attach-session -t . -c '#{pane_current_path}'
       bind -N "Split the pane into two, left and right" v split-window -h
       bind -N "Enter copy-mode to copy text or view the history" V copy-mode
       bind -N "Select text in copy mode" -T copy-mode-vi v send -X begin-selection
