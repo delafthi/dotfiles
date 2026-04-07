@@ -16,6 +16,7 @@
     ./helix.nix
     ./jq.nix
     ./nix-index.nix
+    ./nix-your-shell.nix
     ./pandoc.nix
     ./pueue.nix
     ./podman.nix
