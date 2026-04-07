@@ -16,6 +16,12 @@
         identityFile = "~/.ssh/id_github.zhaw.ch.pub";
         identitiesOnly = true;
       };
+      "git.krampf.ch" = {
+        hostname = "git.krampf.ch";
+        user = "_gitea";
+        identityFile = "~/.ssh/id_git.krampf.ch.pub";
+        identitiesOnly = true;
+      };
       "*" = {
         addKeysToAgent = "no";
         compression = false;
