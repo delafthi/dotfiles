@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   nix = {
+    package = pkgs.lixPackageSets.stable.lix;
     extraOptions = ''
       connect-timeout = 10
       keep-derivations = true
@@ -10,14 +11,10 @@
     gc.automatic = true;
     optimise.automatic = true;
     settings = {
-      download-buffer-size = 524288000;
       experimental-features = [
         "auto-allocate-uids"
-        "ca-derivations"
-        "dynamic-derivations"
         "flakes"
         "nix-command"
-        "pipe-operators"
       ];
       trusted-users = if pkgs.stdenv.hostPlatform.isDarwin then [ "@admin" ] else [ "@wheel" ];
     };
