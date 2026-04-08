@@ -18,7 +18,7 @@
     darwin.url = "github:LnL7/nix-darwin";
     flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:delafthi/home-manager/delafthi/rpvyspksolkm";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
