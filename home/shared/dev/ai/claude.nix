@@ -33,6 +33,9 @@
       ## Style
       - Keep responses concise and direct.
       - No emojis unless explicitly requested.
+
+      ## External Actions
+      - NEVER post, push, publish, send, or otherwise externally share anything unless explicitly instructed to do so.
     '';
   };
 }
