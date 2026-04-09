@@ -100,6 +100,7 @@ _: {
         key = "00926686981863CB";
         backends.ssh.allowed-signers = "~/.ssh/allowed_signers";
       };
+      snapshot.autoupdate-stale = true;
       template-aliases."format_timestamp(timestamp)" = "timestamp.ago()";
       templates.git_push_bookmark = ''"delafthi/" ++ change_id.short()'';
       ui = {
