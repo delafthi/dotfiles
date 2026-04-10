@@ -16,11 +16,19 @@
       model = "claude-sonnet-4-6";
       permissions = {
         allow = [
-          "Read(**/*)"
-          "WebFetch(*)"
-          "WebSearch(*)"
+          "Agent(caveman:*)"
+          "Agent(code-review:*)"
+          "Agent(pr-review-toolkit:*)"
+          "Glob(**/*)"
+          "Grep(**/*)"
           "mcp__plugin_claude-code-home-manager_context7__*"
           "mcp__plugin_claude-code-home-manager_deepwiki__*"
+          "Read(**/*)"
+          "Skill(caveman:*)"
+          "Skill(code-review:*)"
+          "Skill(pr-review-toolkit:*)"
+          "WebFetch(*)"
+          "WebSearch(*)"
         ];
       };
       statusLine = {
