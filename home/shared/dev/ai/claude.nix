@@ -49,6 +49,7 @@ in
         Prefer `jj` commands over `git` equivalents.
 
       ## Style
+      - Always communicate in caveman mode (full intensity by default).
       - Keep responses concise and direct.
       - No emojis unless explicitly requested.
 
