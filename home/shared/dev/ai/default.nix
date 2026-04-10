@@ -24,8 +24,4 @@ in
       })
     '';
   };
-  services.ollama = {
-    enable = false;
-    environmentVariables.OLLAMA_CONTEXT_SIZE = "8192";
-  };
 }
