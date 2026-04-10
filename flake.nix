@@ -37,7 +37,10 @@
     flake-parts.lib.mkFlake { inherit inputs; } (
       toplevel@{ config, lib, ... }:
       {
-        imports = [ inputs.treefmt-nix.flakeModule ];
+        imports = [
+          inputs.home-manager.flakeModules.home-manager
+          inputs.treefmt-nix.flakeModule
+        ];
         flake = {
           darwinConfigurations = import ./hosts/darwin { inherit config inputs lib; };
           nixosConfigurations = import ./hosts/nixos { inherit config inputs lib; };
