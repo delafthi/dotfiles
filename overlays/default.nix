@@ -1,4 +1,9 @@
 {
-  additions = final: _: import ../pkgs { inherit (final) pkgs; };
+  additions =
+    final: _:
+    (import ../pkgs { pkgs = final; })
+    // {
+      claude-codePlugins = import ../pkgs/claude-code-plugins { pkgs = final; };
+    };
   modifications = import ./modifications;
 }
