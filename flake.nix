@@ -70,7 +70,11 @@
               default = config.apps.apply;
             };
             devShells.default = pkgs.callPackage ./nix/shell.nix { inherit config; };
-            packages = import ./pkgs { inherit pkgs; };
+            packages =
+              (import ./pkgs { inherit pkgs; })
+              // lib.mapAttrs' (n: v: lib.nameValuePair "claude-codePlugins-${n}" v) (
+                import ./pkgs/claude-code-plugins { inherit pkgs; }
+              );
             treefmt = import ./nix/treefmt.nix;
           };
       }
