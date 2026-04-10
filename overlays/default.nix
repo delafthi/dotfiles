@@ -1,4 +1,9 @@
 {
-  additions = final: _: import ../packages { inherit (final) pkgs; };
+  additions =
+    final: prev:
+    import ../packages {
+      inherit (prev) lib;
+      pkgs = final;
+    };
   modifications = import ./modifications;
 }

@@ -70,7 +70,23 @@
               default = config.apps.apply;
             };
             devShells.default = pkgs.callPackage ./nix/shell.nix { inherit config; };
-            packages = import ./packages { inherit pkgs; };
+            packages =
+              let
+                allPkgs = import ./packages { inherit lib pkgs; };
+                flatten =
+                  prefix: attrs:
+                  lib.foldlAttrs (
+                    acc: name: value:
+                    let
+                      key = if prefix == "" then name else "${prefix}-${name}";
+                    in
+                    if !lib.isAttrs value || lib.isDerivation value then
+                      acc // { ${key} = value; }
+                    else
+                      acc // (flatten key value)
+                  ) { } attrs;
+              in
+              flatten "" allPkgs;
             treefmt = import ./nix/treefmt.nix;
           };
       }

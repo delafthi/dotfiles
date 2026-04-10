@@ -1,5 +1,16 @@
-{ pkgs }:
-{
-  tmux-gh-dash = pkgs.callPackage ./tmux-gh-dash/package.nix { };
-  tmux-scratch-terminal = pkgs.callPackage ./tmux-scratch-terminal/package.nix { };
-}
+{ lib, pkgs }:
+let
+  readPackages =
+    dir:
+    lib.mapAttrs (
+      name: _:
+      let
+        sub = dir + "/${name}";
+      in
+      if builtins.pathExists (sub + "/package.nix") then
+        pkgs.callPackage (sub + "/package.nix") { }
+      else
+        readPackages sub
+    ) (lib.filterAttrs (_: t: t == "directory") (builtins.readDir dir));
+in
+readPackages ./.
