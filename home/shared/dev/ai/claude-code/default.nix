@@ -25,7 +25,7 @@
       };
       statusLine = {
         type = "command";
-        command = "${pkgs.jq}/bin/jq -r '(.model.display_name) + \" | \" + ((.context_window.total_input_tokens // 0 | tostring) + \"/\" + (.context_window.context_window_size // 0 | tostring) + \" tok\") + \" | $\" + (.cost.total_cost_usd // 0 | . * 1000 | round / 1000 | tostring)'";
+        command = "${./statusline.sh}";
       };
     };
     context = ''
