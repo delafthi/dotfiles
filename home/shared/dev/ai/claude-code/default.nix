@@ -16,6 +16,8 @@
       model = "claude-sonnet-4-6";
       permissions = {
         allow = [
+          "Glob(**/*)"
+          "Grep(**/*)"
           "Read(**/*)"
           "WebFetch(*)"
           "WebSearch(*)"
