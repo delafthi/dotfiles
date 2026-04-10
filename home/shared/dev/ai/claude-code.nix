@@ -1,25 +1,12 @@
 { pkgs, ... }:
-let
-  anthropics-claude-code = pkgs.fetchFromGitHub {
-    owner = "anthropics";
-    repo = "claude-code";
-    rev = "22fdf68049e8c24e5a36087bb742857d3d5e407d";
-    sha256 = "04vnvgm8qabidxdqmiz0cg4z3dyrj7wnsqpgqfipx1mp7bhyipyx";
-  };
-in
 {
   programs.claude-code = {
     enable = true;
     enableMcpIntegration = true;
     plugins = [
-      (pkgs.fetchFromGitHub {
-        owner = "JuliusBrussee";
-        repo = "caveman";
-        rev = "26c25e39b3aee469dbb017427ab55ee1d32de1a8";
-        sha256 = "0kgajb0l6ppx5rqy32j9g1ij95wylhznzjgq56salq65hg3mm8sy";
-      })
-      "${anthropics-claude-code}/plugins/code-review"
-      "${anthropics-claude-code}/plugins/pr-review-toolkit"
+      pkgs.claudePlugins.caveman
+      pkgs.claudePlugins.claude-code.code-review
+      pkgs.claudePlugins.claude-code.pr-review-toolkit
     ];
     settings = {
       env = {

@@ -80,10 +80,12 @@
                     let
                       key = if prefix == "" then name else "${prefix}-${name}";
                     in
-                    if !lib.isAttrs value || lib.isDerivation value then
+                    if lib.isDerivation value then
                       acc // { ${key} = value; }
-                    else
+                    else if lib.isAttrs value then
                       acc // (flatten key value)
+                    else
+                      acc
                   ) { } attrs;
               in
               flatten "" allPkgs;
