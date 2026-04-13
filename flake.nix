@@ -37,7 +37,10 @@
     flake-parts.lib.mkFlake { inherit inputs; } (
       toplevel@{ config, lib, ... }:
       {
-        imports = [ inputs.treefmt-nix.flakeModule ];
+        imports = [
+          inputs.home-manager.flakeModules.home-manager
+          inputs.treefmt-nix.flakeModule
+        ];
         flake = {
           darwinConfigurations = import ./hosts/darwin { inherit config inputs lib; };
           nixosConfigurations = import ./hosts/nixos { inherit config inputs lib; };
@@ -67,10 +70,29 @@
               apply = import ./nix/apps/apply.nix { inherit pkgs; };
               setup-yubico-pam = import ./nix/apps/setup-yubico-pam.nix { inherit pkgs; };
               test-yubico-pam = import ./nix/apps/test-yubico-pam.nix { inherit pkgs; };
+              update-packages = import ./nix/apps/update-packages.nix { inherit pkgs; };
               default = config.apps.apply;
             };
             devShells.default = pkgs.callPackage ./nix/shell.nix { inherit config; };
-            packages = import ./pkgs { inherit pkgs; };
+            packages =
+              let
+                allPkgs = import ./packages { inherit lib pkgs; };
+                flatten =
+                  prefix: attrs:
+                  lib.foldlAttrs (
+                    acc: name: value:
+                    let
+                      key = if prefix == "" then name else "${prefix}-${name}";
+                    in
+                    if lib.isDerivation value then
+                      acc // { ${key} = value; }
+                    else if lib.isAttrs value then
+                      acc // (flatten key value)
+                    else
+                      acc
+                  ) { } attrs;
+              in
+              flatten "" allPkgs;
             treefmt = import ./nix/treefmt.nix;
           };
       }
