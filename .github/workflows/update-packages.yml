@@ -1,0 +1,34 @@
+name: Update packages
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 4 * * 1"
+jobs:
+  update-packages:
+    runs-on: macos-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v22
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Update packages
+        run: nix run .#update-packages -- --commit
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          title: "chore(packages): update packages"
+          commit-message: "chore(packages): update packages"
+          labels: |
+            auto-merge
+            dependencies
+          branch: update-packages
+          delete-branch: true

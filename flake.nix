@@ -70,6 +70,7 @@
               apply = import ./nix/apps/apply.nix { inherit pkgs; };
               setup-yubico-pam = import ./nix/apps/setup-yubico-pam.nix { inherit pkgs; };
               test-yubico-pam = import ./nix/apps/test-yubico-pam.nix { inherit pkgs; };
+              update-packages = import ./nix/apps/update-packages.nix { inherit pkgs; };
               default = config.apps.apply;
             };
             devShells.default = pkgs.callPackage ./nix/shell.nix { inherit config; };
