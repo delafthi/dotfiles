@@ -70,7 +70,7 @@
               default = config.apps.apply;
             };
             devShells.default = pkgs.callPackage ./nix/shell.nix { inherit config; };
-            packages = import ./pkgs { inherit pkgs; };
+            packages = import ./packages { inherit pkgs; };
             treefmt = import ./nix/treefmt.nix;
           };
       }
