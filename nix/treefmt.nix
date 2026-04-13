@@ -10,6 +10,7 @@
     fish_indent.enable = true;
     keep-sorted.enable = true;
     nixfmt.enable = true;
+    ruff-format.enable = true;
     rumdl-check.enable = true;
     shellcheck.enable = true;
     shfmt.enable = true;

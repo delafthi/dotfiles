@@ -1,0 +1,55 @@
+name: Update packages
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 4 * * 1"
+jobs:
+  discover:
+    runs-on: macos-latest
+    timeout-minutes: 15
+    outputs:
+      packages: ${{ steps.list.outputs.packages }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v22
+      - name: Discover packages
+        id: list
+        run: echo "packages=$(nix run .#update-packages -- --list)" >> "$GITHUB_OUTPUT"
+  update:
+    needs: discover
+    if: needs.discover.outputs.packages != '[]'
+    runs-on: macos-latest
+    timeout-minutes: 30
+    strategy:
+      matrix:
+        package: ${{ fromJson(needs.discover.outputs.packages) }}
+      fail-fast: false
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v22
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Update ${{ matrix.package }}
+        id: update
+        run: |
+          nix run .#update-packages -- --commit ${{ matrix.package }}
+          echo "title=$(git log -1 --format=%s)" >> "$GITHUB_OUTPUT"
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          title: ${{ steps.update.outputs.title }}
+          labels: |
+            auto-merge
+            dependencies
+          branch: update-packages/${{ matrix.package }}
+          delete-branch: true
