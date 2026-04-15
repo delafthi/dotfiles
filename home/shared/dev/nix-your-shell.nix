@@ -1,6 +1,6 @@
 {
   programs.nix-your-shell = {
-    enable = true;
+    enable = false;
     nix-output-monitor.enable = true;
   };
 }
