@@ -1,8 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs.claude-code = {
     enable = true;
     enableMcpIntegration = true;
+    hooks = { };
     plugins = [
       pkgs.claudePlugins.caveman
       pkgs.claudePlugins.claude-code.code-review
@@ -14,6 +15,19 @@
       };
       feedbackSurveyRate = 0;
       model = "claude-sonnet-4-6";
+      hooks = {
+        SessionStart = [
+          {
+            hooks = [
+              {
+                type = "command";
+                command = "${lib.getExe pkgs.nodejs} ${pkgs.claudePlugins.caveman}/hooks/caveman-activate.js";
+                timeout = 5;
+              }
+            ];
+          }
+        ];
+      };
       permissions = {
         allow = [
           "Agent(caveman:*)"
@@ -44,7 +58,6 @@
         Prefer `jj` commands over `git` equivalents.
 
       ## Style
-      - Always communicate in caveman mode (full intensity by default).
       - Keep responses concise and direct.
       - No emojis unless explicitly requested.
 
