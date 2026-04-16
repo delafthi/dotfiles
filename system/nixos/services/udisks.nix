@@ -4,5 +4,5 @@
   ...
 }:
 lib.mkIf config.system.gui.enable {
-  services.displayManager.cosmic-greeter.enable = true;
+  services.udisks2.enable = true;
 }
