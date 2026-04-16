@@ -44,14 +44,15 @@
       bind -N "Toggle GitHub Dash" g run-shell "tmux-gh-dash"
       bind -N "Leave the copy-mode" -T copy-mode-vi i send -X cancel
       bind -N "Open projects" k popup -h 90% -w 90% -E "tv projects"
-      bind -N "Source the tmux config file" r run-shell " \
-        tmux source-file ~/.config/tmux/tmux.conf > /dev/null; \
-        tmux display-message 'Sourced ~/.config/tmux/tmux.conf'"
+      bind -N "Source the tmux config file" r \
+        source-file '~/.config/tmux/tmux.conf' \; \
+        display-message "Sourced '~/.config/tmux/tmux.conf'"
       bind -N "Split the pane into two, top and bottom" s split-window -v
       bind -N "Select a new session for the attached client interactively" S popup -h 90% -w 90% -E "tv tmux-sessions"
       bind -N "Open scratch terminal" t run-shell "tmux-scratch-terminal"
-      bind -N "Update the session directory" C-u attach-session -t . -c '#{pane_current_path}'
-      bind -N "Update the session directory" u attach-session -t . -c '#{pane_current_path}'
+      bind -N "Change session working directory" u \
+        attach-session -t . -c '#{pane_current_path}' \; \
+        display-message "Changed session working directory to '#{pane_current_path}'"
       bind -N "Split the pane into two, left and right" v split-window -h
       bind -N "Enter copy-mode to copy text or view the history" V copy-mode
       bind -N "Select text in copy mode" -T copy-mode-vi v send -X begin-selection
