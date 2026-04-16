@@ -1,8 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   programs.claude-code = {
     enable = true;
     enableMcpIntegration = true;
+    hooks = { };
     plugins = [
       pkgs.claudePlugins.caveman
       pkgs.claudePlugins.claude-code.code-review
@@ -13,7 +14,20 @@
         CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC = "1";
       };
       feedbackSurveyRate = 0;
-      model = "claude-sonnet-4-6";
+      hooks = {
+        SessionStart = [
+          {
+            hooks = [
+              {
+                type = "command";
+                command = "${lib.getExe pkgs.nodejs} ${pkgs.claudePlugins.caveman}/hooks/caveman-activate.js";
+                timeout = 5;
+              }
+            ];
+          }
+        ];
+      };
+      model = "opusplan";
       permissions = {
         allow = [
           "Agent(caveman:*)"
@@ -24,11 +38,12 @@
           "mcp__plugin_claude-code-home-manager_context7__*"
           "mcp__plugin_claude-code-home-manager_deepwiki__*"
           "Read(**/*)"
+          "Read(/tmp/**)"
           "Skill(caveman:*)"
           "Skill(code-review:*)"
           "Skill(pr-review-toolkit:*)"
-          "WebFetch(*)"
-          "WebSearch(*)"
+          "WebFetch"
+          "WebSearch"
         ];
       };
       statusLine = {
@@ -44,7 +59,6 @@
         Prefer `jj` commands over `git` equivalents.
 
       ## Style
-      - Always communicate in caveman mode (full intensity by default).
       - Keep responses concise and direct.
       - No emojis unless explicitly requested.
 
