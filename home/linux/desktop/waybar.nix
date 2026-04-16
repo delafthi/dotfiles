@@ -4,9 +4,6 @@
   ...
 }:
 lib.mkIf osConfig.system.gui.enable {
-  services.network-manager-applet.enable = true;
-  services.blueman-applet.enable = true;
-
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -18,32 +15,26 @@ lib.mkIf osConfig.system.gui.enable {
       margin-top = 0;
       margin-left = 0;
       margin-right = 0;
-
       modules-left = [ "niri/workspaces" ];
       modules-center = [ "niri/window" ];
       modules-right = [
         "tray"
         "clock"
       ];
-
       "niri/workspaces" = {
         format = "●";
       };
-
       "niri/window" = {
         max-length = 60;
       };
-
       tray = {
         spacing = 8;
       };
-
       clock = {
         format = "{:%a %d %b  %H:%M}";
         tooltip = false;
       };
     };
-
     style = ''
       * {
         font-family: "IosevkaAile", sans-serif;
@@ -53,12 +44,10 @@ lib.mkIf osConfig.system.gui.enable {
         border: none;
         border-radius: 0;
       }
-
       window#waybar {
         background-color: @base;
         color: @text;
       }
-
       #workspaces button {
         padding: 0 4px;
         background: transparent;
@@ -67,24 +56,22 @@ lib.mkIf osConfig.system.gui.enable {
         box-shadow: none;
         font-size: 10px;
       }
-
       #workspaces button.active,
       #workspaces button.focused {
         color: @blue;
       }
-
       #window {
         color: @subtext1;
       }
-
+      #tray > .passive {
+        -gtk-icon-effect: dim;
+      }
       #clock {
         padding: 0 12px;
         color: @text;
       }
-
-      #tray > .passive {
-        -gtk-icon-effect: dim;
-      }
     '';
   };
+  services.network-manager-applet.enable = true;
+  services.blueman-applet.enable = true;
 }
