@@ -24,6 +24,13 @@ _: {
           "git"
           "fetch"
         ];
+        files = [
+          "util"
+          "exec"
+          "--"
+          "tv"
+          "jj-diff"
+        ];
         F = [
           "git"
           "fetch"
@@ -32,6 +39,34 @@ _: {
         i = [
           "new"
           "--insert-before"
+        ];
+        ibookmark = [
+          "util"
+          "exec"
+          "--"
+          "tv"
+          "jj-bookmark"
+        ];
+        idiff = [
+          "util"
+          "exec"
+          "--"
+          "tv"
+          "jj-diff"
+        ];
+        ilog = [
+          "util"
+          "exec"
+          "--"
+          "tv"
+          "jj-log"
+        ];
+        iop-log = [
+          "util"
+          "exec"
+          "--"
+          "tv"
+          "jj-op-log"
         ];
         l = [
           "log"
@@ -73,6 +108,13 @@ _: {
           "push"
           "--all"
         ];
+        remotes = [
+          "util"
+          "exec"
+          "--"
+          "tv"
+          "jj-remotes"
+        ];
         track-all = [
           "bookmark"
           "track"
@@ -86,6 +128,13 @@ _: {
           "heads(::@- & bookmarks())"
           "--to"
           "@-"
+        ];
+        workspaces = [
+          "util"
+          "exec"
+          "--"
+          "tv"
+          "jj-workspaces"
         ];
       };
       colors."diff token".underline = false;
