@@ -42,8 +42,8 @@
           "Skill(caveman:*)"
           "Skill(code-review:*)"
           "Skill(pr-review-toolkit:*)"
-          "WebFetch(*)"
-          "WebSearch(*)"
+          "WebFetch"
+          "WebSearch"
         ];
       };
       statusLine = {
