@@ -1,6 +1,6 @@
 {
   imports = [
-    ./cosmic.nix
-    ./cosmic-greeter.nix
+    ./niri.nix
+    ./greetd.nix
   ];
 }
