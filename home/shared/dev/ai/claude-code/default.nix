@@ -38,6 +38,7 @@
           "mcp__plugin_claude-code-home-manager_context7__*"
           "mcp__plugin_claude-code-home-manager_deepwiki__*"
           "Read(**/*)"
+          "Read(/tmp/**)"
           "Skill(caveman:*)"
           "Skill(code-review:*)"
           "Skill(pr-review-toolkit:*)"
