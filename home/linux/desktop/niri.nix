@@ -1,9 +1,17 @@
 {
   lib,
   osConfig,
+  pkgs,
   ...
 }:
 lib.mkIf osConfig.system.gui.enable {
+  home.packages = with pkgs; [
+    brightnessctl
+    wl-clipboard-rs
+    wlrctl
+    xwayland-satellite
+  ];
+  services.polkit-gnome.enable = true;
   xdg.configFile."niri/config.kdl".text = ''
     input {
       keyboard {
@@ -153,6 +161,4 @@ lib.mkIf osConfig.system.gui.enable {
       XF86MonBrightnessDown { spawn "swayosd-client" "--brightness" "lower"; }
     }
   '';
-
-  services.polkit-gnome.enable = true;
 }
