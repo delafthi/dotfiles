@@ -5,5 +5,6 @@
     ./btrfs.nix
     ./pipewire.nix
     ./printing.nix
+    ./udisks.nix
   ];
 }
