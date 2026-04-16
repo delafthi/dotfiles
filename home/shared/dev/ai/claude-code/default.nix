@@ -14,7 +14,6 @@
         CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC = "1";
       };
       feedbackSurveyRate = 0;
-      model = "claude-sonnet-4-6";
       hooks = {
         SessionStart = [
           {
@@ -28,6 +27,7 @@
           }
         ];
       };
+      model = "opusplan";
       permissions = {
         allow = [
           "Agent(caveman:*)"
