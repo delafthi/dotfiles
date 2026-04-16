@@ -7,9 +7,12 @@
 lib.mkIf config.system.gui.enable {
   programs.niri.enable = true;
   security.pam.services.swaylock = { };
-  environment.systemPackages = with pkgs; [
-    brightnessctl
-    wl-clipboard-rs
-    wlrctl
-  ];
+  environment = {
+    sessionVariables.NIXOS_OZONE_WL = "1";
+    systemPackages = with pkgs; [
+      brightnessctl
+      wl-clipboard-rs
+      wlrctl
+    ];
+  };
 }
