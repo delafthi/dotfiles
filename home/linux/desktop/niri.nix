@@ -69,7 +69,7 @@ lib.mkIf osConfig.system.gui.enable {
 
     prefer-no-csd
 
-    screenshot-path "~/Documents/00-inbox/screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+    screenshot-path "~/Documents/00-inbox/screenshots/%Y-%m-%d %H-%M-%S.png"
 
     hotkey-overlay {
       skip-at-startup
@@ -152,6 +152,10 @@ lib.mkIf osConfig.system.gui.enable {
 
       // Quit niri
       Mod+Ctrl+Shift+Q { quit; }
+
+      // Screenshot
+      Mod+Shift+1 { screenshot-screen show-pointer=false; }
+      Mod+Shift+2 { screenshot show-pointer=false; }
 
       // Media keys
       XF86AudioRaiseVolume allow-when-locked=true { spawn "swayosd-client" "--output-volume" "raise"; }
