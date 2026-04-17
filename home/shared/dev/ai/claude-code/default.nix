@@ -3,7 +3,6 @@
   programs.claude-code = {
     enable = true;
     enableMcpIntegration = true;
-    hooks = { };
     plugins = [
       pkgs.claudePlugins.caveman
       pkgs.claudePlugins.claude-code.code-review
@@ -22,6 +21,7 @@
                 type = "command";
                 command = "${lib.getExe pkgs.nodejs} ${pkgs.claudePlugins.caveman}/hooks/caveman-activate.js";
                 timeout = 5;
+                statusMessage = "Loading caveman mode...";
               }
             ];
           }
