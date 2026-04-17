@@ -1,4 +1,3 @@
-{ config, ... }:
 {
   programs.atuin = {
     enable = true;
@@ -22,8 +21,6 @@
         "^exit$"
       ];
       invert = true;
-      key_path = config.sops.secrets."atuin/key".path;
-      session_path = config.sops.secrets."atuin/session".path;
     };
   };
 }
