@@ -53,15 +53,11 @@
       };
     };
     context = ''
-      # Global Memory
+      # Global Guidelines
 
       ## Version Control
-      - This project uses **jujutsu** (`jj`) for version control, not git.
-        Prefer `jj` commands over `git` equivalents.
-
-      ## Style
-      - Keep responses concise and direct.
-      - No emojis unless explicitly requested.
+      - Prefer `jj` over `git`. Use `jj` commands by default.
+      - Key commands: `jj new` (new change), `jj describe` (set message), `jj squash` (amend into parent), `jj log` (history), `jj diff` (show changes).
 
       ## External Actions
       - NEVER post, push, publish, send, or otherwise externally share anything unless explicitly instructed to do so.
