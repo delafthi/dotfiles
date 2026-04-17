@@ -1,9 +1,13 @@
 {
   lib,
   osConfig,
+  pkgs,
   ...
 }:
 lib.mkIf osConfig.system.gui.enable {
+  home.packages = with pkgs; [
+    libnotify
+  ];
   services.mako = {
     enable = true;
     settings = {
