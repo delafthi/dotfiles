@@ -5,12 +5,12 @@
   nix-update-script,
 }:
 let
-  version = "2.1.109";
+  version = "2.1.114";
   src = fetchFromGitHub {
     owner = "anthropics";
     repo = "claude-code";
     tag = "v${version}";
-    sha256 = "sha256-Ir8bikRS0YSwEE2IGtpHE7G1pe94V38h74ubatyM1GM=";
+    sha256 = "sha256-Sle1bvuZIJba9B4/PD1ZK89XkrSbPERstcY/kvr6Wcc=";
   };
   pluginNames = builtins.attrNames (
     lib.filterAttrs (_: type: type == "directory") (builtins.readDir "${src}/plugins")
