@@ -6,12 +6,6 @@
   ...
 }:
 lib.mkIf osConfig.system.gui.enable {
-  home.pointerCursor = {
-    gtk.enable = true;
-    package = pkgs.adwaita-icon-theme;
-    name = "Adwaita";
-    size = 24;
-  };
   gtk = {
     enable = true;
     colorScheme = "dark";
@@ -20,5 +14,9 @@ lib.mkIf osConfig.system.gui.enable {
       size = 12;
     };
     gtk4.theme = null;
+    theme = {
+      name = "Adwaita-dark";
+      package = pkgs.gnome-themes-extra;
+    };
   };
 }
