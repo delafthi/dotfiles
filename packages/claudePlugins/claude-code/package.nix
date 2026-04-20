@@ -5,7 +5,7 @@
   nix-update-script,
 }:
 let
-  version = "2.1.109";
+  version = "2.1.114";
   src = fetchFromGitHub {
     owner = "anthropics";
     repo = "claude-code";
