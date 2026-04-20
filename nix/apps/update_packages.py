@@ -96,15 +96,21 @@ def update_package(attr: str, system: str, *, do_commit: bool) -> bool:
         ["git", "fsmonitor--daemon", "stop"], check=False, capture_output=True
     )
 
-    result = subprocess.run(["nix-update", "--flake", attr])
+    result = subprocess.run(
+        [
+            "nix-update",
+            "--build",
+            "--flake",
+            "--quiet",
+            attr,
+        ]
+    )
 
-    # Stage immediately to check whether nix-update modified any files.
-    # nix-update may exit non-zero on the post-update diff-URL generation step
-    # (it re-evaluates the flake, but the new source drv is not yet realized).
-    # The actual file update still succeeds in that case, so we treat it as a
-    # failure only when nix-update errored AND made no changes.
     git("add", "-A")
-    no_changes = git("diff", "--staged", "--quiet", check=False).returncode == 0
+    no_changes = (
+        git("diff", "--staged", "--quiet", "--", "packages/", check=False).returncode
+        == 0
+    )
 
     if result.returncode != 0 and no_changes:
         print(f"Error: nix-update failed for {attr}", file=sys.stderr)
@@ -115,27 +121,12 @@ def update_package(attr: str, system: str, *, do_commit: bool) -> bool:
         git("restore", "--staged", ".", check=False)
         return True
 
-    # Realize the updated source so that IFD (import-from-derivation) works
-    # for any subsequent package that requires evaluating this derivation.
-    subprocess.run(
-        [
-            "nix",
-            "build",
-            "--no-link",
-            "--allow-import-from-derivation",
-            f".#packages.{system}.{attr}",
-        ],
-        check=False,
-        capture_output=True,
-    )
-
     if do_commit:
+        git("add", "-A")
         diff = git_output("diff", "--staged", "--", "packages/")
         old_ver = parse_version(diff, removed=True)
         new_ver = parse_version(diff, removed=False)
         git("commit", "-m", f"chore(packages/{attr}): {old_ver} -> {new_ver}")
-    else:
-        git("restore", "--staged", ".", check=False)
 
     return True
 
