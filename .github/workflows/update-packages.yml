@@ -44,7 +44,7 @@ jobs:
           nix run .#update-packages -- --commit ${{ matrix.package }}
           echo "title=$(git log -1 --format=%s)" >> "$GITHUB_OUTPUT"
       - name: Create pull request
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.GH_TOKEN }}
           title: ${{ steps.update.outputs.title }}
