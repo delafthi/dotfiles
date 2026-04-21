@@ -21,6 +21,7 @@
         "^exit$"
       ];
       invert = true;
+      sync.records = true;
     };
   };
 }
